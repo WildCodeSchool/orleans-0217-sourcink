@@ -1,1 +1,6 @@
+si_app:
+    resource: "@SIAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 
