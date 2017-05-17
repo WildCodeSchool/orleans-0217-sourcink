@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="62ffa004-000f-4608-ae5f-29c00ec9a931" name="Default" comment="" />
+=======
     <list default="true" id="62ffa004-000f-4608-ae5f-29c00ec9a931" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig" afterPath="$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig" />
     </list>
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,21 +22,31 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="328">
+              <caret line="113" column="34" lean-forward="false" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+=======
             <state relative-caret-position="252">
               <caret line="228" column="19" lean-forward="false" selection-start-line="228" selection-start-column="19" selection-end-line="228" selection-end-column="19" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="640">
+              <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
+=======
             <state relative-caret-position="360">
               <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
               <folding />
             </state>
           </provider>
@@ -43,6 +57,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>src</find>
+      <find>theme</find>
+      <find>theme/</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,7 +146,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="sourcink" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcink" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourcink" />
+=======
               <option name="myItemId" value="orleans-0217-sourcink" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -288,15 +322,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/bootstrap/js" />
+      <recent name="$PROJECT_DIR$/web" />
+      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
+      <recent name="$PROJECT_DIR$/web/bootstrap" />
       <recent name="$PROJECT_DIR$/app/Resources/views" />
-      <recent name="$PROJECT_DIR$/src/SI/UserBundle/Resources/views/Default" />
-      <recent name="$PROJECT_DIR$/src/SI/UserBundle/Resources/views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/bootstrap" />
+      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
       <recent name="$PROJECT_DIR$/vendor" />
       <recent name="$PROJECT_DIR$/web/theme" />
-      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
     </key>
   </component>
   <component name="RunManager">
@@ -372,13 +408,21 @@
       <workItem from="1494852491268" duration="9000" />
       <workItem from="1494852828164" duration="484000" />
       <workItem from="1495022892740" duration="6236000" />
+<<<<<<< HEAD
+      <workItem from="1495029280830" duration="5539000" />
+=======
       <workItem from="1495029280830" duration="2250000" />
       <workItem from="1495031774290" duration="1051000" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="19153000" />
+=======
     <option name="totallyTimeSpent" value="16915000" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -391,7 +435,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26923078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -399,7 +443,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1262349" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -573,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/theme/css/agency.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10425">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SI/UserBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -587,20 +628,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/theme/js/agency.js">
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/js/agency.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/vendor/jquery/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/vendor/jquery/jquery.js" />
     <entry file="file://$PROJECT_DIR$/vendor/font-awesome/css/font-awesome.css" />
     <entry file="file://$PROJECT_DIR$/vendor/bootstrap/js/bootstrap.js" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
     <entry file="file://$PROJECT_DIR$/web/bootstrap/jquery/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -645,18 +706,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/font-awesome.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/agency.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/agency.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
         <state relative-caret-position="360">
           <caret line="56" column="59" lean-forward="false" selection-start-line="56" selection-start-column="59" selection-end-line="56" selection-end-column="59" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="328">
+          <caret line="113" column="34" lean-forward="false" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
+=======
         <state relative-caret-position="252">
           <caret line="228" column="19" lean-forward="false" selection-start-line="228" selection-start-column="19" selection-end-line="228" selection-end-column="19" />
+>>>>>>> f57bbe1e45b25f77897a5c4635dd9fcff969c369
           <folding />
         </state>
       </provider>
