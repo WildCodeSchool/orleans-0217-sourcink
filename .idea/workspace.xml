@@ -2,8 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62ffa004-000f-4608-ae5f-29c00ec9a931" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/css/agency.css" afterPath="$PROJECT_DIR$/web/bootstrap/css/agency.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/css/agency.min.css" afterPath="$PROJECT_DIR$/web/bootstrap/css/agency.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/about/1.jpg" afterPath="$PROJECT_DIR$/web/img/about/1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/about/2.jpg" afterPath="$PROJECT_DIR$/web/img/about/2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/about/3.jpg" afterPath="$PROJECT_DIR$/web/img/about/3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/about/4.jpg" afterPath="$PROJECT_DIR$/web/img/about/4.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/header-bg.jpg" afterPath="$PROJECT_DIR$/web/img/header-bg.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/logos/creative-market.jpg" afterPath="$PROJECT_DIR$/web/img/logos/creative-market.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/logos/designmodo.jpg" afterPath="$PROJECT_DIR$/web/img/logos/designmodo.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/logos/envato.jpg" afterPath="$PROJECT_DIR$/web/img/logos/envato.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/logos/themeforest.jpg" afterPath="$PROJECT_DIR$/web/img/logos/themeforest.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/map-image.png" afterPath="$PROJECT_DIR$/web/img/map-image.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/dreams-preview.png" afterPath="$PROJECT_DIR$/web/img/portfolio/dreams-preview.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/dreams.png" afterPath="$PROJECT_DIR$/web/img/portfolio/dreams.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/escape-preview.png" afterPath="$PROJECT_DIR$/web/img/portfolio/escape-preview.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/escape.png" afterPath="$PROJECT_DIR$/web/img/portfolio/escape.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/golden-preview.png" afterPath="$PROJECT_DIR$/web/img/portfolio/golden-preview.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/golden.png" afterPath="$PROJECT_DIR$/web/img/portfolio/golden.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/roundicons-free.png" afterPath="$PROJECT_DIR$/web/img/portfolio/roundicons-free.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/roundicons.png" afterPath="$PROJECT_DIR$/web/img/portfolio/roundicons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/startup-framework-preview.png" afterPath="$PROJECT_DIR$/web/img/portfolio/startup-framework-preview.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/startup-framework.png" afterPath="$PROJECT_DIR$/web/img/portfolio/startup-framework.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/treehouse-preview.png" afterPath="$PROJECT_DIR$/web/img/portfolio/treehouse-preview.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/portfolio/treehouse.png" afterPath="$PROJECT_DIR$/web/img/portfolio/treehouse.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/team/1.jpg" afterPath="$PROJECT_DIR$/web/img/team/1.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/team/2.jpg" afterPath="$PROJECT_DIR$/web/img/team/2.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/img/team/3.jpg" afterPath="$PROJECT_DIR$/web/img/team/3.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/js/agency.js" afterPath="$PROJECT_DIR$/web/bootstrap/js/agency.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/js/agency.min.js" afterPath="$PROJECT_DIR$/web/bootstrap/js/agency.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/js/contact_me.js" afterPath="$PROJECT_DIR$/web/bootstrap/js/contact_me.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/theme/js/jqBootstrapValidation.js" afterPath="$PROJECT_DIR$/web/bootstrap/js/jqBootstrapValidation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig" afterPath="$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +53,8 @@
       <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="552" column="10" lean-forward="true" selection-start-line="552" selection-start-column="10" selection-end-line="552" selection-end-column="10" />
+            <state relative-caret-position="328">
+              <caret line="113" column="34" lean-forward="false" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -32,8 +63,8 @@
       <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-585">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="685">
+              <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -44,6 +75,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>src</find>
+      <find>theme</find>
+      <find>theme/</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,20 +208,8 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap.css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -385,15 +406,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/bootstrap/js" />
+      <recent name="$PROJECT_DIR$/web" />
+      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
+      <recent name="$PROJECT_DIR$/web/bootstrap" />
       <recent name="$PROJECT_DIR$/app/Resources/views" />
-      <recent name="$PROJECT_DIR$/src/SI/UserBundle/Resources/views/Default" />
-      <recent name="$PROJECT_DIR$/src/SI/UserBundle/Resources/views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/bootstrap" />
+      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
       <recent name="$PROJECT_DIR$/vendor" />
       <recent name="$PROJECT_DIR$/web/theme" />
-      <recent name="$PROJECT_DIR$/web/bootstrap/css" />
     </key>
   </component>
   <component name="RunManager">
@@ -469,12 +492,12 @@
       <workItem from="1494852491268" duration="9000" />
       <workItem from="1494852828164" duration="484000" />
       <workItem from="1495022892740" duration="6236000" />
-      <workItem from="1495029280830" duration="2250000" />
+      <workItem from="1495029280830" duration="5194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15864000" />
+    <option name="totallyTimeSpent" value="18808000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -495,7 +518,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33005464" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -668,13 +691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/theme/css/agency.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10425">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SI/UserBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -682,10 +698,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/theme/js/agency.js">
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/js/agency.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -693,13 +710,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -714,6 +725,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,18 +771,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/font-awesome/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/agency.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/agency.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-585">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="685">
+          <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SI/AppBundle/Resources/views/Vitrine/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="552" column="10" lean-forward="true" selection-start-line="552" selection-start-column="10" selection-end-line="552" selection-end-column="10" />
+        <state relative-caret-position="328">
+          <caret line="113" column="34" lean-forward="false" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
           <folding />
         </state>
       </provider>
