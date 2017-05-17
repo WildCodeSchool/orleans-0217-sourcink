@@ -1,9 +1,12 @@
-si_user:
-    resource: "@SIUserBundle/Controller/"
 si_app:
     resource: "@SIAppBundle/Controller/"
     type:     annotation
     prefix:   /
+
+si_user:
+    resource: "@SIUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
