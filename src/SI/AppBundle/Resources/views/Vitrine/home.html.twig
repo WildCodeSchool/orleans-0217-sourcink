@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
-{% block title %}Sourcink{% endblock %}
+{% block title %} Sourcink {% endblock %}
 {% block body %}
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -23,7 +23,8 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Theme CSS -->
-    <link href="theme/css/agency.min.css" rel="stylesheet">
+    <link href="theme/css/agency.css" rel="stylesheet">
+    <link href="theme/css/agency.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +45,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Sourcink</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +64,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#team">Team</a>
+                        <a class="page-scroll" href="#team">Equipe</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -71,19 +72,29 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
+
         </div>
+
         <!-- /.container-fluid -->
     </nav>
 
     <!-- Header -->
     <header>
+
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <div class="intro-lead-in">
+                    Envie de nouveaux challenges ?
+                </div>
+                <div class="intro-heading">Découvrez nos dernières offres juridiques, fiscales & RH ! </div>
+                <a href="#services" class="page-scroll btn btn-xl">Entrez</a>
             </div>
         </div>
+        <!-- ajout video-->
+        <video preload="auto" autoplay="autoplay" loop="loop">
+            <source src="{{ asset('theme/img/POffice-Day.mp4') }}" type="video/mp4">
+        </video>
+        <!-- ajout video-->
     </header>
 
     <!-- Services Section -->
@@ -211,7 +222,7 @@
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                        <img src="theme/img/portfolio/dreams.png" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>Dreams</h4>
@@ -278,7 +289,7 @@
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                                <img class="img-circle img-responsive" src="theme/img/about/4.jpg" alt="">
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -388,7 +399,7 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <a href="#">
-                        <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
+                        <img src="theme/img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
                     </a>
                 </div>
             </div>
@@ -649,9 +660,9 @@
             </div>
         </div>
     </div>
-
+</body>
     <!-- jQuery -->
-    <script src="bootstrap/jquery/jquery.min.js"></script>
+    <script src="{{ asset ('bootstrap/jquery/jquery.min.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
