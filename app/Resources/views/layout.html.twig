@@ -21,6 +21,7 @@
 
     <!-- Theme CSS -->
     <link href="{{ asset('bootstrap/css/agency.min.css' )}}" rel="stylesheet">
+    <link href="{{ asset('css/style.css' )}}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,26 +69,12 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
- {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="team-member">
-                    <img src="{{ asset('img/people.jpg' )}}" class="img-responsive" alt="">
-                    <h4>JUSTINE CORDEY</h4>
-                    <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="team-member">
-                    <img src="{{ asset('img/people.jpg' )}}" class="img-responsive" alt="">
-                    <h4>ARNAUD LAVISSE</h4>
-                    <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
-                </div>
-            </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="col-sm-6">
                     <p>+33 (0)1.70.71.89.19</p>
                 </div>
@@ -95,25 +82,42 @@
                     <p>contact@sourcink.com</p>
                 </div>
                 <div class="col-sm-12">
-                    <p>
-                        <a href="http://www.linkedin.com/company/sourcink" target="_blank">
-                            <i class="fa fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="http://www.viadeo.com/v/company/sourcink" target="_blank">
-                            <i class="fa fa-viadeo fa-2x"></i>
-                        </a>
-                        <a href="http://www.facebook.com/agence.sourcink" target="_blank">
-                            <i class="fa fa-facebook fa-2x"></i>
-                        </a>
-                        <a href="https://twitter.com/Sourcink_RH" target="_blank">
-                            <i class="fa fa-twitter fa-2x"></i>
-                        </a>
-                        <a href="http://www.scoop.it/t/sourcing-by-sourcink" target="_blank">
-                            <i class="fa fa-scoop fa-2x"></i>
-                        </a>
-                        <a href="https://plus.google.com/+Sourcink/posts?hl=fr" target="_blank">
-                            <i class="fa fa-google-plus fa-2x"></i>
-                        </a>
+                    <div class="col-sm-2 col-sm-offset-1">
+                        <a href="http://www.linkedin.com/company/sourcink" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="http://www.viadeo.com/v/company/sourcink" target="_blank"><i class="fa fa-viadeo fa-2x"></i></a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="http://www.facebook.com/agence.sourcink" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="https://twitter.com/Sourcink_RH" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="https://plus.google.com/+Sourcink/posts?hl=fr" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
+                    </div>
+                    <!--<a href="http://www.scoop.it/t/sourcing-by-sourcink" target="_blank"><img src="{{ asset('img/icons/scoopIt.png')}}"</a>-->
+                </div>
+                <div>
+                    <a href="#" data-toggle="modal" data-target="#legal">Mentions légales</a>
+                </div>
+                <div class="modal fade" id="legal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
