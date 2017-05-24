@@ -20,6 +20,5 @@ class CategoryController extends Controller
     public function categoryAction()
     {
         return $this->render('SIAppBundle:Category:category.html.twig');
-
     }
 }
