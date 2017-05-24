@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Header</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ header.id }}</td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ header.text }}</td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ header.video }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ header.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('header_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('header_edit', { 'id': header.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
