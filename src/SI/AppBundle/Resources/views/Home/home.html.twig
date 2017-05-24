@@ -1,0 +1,9 @@
+{% extends "SIAppBundle:Base:layout.html.twig" %}
+{% block header %}
+    {% include('SIAppBundle:Home:header.html.twig') %}
+{% endblock %}
+{% block content %}
+    {% include('SIAppBundle:Home:video.html.twig') %}
+    {% include('SIAppBundle:Home:expertise.html.twig') %}
+    {% include('SIAppBundle:Home:category.html.twig') %}
+{% endblock %}
