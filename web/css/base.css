@@ -7,9 +7,14 @@ body {
 main {
     flex: 1 0 auto;
 }
-
+nav {
+    padding-left: 1%;
+    background-color: rgba(0, 161, 192, 1);
+}
+.page-footer {
+    background-color: rgba(0, 161, 192, 1);
+}
 /* Css Video */
-
 video{
     position: absolute;
     top: 50%;
