@@ -1,5 +1,12 @@
 {% extends "SIAppBundle:Base:layout.html.twig" %}
-{% block body %}
-    {% include('SIAppBundle:Category:product.html.twig') %}
-    {% include('SIAppBundle:Category:comparator.html.twig') %}
+{% block header %}
+    {% include('SIAppBundle:Category:header.html.twig') %}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% include('SIAppBundle:Category:product.html.twig') %}
+            {% include('SIAppBundle:Category:comparator.html.twig') %}
+        </div>
+    </div>
 {% endblock %}
