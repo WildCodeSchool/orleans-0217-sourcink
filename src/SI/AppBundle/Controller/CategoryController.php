@@ -21,4 +21,5 @@ class CategoryController extends Controller
     {
         return $this->render('SIAppBundle:Category:category.html.twig');
     }
+
 }
