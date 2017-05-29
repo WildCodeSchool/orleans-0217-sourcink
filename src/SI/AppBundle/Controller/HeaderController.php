@@ -26,7 +26,7 @@ class HeaderController extends Controller
 
         $headers = $em->getRepository('SIAppBundle:Header')->findAll();
 
-        return $this->render('header/index.html.twig', array(
+        return $this->render('admin/header/index.html.twig', array(
             'headers' => $headers,
         ));
     }
@@ -51,7 +51,7 @@ class HeaderController extends Controller
             return $this->redirectToRoute('header_show', array('id' => $header->getId()));
         }
 
-        return $this->render('header/new.html.twig', array(
+        return $this->render('admin/header/new.html.twig', array(
             'header' => $header,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class HeaderController extends Controller
     {
         $deleteForm = $this->createDeleteForm($header);
 
-        return $this->render('header/show.html.twig', array(
+        return $this->render('admin/header/show.html.twig', array(
             'header' => $header,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class HeaderController extends Controller
             return $this->redirectToRoute('header_edit', array('id' => $header->getId()));
         }
 
-        return $this->render('header/edit.html.twig', array(
+        return $this->render('admin/header/edit.html.twig', array(
             'header' => $header,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

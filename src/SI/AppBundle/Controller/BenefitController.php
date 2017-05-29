@@ -26,7 +26,7 @@ class BenefitController extends Controller
 
         $benefits = $em->getRepository('SIAppBundle:Benefit')->findAll();
 
-        return $this->render('benefit/index.html.twig', array(
+        return $this->render('admin/benefit/index.html.twig', array(
             'benefits' => $benefits,
         ));
     }
@@ -51,7 +51,7 @@ class BenefitController extends Controller
             return $this->redirectToRoute('benefit_show', array('id' => $benefit->getId()));
         }
 
-        return $this->render('benefit/new.html.twig', array(
+        return $this->render('admin/benefit/new.html.twig', array(
             'benefit' => $benefit,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class BenefitController extends Controller
     {
         $deleteForm = $this->createDeleteForm($benefit);
 
-        return $this->render('benefit/show.html.twig', array(
+        return $this->render('admin/benefit/show.html.twig', array(
             'benefit' => $benefit,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class BenefitController extends Controller
             return $this->redirectToRoute('benefit_edit', array('id' => $benefit->getId()));
         }
 
-        return $this->render('benefit/edit.html.twig', array(
+        return $this->render('admin/benefit/edit.html.twig', array(
             'benefit' => $benefit,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
