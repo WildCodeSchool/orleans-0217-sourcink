@@ -11,15 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-{% block header %}
+{% include "menu.html.twig" %}
+{% block body %}
 {% endblock %}
-{% block content %}
-{% endblock %}
-{% block footer %}
-{% endblock %}
+
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
 {% endblock %}
 </body>
 </html>

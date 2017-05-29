@@ -102,11 +102,11 @@ class Expertise
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Pictures $picture
+     * @param \SI\AppBundle\Entity\Pictures$picture
      *
      * @return Expertise
      */
-    public function setPicture(\SI\AppBundle\Entity\Pictures $picture = null)
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -116,7 +116,7 @@ class Expertise
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Pictures
+     * @return \SI\AppBundle\Entity\Picture
      */
     public function getPicture()
     {

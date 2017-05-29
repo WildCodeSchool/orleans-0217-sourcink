@@ -46,6 +46,13 @@ class Category
      */
     private $picture;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -55,6 +62,16 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -72,13 +89,13 @@ class Category
     }
 
     /**
-     * Get title
+     * Get text
      *
      * @return string
      */
-    public function getTitle()
+    public function getText()
     {
-        return $this->title;
+        return $this->text;
     }
 
     /**
@@ -93,23 +110,6 @@ class Category
         $this->text = $text;
 
         return $this;
-    }
-
-    /**
-     * Get text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -147,26 +147,31 @@ class Category
     }
 
     /**
+     * Get picture
+     *
+     * @return \SI\AppBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Pictures $picture
+     * @param \SI\AppBundle\Entity\Picture $picture
      *
      * @return Category
      */
-    public function setPicture(\SI\AppBundle\Entity\Pictures $picture = null)
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
 
         return $this;
     }
 
-    /**
-     * Get picture
-     *
-     * @return \SI\AppBundle\Entity\Pictures
-     */
-    public function getPicture()
+    public function __toString()
     {
-        return $this->picture;
+        return $this->title;
     }
 }
