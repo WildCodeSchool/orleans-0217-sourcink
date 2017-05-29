@@ -3,9 +3,11 @@
     {% include('SIAppBundle:Home:header.html.twig') %}
 {% endblock %}
 {% block content %}
+
+            {% include('SIAppBundle:Home:video.html.twig') %}
     <div class="container">
         <div class="row">
-            {% include('SIAppBundle:Home:video.html.twig') %}
+
             {% include('SIAppBundle:Home:expertise.html.twig') %}
             {% include('SIAppBundle:Home:category.html.twig') %}
             {% include('SIAppBundle:Home:team.html.twig') %}

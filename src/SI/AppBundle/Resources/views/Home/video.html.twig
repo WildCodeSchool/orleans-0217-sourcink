@@ -1,8 +1,14 @@
 <!-- ajout video-->
-<div class="slider">
-    <video preload="auto" autoplay="autoplay" loop="loop">
-        <source src="{{ asset('media/PPOffice-Day.mp4') }}" type="video/mp4">
-    </video>
+
+
+<link href="http://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet">
+<div class="fullscreen">
+<div class="responsive-video">
+    <video id="my-video" class="video-js fullscreen" width="100%" height="100%" loop
+       autoplay data-setup="{}">
+    <source src="{{ asset('media/POffice-Day.mp4') }}" type='video/mp4'></video>
+
+</div>
 </div>
 <!-- ajout video-->
 
