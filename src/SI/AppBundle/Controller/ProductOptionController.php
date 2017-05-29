@@ -26,7 +26,7 @@ class ProductOptionController extends Controller
 
         $productOptions = $em->getRepository('SIAppBundle:ProductOption')->findAll();
 
-        return $this->render('admin/productoption/index.html.twig', array(
+        return $this->render('Admin/productoption/index.html.twig', array(
             'productOptions' => $productOptions,
         ));
     }
@@ -51,7 +51,7 @@ class ProductOptionController extends Controller
             return $this->redirectToRoute('productoption_show', array('id' => $productOption->getId()));
         }
 
-        return $this->render('admin/productoption/new.html.twig', array(
+        return $this->render('Admin/productoption/new.html.twig', array(
             'productOption' => $productOption,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ProductOptionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($productOption);
 
-        return $this->render('admin/productoption/show.html.twig', array(
+        return $this->render('Admin/productoption/show.html.twig', array(
             'productOption' => $productOption,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ProductOptionController extends Controller
             return $this->redirectToRoute('productoption_edit', array('id' => $productOption->getId()));
         }
 
-        return $this->render('admin/productoption/edit.html.twig', array(
+        return $this->render('Admin/productoption/edit.html.twig', array(
             'productOption' => $productOption,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

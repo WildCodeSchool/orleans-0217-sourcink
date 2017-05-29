@@ -1,0 +1,22 @@
+{% extends "::layout.html.twig" %}
+{% block header %}
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{ path("header_index") }}">Header</a></li>
+            <li><a href="{{ path("expertise_index") }}">Expertise</a></li>
+            <li><a href="{{ path("team_index") }}">L'équipe</a></li>
+            <li><a href="{{ path("category_index") }}">Categorie</a></li>
+            <li><a href="{{ path("product_index") }}">Solution</a></li>
+            <li><a href="{{ path("benefit_index") }}">Tableau</a></li>
+            <li><a href="{{ path("productoption_index") }}">Tableau otpion</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}

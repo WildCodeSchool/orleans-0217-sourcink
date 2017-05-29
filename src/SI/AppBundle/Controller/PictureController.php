@@ -26,7 +26,7 @@ class PictureController extends Controller
 
         $pictures = $em->getRepository('SIAppBundle:Picture')->findAll();
 
-        return $this->render('admin/picture/index.html.twig', array(
+        return $this->render('Admin/picture/index.html.twig', array(
             'pictures' => $pictures,
         ));
     }
@@ -51,7 +51,7 @@ class PictureController extends Controller
             return $this->redirectToRoute('picture_show', array('id' => $picture->getId()));
         }
 
-        return $this->render('admin/picture/new.html.twig', array(
+        return $this->render('Admin/picture/new.html.twig', array(
             'picture' => $picture,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class PictureController extends Controller
     {
         $deleteForm = $this->createDeleteForm($picture);
 
-        return $this->render('admin/picture/show.html.twig', array(
+        return $this->render('Admin/picture/show.html.twig', array(
             'picture' => $picture,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class PictureController extends Controller
             return $this->redirectToRoute('picture_edit', array('id' => $picture->getId()));
         }
 
-        return $this->render('admin/picture/edit.html.twig', array(
+        return $this->render('Admin/picture/edit.html.twig', array(
             'picture' => $picture,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
