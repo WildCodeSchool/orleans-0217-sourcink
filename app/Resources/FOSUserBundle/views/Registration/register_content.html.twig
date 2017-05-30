@@ -1,0 +1,30 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id': 'registration_form'}}) }}
+<div class="form-group" id="fos_user_registration_form">
+    <div class="row">
+        <label for="username" class="active">Username</label>
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control input-group', 'placeholder': 'Type your username' } }) }}
+        {{ form_errors(form.username) }}
+    </div>
+    <div class="row">
+        <label for="email" class="active">Email</label>
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control input-group', 'placeholder': 'Type your email adress' } }) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <div class="row">
+        <label for="password" class="active">Password</label>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control input-group', 'placeholder': 'Type your password' } }) }}
+        {{ form_errors(form.plainPassword.first) }}
+    </div>
+    <div class="row">
+        <label for="password" class="active">Confirm your password</label>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control input-group', 'placeholder': 'Confirm your password' } }) }}
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+    <div class="center">
+        <input type="submit" class="btn-large" value="Register">
+    </div>
+    <p class="center"><a href="{{ path('fos_user_security_login') }}">Already register ? Log in instead</a></p>
+</div>
+{{ form_end(form) }}
