@@ -1,0 +1,14 @@
+{% extends "SIAppBundle:Base:layout.html.twig" %}
+{% block header %}
+    {% include('SIAppBundle:Job:header.html.twig') %}
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            {% include('SIAppBundle:Job:search.html.twig') %}
+            {% include('SIAppBundle:Job:jobs.html.twig') %}
+            {% include('SIAppBundle:Job:paginator.html.twig') %}
+        </div>
+    </div>
+{% endblock %}
