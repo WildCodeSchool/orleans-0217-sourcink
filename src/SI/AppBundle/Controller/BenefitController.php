@@ -5,7 +5,8 @@ namespace SI\AppBundle\Controller;
 use SI\AppBundle\Entity\Benefit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Benefit controller.
@@ -26,7 +27,7 @@ class BenefitController extends Controller
 
         $benefits = $em->getRepository('SIAppBundle:Benefit')->findAll();
 
-        return $this->render('admin/benefit/index.html.twig', array(
+        return $this->render('Admin/benefit/index.html.twig', array(
             'benefits' => $benefits,
         ));
     }
@@ -51,7 +52,7 @@ class BenefitController extends Controller
             return $this->redirectToRoute('benefit_show', array('id' => $benefit->getId()));
         }
 
-        return $this->render('admin/benefit/new.html.twig', array(
+        return $this->render('Admin/benefit/new.html.twig', array(
             'benefit' => $benefit,
             'form' => $form->createView(),
         ));
@@ -67,7 +68,7 @@ class BenefitController extends Controller
     {
         $deleteForm = $this->createDeleteForm($benefit);
 
-        return $this->render('admin/benefit/show.html.twig', array(
+        return $this->render('Admin/benefit/show.html.twig', array(
             'benefit' => $benefit,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +92,7 @@ class BenefitController extends Controller
             return $this->redirectToRoute('benefit_edit', array('id' => $benefit->getId()));
         }
 
-        return $this->render('admin/benefit/edit.html.twig', array(
+        return $this->render('Admin/benefit/edit.html.twig', array(
             'benefit' => $benefit,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

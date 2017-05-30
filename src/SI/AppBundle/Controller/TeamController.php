@@ -26,7 +26,7 @@ class TeamController extends Controller
 
         $teams = $em->getRepository('SIAppBundle:Team')->findAll();
 
-        return $this->render('admin/team/index.html.twig', array(
+        return $this->render('Admin/team/index.html.twig', array(
             'teams' => $teams,
         ));
     }
@@ -51,7 +51,7 @@ class TeamController extends Controller
             return $this->redirectToRoute('team_show', array('id' => $team->getId()));
         }
 
-        return $this->render('admin/team/new.html.twig', array(
+        return $this->render('Admin/team/new.html.twig', array(
             'team' => $team,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class TeamController extends Controller
     {
         $deleteForm = $this->createDeleteForm($team);
 
-        return $this->render('admin/team/show.html.twig', array(
+        return $this->render('Admin/team/show.html.twig', array(
             'team' => $team,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class TeamController extends Controller
             return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
         }
 
-        return $this->render('admin/team/edit.html.twig', array(
+        return $this->render('Admin/team/edit.html.twig', array(
             'team' => $team,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
