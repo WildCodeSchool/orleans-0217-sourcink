@@ -3,12 +3,15 @@
 namespace SI\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Category
  *
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\CategoryRepository")
+ * @Vich\Uploadable
  */
 class Category
 {
@@ -20,6 +23,28 @@ class Category
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @Vich\UploadableField(mapping="category", fileNameProperty="categoryName")
+     *
+     * @var File
+     */
+    private $categoryFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $categoryName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
 
     /**
      * @var string
@@ -45,6 +70,51 @@ class Category
      * @ORM\OneToOne(targetEntity="Picture")
      */
     private $picture;
+
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $category
+     *
+     * @return Category
+     */
+    public function setCategoryFile(File $category = null)
+    {
+        $this->categoryFile = $category;
+
+        if ($category)
+            $this->updatedAt = new \DateTimeImmutable();
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getCategoryFile()
+    {
+        return $this->categoryFile;
+    }
+
+    /**
+     * @param string $categoryName
+     *
+     * @return Category
+     */
+    public function setCategoryName($categoryName)
+    {
+        $this->categoryName = $categoryName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCategoryName()
+    {
+        return $this->categoryName;
+    }
+
 
     /**
      * Constructor

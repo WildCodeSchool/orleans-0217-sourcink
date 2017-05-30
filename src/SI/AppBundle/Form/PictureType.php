@@ -2,7 +2,9 @@
 
 namespace SI\AppBundle\Form;
 
+use SI\AppBundle\Entity\Picture;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,7 @@ class PictureType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('path');
+        $builder->add('path', FileType::class);
     }
     
     /**
@@ -22,7 +24,7 @@ class PictureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SI\AppBundle\Entity\Picture'
+            'data_class' => Picture::class,
         ));
     }
 
