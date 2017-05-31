@@ -2,14 +2,14 @@
 
 
 {% block body %}
-    <h1>Expertises list</h1>
+    <h1>Expertises</h1>
 
-    <table>
+    <table class="highlight">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Text</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,12 +21,14 @@
                 <td>{{ expertise.title }}</td>
                 <td>
                     <ul>
+
                         <li>
-                            <a href="{{ path('expertise_show', { 'id': expertise.id }) }}">show</a>
+                            <a href="{{ path('expertise_show', { 'id': expertise.id }) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
                         </li>
                         <li>
-                            <a href="{{ path('expertise_edit', { 'id': expertise.id }) }}">edit</a>
+                            <a href="{{ path('expertise_edit', { 'id': expertise.id }) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                         </li>
+
                     </ul>
                 </td>
             </tr>
@@ -36,7 +38,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('expertise_new') }}">Create a new expertise</a>
+            <a href="{{ path('expertise_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}

@@ -27,6 +27,9 @@ h2 {
     padding-top: 0!important;
     margin-top: 0!important;
 }
+li {
+    display: inline-block;
+}
 /* slider videos */
 
 .slider .indicators .indicator-item {

@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Products list</h1>
 
-    <table>
+    <table class="highlight">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
                         </li>
                         <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('product_new') }}">Create a new product</a>
+            <a href="{{ path('product_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}

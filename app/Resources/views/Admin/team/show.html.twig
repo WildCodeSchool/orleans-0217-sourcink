@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Team</h1>
+    <h1>L'équipe</h1>
 
     <table>
         <tbody>
@@ -26,14 +26,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('team_index') }}">Back to the list</a>
+            <a href="{{ path('team_index') }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a></a>
         </li>
         <li>
-            <a href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
+            <a href="{{ path('team_edit', { 'id': team.id }) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <button class="btn-floating btn-small waves-effect wave-light red" name="action" type="submit"><i class="material-icons">delete</i></button>
             {{ form_end(delete_form) }}
         </li>
     </ul>

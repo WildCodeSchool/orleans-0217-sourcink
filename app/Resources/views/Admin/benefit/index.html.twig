@@ -8,7 +8,7 @@
 {% block body %}
     <h1>Benefits list</h1>
 
-    <table>
+    <table class="highlight">
         <thead>
             <tr>
                 <th>Id</th>
@@ -24,10 +24,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('benefit_show', { 'id': benefit.id }) }}">show</a>
+                            <a href="{{ path('benefit_show', { 'id': benefit.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
                         </li>
                         <li>
-                            <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}">edit</a>
+                            <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>
@@ -38,7 +38,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('benefit_new') }}">Create a new benefit</a>
+            <a href="{{ path('benefit_new') }}"class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}
