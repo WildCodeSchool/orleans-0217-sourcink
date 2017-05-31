@@ -1,9 +1,11 @@
 <h2 class="center" id="category">Nos Solutions</h2>
-{% for i in 1..2 %}
-    <div class="col s12 m6 center">
-        <img class="circle" src="{{ asset('img/box-large.svg') }}">
-        <p class="red-text">Card Title</p>
-        <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
-    </div>
-{% endfor %}
+<div class="row">
+    {% for i in 1..2 %}
+        <div class="col s12 m6 center">
+            <img class="circle" src="{{ asset('img/box-large.svg') }}">
+            <p class="red-text">Card Title</p>
+            <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+        </div>
+    {% endfor %}
+</div>
