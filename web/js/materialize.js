@@ -4092,15 +4092,17 @@ if (jQuery) {
               complete: function() { $(this).css({ display: 'none'}); }
             }
           );
+            $(this).velocity({height:$(this).data('height')},{duration:225});
         }
         else if ($(e.target).is($('.card .activator')) ||
                  $(e.target).is($('.card .activator i')) ) {
           $(e.target).closest('.card').css('overflow', 'hidden');
-          $(this).find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
+            $(this).data('height',$(this).css('height')).find('.card-reveal').css({ display: 'block',height:'auto'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
+            $(this).velocity({height:$(this).find('.card-reveal').height()+60},{duration:300});
         }
       }
+        $('.card-reveal').closest('.card').css('overflow', 'hidden');
     });
-
   });
 }( jQuery ));;(function ($) {
   var materialChipsDefaults = {
