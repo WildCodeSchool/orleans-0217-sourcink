@@ -10,8 +10,26 @@ main {
 nav {
     padding-left: 1%;
     background-color: rgba(0, 161, 192, 1);
-    padding-bottom: 70px;
+
 }
 .page-footer {
     background-color: rgba(0, 161, 192, 1);
 }
+
+/* slider videos */
+@-moz-document url-prefix() {
+    .video-container {
+        padding-top: 720px;
+        width: 100%;
+    }
+}
+.slider .slides {
+    background-color: #ffffff;
+    margin: 0;
+    height: 400px;
+    width: 100%;
+}
+.slider .indicators .indicator-item.active {
+    background-color: #00A1C0;
+}
+/*Slider Vidéos*/

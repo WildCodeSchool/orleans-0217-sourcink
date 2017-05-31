@@ -1,15 +1,26 @@
-<!-- ajout video-->
 
-
-<link href="http://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet">
-<div class="fullscreen">
-<div class="responsive-video">
-    <video id="my-video" class="video-js fullscreen" width="100%" height="100%" loop
-       autoplay data-setup="{}">
-    <source src="{{ asset('media/POffice-Day.mp4') }}" type='video/mp4'></video>
-
-</div>
-</div>
-<!-- ajout video-->
-
-
+    <div class="video-container video-responsive">
+        <div class="slider fullscreen">
+         <ul class="slides">
+            <li>
+                <video autoplay width="100%" height="100%" muted loop>
+                    <source src="{{ asset('media/vid2.mp4') }}" type="video/mp4">
+                </video> <!-- random image -->
+                <div class="caption center-align">
+                    <h3>Envie de nouveaux challenges ?</h3>
+                    <h5 class="light grey-text text-lighten-3">Découvrez nos dernières offres juridiques, fiscales & RH !</h5>
+                </div>
+            </li>
+            <li>
+                <video autoplay width="100%" height="100%" muted loop>
+                    <source src="{{ asset('media/POffice-Day.mp4') }}" type="video/mp4">
+                </video> <!-- random image -->
+                <div class="caption left-align">
+                    <h3>Qui sommes-nous ?</h3>
+                    <h5 class="light grey-text text-lighten-3">Des recruteurs spécialisés sur les fonctions juridiques, fiscales et RH
+                        Faites appel à Sourcink pour vos recrutements !</h5>
+                </div>
+            </li>
+        </ul>
+       </div>
+    </div>

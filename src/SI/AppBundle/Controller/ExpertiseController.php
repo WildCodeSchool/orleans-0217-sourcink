@@ -26,7 +26,7 @@ class ExpertiseController extends Controller
 
         $expertises = $em->getRepository('SIAppBundle:Expertise')->findAll();
 
-        return $this->render('admin/expertise/index.html.twig', array(
+        return $this->render('Admin/expertise/index.html.twig', array(
             'expertises' => $expertises,
         ));
     }
@@ -51,7 +51,7 @@ class ExpertiseController extends Controller
             return $this->redirectToRoute('expertise_show', array('id' => $expertise->getId()));
         }
 
-        return $this->render('admin/expertise/new.html.twig', array(
+        return $this->render('Admin/expertise/new.html.twig', array(
             'expertise' => $expertise,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ExpertiseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($expertise);
 
-        return $this->render('admin/expertise/show.html.twig', array(
+        return $this->render('Admin/expertise/show.html.twig', array(
             'expertise' => $expertise,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ExpertiseController extends Controller
             return $this->redirectToRoute('expertise_edit', array('id' => $expertise->getId()));
         }
 
-        return $this->render('admin/expertise/edit.html.twig', array(
+        return $this->render('Admin/expertise/edit.html.twig', array(
             'expertise' => $expertise,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
