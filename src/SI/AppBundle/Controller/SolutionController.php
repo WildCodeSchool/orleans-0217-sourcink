@@ -5,20 +5,21 @@ namespace SI\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class CategoryController extends Controller
+class SolutionController extends Controller
 {
     /**
      * @Route(
-     *     "/category/{id}",
-     *     name="si_app_category",
+     *     "/solutions/{id}",
+     *     name="si_app_solutions",
      *     defaults={"id": 1},
      *     requirements={
      *         "id": "\d+"
      *     }
      * )
      */
-    public function categoryAction()
+    public function indexAction()
     {
         return $this->render('SIAppBundle:Category:category.html.twig');
     }
 }
+

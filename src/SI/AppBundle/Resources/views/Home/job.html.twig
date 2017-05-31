@@ -1,21 +1,18 @@
 <h2 class="center" id="job">Nos Offres</h2>
 {% for i in 1..3 %}
-    <div class="col s12 l4 ">
-        <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="valign-wrapper">
-                <div class="col s2">
-                    <img src="http://placehold.it/500x500" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-                </div>
-                <div class="col s10">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
-                </div>
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">add</i></span>
+                <p class="grey-text">Lieux de l'offre</p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
         </div>
     </div>
-
 {% endfor %}
 <div class="center">
-<a class="waves-effect waves-light btn" href="{{ path('si_app_job') }}">Plus d'offres..</a>
+    <a class="waves-effect waves-light btn red" href="{{ path('si_app_job') }}">Plus d'offres..</a>
 </div>
