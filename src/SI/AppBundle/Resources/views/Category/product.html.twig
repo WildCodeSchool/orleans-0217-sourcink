@@ -3,12 +3,15 @@
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
-                <img src="http://placehold.it/500x500">
-                <span class="card-title">Card Title</span>
+                <img src="{{ asset('img/box-large.svg') }}">
             </div>
             <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">add</i></span>
+                <p class="grey-text">Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
         </div>
     </div>
