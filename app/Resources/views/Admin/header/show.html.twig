@@ -26,14 +26,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('header_index') }}">Back to the list</a>
+            <a href="{{ path('header_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('header_edit', { 'id': header.id }) }}">Edit</a>
+            <a href="{{ path('header_edit', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">delete</i>
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -29,7 +29,7 @@
             <a href="{{ path('product_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
         </li>
         <li>
             {{ form_start(delete_form) }}

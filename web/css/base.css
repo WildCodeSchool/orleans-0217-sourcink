@@ -24,6 +24,9 @@ h2 {
     border-left: 1px solid #e0e0e0;
     margin-top: 10%;
 }
+li {
+    display: inline-block;
+}
 /* slider videos */
 
 .slider .indicators .indicator-item {

@@ -22,10 +22,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('expertise_index') }}">Back to the list</a>
+            <a href="{{ path('expertise_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('expertise_edit', { 'id': expertise.id }) }}">Edit</a>
+            <a href="{{ path('expertise_edit', { 'id': expertise.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
         </li>
         <li>
             {{ form_start(delete_form) }}

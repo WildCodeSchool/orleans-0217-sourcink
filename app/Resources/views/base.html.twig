@@ -13,8 +13,10 @@
 </head>
 <body>
 {% include "menu.html.twig" %}
-{% block body %}
-{% endblock %}
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
 
 <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>

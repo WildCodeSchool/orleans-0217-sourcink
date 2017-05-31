@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Teams list</h1>
+    <h1>Team</h1>
 
-    <table>
+    <table class="highlight">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('team_show', { 'id': team.id }) }}">show</a>
+                            <a href="{{ path('team_show', { 'id': team.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
                         </li>
                         <li>
-                            <a href="{{ path('team_edit', { 'id': team.id }) }}">edit</a>
+                            <a href="{{ path('team_edit', { 'id': team.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('team_new') }}">Create a new team</a>
+            <a href="{{ path('team_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}
