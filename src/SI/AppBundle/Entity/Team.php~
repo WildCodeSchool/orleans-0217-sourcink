@@ -44,7 +44,7 @@ class Team
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Pictures")
+     * @ORM\OneToOne(targetEntity="Picture")
      */
     private $picture;
 
@@ -128,5 +128,29 @@ class Team
     public function getLinkedin()
     {
         return $this->linkedin;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \SI\AppBundle\Entity\Picture $picture
+     *
+     * @return Team
+     */
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \SI\AppBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

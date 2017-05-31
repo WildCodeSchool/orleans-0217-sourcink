@@ -29,7 +29,6 @@ class Benefit
     private $description;
 
 
-
     /**
      * Get id
      *
@@ -38,6 +37,16 @@ class Benefit
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -52,16 +61,6 @@ class Benefit
         $this->description = $description;
 
         return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -86,5 +85,10 @@ class Benefit
     public function getProductoption()
     {
         return $this->productoption;
+    }
+
+    public function __toString()
+    {
+        return $this->description;
     }
 }
