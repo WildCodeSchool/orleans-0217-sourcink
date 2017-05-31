@@ -22,10 +22,7 @@ h2 {
 }
 .team-about {
     border-left: 1px solid #e0e0e0;
-}
-.team-about-text {
-    padding-top: 0!important;
-    margin-top: 0!important;
+    margin-top: 10%;
 }
 /* slider videos */
 @-moz-document url-prefix() {
