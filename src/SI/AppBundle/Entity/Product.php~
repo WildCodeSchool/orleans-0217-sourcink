@@ -54,7 +54,7 @@ class Product
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Pictures")
+     * @ORM\OneToOne(targetEntity="Picture")
      */
     private $picture;
 
@@ -204,5 +204,29 @@ class Product
     public function getProductoptions()
     {
         return $this->productoptions;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \SI\AppBundle\Entity\Picture $picture
+     *
+     * @return Product
+     */
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \SI\AppBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
