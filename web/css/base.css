@@ -9,7 +9,10 @@ main {
 }
 nav {
     padding-left: 1%;
-    background-color: rgba(0, 161, 192, 0.75);
+    background-color: white;
+}
+nav ul a {
+    color: black;
 }
 .page-footer {
     background-color: rgba(0, 161, 192, 1);
