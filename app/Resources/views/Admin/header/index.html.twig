@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Headers list</h1>
+    <h1>Video</h1>
 
     <table class="highlight">
         <thead>
@@ -26,7 +26,7 @@
                             <a href="{{ path('header_show', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
                         </li>
                         <li>
-                            <a href="{{ path('header_edit', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a>
+                            <a href="{{ path('header_edit', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>

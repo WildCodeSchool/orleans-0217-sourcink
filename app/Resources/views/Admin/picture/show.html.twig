@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Picture</h1>
+    <h1>Images</h1>
 
     <table>
         <tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('picture_index') }}">Back to the list</a>
+            <a href="{{ path('picture_index') }}"class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a></a>
         </li>
         <li>
-            <a href="{{ path('picture_edit', { 'id': picture.id }) }}">Edit</a>
+            <a href="{{ path('picture_edit', { 'id': picture.id }) }}" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <button class="btn-floating btn-small waves-effect wave-light red" name="action" type="submit"><i class="material-icons">delete</i></button>
             {{ form_end(delete_form) }}
         </li>
     </ul>
