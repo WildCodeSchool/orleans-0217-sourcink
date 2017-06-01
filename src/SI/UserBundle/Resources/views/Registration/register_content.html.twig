@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id': 'registration_form'}}) }}
+<div class="form-group" id="fos_user_registration_form">
+    <div class="row">
+        <label for="firstname" class="active">{{ 'security.register.firstname'|trans }}</label>
+        {{ form_widget(form.firstname, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.firstnamePlaceholder'|trans } }) }}
+        {{ form_errors(form.firstname) }}
+    </div>
+    <div class="row">
+        <label for="lastname" class="active">{{ 'security.register.lastname'|trans }}</label>
+        {{ form_widget(form.lastname, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.lastnamePlaceholder'|trans } }) }}
+        {{ form_errors(form.lastname) }}
+    </div>
+    <div class="row">
+        <label for="email" class="active">{{ 'security.register.email'|trans }}</label>
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.emailPlaceholder'|trans } }) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <div class="row">
+        <label for="password" class="active">{{ 'security.register.password'|trans }}</label>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.passwordPlaceholder'|trans } }) }}
+        {{ form_errors(form.plainPassword.first) }}
+    </div>
+    <div class="row">
+        <label for="password" class="active">{{ 'security.register.passwordConfirm'|trans }}</label>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.passwordConfirmPlaceholder'|trans } }) }}
+        {{ form_errors(form.plainPassword.second) }}
+    </div>
+    <div class="center">
+        <input type="submit" value="{{ 'security.register.submit'|trans }}" class="btn-large">
+    </div>
+    <p class="center"><a href="{{ path('fos_user_security_login') }}">{{ 'security.register.login'|trans }}</a></p>
+</div>
+{{ form_end(form) }}
