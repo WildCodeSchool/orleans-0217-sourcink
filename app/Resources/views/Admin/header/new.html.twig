@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Header creation</h1>
+    <h1>Ajout vidéo</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('header_index') }}">Retour à la liste</a>
+            <a href="{{ path('header_index') }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a>
         </li>
     </ul>
 {% endblock %}
