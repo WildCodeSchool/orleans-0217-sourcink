@@ -1,0 +1,28 @@
+security:
+    login:
+        username: "Nom d'utilisateur"
+        password: 'Mot de passe'
+        passwordPlaceholder: 'Entrez votre mot de passe'
+        email: 'Adresse e-mail'
+        emailPlaceholder: 'Entrez votre adresse e-mail'
+        remember_me: 'Se souvenir de moi'
+        submit: 'Connexion'
+        register: 'Pas encore inscrit ? Inscrivez-vous'
+    register:
+        username: "Nom d'utilisateur"
+        password: 'Mot de passe'
+        passwordConfirm: 'Confirmer votre mot de passe'
+        passwordPlaceholder: 'Choisissez votre mot de passe'
+        passwordConfirmPlaceholder: 'Confirmez votre mot de passe'
+        email: 'Adresse e-mail'
+        emailPlaceholder: 'Entrez votre adresse e-mail'
+        remember_me: 'Se souvenir de moi'
+        submit: 'Inscription'
+        login: 'Déjà inscrit ? Connectez-vous'
+        firstname: 'Prénom'
+        firstnamePlaceholder: 'Entrez votre prénom'
+        lastname: 'Nom'
+        lastnamePlaceholder: 'Entrez votre nom'
+    confirmed:
+        text: 'Vous êtes maintenant inscrit. Félicitations !'
+        button: 'Continuer'
