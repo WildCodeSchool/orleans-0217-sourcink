@@ -1,25 +1,27 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Teams list</h1>
+    <h1>Liste des collaborateurs</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Text</th>
                 <th>Linkedin</th>
+                <th>Portrait</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for team in teams %}
             <tr>
-                <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
                 <td>{{ team.name }}</td>
                 <td>{{ team.text }}</td>
                 <td>{{ team.linkedin }}</td>
+                <td> {% if team.picture is not null %}
+                        <img src="{{ asset('img/' ~ team.picture.pictureName) }}" />
+                    {% endif %}</td>
                 <td>
                     <ul>
                         <li>

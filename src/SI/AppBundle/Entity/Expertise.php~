@@ -37,7 +37,7 @@ class Expertise
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Pictures")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 
@@ -97,5 +97,29 @@ class Expertise
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \SI\AppBundle\Entity\Pictures$picture
+     *
+     * @return Expertise
+     */
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \SI\AppBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

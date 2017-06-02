@@ -13,7 +13,7 @@ class ExpertiseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('text')->add('title')->add('picture');
+        $builder->add('title')->add('text')->add('picture', PictureType::class);
     }
     
     /**

@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Text</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,6 +19,11 @@
                 <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
                 <td>{{ category.title }}</td>
                 <td>{{ category.text }}</td>
+                <td>
+                {% if category.picture is not null %}
+                    <img src="{{ asset('img/' ~ category.picture.pictureName) }}" />
+                         {% endif %}
+                    </td>
                 <td>
                     <ul>
                         <li>

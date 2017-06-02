@@ -13,7 +13,7 @@ class HeaderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('text')->add('video')->add('title');
+        $builder->add('title')->add('text')->add('picture', PictureType::class);
     }
     
     /**

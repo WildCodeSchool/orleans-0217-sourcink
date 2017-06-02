@@ -64,4 +64,9 @@ class Status
     {
         return $this->label;
     }
+
+    public function __toString()
+    {
+        return $this->label;
+    }
 }

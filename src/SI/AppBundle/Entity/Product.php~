@@ -1,7 +1,8 @@
 <?php
 
 namespace SI\AppBundle\Entity;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ProductRepository")
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -54,10 +56,9 @@ class Product
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Pictures")
+     * @ORM\OneToOne(targetEntity="Picture")
      */
     private $picture;
-
 
     /**
      * Get id
@@ -204,5 +205,34 @@ class Product
     public function getProductoptions()
     {
         return $this->productoptions;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \SI\AppBundle\Entity\Picture $picture
+     *
+     * @return Product
+     */
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \SI\AppBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    public function __toString()
+    {
+        return $this->text;
     }
 }

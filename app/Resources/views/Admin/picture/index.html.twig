@@ -16,6 +16,7 @@
             <tr>
                 <td><a href="{{ path('picture_show', { 'id': picture.id }) }}">{{ picture.id }}</a></td>
                 <td>{{ picture.path }}</td>
+                <td><img src="{{ vich_uploader_asset(picture, 'pictureFile') }}"></td>
                 <td>
                     <ul>
                         <li>

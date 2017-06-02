@@ -7,9 +7,9 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Title</th>
                 <th>Text</th>
                 <th>Video</th>
-                <th>Title</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,9 +17,13 @@
         {% for header in headers %}
             <tr>
                 <td><a href="{{ path('header_show', { 'id': header.id }) }}">{{ header.id }}</a></td>
-                <td>{{ header.text }}</td>
-                <td>{{ header.video }}</td>
                 <td>{{ header.title }}</td>
+                <td>{{ header.text }}</td>
+                <td>
+                {% if header.picture is not null %}
+                    {{ asset('img/' ~ header.picture.pictureName) }}
+                {% endif %}
+                </td>
                 <td>
                     <ul>
                         <li>

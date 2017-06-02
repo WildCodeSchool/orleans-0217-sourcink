@@ -8,8 +8,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Text</th>
                 <th>Title</th>
+                <th>Text</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,6 +20,9 @@
                 <td><a href="{{ path('expertise_show', { 'id': expertise.id }) }}">{{ expertise.id }}</a></td>
                 <td>{{ expertise.text }}</td>
                 <td>{{ expertise.title }}</td>
+                <td>{% if expertise.picture is not null %}
+                        <img src="{{ asset('img/' ~ expertise.picture.pictureName) }}" />
+                    {% endif %}</td>
                 <td>
                     <ul>
                         <li>

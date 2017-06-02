@@ -38,13 +38,13 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="linkedin", type="string", length=255)
+     * @ORM\Column(name="linkedin", type="string", nullable=true, length=255)
      */
     private $linkedin;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 

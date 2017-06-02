@@ -76,3 +76,11 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        picture:
+            uri_prefix: /img/
+            upload_destination: '%kernel.root_dir%/../web/img/'
+            namer: vich_uploader.namer_origname
