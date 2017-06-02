@@ -1,4 +1,4 @@
-<div class="hide-on-med-and-down">
+<div class="hide-on-large-only">
     <h2 class="center" id="expertise">NOTRE EXPERTISE METIERS</h2>
     <div class="row">
         <p class="center">Sourcink est une agence spécialisée dans la recherche, l’identification et l’approche de
@@ -7,15 +7,27 @@
             et
             organismes professionnels, sur tout le territoire national.</p><br>
         <p class="center">Nos équipes interviennent principalement dans le recrutement des profils suivants :</p><br>
-        <div class="col offset-l1 l5 metier">
+
+        <div class="col s12 center">
             {% for i in 1..6 %}
                 <p>Assistant administratif et/ou de direction</p>
             {% endfor %}
         </div>
-        <div class="col l5">
+        <div class="col s12 center">
+            <img class="circle" src="{{ asset('img/box-large.svg') }}">
+
+            <p class="red-text">Nom de la solution</p>
+        </div>
+
+        <div class="col s12 center">
             {% for i in 1..6 %}
-                <p class="right-align">Avocat collaborateur (junior/mid/senior)</p>
+                <p>Avocat collaborateur (junior/mid/senior)</p>
             {% endfor %}
+        </div>
+        <div class="col s12 center">
+            <img class="circle" src="{{ asset('img/box-large.svg') }}">
+
+            <p class="red-text">Nom de la solution</p>
         </div>
     </div>
 </div>
