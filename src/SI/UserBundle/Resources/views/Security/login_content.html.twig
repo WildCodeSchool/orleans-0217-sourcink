@@ -1,0 +1,23 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_security_check') }}" method="post" class="col s12">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+    <div class="row">
+        <div class="input-field">
+            <label for="email" class="active">{{ 'security.login.email'|trans }}</label>
+            <input type="email" id="email" name="_username" placeholder="{{ 'security.login.emailPlaceholder'|trans }}" class="validate">
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field">
+            <label for="password" class="active">{{ 'security.login.password'|trans }}</label>
+            <input type="password" id="password" name="_password" placeholder="{{ 'security.login.passwordPlaceholder'|trans }}" class="validate">
+        </div>
+    </div>
+    <div class="center">
+        <input type="submit" value="{{ 'security.login.submit'|trans }}" class="btn-large">
+    </div>
+    <p class="center"><a href="{{ path('fos_user_registration_register') }}">{{ 'security.login.register'|trans }}</a></p>
+</form>

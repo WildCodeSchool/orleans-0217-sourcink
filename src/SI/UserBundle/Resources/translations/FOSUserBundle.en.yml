@@ -1,0 +1,28 @@
+security:
+    login:
+        username: 'Username'
+        password: 'Password'
+        passwordPlaceholder: 'Type your password'
+        email: 'Email'
+        emailPlaceholder: 'Type your e-mail'
+        remember_me: 'Remember me'
+        submit: 'Log in'
+        register: 'Not registered ? Register instead'
+    register:
+        username: 'Username'
+        password: 'Password'
+        passwordConfirm: 'Confirm your password'
+        passwordPlaceholder: 'Choose your password'
+        passwordConfirmPlaceholder: 'Confirm your password'
+        email: 'Email'
+        emailPlaceholder: 'Type your e-mail'
+        remember_me: 'Remember me'
+        submit: 'Register'
+        login: 'Already registered ? Log in instead'
+        firstname: 'First name'
+        firstnamePlaceholder: 'Type your first name'
+        lastname: 'Last name'
+        lastnamePlaceholder: 'Type your last name'
+    confirmed:
+        text: 'You are now registered. Congratulations!'
+        button: 'Continue'

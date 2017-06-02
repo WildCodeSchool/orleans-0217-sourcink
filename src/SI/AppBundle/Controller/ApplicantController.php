@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
 /**
- * @Route("/candidat", name="si_app_applicant")
+ * @Route("/candidat")
  */
 class ApplicantController extends Controller
 {
