@@ -7,46 +7,61 @@ body {
 main {
     flex: 1 0 auto;
 }
+
 nav {
     padding-left: 1%;
     background-color: white;
     height: 100px;
 }
+
 nav ul a {
     color: black;
     padding-top: 20px;
 
 }
+
 nav a {
     height: 100px;
 }
+
 nav p {
     font-size: 10px;
     color: black;
 }
+
+nav p {
+    position: absolute;
+    margin-top: 40px;
+}
+
 .page-footer {
     background-color: rgba(0, 161, 192, 1);
 }
+
 .brand-logo {
     margin: 10px;
 }
+
 h2 {
     margin: 50px 0 50px 0;
 }
+
 .team-about {
     border-left: 1px solid #e0e0e0;
     margin-top: 10%;
 }
+
 li {
     display: inline-block;
 }
+
 /* slider videos */
 
 .slider .indicators .indicator-item {
     display: inline-block;
     position: relative;
     cursor: pointer;
-    top : -60px;
+    top: -60px;
     height: 16px;
     width: 16px;
     margin: 0 12px;
@@ -54,6 +69,7 @@ li {
     transition: background-color .3s;
     border-radius: 50%;
 }
+
 video {
     position: absolute;
     right: 0;
@@ -66,6 +82,7 @@ video {
     background-size: cover;
     overflow: hidden;
 }
+
 .video-responsive {
     max-height: 100%;
     width: 100%;
@@ -77,22 +94,27 @@ video {
         width: 100%;
     }
 }
+
 .slider .slides {
     background-color: #ffffff;
     margin: 0;
     height: 232px;
     width: 100%;
 }
+
 .slider .indicators .indicator-item.active {
     background-color: #EF2844;
 }
-a h3{
+
+a h3 {
     font-size: 60px;
     padding-top: 20px;
 }
+
 a h5 {
     font-size: 40px;
 }
+
 /*Slider Vidéos*/
 
 /*Expertise*/
