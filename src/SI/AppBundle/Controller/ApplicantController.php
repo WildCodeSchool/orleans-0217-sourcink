@@ -16,17 +16,9 @@ class ApplicantController extends Controller
      */
     public function homeAction()
     {
-        $url = "https://api.catsone.com/v3/jobs";
-        $apiKey = '52190b469513a91f73c29789304acd48'; // should match with Server key
-        $headers = array(
-            'Authorization: Token '.$apiKey
-        );
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        dump(json_decode($response));
+        $services = $this->container->get('si_app.api');
+        $data = $services->api('jobs/search?query=CDI', ["field: duration", "filter: contains", "value: rejected"]);
+        dump($data);
         die();
         return $this->render('SIAppBundle:Applicant:home.html.twig');
     }
