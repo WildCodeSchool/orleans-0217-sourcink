@@ -31,7 +31,8 @@ nav p {
 
 nav p {
     position: absolute;
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-left: 10px;
 }
 
 .page-footer {
