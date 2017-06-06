@@ -1,3 +1,0 @@
-services:
-    si_app.api:
-        class: SI\AppBundle\Services\Api
