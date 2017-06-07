@@ -1,10 +1,10 @@
 si_app:
-    resource: "@SIAppBundle/Controller/"
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
 
 si_user:
-    resource: "@SIUserBundle/Controller/"
+    resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /user
 
