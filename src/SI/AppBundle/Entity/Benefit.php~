@@ -28,6 +28,11 @@ class Benefit
      */
     private $description;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="ProductOption", mappedBy="benefit", cascade={"persist", "remove"})
+     */
+    private $productOptions;
 
     /**
      * Get id
@@ -63,32 +68,52 @@ class Benefit
         return $this;
     }
 
+
+
+    public function __toString()
+    {
+        return $this->description;
+    }
     /**
-     * Set productoption
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productOptions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add productOption
      *
-     * @param \SI\AppBundle\Entity\ProductOption $productoption
+     * @param \SI\AppBundle\Entity\ProductOption $productOption
      *
      * @return Benefit
      */
-    public function setProductoption(\SI\AppBundle\Entity\ProductOption $productoption = null)
+    public function addProductOption(\SI\AppBundle\Entity\ProductOption $productOption)
     {
-        $this->productoption = $productoption;
+        $productOption->setBenefit($this);
+        $this->productOptions[] = $productOption;
 
         return $this;
     }
 
     /**
-     * Get productoption
+     * Remove productOption
      *
-     * @return \SI\AppBundle\Entity\ProductOption
+     * @param \SI\AppBundle\Entity\ProductOption $productOption
      */
-    public function getProductoption()
+    public function removeProductOption(\SI\AppBundle\Entity\ProductOption $productOption)
     {
-        return $this->productoption;
+        $this->productOptions->removeElement($productOption);
     }
 
-    public function __toString()
+    /**
+     * Get productOptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductOptions()
     {
-        return $this->description;
+        return $this->productOptions;
     }
 }

@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Header edit</h1>
+    <h1>Modification du header</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('header_index') }}">Back to the list</a>
+            <a href="{{ path('header_index') }}">Retour à la liste</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

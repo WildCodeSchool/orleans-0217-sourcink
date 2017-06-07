@@ -29,6 +29,11 @@ class Category
     private $title;
 
     /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
+     */
+    private $jobs;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
@@ -36,7 +41,7 @@ class Category
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
 
@@ -173,5 +178,39 @@ class Category
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \SI\AppBundle\Entity\Job $job
+     *
+     * @return Category
+     */
+    public function addJob(\SI\AppBundle\Entity\Job $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \SI\AppBundle\Entity\Job $job
+     */
+    public function removeJob(\SI\AppBundle\Entity\Job $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

@@ -2,9 +2,14 @@
 
 namespace SI\AppBundle\Form;
 
+use SI\AppBundle\Entity\Product;
+use SI\AppBundle\Entity\ProductOption;
+use SI\AppBundle\Entity\Status;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class ProductOptionType extends AbstractType
 {
@@ -13,7 +18,18 @@ class ProductOptionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('product')->add('status')->add('benefit');
+        $builder
+//            ->add('product', EntityType::class, array(
+//                'class'=> Product::class,
+//                'choice_label' => 'title',
+//            ))
+            ->add('status', EntityType::class, array(
+                'class'=> Status::class,
+                'choice_label' => 'label',
+                'multiple' => false,
+                'expanded' => true,
+            ))
+            ;
     }
     
     /**

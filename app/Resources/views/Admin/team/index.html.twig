@@ -6,11 +6,11 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Text</th>
+                <th>Nom</th>
+                <th>Texte</th>
                 <th>Linkedin</th>
                 <th>Portrait</th>
-                <th>Actions</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +24,7 @@
                     {% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('team_show', { 'id': team.id }) }}">show</a>
-                        </li>
+
                         <li>
                             <a href="{{ path('team_edit', { 'id': team.id }) }}">edit</a>
                         </li>

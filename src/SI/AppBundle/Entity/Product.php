@@ -50,13 +50,13 @@ class Product
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="ProductOption", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="ProductOption", mappedBy="product", cascade={"persist"})
      */
     private $productoptions;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 

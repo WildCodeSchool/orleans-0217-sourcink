@@ -2,7 +2,10 @@
 
 namespace SI\AppBundle\Controller;
 
+use Proxies\__CG__\SI\AppBundle\Entity\ProductOption;
 use SI\AppBundle\Entity\Benefit;
+use SI\AppBundle\Form\BenefitType;
+use SI\AppBundle\Form\ProductOptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -26,9 +29,14 @@ class BenefitController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $benefits = $em->getRepository('SIAppBundle:Benefit')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('SIAppBundle:Product')
+            ->findAll();
+        $productOptions = $em->getRepository('SIAppBundle:ProductOption')
+            ->findAll();
 
         return $this->render('Admin/benefit/index.html.twig', array(
-            'benefits' => $benefits,
+            'benefits' => $benefits, 'products' => $products,
         ));
     }
 
@@ -41,7 +49,19 @@ class BenefitController extends Controller
     public function newAction(Request $request)
     {
         $benefit = new Benefit();
-        $form = $this->createForm('SI\AppBundle\Form\BenefitType', $benefit);
+
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('SIAppBundle:Product')
+            ->findAll();
+        foreach($products as $product){
+            $productOption = new ProductOption();
+            $productOption->setProduct($product);
+            $benefit->addProductOption($productOption);
+        }
+
+        $form = $this->createForm(BenefitType::class, $benefit);
+
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
