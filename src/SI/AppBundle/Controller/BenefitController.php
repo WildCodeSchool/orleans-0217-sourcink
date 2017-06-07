@@ -32,8 +32,6 @@ class BenefitController extends Controller
         $em = $this->getDoctrine()->getManager();
         $products = $em->getRepository('SIAppBundle:Product')
             ->findAll();
-        $productOptions = $em->getRepository('SIAppBundle:ProductOption')
-            ->findAll();
 
         return $this->render('Admin/benefit/index.html.twig', array(
             'benefits' => $benefits, 'products' => $products,
@@ -53,7 +51,7 @@ class BenefitController extends Controller
         $em = $this->getDoctrine()->getManager();
         $products = $em->getRepository('SIAppBundle:Product')
             ->findAll();
-        foreach($products as $product){
+        foreach ($products as $product) {
             $productOption = new ProductOption();
             $productOption->setProduct($product);
             $benefit->addProductOption($productOption);
@@ -92,6 +90,21 @@ class BenefitController extends Controller
             'benefit' => $benefit,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Creates a form to delete a benefit entity.
+     *
+     * @param Benefit $benefit The benefit entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Benefit $benefit)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('benefit_delete', array('id' => $benefit->getId())))
+            ->setMethod('DELETE')
+            ->getForm();
     }
 
     /**
@@ -137,21 +150,5 @@ class BenefitController extends Controller
         }
 
         return $this->redirectToRoute('benefit_index');
-    }
-
-    /**
-     * Creates a form to delete a benefit entity.
-     *
-     * @param Benefit $benefit The benefit entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Benefit $benefit)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('benefit_delete', array('id' => $benefit->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }
