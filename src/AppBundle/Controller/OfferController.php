@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class JobController extends Controller
+class OfferController extends Controller
 {
     /**
      * @Route("/job", name="app_job")
