@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Job
  *
  * @ORM\Table(name="job")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\JobRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\JobRepository")
  */
 class Job
 {
@@ -71,11 +71,11 @@ class Job
     /**
      * Set category
      *
-     * @param \SI\AppBundle\Entity\Category $category
+     * @param Category $category
      *
      * @return Job
      */
-    public function setCategory(\SI\AppBundle\Entity\Category $category = null)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
@@ -85,7 +85,7 @@ class Job
     /**
      * Get category
      *
-     * @return \SI\AppBundle\Entity\Category
+     * @return Category
      */
     public function getCategory()
     {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Team
  *
  * @ORM\Table(name="team")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\TeamRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TeamRepository")
  */
 class Team
 {
@@ -133,11 +133,11 @@ class Team
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Team
      */
-    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -147,7 +147,7 @@ class Team
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Picture
+     * @return Picture
      */
     public function getPicture()
     {

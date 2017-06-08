@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
  * @Vich\Uploadable
  */
 class Product
@@ -145,11 +145,11 @@ class Product
     /**
      * Set category
      *
-     * @param \SI\AppBundle\Entity\Category $category
+     * @param Category $category
      *
      * @return Product
      */
-    public function setCategory(\SI\AppBundle\Entity\Category $category = null)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
@@ -159,7 +159,7 @@ class Product
     /**
      * Get category
      *
-     * @return \SI\AppBundle\Entity\Category
+     * @return Category
      */
     public function getCategory()
     {
@@ -176,11 +176,11 @@ class Product
     /**
      * Add productoption
      *
-     * @param \SI\AppBundle\Entity\ProductOption $productoption
+     * @param ProductOption $productoption
      *
      * @return Product
      */
-    public function addProductoption(\SI\AppBundle\Entity\ProductOption $productoption)
+    public function addProductoption(ProductOption $productoption)
     {
         $this->productoptions[] = $productoption;
 
@@ -190,9 +190,9 @@ class Product
     /**
      * Remove productoption
      *
-     * @param \SI\AppBundle\Entity\ProductOption $productoption
+     * @param ProductOption $productoption
      */
-    public function removeProductoption(\SI\AppBundle\Entity\ProductOption $productoption)
+    public function removeProductoption(ProductOption $productoption)
     {
         $this->productoptions->removeElement($productoption);
     }
@@ -210,11 +210,11 @@ class Product
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Product
      */
-    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -224,7 +224,7 @@ class Product
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Picture
+     * @return Picture
      */
     public function getPicture()
     {

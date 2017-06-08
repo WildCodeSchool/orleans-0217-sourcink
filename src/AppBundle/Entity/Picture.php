@@ -10,7 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Picture
  *
  * @ORM\Table(name="picture")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\PictureRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PictureRepository")
  * @Vich\Uploadable
  */
 class Picture

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Header
  *
  * @ORM\Table(name="header")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\HeaderRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\HeaderRepository")
  */
 class Header
 {

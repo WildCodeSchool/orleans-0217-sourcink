@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -120,11 +120,11 @@ class Category
     /**
      * Add product
      *
-     * @param \SI\AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return Category
      */
-    public function addProduct(\SI\AppBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -134,9 +134,9 @@ class Category
     /**
      * Remove product
      *
-     * @param \SI\AppBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(\SI\AppBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -154,7 +154,7 @@ class Category
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Picture
+     * @return AppBundle\Entity\Picture
      */
     public function getPicture()
     {
@@ -164,11 +164,11 @@ class Category
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Category
      */
-    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -183,11 +183,11 @@ class Category
     /**
      * Add job
      *
-     * @param \SI\AppBundle\Entity\Job $job
+     * @param Job $job
      *
      * @return Category
      */
-    public function addJob(\SI\AppBundle\Entity\Job $job)
+    public function addJob(Job $job)
     {
         $this->jobs[] = $job;
 
@@ -197,9 +197,9 @@ class Category
     /**
      * Remove job
      *
-     * @param \SI\AppBundle\Entity\Job $job
+     * @param Job $job
      */
-    public function removeJob(\SI\AppBundle\Entity\Job $job)
+    public function removeJob(Job $job)
     {
         $this->jobs->removeElement($job);
     }

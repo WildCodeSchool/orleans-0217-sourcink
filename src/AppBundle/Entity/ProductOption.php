@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductOption
  *
  * @ORM\Table(name="product_option")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ProductOptionRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductOptionRepository")
  */
 class ProductOption
 {
@@ -60,7 +60,7 @@ class ProductOption
     /**
      * Get product
      *
-     * @return \SI\AppBundle\Entity\Product
+     * @return Product
      */
     public function getProduct()
     {
@@ -70,11 +70,11 @@ class ProductOption
     /**
      * Set product
      *
-     * @param \SI\AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return ProductOption
      */
-    public function setProduct(\SI\AppBundle\Entity\Product $product = null)
+    public function setProduct(Product $product = null)
     {
         $this->product = $product;
 
@@ -84,11 +84,11 @@ class ProductOption
     /**
      * Add benefit
      *
-     * @param \SI\AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      *
      * @return ProductOption
      */
-    public function addBenefit(\SI\AppBundle\Entity\Benefit $benefit)
+    public function addBenefit (Benefit $benefit)
     {
         $this->benefits[] = $benefit;
 
@@ -98,9 +98,9 @@ class ProductOption
     /**
      * Remove benefit
      *
-     * @param \SI\AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      */
-    public function removeBenefit(\SI\AppBundle\Entity\Benefit $benefit)
+    public function removeBenefit (Benefit $benefit)
     {
         $this->benefits->removeElement($benefit);
     }
@@ -118,7 +118,7 @@ class ProductOption
     /**
      * Get status
      *
-     * @return \SI\AppBundle\Entity\Status
+     * @return Status
      */
     public function getStatus()
     {
@@ -128,11 +128,11 @@ class ProductOption
     /**
      * Set status
      *
-     * @param \SI\AppBundle\Entity\Status $status
+     * @param Status $status
      *
      * @return ProductOption
      */
-    public function setStatus(\SI\AppBundle\Entity\Status $status = null)
+    public function setStatus(Status $status = null)
     {
         $this->status = $status;
 
@@ -142,7 +142,7 @@ class ProductOption
     /**
      * Get benefit
      *
-     * @return \SI\AppBundle\Entity\Benefit
+     * @return Benefit
      */
     public function getBenefit()
     {
@@ -152,11 +152,11 @@ class ProductOption
     /**
      * Set benefit
      *
-     * @param \SI\AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      *
      * @return ProductOption
      */
-    public function setBenefit(\SI\AppBundle\Entity\Benefit $benefit = null)
+    public function setBenefit(Benefit $benefit = null)
     {
         $this->benefit = $benefit;
 
