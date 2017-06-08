@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Metiers</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Intitulé</th>
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+            <tr>
+                <td>{{ job.name }}</td>
+                <td>{{ job.category }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('job_edit', { 'id': job.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('job_new') }}">Create a new job</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,5 +1,4 @@
 services:
-    app.form.registration:
-        class: UserBundle\Form\RegistrationType
-        tags:
-            - { name: form.type, alias: app_user_registration }
+#    si_user.example:
+#        class: SI\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
