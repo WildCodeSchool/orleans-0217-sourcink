@@ -3,5 +3,12 @@
     {% include('AppBundle:Applicant:header.html.twig') %}
 {% endblock %}
 {% block content %}
-
+    <br />
+    <div class="container center">
+        <form action="{{ path('app_applicant') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit">
+        </form>
+    </div>
+    <br />
 {% endblock %}
