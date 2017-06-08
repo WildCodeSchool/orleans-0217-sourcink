@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Liste des collaborateurs</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Texte</th>
+                <th>Linkedin</th>
+                <th>Portrait</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>{{ team.text }}</td>
+                <td>{{ team.linkedin }}</td>
+                <td> {% if team.picture is not null %}
+                        <img src="{{ asset('img/' ~ team.picture.pictureName) }}" />
+                    {% endif %}</td>
+                <td>
+                    <ul>
+
+                        <li>
+                            <a href="{{ path('team_edit', { 'id': team.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('team_new') }}">Create a new team</a>
+        </li>
+    </ul>
+{% endblock %}

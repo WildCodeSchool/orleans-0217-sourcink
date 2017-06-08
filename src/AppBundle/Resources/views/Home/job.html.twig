@@ -1,33 +1,21 @@
 <h2 class="center" id="job">Nos Offres</h2>
-<div class="row">
-    {% for i in 1..3 %}
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">Juriste Droit des Sociétés H/F<i
-                                class="material-icons right">add</i></span>
-                    <p class="grey-text">Chartres (28)</p>
-                    <p class="grey-text">Contrat</p>
+{% for i in 1..3 %}
+    <div class="col s12 l4 ">
+        <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="valign-wrapper">
+                <div class="col s2">
+                    <img src="http://placehold.it/500x500" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
                 </div>
-                <div class="card-reveal">
-
-
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>HLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam lacus ut tortor facilisis
-                        sodales. In ultricies, magna in sagittis luctus, lacus augue dapibus felis, vitae scelerisque
-                        elit tortor quis massa. Nulla facilisi. Etiam sit amet mi sed augue accumsan congue vitae sed
-                        ipsum. Phasellus ex ex, ultrices vel velit in, pellentesque malesuada nibh. In nec euismod quam.
-                        Nunc non magna viverra, interdum felis eget, condimentum ex. Donec eget justo euismod, cursus
-                        dui vel, placerat quam. Sed eget urna lectus. Fusce porttitor turpis eros, nec efficitur quam
-                        euismod non. Donec sed purus metus. Donec ac malesuada lectus, et tempor augue.</p>
-
+                <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
                 </div>
             </div>
         </div>
-    {% endfor %}
-</div>
-<div class="col s12">
-    <div class="center">
-        <a class="waves-effect waves-light btn red" href="{{ path('app_job') }}">Plus d'offres..</a>
     </div>
+
+{% endfor %}
+<div class="center">
+{#<a class="waves-effect waves-light btn" href="{{ path('si_app_job') }}">Plus d'offres..</a>#}
 </div>

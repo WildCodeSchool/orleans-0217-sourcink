@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Header</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Video</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for header in headers %}
+            <tr>
+                <td>{{ header.title }}</td>
+                <td>{{ header.text }}</td>
+                <td>
+                {% if header.picture is not null %}
+                    {{ asset('img/' ~ header.picture.pictureName) }}
+                {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('header_edit', { 'id': header.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('header_new') }}">Create a new header</a>
+        </li>
+    </ul>
+{% endblock %}

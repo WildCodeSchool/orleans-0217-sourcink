@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * ProductOption
  *
  * @ORM\Table(name="product_option")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductOptionRepository")
+ * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ProductOptionRepository")
  */
 class ProductOption
 {
@@ -29,7 +29,7 @@ class ProductOption
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Status")
+     * @ORM\ManyToOne(targetEntity="Status")
      */
     private $status;
 
@@ -39,9 +39,8 @@ class ProductOption
      * @return int
      */
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="Benefit")
+     * @ORM\ManyToOne(targetEntity="Benefit", inversedBy="productOptions")
      */
     private $benefit;
 
@@ -61,7 +60,7 @@ class ProductOption
     /**
      * Get product
      *
-     * @return AppBundle\Entity\Product
+     * @return \SI\AppBundle\Entity\Product
      */
     public function getProduct()
     {
@@ -71,11 +70,11 @@ class ProductOption
     /**
      * Set product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param \SI\AppBundle\Entity\Product $product
      *
      * @return ProductOption
      */
-    public function setProduct(AppBundle\Entity\Product $product = null)
+    public function setProduct(\SI\AppBundle\Entity\Product $product = null)
     {
         $this->product = $product;
 
@@ -85,11 +84,11 @@ class ProductOption
     /**
      * Add benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param \SI\AppBundle\Entity\Benefit $benefit
      *
      * @return ProductOption
      */
-    public function addBenefit(AppBundle\Entity\Benefit $benefit)
+    public function addBenefit(\SI\AppBundle\Entity\Benefit $benefit)
     {
         $this->benefits[] = $benefit;
 
@@ -99,9 +98,9 @@ class ProductOption
     /**
      * Remove benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param \SI\AppBundle\Entity\Benefit $benefit
      */
-    public function removeBenefit(AppBundle\Entity\Benefit $benefit)
+    public function removeBenefit(\SI\AppBundle\Entity\Benefit $benefit)
     {
         $this->benefits->removeElement($benefit);
     }
@@ -119,7 +118,7 @@ class ProductOption
     /**
      * Get status
      *
-     * @return AppBundle\Entity\Status
+     * @return \SI\AppBundle\Entity\Status
      */
     public function getStatus()
     {
@@ -129,11 +128,11 @@ class ProductOption
     /**
      * Set status
      *
-     * @param AppBundle\Entity\Status $status
+     * @param \SI\AppBundle\Entity\Status $status
      *
      * @return ProductOption
      */
-    public function setStatus(AppBundle\Entity\Status $status = null)
+    public function setStatus(\SI\AppBundle\Entity\Status $status = null)
     {
         $this->status = $status;
 
@@ -143,7 +142,7 @@ class ProductOption
     /**
      * Get benefit
      *
-     * @return AppBundle\Entity\Benefit
+     * @return \SI\AppBundle\Entity\Benefit
      */
     public function getBenefit()
     {
@@ -153,11 +152,11 @@ class ProductOption
     /**
      * Set benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param \SI\AppBundle\Entity\Benefit $benefit
      *
      * @return ProductOption
      */
-    public function setBenefit(AppBundle\Entity\Benefit $benefit = null)
+    public function setBenefit(\SI\AppBundle\Entity\Benefit $benefit = null)
     {
         $this->benefit = $benefit;
 

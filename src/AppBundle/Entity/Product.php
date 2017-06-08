@@ -1,14 +1,16 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ProductRepository")
+ * @Vich\Uploadable
  */
 class Product
 {
@@ -48,16 +50,15 @@ class Product
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="ProductOption", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="ProductOption", mappedBy="product", cascade={"persist"})
      */
     private $productoptions;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
-
 
     /**
      * Get id
@@ -144,11 +145,11 @@ class Product
     /**
      * Set category
      *
-     * @param AppBundle\Entity\Category $category
+     * @param \SI\AppBundle\Entity\Category $category
      *
      * @return Product
      */
-    public function setCategory(AppBundle\Entity\Category $category = null)
+    public function setCategory(\SI\AppBundle\Entity\Category $category = null)
     {
         $this->category = $category;
 
@@ -158,7 +159,7 @@ class Product
     /**
      * Get category
      *
-     * @return AppBundle\Entity\Category
+     * @return \SI\AppBundle\Entity\Category
      */
     public function getCategory()
     {
@@ -175,11 +176,11 @@ class Product
     /**
      * Add productoption
      *
-     * @param AppBundle\Entity\ProductOption $productoption
+     * @param \SI\AppBundle\Entity\ProductOption $productoption
      *
      * @return Product
      */
-    public function addProductoption(AppBundle\Entity\ProductOption $productoption)
+    public function addProductoption(\SI\AppBundle\Entity\ProductOption $productoption)
     {
         $this->productoptions[] = $productoption;
 
@@ -189,9 +190,9 @@ class Product
     /**
      * Remove productoption
      *
-     * @param AppBundle\Entity\ProductOption $productoption
+     * @param \SI\AppBundle\Entity\ProductOption $productoption
      */
-    public function removeProductoption(AppBundle\Entity\ProductOption $productoption)
+    public function removeProductoption(\SI\AppBundle\Entity\ProductOption $productoption)
     {
         $this->productoptions->removeElement($productoption);
     }
@@ -209,11 +210,11 @@ class Product
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Picture $picture
+     * @param \SI\AppBundle\Entity\Picture $picture
      *
      * @return Product
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -223,10 +224,15 @@ class Product
     /**
      * Get picture
      *
-     * @return AppBundle\Entity\Picture
+     * @return \SI\AppBundle\Entity\Picture
      */
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    public function __toString()
+    {
+        return $this->text;
     }
 }

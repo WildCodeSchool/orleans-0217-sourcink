@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Team
  *
  * @ORM\Table(name="team")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TeamRepository")
+ * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\TeamRepository")
  */
 class Team
 {
@@ -38,13 +38,13 @@ class Team
     /**
      * @var string
      *
-     * @ORM\Column(name="linkedin", type="string", length=255)
+     * @ORM\Column(name="linkedin", type="string", nullable=true, length=255)
      */
     private $linkedin;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 
@@ -133,11 +133,11 @@ class Team
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Picture $picture
+     * @param \SI\AppBundle\Entity\Picture $picture
      *
      * @return Team
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -147,7 +147,7 @@ class Team
     /**
      * Get picture
      *
-     * @return AppBundle\Entity\Picture
+     * @return \SI\AppBundle\Entity\Picture
      */
     public function getPicture()
     {

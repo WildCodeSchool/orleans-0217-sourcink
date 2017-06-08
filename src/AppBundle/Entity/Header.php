@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Header
  *
  * @ORM\Table(name="header")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\HeaderRepository")
+ * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\HeaderRepository")
  */
 class Header
 {
@@ -31,9 +31,16 @@ class Header
     /**
      * @var string
      *
-     * @ORM\Column(name="video", type="string", length=255)
+     *
      */
     private $video;
+
+    /**
+     * @var
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
+
+     */
+    private $picture;
 
     /**
      * @var string
@@ -51,6 +58,24 @@ class Header
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     * @return Header
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+        return $this;
     }
 
     /**

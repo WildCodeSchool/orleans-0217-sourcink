@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -29,6 +29,11 @@ class Category
     private $title;
 
     /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
+     */
+    private $jobs;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
@@ -36,13 +41,13 @@ class Category
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 
@@ -115,11 +120,11 @@ class Category
     /**
      * Add product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param \SI\AppBundle\Entity\Product $product
      *
      * @return Category
      */
-    public function addProduct(AppBundle\Entity\Product $product)
+    public function addProduct(\SI\AppBundle\Entity\Product $product)
     {
         $this->products[] = $product;
 
@@ -129,9 +134,9 @@ class Category
     /**
      * Remove product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param \SI\AppBundle\Entity\Product $product
      */
-    public function removeProduct(AppBundle\Entity\Product $product)
+    public function removeProduct(\SI\AppBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -149,7 +154,7 @@ class Category
     /**
      * Get picture
      *
-     * @return AppBundle\Entity\Picture
+     * @return \SI\AppBundle\Entity\Picture
      */
     public function getPicture()
     {
@@ -159,11 +164,11 @@ class Category
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Picture $picture
+     * @param \SI\AppBundle\Entity\Picture $picture
      *
      * @return Category
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -173,5 +178,39 @@ class Category
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Add job
+     *
+     * @param \SI\AppBundle\Entity\Job $job
+     *
+     * @return Category
+     */
+    public function addJob(\SI\AppBundle\Entity\Job $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param \SI\AppBundle\Entity\Job $job
+     */
+    public function removeJob(\SI\AppBundle\Entity\Job $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }
