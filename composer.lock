@@ -7,6 +7,50 @@
     "content-hash": "f33028c41f5e5f25f03b43e99e341b20",
     "packages": [
         {
+            "name": "behat/transliterator",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Behat/Transliterator.git",
+                "reference": "826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c",
+                "reference": "826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "chuyskywalker/rolling-curl": "^3.1",
+                "php-yaoi/php-yaoi": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Behat\\Transliterator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Artistic-1.0"
+            ],
+            "description": "String transliterator",
+            "keywords": [
+                "i18n",
+                "slug",
+                "transliterator"
+            ],
+            "time": "2017-04-04T11:38:05+00:00"
+        },
+        {
             "name": "composer/ca-bundle",
             "version": "1.0.7",
             "source": {
@@ -2314,16 +2358,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "fe3e3f3359b23b36f65cb600cd516142c07a2e7d"
+                "reference": "eab7c3288ae6603d7d6f92b531626af2b162d1f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/fe3e3f3359b23b36f65cb600cd516142c07a2e7d",
-                "reference": "fe3e3f3359b23b36f65cb600cd516142c07a2e7d",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/eab7c3288ae6603d7d6f92b531626af2b162d1f2",
+                "reference": "eab7c3288ae6603d7d6f92b531626af2b162d1f2",
                 "shasum": ""
             },
             "require": {
@@ -2376,23 +2420,25 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-06T03:58:14+00:00"
+            "time": "2017-06-07T18:47:58+00:00"
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "1.5.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "b6afe1d4615480575bc70013a83c67f4b9423ed8"
+                "reference": "56c0d3ad6fc7c92bae7b05e46b3b9b5be0ec5ecc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/b6afe1d4615480575bc70013a83c67f4b9423ed8",
-                "reference": "b6afe1d4615480575bc70013a83c67f4b9423ed8",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/56c0d3ad6fc7c92bae7b05e46b3b9b5be0ec5ecc",
+                "reference": "56c0d3ad6fc7c92bae7b05e46b3b9b5be0ec5ecc",
                 "shasum": ""
             },
             "require": {
+                "behat/transliterator": "^1.2",
+                "doctrine/annotations": "^1.3",
                 "jms/metadata": "^1.6",
                 "php": "^7.0",
                 "symfony/asset": "^2.8|^3.1",
@@ -2417,7 +2463,6 @@
                 "symfony/css-selector": "^2.8|^3.1",
                 "symfony/dom-crawler": "^2.8|^3.1",
                 "symfony/form": "^2.8|^3.1",
-                "symfony/proxy-manager-bridge": "^2.8|^3.1",
                 "symfony/twig-bridge": "^2.8.10|^3.1",
                 "symfony/twig-bundle": "^2.8|^3.1",
                 "symfony/validator": "^2.8|^3.1",
@@ -2429,13 +2474,14 @@
                 "doctrine/orm": "^2.5",
                 "doctrine/phpcr-odm": "^1.0",
                 "knplabs/knp-gaufrette-bundle": "^0.4",
+                "liip/imagine-bundle": "^1.7",
                 "symfony/yaml": "^2.8|^3.1",
                 "willdurand/propel-eventdispatcher-bundle": "^1.2"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -2459,7 +2505,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2017-04-07T07:19:32+00:00"
+            "time": "2017-06-06T13:42:13+00:00"
         }
     ],
     "packages-dev": [
