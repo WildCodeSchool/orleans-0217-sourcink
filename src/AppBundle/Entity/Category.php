@@ -29,6 +29,11 @@ class Category
     private $title;
 
     /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
+     */
+    private $jobs;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
@@ -36,13 +41,13 @@ class Category
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
 
@@ -115,11 +120,11 @@ class Category
     /**
      * Add product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return Category
      */
-    public function addProduct(AppBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -129,9 +134,9 @@ class Category
     /**
      * Remove product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(AppBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -159,11 +164,12 @@ class Category
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Category
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
+
     {
         $this->picture = $picture;
 
@@ -173,5 +179,39 @@ class Category
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Add job
+     *
+     * @param Job $job
+     *
+     * @return Category
+     */
+    public function addJob(Job $job)
+    {
+        $this->jobs[] = $job;
+
+        return $this;
+    }
+
+    /**
+     * Remove job
+     *
+     * @param Job $job
+     */
+    public function removeJob(Job $job)
+    {
+        $this->jobs->removeElement($job);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

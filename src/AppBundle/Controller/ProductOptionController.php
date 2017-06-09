@@ -24,7 +24,7 @@ class ProductOptionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $productOptions = $em->getRepository('SIAppBundle:ProductOption')->findAll();
+        $productOptions = $em->getRepository('AppBundle:ProductOption')->findAll();
 
         return $this->render('Admin/productoption/index.html.twig', array(
             'productOptions' => $productOptions,
@@ -40,7 +40,7 @@ class ProductOptionController extends Controller
     public function newAction(Request $request)
     {
         $productOption = new Productoption();
-        $form = $this->createForm('SI\AppBundle\Form\ProductOptionType', $productOption);
+        $form = $this->createForm('AppBundle\Form\ProductOptionType', $productOption);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class ProductOptionController extends Controller
     public function editAction(Request $request, ProductOption $productOption)
     {
         $deleteForm = $this->createDeleteForm($productOption);
-        $editForm = $this->createForm('SI\AppBundle\Form\ProductOptionType', $productOption);
+        $editForm = $this->createForm('AppBundle\Form\ProductOptionType', $productOption);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

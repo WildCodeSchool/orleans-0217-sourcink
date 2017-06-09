@@ -29,7 +29,7 @@ class ProductOption
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Status")
+     * @ORM\ManyToOne(targetEntity="Status")
      */
     private $status;
 
@@ -39,9 +39,8 @@ class ProductOption
      * @return int
      */
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="Benefit")
+     * @ORM\ManyToOne(targetEntity="Benefit", inversedBy="productOptions")
      */
     private $benefit;
 
