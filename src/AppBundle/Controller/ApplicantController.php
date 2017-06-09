@@ -6,6 +6,7 @@ use AppBundle\Services\Api;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use GuzzleHttp\Client;
 
 
 /**
@@ -18,24 +19,17 @@ class ApplicantController extends Controller
      */
     public function homeAction(Api $api)
     {
-        //curl -X POST https://api.catsone.com/v3/attachments/parse
-        // -H 'authorization: Token 52190b469513a91f73c29789304acd48'
-        // -H 'content-type: application/octet-stream'
-        // --data-binary @cv.txt
-        $post = array('filename' => '@'.realpath('./upload/cv.txt'));
-        dump($post);
-        $url = 'https://api.catsone.com/v3/attachments/parse';
-        $apiKey = '52190b469513a91f73c29789304acd48';
-        $headers = array('Authorization: Token '.$apiKey, 'content-type: application/octet-stream');
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-        curl_setopt($ch, CURLOPT_BINARYTRANSFER, TRUE);
-        dump($ch);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        dump($response);
-        die();
+        $client = new Client([
+            'base_uri' => 'https://api.catsone.com/',
+        ]);
+        $resource = fopen(realpath('./upload/cv.pdf'), 'r');
+        $res = $client->request('POST', '/v3/attachments/parse', [
+            'headers' => [
+                'Authorization' => 'Token 52190b469513a91f73c29789304acd48',
+                'content-type' => 'application/octet-stream'
+            ],
+            'body' => $resource
+        ]);
+        dump($res->getBody()->getContents());
     }
 }
