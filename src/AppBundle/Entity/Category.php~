@@ -1,6 +1,6 @@
 <?php
 
-namespace SI\AppBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
 class Category
 {
@@ -29,11 +29,6 @@ class Category
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
-     */
-    private $jobs;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
@@ -50,6 +45,11 @@ class Category
      * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="category")
+     */
+    private $works;
 
     /**
      * Constructor
@@ -120,11 +120,11 @@ class Category
     /**
      * Add product
      *
-     * @param \SI\AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return Category
      */
-    public function addProduct(\SI\AppBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -134,9 +134,9 @@ class Category
     /**
      * Remove product
      *
-     * @param \SI\AppBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(\SI\AppBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -154,7 +154,7 @@ class Category
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Picture
+     * @return AppBundle\Entity\Picture
      */
     public function getPicture()
     {
@@ -164,11 +164,12 @@ class Category
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Category
      */
-    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
+
     {
         $this->picture = $picture;
 
@@ -179,4 +180,5 @@ class Category
     {
         return $this->title;
     }
+
 }

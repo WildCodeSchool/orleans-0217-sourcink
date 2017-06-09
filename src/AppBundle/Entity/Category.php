@@ -29,11 +29,6 @@ class Category
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
-     */
-    private $jobs;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
@@ -50,6 +45,11 @@ class Category
      * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="category")
+     */
+    private $works;
 
     /**
      * Constructor
@@ -181,37 +181,38 @@ class Category
         return $this->title;
     }
 
+
     /**
-     * Add job
+     * Add work
      *
-     * @param Job $job
+     * @param \AppBundle\Entity\Work $work
      *
      * @return Category
      */
-    public function addJob(Job $job)
+    public function addWork(\AppBundle\Entity\Work $work)
     {
-        $this->jobs[] = $job;
+        $this->works[] = $work;
 
         return $this;
     }
 
     /**
-     * Remove job
+     * Remove work
      *
-     * @param Job $job
+     * @param \AppBundle\Entity\Work $work
      */
-    public function removeJob(Job $job)
+    public function removeWork(\AppBundle\Entity\Work $work)
     {
-        $this->jobs->removeElement($job);
+        $this->works->removeElement($work);
     }
 
     /**
-     * Get jobs
+     * Get works
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getJobs()
+    public function getWorks()
     {
-        return $this->jobs;
+        return $this->works;
     }
 }

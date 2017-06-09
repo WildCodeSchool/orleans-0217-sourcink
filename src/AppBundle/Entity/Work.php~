@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Job
+ * Work
  *
- * @ORM\Table(name="job")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\JobRepository")
+ * @ORM\Table(name="work")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkRepository")
  */
-class Job
+class Work
 {
     /**
      * @var int
@@ -24,15 +24,14 @@ class Job
     /**
      * @var string
      *
-     * @ORM\Column(name="Name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="jobs")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="works")
      */
     private $category;
-
 
     /**
      * Get id
@@ -49,7 +48,7 @@ class Job
      *
      * @param string $name
      *
-     * @return Job
+     * @return Work
      */
     public function setName($name)
     {
@@ -67,28 +66,5 @@ class Job
     {
         return $this->name;
     }
-
-    /**
-     * Set category
-     *
-     * @param Category $category
-     *
-     * @return Job
-     */
-    public function setCategory(Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 }
+
