@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
 
+
+/**
+ * @Route("/job", name="app_job")
+ */
 class JobController extends Controller
 {
     /**
