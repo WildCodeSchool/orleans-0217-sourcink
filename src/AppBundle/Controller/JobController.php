@@ -4,14 +4,37 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Services\Api;
 
+
+/**
+ * @Route("/job", name="app_job")
+ */
 class JobController extends Controller
 {
     /**
-     * @Route("/job", name="app_job")
+     * @Route("/", name="job_list")
      */
-    public function jobAction()
+
+    public function jobAction(Api $service)
     {
-        return $this->render('AppBundle:Job:home.html.twig');
+
+        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+
+        foreach ($data->_embedded->jobs as $job) {
+            $offers[$job->id] = [
+                'title' => $job->title,
+                'duration' => $job->duration,
+                'description' => $job->description,
+                'city' => $job->location->city
+
+            ];
+
+            //dump($data);
+            //die();
+        }
+        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers]);
+
+
     }
 }

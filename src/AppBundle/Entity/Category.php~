@@ -181,4 +181,38 @@ class Category
         return $this->title;
     }
 
+
+    /**
+     * Add work
+     *
+     * @param \AppBundle\Entity\Work $work
+     *
+     * @return Category
+     */
+    public function addWork(\AppBundle\Entity\Work $work)
+    {
+        $this->works[] = $work;
+
+        return $this;
+    }
+
+    /**
+     * Remove work
+     *
+     * @param \AppBundle\Entity\Work $work
+     */
+    public function removeWork(\AppBundle\Entity\Work $work)
+    {
+        $this->works->removeElement($work);
+    }
+
+    /**
+     * Get works
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWorks()
+    {
+        return $this->works;
+    }
 }
