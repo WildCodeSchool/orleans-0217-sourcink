@@ -23,12 +23,13 @@ class HomeController extends Controller
                 'city' => $job->location->city,
                 //'name' => $job->_embedded->custom_fields->_embedded->definition->name
             ];
+
             if($i==3){
                 break;
             }
             $i++;
         }
-        //dump($data);
+        //dump($offers);
         //die();
         return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
     }
