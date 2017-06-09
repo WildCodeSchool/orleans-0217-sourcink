@@ -18,6 +18,9 @@ class AppKernel extends Kernel
             new SI\UserBundle\SIUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new SI\AppBundle\SIAppBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

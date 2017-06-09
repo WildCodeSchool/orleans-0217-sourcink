@@ -28,6 +28,19 @@ security:
               target:     /login
             remember_me:
               secret:     '%secret%' # %secret% est un paramètre de parameter
+
+        secured_area:
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    linkedin:           "/login/check-linkedin"
+                login_path:        /login
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: my.oauth_aware.user_provider.service
+
+
     access_control:
             - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -35,3 +48,8 @@ security:
             - { path: ^/admin, role: ROLE_ADMIN }
             - { path: ^/candidat, role: ROLE_USER }
             - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+
+
+#    access_control:
+#        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
