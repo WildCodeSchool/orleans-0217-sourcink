@@ -36,15 +36,20 @@ class Category
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
      */
     private $picture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="category")
+     */
+    private $works;
 
     /**
      * Constructor
@@ -115,11 +120,11 @@ class Category
     /**
      * Add product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return Category
      */
-    public function addProduct(AppBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -129,9 +134,9 @@ class Category
     /**
      * Remove product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(AppBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -159,11 +164,12 @@ class Category
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Picture $picture
+     * @param Picture $picture
      *
      * @return Category
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
+
     {
         $this->picture = $picture;
 
@@ -173,5 +179,40 @@ class Category
     public function __toString()
     {
         return $this->title;
+    }
+
+
+    /**
+     * Add work
+     *
+     * @param \AppBundle\Entity\Work $work
+     *
+     * @return Category
+     */
+    public function addWork(\AppBundle\Entity\Work $work)
+    {
+        $this->works[] = $work;
+
+        return $this;
+    }
+
+    /**
+     * Remove work
+     *
+     * @param \AppBundle\Entity\Work $work
+     */
+    public function removeWork(\AppBundle\Entity\Work $work)
+    {
+        $this->works->removeElement($work);
+    }
+
+    /**
+     * Get works
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWorks()
+    {
+        return $this->works;
     }
 }

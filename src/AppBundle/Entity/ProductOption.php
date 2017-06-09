@@ -29,7 +29,7 @@ class ProductOption
 
     /**
      * @var
-     * @ORM\OneToOne(targetEntity="Status")
+     * @ORM\ManyToOne(targetEntity="Status")
      */
     private $status;
 
@@ -39,9 +39,8 @@ class ProductOption
      * @return int
      */
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="Benefit")
+     * @ORM\ManyToOne(targetEntity="Benefit", inversedBy="productOptions")
      */
     private $benefit;
 
@@ -71,11 +70,11 @@ class ProductOption
     /**
      * Set product
      *
-     * @param AppBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return ProductOption
      */
-    public function setProduct(AppBundle\Entity\Product $product = null)
+    public function setProduct(Product $product = null)
     {
         $this->product = $product;
 
@@ -85,11 +84,11 @@ class ProductOption
     /**
      * Add benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      *
      * @return ProductOption
      */
-    public function addBenefit(AppBundle\Entity\Benefit $benefit)
+    public function addBenefit(Benefit $benefit)
     {
         $this->benefits[] = $benefit;
 
@@ -99,9 +98,9 @@ class ProductOption
     /**
      * Remove benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      */
-    public function removeBenefit(AppBundle\Entity\Benefit $benefit)
+    public function removeBenefit(Benefit $benefit)
     {
         $this->benefits->removeElement($benefit);
     }
@@ -119,7 +118,7 @@ class ProductOption
     /**
      * Get status
      *
-     * @return AppBundle\Entity\Status
+     * @return Status
      */
     public function getStatus()
     {
@@ -129,11 +128,11 @@ class ProductOption
     /**
      * Set status
      *
-     * @param AppBundle\Entity\Status $status
+     * @param Status $status
      *
      * @return ProductOption
      */
-    public function setStatus(AppBundle\Entity\Status $status = null)
+    public function setStatus(Status $status = null)
     {
         $this->status = $status;
 
@@ -143,7 +142,7 @@ class ProductOption
     /**
      * Get benefit
      *
-     * @return AppBundle\Entity\Benefit
+     * @return Benefit
      */
     public function getBenefit()
     {
@@ -153,11 +152,11 @@ class ProductOption
     /**
      * Set benefit
      *
-     * @param AppBundle\Entity\Benefit $benefit
+     * @param Benefit $benefit
      *
      * @return ProductOption
      */
-    public function setBenefit(AppBundle\Entity\Benefit $benefit = null)
+    public function setBenefit(Benefit $benefit = null)
     {
         $this->benefit = $benefit;
 

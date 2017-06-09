@@ -102,11 +102,11 @@ class Expertise
     /**
      * Set picture
      *
-     * @param AppBundle\Entity\Pictures$picture
+     * @param Pictures$picture
      *
      * @return Expertise
      */
-    public function setPicture(AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
     {
         $this->picture = $picture;
 
