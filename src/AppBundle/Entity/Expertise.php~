@@ -1,6 +1,6 @@
 <?php
 
-namespace SI\AppBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Expertise
  *
  * @ORM\Table(name="expertise")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\ExpertiseRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ExpertiseRepository")
  */
 class Expertise
 {
@@ -102,11 +102,11 @@ class Expertise
     /**
      * Set picture
      *
-     * @param \SI\AppBundle\Entity\Pictures$picture
+     * @param Pictures$picture
      *
      * @return Expertise
      */
-    public function setPicture(\SI\AppBundle\Entity\Picture $picture = null)
+    public function setPicture(Picture $picture = null)
     {
         $this->picture = $picture;
 
@@ -116,7 +116,7 @@ class Expertise
     /**
      * Get picture
      *
-     * @return \SI\AppBundle\Entity\Picture
+     * @return AppBundle\Entity\Picture
      */
     public function getPicture()
     {

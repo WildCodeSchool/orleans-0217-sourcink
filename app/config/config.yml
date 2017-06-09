@@ -24,7 +24,7 @@ framework:
         engines: ['twig']
     default_locale: '%locale%'
     trusted_hosts: ~
-    trusted_proxies: ~
+#    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -81,3 +81,11 @@ fos_user:
         form:
             type: UserBundle\Form\RegistrationType
             validation_groups: [UserBundleRegistration]
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        picture:
+            uri_prefix: /img/
+            upload_destination: '%kernel.root_dir%/../web/img/'
+            namer: vich_uploader.namer_origname

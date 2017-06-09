@@ -1,7 +1,8 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Ajout de l'équipe</h1>
+
+    <h1>Ajout d'un collaborateur</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -11,6 +12,7 @@
     <ul>
         <li>
             <a href="{{ path('team_index') }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a>
+
         </li>
     </ul>
 {% endblock %}

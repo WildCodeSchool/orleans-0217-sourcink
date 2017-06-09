@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Services\Api;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,14 +9,14 @@ use GuzzleHttp\Client;
 
 
 /**
- * @Route("/candidat")
+ * @Route("/candidat", name="si_app_applicant")
  */
 class ApplicantController extends Controller
 {
     /**
-     * @Route("/", name="app_applicant")
+     * @Route("/", name="si_app_applicant")
      */
-    public function homeAction(Api $api)
+    public function homeAction()
     {
         $client = new Client([
             'base_uri' => 'https://api.catsone.com/',

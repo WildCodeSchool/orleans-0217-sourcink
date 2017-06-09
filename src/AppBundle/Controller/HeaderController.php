@@ -24,7 +24,7 @@ class HeaderController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $headers = $em->getRepository('SIAppBundle:Header')->findAll();
+        $headers = $em->getRepository('AppBundle:Header')->findAll();
 
         return $this->render('Admin/header/index.html.twig', array(
             'headers' => $headers,
@@ -40,7 +40,7 @@ class HeaderController extends Controller
     public function newAction(Request $request)
     {
         $header = new Header();
-        $form = $this->createForm('SI\AppBundle\Form\HeaderType', $header);
+        $form = $this->createForm('AppBundle\Form\HeaderType', $header);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class HeaderController extends Controller
     public function editAction(Request $request, Header $header)
     {
         $deleteForm = $this->createDeleteForm($header);
-        $editForm = $this->createForm('SI\AppBundle\Form\HeaderType', $header);
+        $editForm = $this->createForm('AppBundle\Form\HeaderType', $header);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
