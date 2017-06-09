@@ -21,7 +21,8 @@ class HomeController extends Controller
                 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => $job->location->city,
-                //'name' => $job->_embedded->custom_fields->_embedded->definition->name
+              //  'name' => $job->_embedded['custom_fields']->_;
+            //embedded->definition->name
             ];
 
             if($i==3){
