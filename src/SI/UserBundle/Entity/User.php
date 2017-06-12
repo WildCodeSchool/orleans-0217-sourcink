@@ -4,7 +4,7 @@ namespace SI\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
+
 
 /**
  * User
@@ -12,7 +12,7 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="SI\UserBundle\Repository\UserRepository")
  */
-class User extends BaseUser implements OAuthAwareUserProviderInterface
+class User extends BaseUser
 {
     /**
      * @var int
@@ -22,6 +22,10 @@ class User extends BaseUser implements OAuthAwareUserProviderInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true) */
+    protected $linkedinId;
+
 
     /**
      * @var string
@@ -103,5 +107,29 @@ class User extends BaseUser implements OAuthAwareUserProviderInterface
         $this->setUsername($email);
 
         return $this;
+    }
+
+    /**
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     *
+     * @return User
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedin_id = $linkedinId;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedin_id;
     }
 }

@@ -29,16 +29,19 @@ security:
             remember_me:
               secret:     '%secret%' # %secret% est un paramètre de parameter
 
-        secured_area:
-            anonymous: ~
-            oauth:
-                resource_owners:
-                    linkedin:           "/login/check-linkedin"
-                login_path:        /login
-                failure_path:      /login
 
-                oauth_user_provider:
-                    service: my.oauth_aware.user_provider.service
+            context: user
+#            pattern: /.*
+            oauth:
+              resource_owners:
+                linkedin: "/login/check-linkedin"
+              login_path: /connect
+              failure_path: /connect
+              oauth_user_provider:
+                service: si_oauth_provider
+#            logout: true
+#            anonymous: true
+
 
 
     access_control:

@@ -4,4 +4,14 @@
     <div class="container">
         {{ include('@FOSUser/Security/login_content.html.twig') }}
     </div>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        Hello {{ app.user.username }}
+
+
+        Logout
+
+    {% else %}
+        {{ render(url('hwi_oauth_connect')) }}
+    {% endif %}
 {% endblock fos_user_content %}

@@ -1,5 +1,14 @@
+parameters:
+    si_oauth_provider.class: SI\UserBundle\UserProvider
+
+
 services:
     app.form.registration:
         class: SI\UserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: app_user_registration }
+
+    si_oauth_provider:
+        class: "%si_oauth_provider.class%"
+        #this is the place where the properties are passed to the UserProvider - see config.yml
+        arguments: ['@fos_user.user_manager', linkedin: linkedinId]
