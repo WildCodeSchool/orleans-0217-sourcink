@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function homeAction(Api $service)
     {
-        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected"]);
         $i = 1;
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
@@ -21,16 +21,18 @@ class HomeController extends Controller
                 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => $job->location->city,
-              //  'name' => $job->_embedded['custom_fields']->_;
-            //embedded->definition->name
+                'updated' => $job->date_modified,
+                //'name' => $job->_embedded->custom_fields->['_embedded']->definition->name
+
+
             ];
             if($i==3){
                 break;
             }
             $i++;
         }
-        //dump($data);
-        //die();
+        dump($offers);
+        die();
         return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
     }
 }
