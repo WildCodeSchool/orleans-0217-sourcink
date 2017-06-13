@@ -3,3 +3,32 @@
 {% block fos_user_content %}
 {% include "@FOSUser/Registration/register_content.html.twig" %}
 {% endblock fos_user_content %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $('#send').on('click',function(e){
+            event.preventDefault();
+            var resume = $('#resume').val();
+            var formData = new FormData();
+            formData.append('resume', $('input[type=file]')[0].files[0]);
+            $.ajax({
+                url: '/ajax/resume/parse',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    var resume = JSON.parse(response.data);
+                    console.log(resume.first_name);
+                    console.log(resume.last_name);
+                    console.log(resume.emails.primary);
+                },
+                error: function() {
+                }
+            });
+//            $.post( '/ajax/resume/parse', {'data':fd}).done(function(response) {
+//            });
+        });
+    </script>
+{% endblock %}
