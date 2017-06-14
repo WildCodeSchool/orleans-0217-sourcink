@@ -20,9 +20,9 @@
                 contentType: false,
                 success: function(response){
                     var resume = JSON.parse(response.data);
-                    console.log(resume.first_name);
-                    console.log(resume.last_name);
-                    console.log(resume.emails.primary);
+                    $('#fos_user_registration_form_firstname').val(resume.first_name);
+                    $('#fos_user_registration_form_lastname').val(resume.last_name);
+                    $('#fos_user_registration_form_email').val(resume.emails.primary);
                 },
                 error: function() {
                 }
