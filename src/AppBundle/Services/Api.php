@@ -20,13 +20,15 @@ class Api
      * @param array $params
      * @return mixed
      */
-    public function api($query, $params = [])
+    public function api($query, $params = [], $page=1, $parPage=9)
     {
         $filters = '';
+
         foreach($params as $param=>$value){
             $filters .= $param.':'.$value;
         }
-        $url = 'https://api.catsone.com/v3/'.$query;
+        $url = 'https://api.catsone.com/v3/'.$query.'?per_page='.$parPage.'&page='.$page;
+
         $apiKey = '52190b469513a91f73c29789304acd48';
         $headers = array('Authorization: Token '.$apiKey, $filters);
         $ch = curl_init($url);
