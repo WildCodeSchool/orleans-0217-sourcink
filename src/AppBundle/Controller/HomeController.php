@@ -14,4 +14,5 @@ class HomeController extends Controller
     {
         return $this->render('AppBundle:Home:home.html.twig');
     }
+
 }
