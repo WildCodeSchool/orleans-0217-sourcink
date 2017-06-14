@@ -1,28 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Works list</h1>
+    <h1>Liste des métiers</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
+                <th>Categorie</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for work in works %}
             <tr>
-                <td><a href="{{ path('work_show', { 'id': work.id }) }}">{{ work.id }}</a></td>
                 <td>{{ work.name }}</td>
+                <td>{{ work.category }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('work_show', { 'id': work.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('work_edit', { 'id': work.id }) }}">edit</a>
+                            <a href="{{ path('work_edit', { 'id': work.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>
@@ -33,7 +30,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('work_new') }}">Create a new work</a>
+            <a href="{{ path('work_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}

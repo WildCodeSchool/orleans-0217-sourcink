@@ -1,22 +1,35 @@
+
 <h2 class="center" id="jobs">Nos Jobs</h2>
-{% for i in 1..9 %}
+
     {% for offer in offers %}
-        <div class="col s12 m4">
+
+
+
+
+<div class="col s12 m4">
             <div class="card">
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}<i class="material-icons right">add</i></span>
                     <p class="grey-text">{{ offer.city | raw }}</p>
+                    <p class="grey-text">{% if offer.duration is defined %} {{ offer.duration | raw }}
+                                        Date {{ offer.debut| raw }}{% else %}Date {{ offer.debut|raw ("d/m/y")}}
+                                        {% endif %}</p>
                 </div>
                 <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{ offer.duration | raw }}<i class="material-icons right">close</i></span>
-                    <p>{{ offer.description | raw }}</p>
+                    <span class="card-title grey-text text-darken-4">{{ offer.title | raw }}<i class="material-icons right">close</i></span>
+
+                    <p>{{ offer.city | raw }} {{ offer.duration | raw }}{{ offer.description | raw }} </p>
+
+
                     <a class="waves-effect waves-light btn">Postuler</a>
                 </div>
             </div>
         </div>
-    {% endfor %}
-    {% if i % 3 == 0 %}
+
+
+        {% endfor %}
+
+
 <div class="row"></div>
-{% endif %}
-{% endfor %}
+
 <div class="row"></div>

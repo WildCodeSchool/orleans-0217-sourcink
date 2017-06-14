@@ -13,8 +13,9 @@ class HomeController extends Controller
      */
     public function homeAction(Api $service)
     {
-        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected"]);
-        $i = 1;
+
+        $data = $service->api('jobs',[ "field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
                 'title' => $job->title,
@@ -22,17 +23,14 @@ class HomeController extends Controller
                 'description' => $job->description,
                 'city' => $job->location->city,
                 'updated' => $job->date_modified,
-                //'name' => $job->_embedded->custom_fields->['_embedded']->definition->name
-
-
+                'statut'=>$job->_embedded->status->title,
+                'maj' => $job->date_modified,
+               // 'contrat' => $job -> contract,
             ];
-            if($i==3){
-                break;
-            }
-            $i++;
+
         }
-        dump($offers);
-        die();
+        //dump($offers);
+        //die();
         return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
     }
 }
