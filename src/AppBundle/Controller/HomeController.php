@@ -25,7 +25,7 @@ class HomeController extends Controller
                 'updated' => $job->date_modified,
                 'statut'=>$job->_embedded->status->title,
                 'maj' => $job->date_modified,
-               // 'contrat' => $job -> contract,
+                'debut' => $job ->start_date,
             ];
 
         }

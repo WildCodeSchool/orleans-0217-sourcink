@@ -20,7 +20,7 @@ class Api
      * @param array $params
      * @return mixed
      */
-    public function api($query, $params = [], $page=1, $parPage=9)
+    public function api($query, $params = [], $page=1, $parPage=100)
     {
         $filters = '';
 
