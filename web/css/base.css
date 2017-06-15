@@ -122,3 +122,8 @@ a h5 {
 .metier {
     border-right: black solid;
 }
+
+.img {
+    max-width: 250px;
+    max-height: 250px;
+}
