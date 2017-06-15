@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -9,16 +10,16 @@ class CategoryPageController extends Controller
 {
     /**
      * @Route(
-     *     "/category/{id}",
-     *     name="si_app_category",
+     *     "/categoryPage/{id}",
+     *     name="category_page_view",
      *     defaults={"id": 1},
      *     requirements={
      *         "id": "\d+"
      *     }
      * )
      */
-    public function categoryAction()
+    public function categoryAction(Category $category)
     {
-        return $this->render('AppBundle:Category:category.html.twig');
+        return $this->render('AppBundle:CategoryPage:category.html.twig', ['category' => $category]);
     }
 }

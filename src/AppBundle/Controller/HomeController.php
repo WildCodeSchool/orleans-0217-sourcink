@@ -13,6 +13,10 @@ class HomeController extends Controller
      */
     public function homeAction(Api $service)
     {
+        $em = $this->getDoctrine()->getManager();
+        $videos =  $em->getRepository('AppBundle:Header')->findAll();
+        $categories =  $em->getRepository('AppBundle:Category')->findAll();
+        $team =  $em->getRepository('AppBundle:Team')->findAll();
         $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
         $i = 1;
         foreach ($data->_embedded->jobs as $job) {
@@ -32,6 +36,7 @@ class HomeController extends Controller
         }
         //dump($offers);
         //die();
-        return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
+        return $this->render('AppBundle:Home:home.html.twig',
+            ['offers'=>$offers, 'videos'=>$videos, 'categories'=>$categories, 'team'=>$team]);
     }
 }
