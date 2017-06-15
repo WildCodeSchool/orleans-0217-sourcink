@@ -17,21 +17,22 @@ class HomeController extends Controller
         $i = 1;
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
-                'title' => $job->title,
-                'duration' => $job->duration,
+                'title' => $job->title, 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => $job->location->city,
-              //  'name' => $job->_embedded['custom_fields']->_;
-            //embedded->definition->name
+//                'status' => $job->_embedded->status->title
             ];
 
-            if($i==3){
-                break;
+            if ( $offers[$job->id] = [
+           'status' => $job->_embedded->status->title[0] = 'Active']) {
+                dump($offers);
+                die();
+
+                return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
             }
-            $i++;
+
         }
-        //dump($offers);
-        //die();
-        return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
+
+
     }
 }
