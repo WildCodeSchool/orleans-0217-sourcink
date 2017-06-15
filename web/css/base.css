@@ -122,4 +122,11 @@ a h5 {
 .metier {
     border-right: black solid;
 }
+
 /*Overlay offres*/
+
+
+.img {
+    max-width: 250px;
+    max-height: 250px;
+}

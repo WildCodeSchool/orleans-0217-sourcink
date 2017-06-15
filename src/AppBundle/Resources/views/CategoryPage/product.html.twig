@@ -1,0 +1,8 @@
+<h2 class="center" id="expertise">Nos Produits</h2>
+{% for product in category.products %}
+    <div class="col s12 m4 center">
+        <img class="circle responsive-img img" src="{{ asset('img/'~product.picture.pictureName) }}">
+        <h3 class="red-text">{{ product.title }}</h3>
+        <p>{{ product.text }}</p>
+    </div>
+{% endfor %}

@@ -1,0 +1,26 @@
+<h2 class="center">COMPAREZ NOS SOLUTIONS</h2>
+<table class="striped responsive-table">
+    <thead>
+    <tr>
+        <th>Options</th>
+        {% for product in category.products %}
+            <th>{{ product.title }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in category.products %}
+        {{ dump(product) }}
+        <tr>
+            <th>{{ product.productOption.benefit }}</th>
+            {% if product.title == 1 %}
+                <th class="blue-text"><i class="fa fa-check" aria-hidden="true"></i></th>
+            {% elseif product.title == 2 %}
+                <th class="red-text"><i class="fa fa-times" aria-hidden="true"></i></th>
+            {% else %}
+                <th class="grey-text">En option</th>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

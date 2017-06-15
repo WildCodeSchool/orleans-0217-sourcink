@@ -1,12 +1,17 @@
 <div class="hide-on-med-and-down">
-<h2 class="center" id="category">Nos Solutions</h2>
-<div class="row">
-    {% for i in 1..2 %}
-        <div class="col s12 m6 center">
-            <img class="circle" src="{{ asset('img/box-large.svg') }}">
-
-            <p class="red-text">Nom de la solution</p>
-        </div>
-    {% endfor %}
-</div>
+    <h2 class="center" id="category">Nos Solutions</h2>
+    <div class="row">
+        {% for category in categories %}
+            <a href="{{ path('category_page_view', {'id':category.id}) }}">
+                <div class="col s12 m6 center">
+                    <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
+                    <h3 class="red-text">{{ category.title }}</h3>
+                    <p class="center">Cette solution propose les profils suivants : </p>
+                    {% for work in category.works %}
+                        <p class="center">{{ work.name }}</p>
+                    {% endfor %}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 </div>
