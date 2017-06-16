@@ -9,18 +9,22 @@
     </tr>
     </thead>
     <tbody>
-    {% for product in category.products %}
-        {{ dump(product) }}
-        <tr>
-            <th>{{ product.productOption.benefit }}</th>
-            {% if product.title == 1 %}
-                <th class="blue-text"><i class="fa fa-check" aria-hidden="true"></i></th>
-            {% elseif product.title == 2 %}
-                <th class="red-text"><i class="fa fa-times" aria-hidden="true"></i></th>
-            {% else %}
-                <th class="grey-text">En option</th>
+{#    {% for productOptions in comparator.productOptions %}
+        {% for i in 0 .. countProductOptions %}
+            {% if productOptions[loop.index] is defined %}
+                <tr>
+                    <th>{{ productOptions[loop.index].benefit }}</th>
+                    #}{#                {% if product.title == 1 %}
+                                        <th class="blue-text"><i class="fa fa-check" aria-hidden="true"></i></th>
+                                    {% elseif product.title == 2 %}
+                                        <th class="red-text"><i class="fa fa-times" aria-hidden="true"></i></th>
+                                    {% else %}
+                                        <th class="grey-text">En option</th>
+                                    {% endif %}#}{#
+                </tr>
             {% endif %}
-        </tr>
-    {% endfor %}
+
+        {% endfor %}
+    {% endfor %}#}
     </tbody>
 </table>

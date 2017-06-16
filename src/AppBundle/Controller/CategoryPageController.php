@@ -20,6 +20,18 @@ class CategoryPageController extends Controller
      */
     public function categoryAction(Category $category)
     {
+        //Non fonctionnel, à reprendre
+/*        $comparator = [];
+        $products = $category->getProducts();
+        $productsCount = count($products);
+        for($i=0; $i<$productsCount; $i++){
+            $comparator['products'][$i] = $products[$i];
+            $productOptions = $products[$i]->getProductOptions();
+            $countProductOptions = count($productOptions);
+            for($j=0; $j<$countProductOptions; $j++){
+                $comparator['productOptions'][$i][$j] = $productOptions[$j];
+            }
+        }*/
         return $this->render('AppBundle:CategoryPage:category.html.twig', ['category' => $category]);
     }
 }
