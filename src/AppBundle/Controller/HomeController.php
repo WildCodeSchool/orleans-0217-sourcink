@@ -15,13 +15,17 @@ class HomeController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $videos =  $em->getRepository('AppBundle:Header')->findAll();
-        $categories =  $em->getRepository('AppBundle:Category')->findAll();
-        $team =  $em->getRepository('AppBundle:Team')->findAll();
+        $videos = $em->getRepository('AppBundle:Header')->findAll();
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+        $team = $em->getRepository('AppBundle:Team')->findAll();
         $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
         $i = 1;
 
+
         $data = $service->api('jobs',[ "field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+
+
+
 
 
         foreach ($data->_embedded->jobs as $job) {
@@ -30,18 +34,13 @@ class HomeController extends Controller
                 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => $job->location->city,
-                'statut'=>$job->_embedded->status->title,
-                'maj' => $job->date_modified,
-               // 'contrat' => $job -> contract,
+                'statut' => $job->_embedded->status->title,
             ];
 
-
-
         }
-        //dump($data);
-        //die();
+
         return $this->render('AppBundle:Home:home.html.twig',
-            ['offers'=>$offers, 'videos'=>$videos, 'categories'=>$categories, 'team'=>$team]);
+            ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team, ]);
     }
 
 }
