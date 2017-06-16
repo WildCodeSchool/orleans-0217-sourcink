@@ -13,17 +13,17 @@ class HomeController extends Controller
      */
     public function homeAction(Api $service)
     {
-<<<<<<< HEAD
+
         $em = $this->getDoctrine()->getManager();
         $videos =  $em->getRepository('AppBundle:Header')->findAll();
         $categories =  $em->getRepository('AppBundle:Category')->findAll();
         $team =  $em->getRepository('AppBundle:Team')->findAll();
         $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
         $i = 1;
-=======
+
         $data = $service->api('jobs',[ "field: duration", "filter: contains", "value: rejected", "custom_fields"]);
 
->>>>>>> c51a97d0325e1ce3163909d2a2c68ed57b006e60
+
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
                 'title' => $job->title,
@@ -45,3 +45,4 @@ class HomeController extends Controller
     }
 
 }
+
