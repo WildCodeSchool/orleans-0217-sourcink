@@ -34,11 +34,12 @@ class HomeController extends Controller
                 'statut'=>$job->_embedded->status->title,
                 'maj' => $job->date_modified,
                 'debut' => $job ->start_date,
+                'idoffre' => $job-> id,
             ];
 
-
-
         }
+        //dump($data);
+        //die();
 
         return $this->render('AppBundle:Home:home.html.twig',
             ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team, ]);
