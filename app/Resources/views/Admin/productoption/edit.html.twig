@@ -4,8 +4,15 @@
     <h1>Productoption edit</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <button class="btn-floating btn-small waves-effect wave-light green" name="action" type="submit"><i class="material-icons">edit</i></button>
+
+
+    {{ form_row(form.product) }}
+
+    {{ form_row(form.status) }}
+
+    {{ form_row(form.benefit) }}
+
+        <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
     <ul>

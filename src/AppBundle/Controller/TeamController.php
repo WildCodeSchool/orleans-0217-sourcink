@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Team controller.
@@ -24,7 +25,7 @@ class TeamController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $teams = $em->getRepository('SIAppBundle:Team')->findAll();
+        $teams = $em->getRepository('AppBundle:Team')->findAll();
 
         return $this->render('Admin/team/index.html.twig', array(
             'teams' => $teams,
@@ -40,7 +41,7 @@ class TeamController extends Controller
     public function newAction(Request $request)
     {
         $team = new Team();
-        $form = $this->createForm('SI\AppBundle\Form\TeamType', $team);
+        $form = $this->createForm('AppBundle\Form\TeamType', $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +83,7 @@ class TeamController extends Controller
     public function editAction(Request $request, Team $team)
     {
         $deleteForm = $this->createDeleteForm($team);
-        $editForm = $this->createForm('SI\AppBundle\Form\TeamType', $team);
+        $editForm = $this->createForm('AppBundle\Form\TeamType', $team);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

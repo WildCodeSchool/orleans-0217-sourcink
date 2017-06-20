@@ -1,30 +1,31 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>L'équipe</h1>
+
+    <h1>Liste des collaborateurs</h1>
+
 
     <table class="highlight">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Text</th>
+                <th>Nom</th>
+                <th>Texte</th>
                 <th>Linkedin</th>
-                <th>Actions</th>
+                <th>Portrait</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for team in teams %}
             <tr>
-                <td><a href="{{ path('team_show', { 'id': team.id }) }}">{{ team.id }}</a></td>
                 <td>{{ team.name }}</td>
                 <td>{{ team.text }}</td>
                 <td>{{ team.linkedin }}</td>
+                <td> {% if team.picture is not null %}
+                        <img src="{{ asset('img/' ~ team.picture.pictureName) }}" />
+                    {% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('team_show', { 'id': team.id }) }}" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
-                        </li>
                         <li>
                             <a href="{{ path('team_edit', { 'id': team.id }) }}" class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                         </li>

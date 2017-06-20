@@ -11,9 +11,9 @@
     <div class="input-field">
         <select multiple>
             <option value="" disabled selected>Lieux</option>
-            <option value="1">Paris</option>
-            <option value="2">Orléans</option>
-            <option value="3">Marseille</option>
+            {% for city in citys %}
+            <option value="1">{{ city | raw }}</option>
+            {% endfor %}
         </select>
         <label>Lieux</label>
     </div>
@@ -23,9 +23,9 @@
     <div class="input-field">
         <select multiple>
             <option value="" disabled selected>Contrat</option>
-            <option value="1">CDD</option>
-            <option value="2">CDI</option>
-        </select>
+            {% for duration in durations %}
+                <option value="1">{{ duration | raw }}</option>
+            {% endfor %}        </select>
         <label>Contrat</label>
     </div>
 </div>

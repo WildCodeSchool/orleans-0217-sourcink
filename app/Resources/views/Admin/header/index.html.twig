@@ -1,30 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Videos</h1>
 
+    <h1>Header</h1>
     <table class="highlight">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Text</th>
+                <th>Titre</th>
+                <th>Texte</th>
                 <th>Video</th>
-                <th>Title</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for header in headers %}
             <tr>
-                <td><a href="{{ path('header_show', { 'id': header.id }) }}">{{ header.id }}</a></td>
-                <td>{{ header.text }}</td>
-                <td>{{ header.video }}</td>
                 <td>{{ header.title }}</td>
+                <td>{{ header.text }}</td>
+                <td>
+                {% if header.picture is not null %}
+                    {{ asset('img/' ~ header.picture.pictureName) }}
+                {% endif %}
+                </td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('header_show', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">menu</i></a>
-                        </li>
+
                         <li>
                             <a href="{{ path('header_edit', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                         </li>

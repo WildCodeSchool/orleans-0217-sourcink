@@ -1,6 +1,6 @@
 <?php
 
-namespace SI\AppBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Status
  *
  * @ORM\Table(name="status")
- * @ORM\Entity(repositoryClass="SI\AppBundle\Repository\StatusRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\StatusRepository")
  */
 class Status
 {
@@ -61,6 +61,11 @@ class Status
      * @return string
      */
     public function getLabel()
+    {
+        return $this->label;
+    }
+
+    public function __toString()
     {
         return $this->label;
     }

@@ -24,7 +24,7 @@ class PictureController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $pictures = $em->getRepository('SIAppBundle:Picture')->findAll();
+        $pictures = $em->getRepository('AppBundle:Picture')->findAll();
 
         return $this->render('Admin/picture/index.html.twig', array(
             'pictures' => $pictures,
@@ -40,7 +40,7 @@ class PictureController extends Controller
     public function newAction(Request $request)
     {
         $picture = new Picture();
-        $form = $this->createForm('SI\AppBundle\Form\PictureType', $picture);
+        $form = $this->createForm('AppBundle\Form\PictureType', $picture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class PictureController extends Controller
     public function editAction(Request $request, Picture $picture)
     {
         $deleteForm = $this->createDeleteForm($picture);
-        $editForm = $this->createForm('SI\AppBundle\Form\PictureType', $picture);
+        $editForm = $this->createForm('AppBundle\Form\PictureType', $picture);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

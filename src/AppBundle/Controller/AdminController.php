@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Benefit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +24,6 @@ class AdminController extends Controller
      */
     public function listAction()
     {
-
         return $this->render('Admin/indexadmin.html.twig');
     }
 
