@@ -25,6 +25,7 @@ class JobController extends Controller
 
         $data = $api->get('jobs');
 
+
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
                 'title' => $job->title,
@@ -34,6 +35,7 @@ class JobController extends Controller
                 'statut' => $job->_embedded->status->title,
                 'maj' => $job->date_modified,
                 'debut' => $job->start_date,
+                'idoffre' => $job->id,
             ];
         }
         $towns = array_column($offers, 'city', 'city');
@@ -71,4 +73,31 @@ class JobController extends Controller
 
     }
 
-}
+
+    /**
+     * @Route("/{id}", name="job_page")
+     */
+    public function jobPage(Api $service, $id)
+    {
+        $data = $service->getId('jobs', $id);
+
+        $offer = [
+            'id'=> $data->id,
+            'title' => $data->title,
+            'duration' => $data->duration,
+            'description' => $data->description,
+            'city' => trim(ucfirst(strtolower($data->location->city))),
+            'statut' => $data->_embedded->status->title,
+            'maj' => $data->date_modified,
+            'debut' => $data->start_date,
+
+        ];
+
+
+            return $this->render('AppBundle:Job:page.html.twig', ['offer' => $offer]);
+        }
+    }
+
+
+
+

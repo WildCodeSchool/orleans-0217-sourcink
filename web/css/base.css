@@ -127,3 +127,22 @@ a h5 {
     max-width: 250px;
     max-height: 250px;
 }
+
+/*Expertise*/
+
+/*Job Page*/
+.job_title {
+    text-align: center;
+}
+
+.job_detail {
+    font-size: 20px;
+    /*display: flex;
+    justify-content: flex-start;*/
+}
+
+/*Page Job*/
+.postuler {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
