@@ -11,7 +11,7 @@ class HomeController extends Controller
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homeAction(Api $service)
+    public function homeAction(Api $api)
     {
 
 
@@ -21,8 +21,8 @@ class HomeController extends Controller
         $videos = $em->getRepository('AppBundle:Header')->findAll();
         $categories = $em->getRepository('AppBundle:Category')->findAll();
         $team = $em->getRepository('AppBundle:Team')->findAll();
-        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
 
+        $data = $api->get('jobs');
 
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
