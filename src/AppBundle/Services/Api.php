@@ -106,7 +106,61 @@ class Api
         ]);
         return json_decode($data->getBody()->getContents());
     }
-
+    public function parsing($request)
+    {
+        $client = new Client([
+            'base_uri' => $this->getApiUrl(),
+        ]);
+        $resume = $request->files->get('resume');
+        $filename = realpath($resume);
+        //Parsing
+        $resource = fopen($filename, 'r');
+        $parsing = $client->request('POST', 'attachments/parse', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/octet-stream'
+            ],
+            'body' => $resource
+        ]);
+        return $parsing->getBody()->getContents();
+    }
+    public function createCandidate($resumeJson)
+    {
+        $client = new Client([
+            'base_uri' => $this->getApiUrl(),
+        ]);
+        $resumeData = json_decode($resumeJson);
+        $candidate = $client->request('POST', 'candidates?check_duplicate=false', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+            'json' => [
+                "first_name" => $resumeData->first_name,
+                "last_name" => $resumeData->last_name,
+                "emails" =>[
+                    "primary"=>$resumeData->emails->primary
+                ]
+            ]
+        ]);
+        return $candidate->getHeaders()['Location'][0];
+    }
+    public function sendResume($request, $id)
+    {
+        $client = new Client([
+            'base_uri' => $this->getApiUrl(),
+        ]);
+        $resume = $request->files->get('resume');
+        $filename = realpath($resume);
+        $resume = $client->request('POST', 'candidates/'.$id.'/resumes?filename=cv.pdf', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/octet-stream'
+            ],
+            'body' => fopen($filename, 'r')
+        ]);
+        return $resume;
+    }
     /**
      * @param $query
      * @param array $params
