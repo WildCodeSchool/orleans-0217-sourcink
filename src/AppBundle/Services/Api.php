@@ -50,14 +50,12 @@ class Api
         ]);
         return json_decode($data->getBody()->getContents());
     }
-    public function getSearch($query, $search, $params)
+    public function getSearch($query, $search)
     {
-        $data = $this->getClient()->request('GET', $query . '?query=' . $search, [
+        $data = $this->getClient()->request('GET', $query . '/search?query=' . $search, [
             'headers' => [
-                'Authorization' => 'Token ' . $this->getApiKey(),
-                'Content-Type' => 'application/json'
-            ],
-            'body' => $params
+                'Authorization' => 'Token ' . $this->getApiKey()
+            ]
         ]);
         return json_decode($data->getBody()->getContents());
     }
