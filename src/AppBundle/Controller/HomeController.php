@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     /**
      * @Route("/", name="app_homepage")
+     * @method ("GET")
      */
     public function homeAction(Api $service)
     {
@@ -25,6 +26,7 @@ class HomeController extends Controller
                 'updated' => $job->date_modified,
                 'statut'=>$job->_embedded->status->title,
                 'debut' => $job ->start_date,
+                'idoffre'=>$job -> id
             ];
 
         }
@@ -33,3 +35,4 @@ class HomeController extends Controller
         return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
     }
 }
+

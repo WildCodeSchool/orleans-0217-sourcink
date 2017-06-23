@@ -39,4 +39,6 @@ class JobController extends Controller
         //die();
         return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers]);
     }
+
+
 }

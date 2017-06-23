@@ -51,8 +51,17 @@ class ApplicantController extends Controller
             ]
         ]);
         dump($candidate);*/
-        $text = explode('/','https://api.catsone.com/v3/candidates/209834207');
-        dump($text);
-        die;
+       // $text = explode('/','https://api.catsone.com/v3/candidates/209834207');
+        //dump($text);
+        //die;
+        //return $this->render('AppBundle:Home:home.html.twig', ['offers' => $offers]);
+
+        //Il faut que nous stockions l'ID de l'offre pour pouvoir infomer Cats de l'offre sur laquelle vient de postuler le candidat.'
+        // il faut que nous stockions également l'ID du candidat dans notre base pour matcher dessus.
+
+
+
     }
 }
+
+

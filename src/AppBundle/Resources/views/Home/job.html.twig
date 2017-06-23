@@ -1,6 +1,7 @@
 <h2 class="center" id="job">Nos Offres</h2>
 {% for offer in offers %}
-{% if offer.statut in [1,2,3]  %}
+{% if offer.statut in ['HomeSite'] %}
+
 
 <div class="row">
         <div class="col s12 m4">
@@ -10,21 +11,22 @@
                     <p class="grey-text">{{ offer.city | raw }}</p>
                     <p class="grey-text">{{ offer.duration | raw }}
                         {{ offer.debut | date("d/m/y") }}</p>
-
                 </div>
                 <div class="card-reveal">
 
                     <span class="card-title grey-text text-darken-4">{{ offer.title }}<i class="material-icons right">close</i></span>
                     <p class="grey-text">{{ offer.city | raw }} {{ offer.duration | raw }} {{ offer.debut | date("d/m/y") }}</p>
                     <p>{{ offer.description | raw }} </p>
-                    <a class="waves-effect waves-light btn red">Postuler</a>
+                    <button class="waves-effect waves-light btn red" type="submit"> <a href="{{ path('fos_user_security_login', { 'id': offer.idoffre }) }}">Postuler</a></button>
+
                 </div>
 
-             </div>
+            </div>
         </div>
 
     {% endif %}
     {% endfor %}
+
 </div>
 <div class="col s12">
     <div class="center">
