@@ -20,9 +20,10 @@ class JobController extends Controller
      *
      */
 
-    public function jobAction(Api $service, Request $request)
+    public function jobAction(Api $api, Request $request)
     {
-        $data = $service->api('jobs', ["field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+
+        $data = $api->get('jobs');
 
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
@@ -56,12 +57,13 @@ class JobController extends Controller
         if ($form->isValid() && $form->isSubmitted()) {
             $data = $form->getData();
 
+
             $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
             $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
             $search = $service->filterJobs('jobs/search', [$contract, $location]);
 
-            //$title = $offers[$job->id] = [
-            //  'title' => $job->title];
+//            $title = $offers[$job->id] = [
+//              'title' => $job->title];
             dump($search);
         }
 

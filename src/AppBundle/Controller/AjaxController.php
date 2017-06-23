@@ -21,24 +21,24 @@ class AjaxController extends Controller
     {
         if ($request->isXmlHttpRequest()) {
             $client = new Client([
-                'base_uri' => 'https://api.catsone.com/',
+                'base_uri' => $this->getParameter('app.api.url'),
             ]);
             $resume = $_FILES['resume'];
             $filename = realpath($resume['tmp_name']);
             //Parsing
             $resource = fopen($filename, 'r');
-            $parsing = $client->request('POST', '/v3/attachments/parse', [
+            $parsing = $client->request('POST', 'attachments/parse', [
                 'headers' => [
-                    'Authorization' => 'Token 52190b469513a91f73c29789304acd48',
+                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
                     'content-type' => 'application/octet-stream'
                 ],
                 'body' => $resource
             ]);
             $resumeJson = $parsing->getBody()->getContents();
             $resumeData = json_decode($resumeJson);
-            $candidate = $client->request('POST', '/v3/candidates?check_duplicate=false', [
+            $candidate = $client->request('POST', 'candidates?check_duplicate=false', [
                 'headers' => [
-                    'Authorization' => 'Token 52190b469513a91f73c29789304acd48',
+                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
                     'content-type' => 'application/json'
                 ],
                 'json' => [
@@ -52,11 +52,10 @@ class AjaxController extends Controller
             $url = $candidate->getHeaders()['Location'][0];
             $urlExplode = explode('/',$url);
             $id = $urlExplode[5];
-            dump($id);
             //Resume
-            $resume = $client->request('POST', '/v3/candidates/'.$id.'/resumes?filename=cv.pdf', [
+            $resume = $client->request('POST', 'candidates/'.$id.'/resumes?filename=cv.pdf', [
                 'headers' => [
-                    'Authorization' => 'Token 52190b469513a91f73c29789304acd48',
+                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
                     'content-type' => 'application/octet-stream'
                 ],
                 'body' => fopen($filename, 'r')
