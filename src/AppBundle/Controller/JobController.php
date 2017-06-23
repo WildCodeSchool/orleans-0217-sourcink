@@ -21,9 +21,9 @@ class JobController extends Controller
      *
      */
 
-    public function jobAction(Api $service, Request $request)
+    public function jobAction(Api $api, Request $request)
     {
-        $data = $service->api('jobs',[ "field: duration", "filter: contains", "value: rejected", "custom_fields"]);
+        $data = $api->get('jobs');
 
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
@@ -56,8 +56,6 @@ class JobController extends Controller
         if ($form->isValid() && $form->isSubmitted()) {
             $title = $offers[$job->id] = [
                 'title' => $job->title];
-//            $duration = $offers->getDuration();
-//            $city = $offers->getCity();
         }
 
         return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers, 'citys' => $city, 'durations' => $duration, 'titles' => $title, 'form' => $form->createView()]);

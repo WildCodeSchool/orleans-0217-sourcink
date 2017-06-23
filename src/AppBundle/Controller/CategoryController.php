@@ -24,9 +24,7 @@ class CategoryController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $categories = $em->getRepository('AppBundle:Category')->findAll();
-
         return $this->render('Admin/category/index.html.twig', array(
             'categories' => $categories,
         ));
@@ -43,7 +41,6 @@ class CategoryController extends Controller
         $category = new Category();
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);

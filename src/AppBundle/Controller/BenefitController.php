@@ -27,12 +27,8 @@ class BenefitController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $benefits = $em->getRepository('AppBundle:Benefit')->findAll();
-        $em = $this->getDoctrine()->getManager();
-        $products = $em->getRepository('AppBundle:Product')
-            ->findAll();
-
+        $products = $em->getRepository('AppBundle:Product')->findAll();
         return $this->render('Admin/benefit/index.html.twig', array(
             'benefits' => $benefits, 'products' => $products,
         ));
@@ -49,27 +45,19 @@ class BenefitController extends Controller
         $benefit = new Benefit();
 
         $em = $this->getDoctrine()->getManager();
-        $products = $em->getRepository('AppBundle:Product')
-            ->findAll();
+        $products = $em->getRepository('AppBundle:Product')->findAll();
         foreach ($products as $product) {
             $productOption = new ProductOption();
             $productOption->setProduct($product);
             $benefit->addProductOption($productOption);
         }
-
         $form = $this->createForm(BenefitType::class, $benefit);
-
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($benefit);
             $em->flush();
-
             return $this->redirectToRoute('benefit_show', array('id' => $benefit->getId()));
         }
-
         return $this->render('Admin/benefit/new.html.twig', array(
             'benefit' => $benefit,
             'form' => $form->createView(),
@@ -85,7 +73,6 @@ class BenefitController extends Controller
     public function showAction(Benefit $benefit)
     {
         $deleteForm = $this->createDeleteForm($benefit);
-
         return $this->render('Admin/benefit/show.html.twig', array(
             'benefit' => $benefit,
             'delete_form' => $deleteForm->createView(),
@@ -118,13 +105,10 @@ class BenefitController extends Controller
         $deleteForm = $this->createDeleteForm($benefit);
         $editForm = $this->createForm('AppBundle\Form\BenefitType', $benefit);
         $editForm->handleRequest($request);
-
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('benefit_edit', array('id' => $benefit->getId()));
         }
-
         return $this->render('Admin/benefit/edit.html.twig', array(
             'benefit' => $benefit,
             'edit_form' => $editForm->createView(),
@@ -142,13 +126,11 @@ class BenefitController extends Controller
     {
         $form = $this->createDeleteForm($benefit);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($benefit);
             $em->flush();
         }
-
         return $this->redirectToRoute('benefit_index');
     }
 }
