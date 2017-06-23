@@ -1,0 +1,16 @@
+{% extends "AppBundle:Base:layout.html.twig" %}
+{% block header %}
+    {% include('AppBundle:Job:header.html.twig') %}
+{% endblock %}
+{% block content %}
+
+    {% for offer in offers %}
+<div class="container">
+    <div class="job_title"><h2>{{ offer.title | raw }}</h2></div>
+    <div class="job_detail"><p class="detail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p></div>
+    <div class="job_descrition">{{ offer.description | raw }}</div>
+    <a class="waves-effect waves-light btn" href="">Postuler</a>
+    </div>
+
+        {% endfor %}
+{% endblock %}
