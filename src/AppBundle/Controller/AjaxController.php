@@ -24,6 +24,7 @@ class AjaxController extends Controller
                 'base_uri' => $this->getParameter('app.api.url'),
             ]);
             $resume = $_FILES['resume'];
+            $resume = $request->files->get('resume');
             $filename = realpath($resume['tmp_name']);
             //Parsing
             $resource = fopen($filename, 'r');
