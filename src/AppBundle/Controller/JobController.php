@@ -74,13 +74,7 @@ class JobController extends Controller
                     'debut' => $job->start_date,
                 ];
             }
-//            return $this->render('AppBundle:Job:home.html.twig',
-//                [
-//                    'offers' => $offers,
-//                    'form' => $form->createView()
-//
-//                ]
-//            );
+
 
 
         }
@@ -93,3 +87,6 @@ class JobController extends Controller
     }
 
 }
+
+
+
