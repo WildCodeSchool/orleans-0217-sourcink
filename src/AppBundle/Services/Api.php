@@ -99,6 +99,18 @@ class Api
         ]);
         return $resume;
     }
+    public function updateCandidate($user){
+        $update = $this->getClient()->request('PUT', 'candidates/'.$user->id, [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/octet-stream'
+            ],
+            'json' => [
+                "title" => $user->title,
+            ]
+        ]);
+        return $update;
+    }
     /**
      * @return mixed
      */
