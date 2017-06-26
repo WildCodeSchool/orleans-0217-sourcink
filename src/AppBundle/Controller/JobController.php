@@ -44,7 +44,6 @@ class JobController extends Controller
 
         $form = $this->createFormBuilder($offers)
             ->setMethod('GET')
-            //->add('title', SearchType::class)
             ->add('city', ChoiceType::class, ['choices' => ($cities),
             ])
             ->add('duration', ChoiceType::class, ['choices' => ($durations)
@@ -55,20 +54,42 @@ class JobController extends Controller
 
 
         if ($form->isValid() && $form->isSubmitted()) {
-            $data = $form->getData();
 
+            $offers = array();
+            $data = $form->getData();
 
             $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
             $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
             $search = $api->filterJobs('jobs/search', [$contract, $location]);
 
-//            $title = $offers[$job->id] = [
-//              'title' => $job->title];
-            dump($search);
+
+            foreach ($search->_embedded->jobs as $job) {
+                $offers[$job->id] = [
+                    'title' => $job->title,
+                    'duration' => $job->duration,
+                    'description' => $job->description,
+                    'city' => trim(ucfirst(strtolower($job->location->city))),
+                    'statut' => $job->_embedded->status->title,
+                    'maj' => $job->date_modified,
+                    'debut' => $job->start_date,
+                ];
+            }
+//            return $this->render('AppBundle:Job:home.html.twig',
+//                [
+//                    'offers' => $offers,
+//                    'form' => $form->createView()
+//
+//                ]
+//            );
+
+
         }
-
-        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers, 'durations' => $durations, 'form' => $form->createView()]);
-
+        return $this->render('AppBundle:Job:home.html.twig',
+            [
+                'offers' => $offers,
+                'form' => $form->createView()
+            ]
+        );
     }
 
 }

@@ -1,15 +1,22 @@
 {% extends "AppBundle:Base:layout.html.twig" %}
 {% block header %}
-    {#{% include('AppBundle:Job:header.html.twig') %}#}
+    {% include('AppBundle:Job:header.html.twig') %}
 {% endblock %}
 {% block content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" class="btn btn-primary" value="GO"/>
-    {{ form_end(form) }}
+    <h2 class="center" id="search">Rechercher</h2>
+
+    {#<div class="row">#}
+        {#<div class="search col s8 offset-s2">#}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" class="btn btn-primary" value="GO"/>
+            {{ form_end(form) }}
+        {#</div>#}
+    {#</div>#}
+
+
     <div class="container">
         <div class="row">
-            {% include('AppBundle:Job:search.html.twig') %}
             {% include('AppBundle:Job:jobs.html.twig') %}
             {% include('AppBundle:Job:paginator.html.twig') %}
         </div>
