@@ -73,7 +73,7 @@ class Api
     public function createCandidate($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
-        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=false', [
+        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
             'headers' => [
                 'Authorization' => 'Token '.$this->getApiKey(),
                 'content-type' => 'application/json'
@@ -98,22 +98,6 @@ class Api
             'body' => fopen(realpath($request->files->get('resume')), 'r')
         ]);
         return $resume;
-    }
-    public function filterJobs($query, $params, $search = '')
-    {
-        $filters = json_encode(['and' => $params]);
-        $url = 'https://api.catsone.com/v3/' . $query . '?query=' . $search;
-
-        $apiKey = '52190b469513a91f73c29789304acd48';
-        $content = 'Content-type: application/json';
-        $headers = array('authorization: Token ' . $apiKey, $content);
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $filters);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($response);
     }
     /**
      * @return mixed

@@ -19,7 +19,9 @@ class ApplicantController extends Controller
      */
     public function homeAction(Api $api)
     {
-        $user = $api->getSearch('candidates', $this->getUser()->getFirstName());
+        $users = $api->getSearch('candidates', $this->getUser()->getFirstName());
+        $user = $user->_embedded->candidates[0];
+
         return $this->render('AppBundle:Applicant:home.html.twig', ['user' => $user]);
     }
 }
