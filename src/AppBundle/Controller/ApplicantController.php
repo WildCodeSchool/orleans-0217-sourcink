@@ -17,7 +17,11 @@ class ApplicantController extends Controller
     /**
      * @Route("/", name="app_applicant")
      */
-    public function homeAction(Api $service)
+    public function homeAction(Api $api)
     {
+        $users = $api->getSearch('candidates', $this->getUser()->getFirstName());
+        $user = $user->_embedded->candidates[0];
+
+        return $this->render('AppBundle:Applicant:home.html.twig', ['user' => $user]);
     }
 }

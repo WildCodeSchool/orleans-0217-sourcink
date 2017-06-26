@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Services;
+
 use GuzzleHttp\Client;
 
 
@@ -18,76 +19,102 @@ class Api
 {
     private $apiUrl;
     private $apiKey;
+    private $client;
+
     /**
      * Api constructor.
      */
     public function __construct($apiUrl, $apiKey)
     {
         $this->setApiKey($apiKey)->setApiUrl($apiUrl);
+        $this->setClient(new Client(['base_uri' => $this->getApiUrl()]));
     }
-
     public function get($query)
     {
-        $client = new Client([
-            'base_uri' => $this->getApiUrl(),
-        ]);
-        $data = $client->request('GET', $query, [
+
+        $data = $this->getClient()->request('GET', $query, [
             'headers' => [
-                'Authorization' => 'Token '.$this->getApiKey(),
-                'Content-Type'=> 'application/json'
+                'Authorization' => 'Token ' . $this->getApiKey(),
+                'Content-Type' => 'application/json'
             ]
         ]);
         return json_decode($data->getBody()->getContents());
     }
-
     public function getId($query, $id)
     {
-        $client = new Client([
-            'base_uri' => $this->getApiUrl(),
-        ]);
-        $data = $client->request('GET', $query.'/'.$id, [
+        $data = $this->getClient()->request('GET', $query . '/' . $id, [
             'headers' => [
-                'Authorization' => 'Token '.$this->getApiKey(),
-                'Content-Type'=> 'application/json'
+                'Authorization' => 'Token ' . $this->getApiKey(),
+                'Content-Type' => 'application/json'
             ]
         ]);
         return json_decode($data->getBody()->getContents());
     }
-    public function getSearch($query, $search, $params)
+    public function getSearch($query, $search)
     {
-        $client = new Client([
-            'base_uri' => $this->getApiUrl(),
-        ]);
-        $data = $client->request('GET', $query.'?query='.$search, [
+        $data = $this->getClient()->request('GET', $query . '/search?query=' . $search, [
             'headers' => [
-                'Authorization' => 'Token '.$this->getApiKey(),
-                'Content-Type'=> 'application/json'
-            ],
-            'body' => $params
+                'Authorization' => 'Token ' . $this->getApiKey()
+            ]
         ]);
         return json_decode($data->getBody()->getContents());
     }
+    public function parsing($request)
+    {
+        $parsing = $this->getClient()->request('POST', 'attachments/parse', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/octet-stream'
+            ],
+            'body' => fopen(realpath($request->files->get('resume')), 'r')
+        ]);
+        return $parsing->getBody()->getContents();
+    }
+    public function createCandidate($resumeJson)
+    {
+        $resumeData = json_decode($resumeJson);
+        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+            'json' => [
+                "first_name" => $resumeData->first_name,
+                "last_name" => $resumeData->last_name,
+                "emails" =>[
+                    "primary"=>$resumeData->emails->primary
+                ]
+            ]
+        ]);
+        return $candidate->getHeaders()['Location'][0];
+    }
+    public function sendResume($request, $id)
+    {
+        $resume = $this->getClient()->request('POST', 'candidates/'.$id.'/resumes?filename=cv.pdf', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/octet-stream'
+            ],
+            'body' => fopen(realpath($request->files->get('resume')), 'r')
+        ]);
+        return $resume;
+    }
     /**
-     * @param $query
-     * @param array $params
      * @return mixed
      */
-    public function apiOld($query, $params = [], $page=1, $parPage=9)
+    public function getClient()
     {
-        $filters = '';
-        foreach($params as $param=>$value){
-            $filters .= $param.':'.$value;
-        }
-        $url = 'https://api.catsone.com/v3/'.$query.'?per_page='.$parPage.'&page='.$page;
+        return $this->client;
+    }
 
-        $apiKey = '52190b469513a91f73c29789304acd48';
-        $headers = array('Authorization: Token '.$apiKey, $filters);
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return json_decode($response);
+    /**
+     * @param mixed $client
+     * @return Api
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+        return $this;
     }
 
     /**
@@ -125,5 +152,4 @@ class Api
         $this->apiKey = $apiKey;
         return $this;
     }
-
 }
