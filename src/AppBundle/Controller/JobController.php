@@ -35,7 +35,7 @@ class JobController extends Controller
                 'statut' => $job->_embedded->status->title,
                 'maj' => $job->date_modified,
                 'debut' => $job->start_date,
-                'idoffre' => $job->id,
+                'id' => $job->id,
             ];
         }
         $towns = array_column($offers, 'city', 'city');
@@ -76,11 +76,13 @@ class JobController extends Controller
                         'statut' => $job->_embedded->status->title,
                         'maj' => $job->date_modified,
                         'debut' => $job->start_date,
+                        'id' => $job->id,
                     ];
                 }
 
             }
         }
+
 
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
@@ -94,8 +96,7 @@ class JobController extends Controller
 
         return $this->render('AppBundle:Job:home.html.twig',
             [
-                'offers' => $offers,
-                'results' => $results,
+                'offers' => $results,
                 'form' => $form->createView()
             ]
         );
@@ -120,14 +121,13 @@ class JobController extends Controller
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
 
+
         ];
 
 
         return $this->render('AppBundle:Job:page.html.twig', ['offer' => $offer]);
     }
 }
-
-
 
 
 
