@@ -60,22 +60,23 @@ class JobController extends Controller
 
             $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
             $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
-            $filters = [$contract,$location];
+            $filters = [$contract, $location];
             $search = $api->searchFilter('jobs/search', $filters);
 
-            foreach ($search->_embedded->jobs as $job) {
-                $offers[$job->id] = [
-                    'title' => $job->title,
-                    'duration' => $job->duration,
-                    'description' => $job->description,
-                    'city' => trim(ucfirst(strtolower($job->location->city))),
-                    'statut' => $job->_embedded->status->title,
-                    'maj' => $job->date_modified,
-                    'debut' => $job->start_date,
-                ];
+            if ($search->count > 0) {
+                foreach ($search->_embedded->jobs as $job) {
+                    $offers[$job->id] = [
+                        'title' => $job->title,
+                        'duration' => $job->duration,
+                        'description' => $job->description,
+                        'city' => trim(ucfirst(strtolower($job->location->city))),
+                        'statut' => $job->_embedded->status->title,
+                        'maj' => $job->date_modified,
+                        'debut' => $job->start_date,
+                    ];
+                }
+
             }
-
-
         }
         return $this->render('AppBundle:Job:home.html.twig',
             [
