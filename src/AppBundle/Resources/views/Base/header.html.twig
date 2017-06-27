@@ -1,21 +1,18 @@
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="{{ path('app_homepage') }}" class="brand-logo">
-                <img src="{{ asset('img/logoSourceInk4.svg') }}"></a>
-
-                <p class="slogan center hide-on-med-and-down">L'agence de sourcing spécialisée en recrutement
-                        juridique, fiscal et RH
-                    </p>
-
-
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#expertise">Notre Expertise</a></li>
-                <li><a href="#category">Nos Solutions</a></li>
-                <li><a href="#job">Nos Offres</a></li>
-                <li><a href="#team">Notre Equipe</a></li>
-                <li class="active"><a href="{{ path('fos_user_security_login') }}">Espace Candidat</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
+{% block header %}
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ path('app_homepage') }}" class="brand-logo">
+                    <img src="{{ asset('media/logoSourcInk.svg') }}"></a>
+                <p class="slogan center hide-on-med-and-down">L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH</p>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#expertise">Notre Expertise</a></li>
+                    <li><a href="#category">Nos Solutions</a></li>
+                    <li><a href="#job">Nos Offres</a></li>
+                    <li><a href="#team">Notre Equipe</a></li>
+                    <li><a href="{{ path('fos_user_security_login') }}" class="btn red right applicant-button">Espace Candidat</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+{% endblock %}

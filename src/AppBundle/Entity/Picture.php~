@@ -111,7 +111,7 @@ class Picture
      *
      * @return string
      */
-    public function getalt()
+    public function getAlt()
     {
         return $this->alt;
     }
@@ -123,7 +123,7 @@ class Picture
      *
      * @return Picture
      */
-    public function setalt($alt)
+    public function setAlt($alt)
     {
         $this->alt = $alt;
 

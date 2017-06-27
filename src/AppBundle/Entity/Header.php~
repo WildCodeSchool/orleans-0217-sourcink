@@ -49,6 +49,20 @@ class Header
      */
     private $title;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nameUrl", type="string", length=255)
+     */
+    private $nameUrl;
+
 
     /**
      * Get id
