@@ -101,6 +101,7 @@ video {
     margin: 0;
     height: 232px;
     width: 100%;
+    filter: grayscale(1);
 }
 
 .slider .indicators .indicator-item.active {
