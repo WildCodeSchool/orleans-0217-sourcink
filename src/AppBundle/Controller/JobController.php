@@ -69,7 +69,7 @@ class JobController extends Controller
             $data = $form->getData();
 
             $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
-            $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city'];
+            $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
 
             $filters = [$contract, $location];
             $search = $api->searchFilter('jobs/search', $filters);
