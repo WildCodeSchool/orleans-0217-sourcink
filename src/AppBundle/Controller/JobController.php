@@ -66,8 +66,19 @@ class JobController extends Controller
             $search = $api->filterJobs('jobs/search', [$contract, $location]);
 
         }
+        /**
+         * @var $pagination "Knp\Component\Pager\Paginator"
+         * */
+        $pagination = $this->get('knp_paginator');
+        $result = $pagination->paginate(
+            $offers,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 9)
+        );
 
-        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers, 'durations' => $durations, 'form' => $form->createView()]);
+
+
+        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $result, 'durations' => $durations, 'form' => $form->createView()]);
 
     }
 
