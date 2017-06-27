@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
 }
 
 main {
@@ -89,6 +90,13 @@ video {
     width: 100%;
 }
 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
 @-moz-document url-prefix() {
     .video-container {
         padding-top: 720px;
@@ -126,4 +134,8 @@ a h5 {
 .img {
     max-width: 250px;
     max-height: 250px;
+}
+
+.applicant-button {
+    margin-top: 15%;
 }

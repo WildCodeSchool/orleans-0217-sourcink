@@ -4,11 +4,12 @@
             {% for video in videos %}
                 <li>
                     <video autoplay muted loop>
-                        <source src="{{ asset('media/vid2.mp4') }}" type="video/mp4">
+                        <source src="{{ asset('media/POffice-Day.mp4') }}" type="video/mp4">
                     </video>
                     <div class="caption center-align">
-                        <h2><a href="#job">{{ video.title }}</a></h2>
+                        <h2>{{ video.title }}</h2>
                         <h4 class="light grey-text text-lighten-3">{{ video.text }}</h4>
+                        <a href="{% if 'http://' not in video.url and 'https://' not in video.url %}http://{% endif %}{{ video.url }}" class="btn blue">{{ video.nameUrl }}</a>
                     </div>
                 </li>
             {% endfor %}
