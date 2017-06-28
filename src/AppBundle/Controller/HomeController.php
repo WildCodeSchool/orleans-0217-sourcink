@@ -15,8 +15,6 @@ class HomeController extends Controller
     {
 
 
-        $data = $api->api('jobs',[ "field: duration", "filter: contains", "value: rejected", "custom_fields"]);
-
         $em = $this->getDoctrine()->getManager();
         $videos = $em->getRepository('AppBundle:Header')->findAll();
         $categories = $em->getRepository('AppBundle:Category')->findAll();

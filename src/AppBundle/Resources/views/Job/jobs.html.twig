@@ -17,14 +17,15 @@
                 <p>{{ offer.debut| date('d/m/y') }}</p>
 
 
-                <a class="waves-effect waves-light btn" href="{{ path ('/job/{id}', {'id': offer.id)}) }}">voir plus</a>
+                <a class="waves-effect waves-light btn" href="{{ path('/job/{id}', {'id': offer.id}) }}">voir plus</a>
             </div>
 
     {% endfor %}
 
 
 
-
+        </div>
+    </div>
 
 <div class="row"></div>
 
