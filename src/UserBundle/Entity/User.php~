@@ -296,28 +296,4 @@ class User extends BaseUser
     {
         return $this->title;
     }
-
-    /**
-     * Set wantedSalary
-     *
-     * @param string $wantedSalary
-     *
-     * @return User
-     */
-    public function setWantedSalary($wantedSalary)
-    {
-        $this->wantedSalary = $wantedSalary;
-
-        return $this;
-    }
-
-    /**
-     * Get wantedSalary
-     *
-     * @return string
-     */
-    public function getWantedSalary()
-    {
-        return $this->wantedSalary;
-    }
 }
