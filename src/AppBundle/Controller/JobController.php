@@ -55,6 +55,7 @@ class JobController extends Controller
         $form->handleRequest($request);
 
 
+
         if ($form->isValid() && $form->isSubmitted()) {
 
             $offers = array();
@@ -84,6 +85,7 @@ class JobController extends Controller
         }
 
 
+
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
@@ -94,6 +96,7 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
 
+
         return $this->render('AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
@@ -101,7 +104,6 @@ class JobController extends Controller
             ]
         );
     }
-
 
     /**
      * @Route("/{id}", name="job_page")
@@ -121,13 +123,15 @@ class JobController extends Controller
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
 
-
         ];
 
 
         return $this->render('AppBundle:Job:page.html.twig', ['offer' => $offer]);
     }
 }
+
+ 
+
 
 
 
