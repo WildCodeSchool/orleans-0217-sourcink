@@ -1,5 +1,7 @@
  {% extends "::layout.html.twig" %}
-
+{% block header %}
+    {% include('AppBundle:Base:header.html.twig') %}
+{% endblock %}
 {% block footer %}
     {% include('AppBundle:Base:footer.html.twig') %}
 {% endblock %}
