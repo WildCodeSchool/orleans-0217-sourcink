@@ -18,6 +18,7 @@ class ApplicantController extends Controller
      */
     public function homeAction()
     {
+
         return $this->render('AppBundle:Applicant:home.html.twig');
     }
 
@@ -35,5 +36,6 @@ class ApplicantController extends Controller
             return $this->redirectToRoute('applicant_update');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['user' => $user, 'form' => $form->createView()]);
+
     }
 }

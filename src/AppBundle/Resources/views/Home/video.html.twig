@@ -4,7 +4,9 @@
             {% for video in videos %}
                 <li>
                     <video autoplay muted loop>
-                        <source src="{{ asset('media/POffice-Day.mp4') }}" type="video/mp4">
+
+                        <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
+
                     </video>
                     <div class="caption center-align">
                         <h2>{{ video.title }}</h2>
@@ -16,3 +18,5 @@
         </ul>
     </div>
 </div>
+
+
