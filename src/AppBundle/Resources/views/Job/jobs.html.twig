@@ -10,12 +10,12 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}<i class="material-icons right">add</i></span>
-                    {#<p class="grey-text">{{ offer.citys | raw }}</p>#}
+                    <p class="grey-text">{{ offer.city| raw }}</p>
                 </div>
                 <div class="card-reveal">
-                    {#<span class="card-title grey-text text-darken-4">{{ offer.duration | raw }}<i class="material-icons right">close</i></span>#}
-                    {#<p>{{ offer.description | raw }}</p>#}
-                    {#<p>{{ offer.debut| date('d/m/y') }}</p>#}
+                    <span class="card-title grey-text text-darken-4">{{ offer.duration | raw }}{{ offer.id | raw }}<i class="material-icons right">close</i></span>
+                    <p>{{ offer.description | raw }}</p>
+                    <p>{{ offer.debut| date('d/m/y') }}</p>
 
                     <a class="waves-effect waves-light btn">Postuler</a>
                 </div>

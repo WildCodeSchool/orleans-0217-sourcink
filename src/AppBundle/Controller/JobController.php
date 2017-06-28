@@ -34,6 +34,7 @@ class JobController extends Controller
                 'statut' => $job->_embedded->status->title,
                 'maj' => $job->date_modified,
                 'debut' => $job->start_date,
+                'id' => $job->id,
             ];
         }
         $towns = array_column($offers, 'city', 'city');
@@ -44,10 +45,14 @@ class JobController extends Controller
 
         $form = $this->createFormBuilder($offers)
             ->setMethod('GET')
-            ->add('city', ChoiceType::class, ['choices' => ($cities),
-            ])
-            ->add('duration', ChoiceType::class, ['choices' => ($durations)
-            ])
+            ->add('city', ChoiceType::class,
+                [
+                    'choices' => ($cities),
+                ])
+            ->add('duration', ChoiceType::class,
+                [
+                    'choices' => ($durations)
+                ])
             ->getForm();
 
         $form->handleRequest($request);
@@ -73,6 +78,8 @@ class JobController extends Controller
                         'statut' => $job->_embedded->status->title,
                         'maj' => $job->date_modified,
                         'debut' => $job->start_date,
+                        'id' => $job->id,
+
                     ];
                 }
 
