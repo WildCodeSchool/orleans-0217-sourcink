@@ -6,7 +6,11 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
+        $(document).ready(function(){
+            $('#loading').hide();
+        });
         $('#send').on('click',function(e){
+            $('#loading').show();
             event.preventDefault();
             var resume = $('#resume').val();
             var formData = new FormData();
@@ -30,8 +34,7 @@
                 error: function() {
                 }
             });
-//            $.post( '/ajax/resume/parse', {'data':fd}).done(function(response) {
-//            });
+            $('#loading').hide();
         });
     </script>
 {% endblock %}

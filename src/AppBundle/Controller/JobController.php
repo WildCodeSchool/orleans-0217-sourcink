@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -23,6 +22,7 @@ class JobController extends Controller
 
     public function jobAction(Api $api, Request $request)
     {
+
         $data = $api->get('jobs');
 
         foreach ($data->_embedded->jobs as $job) {
@@ -31,35 +31,61 @@ class JobController extends Controller
                 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => trim(ucfirst(strtolower($job->location->city))),
-                'statut'=>$job->_embedded->status->title,
+                'statut' => $job->_embedded->status->title,
                 'maj' => $job->date_modified,
-                'debut' => $job ->start_date,
+                'debut' => $job->start_date,
             ];
         }
-        $town = array_column($offers, 'city');
-        $city = array_unique($town);
-        $type = array_column($offers, 'duration');
-        $duration = array_unique($type);
+        $towns = array_column($offers, 'city', 'city');
+        $cities = array_unique($towns);
+        $types = array_column($offers, 'duration', 'duration');
+        $durations = array_unique($types);
 
 
         $form = $this->createFormBuilder($offers)
-                    ->setMethod('GET')
-                    ->add ('title', SearchType::class)
-                    ->add ('city', ChoiceType::class)
-                    ->add ('duration', ChoiceType::class)
-                    ->getForm();
+            ->setMethod('GET')
+            ->add('city', ChoiceType::class, ['choices' => ($cities),
+            ])
+            ->add('duration', ChoiceType::class, ['choices' => ($durations)
+            ])
+            ->getForm();
 
-        $form -> handleRequest($request);
+        $form->handleRequest($request);
 
-        $duration = $title = $city = '';
 
         if ($form->isValid() && $form->isSubmitted()) {
-            $title = $offers[$job->id] = [
-                'title' => $job->title];
-        }
 
-        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers, 'citys' => $city, 'durations' => $duration, 'titles' => $title, 'form' => $form->createView()]);
+            $offers = array();
+            $data = $form->getData();
 
+            $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
+            $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
+            $filters = [$contract, $location];
+            $search = $api->searchFilter('jobs/search', $filters);
+
+            if ($search->count > 0) {
+                foreach ($search->_embedded->jobs as $job) {
+                    $offers[$job->id] = [
+                        'title' => $job->title,
+                        'duration' => $job->duration,
+                        'description' => $job->description,
+                        'city' => trim(ucfirst(strtolower($job->location->city))),
+                        'statut' => $job->_embedded->status->title,
+                        'maj' => $job->date_modified,
+                        'debut' => $job->start_date,
+                    ];
+                }
+
+            }
         }
+        return $this->render('AppBundle:Job:home.html.twig',
+            [
+                'offers' => $offers,
+                'form' => $form->createView()
+            ]
+        );
+    }
 
 }
+
+

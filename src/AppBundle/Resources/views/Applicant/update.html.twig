@@ -1,0 +1,7 @@
+{% extends "AppBundle:Base:layout.html.twig" %}
+{% block header %}
+    {% include('AppBundle:Applicant:header.html.twig') %}
+{% endblock %}
+{% block content %}
+{{ form(form) }}
+{% endblock %}

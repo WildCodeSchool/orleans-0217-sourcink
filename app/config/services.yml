@@ -19,5 +19,5 @@ services:
         exclude: '../../src/AppBundle/{Entity,Repository}'
     AppBundle\Services\Api:
         arguments:
-            $apiUrl: 'https://api.catsone.com/v3/'
-            $apiKey: '52190b469513a91f73c29789304acd48'
+            $apiUrl: '%api_url%'
+            $apiKey: '%api_key%'
