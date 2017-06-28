@@ -109,6 +109,7 @@ video {
     margin: 0;
     height: 232px;
     width: 100%;
+    filter: grayscale(1);
 }
 
 .slider .indicators .indicator-item.active {
@@ -139,6 +140,26 @@ a h5 {
     max-height: 250px;
 }
 
+
+/*Expertise*/
+
+/*Job Page*/
+.job_title {
+    text-align: center;
+}
+
+.job_detail {
+    font-size: 20px;
+    /*display: flex;
+    justify-content: flex-start;*/
+}
+
+/*Page Job*/
+.postuler {
+    margin-top: 50px;
+    margin-bottom: 50px;
+
 .applicant-button {
     margin-top: 15%;
+
 }
