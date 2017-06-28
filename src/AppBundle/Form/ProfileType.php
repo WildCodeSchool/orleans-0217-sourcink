@@ -23,7 +23,7 @@ class ProfileType extends AbstractType
                     'Auvergne-Rhône-Alpes' => 'Auvergne-Rhône-Alpes',
                     'Bourgogne-Franche-Comté' => 'Bourgogne-Franche-Comté',
                     'Bretagne' => 'Bretagne',
-                    'Centre-Val de Loire' => '	Centre-Val de Loire',
+                    'Centre-Val de Loire' => 'Centre-Val de Loire',
                     'Corse' => 'Corse',
                     'Grand Est' => 'Grand Est',
                     'Hauts-de-France' => 'Hauts-de-France',
