@@ -16,11 +16,8 @@ class ApplicantController extends Controller
     /**
      * @Route("/", name="app_applicant")
      */
-    public function homeAction(Api $api)
+    public function homeAction()
     {
-        $customFields = $api->candidateCustomFields();
-        dump($customFields);
-        die();
         return $this->render('AppBundle:Applicant:home.html.twig');
     }
 
@@ -29,12 +26,9 @@ class ApplicantController extends Controller
      */
     public function updateAction(Request $request, Api $api)
     {
-/*        $users = $api->getSearch('candidates', $this->getUser()->getEmail());
-        $user = $users->_embedded->candidates[0];*/
         $form = $this->createForm(ProfileType::class, $this->getUser());
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-//            $api->updateCandidate($form->getData());
             $em = $this->getDoctrine()->getManager();
             $data = $form->getData();
             $em->persist($data);
@@ -46,12 +40,9 @@ class ApplicantController extends Controller
                 }else{
                     $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
                 }
-
-
             }
             return $this->redirectToRoute('applicant_update');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
-
     }
 }
