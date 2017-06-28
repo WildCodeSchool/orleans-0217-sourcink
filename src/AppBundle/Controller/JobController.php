@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -59,7 +60,6 @@ class JobController extends Controller
         $form->handleRequest($request);
 
 
-
         if ($form->isValid() && $form->isSubmitted()) {
 
             $offers = array();
@@ -90,7 +90,6 @@ class JobController extends Controller
         }
 
 
-
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
@@ -114,9 +113,31 @@ class JobController extends Controller
      * @Route("/{id}", name="job_page")
      */
     public
-    function jobPage(Api $service, $id)
+    function jobPage(Api $service, $id, Request $request)
     {
         $data = $service->getId('jobs', $id);
+
+        $form = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('Postuler', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+
+        if ($form->isValid() && $form->isSubmitted()) {
+
+
+
+            $users = $service->getSearch('candidates', $this->getUser()->getEmail());
+            $user = $users->_embedded->candidates[0];
+            $candidat = $service->apply($user, $id);
+
+
+
+            return $this->render('AppBundle:Job:response.html.twig');
+        }
+
 
         $offer = [
             'id' => $data->id,
@@ -131,7 +152,11 @@ class JobController extends Controller
         ];
 
 
-        return $this->render('AppBundle:Job:page.html.twig', ['offer' => $offer]);
+        return $this->render('AppBundle:Job:page.html.twig',
+            [
+                'offer' => $offer,
+                'form' => $form->createView()
+            ]);
     }
 }
 

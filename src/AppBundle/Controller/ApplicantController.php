@@ -27,7 +27,7 @@ class ApplicantController extends Controller
      */
     public function updateAction(Request $request, Api $api)
     {
-        $users = $api->getSearch('candidates', $this->getUser()->getFirstName());
+        $users = $api->getSearch('candidates', $this->getUser()->getEmail());
         $user = $users->_embedded->candidates[0];
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
