@@ -33,11 +33,14 @@ class ApplicantController extends Controller
             $data = $form->getData();
             $em->persist($data);
             $em->flush();
-            if($this->getUser()->getMobility()!=NULL&&$this->getUser()->getSalary()!=NULL&&$this->getUser()->getExperience()!=NULL&&$this->getUser()->getWantedJob()!=NULL&&$this->getUser()->getCurrentJob()!=NULL){
+            if ($this->getUser()->getMobility() != NULL && $this->getUser()->getSalary() != NULL &&
+                $this->getUser()->getExperience() != NULL && $this->getUser()->getWantedJob() != NULL &&
+                $this->getUser()->getCurrentJob() != NULL
+            ) {
                 $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
-                if($catsUser->count==0){
+                if ($catsUser->count == 0) {
                     $api->createCandidateUser($this->getUser());
-                }else{
+                } else {
                     $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
                 }
             }
