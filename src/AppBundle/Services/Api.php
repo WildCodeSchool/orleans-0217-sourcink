@@ -130,7 +130,7 @@ class Api
         return $parsing->getBody()->getContents();
     }
 
-    public function createCandidateResume($resumeJson)
+    public function updateCandidatResume($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
         $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
@@ -143,7 +143,13 @@ class Api
                 "last_name" => $resumeData->last_name,
                 "emails" => [
                     "primary" => $resumeData->emails->primary
-                ]
+                ],
+                "title" => $resumeData->title,
+                "current_pay" => $resumeData->current_pay,
+                "desired_pay" => $resumeData->desired_pay,
+                "phones" => [
+                    "cell" => $resumeData->phones
+                ],
             ]
         ]);
         return $candidate->getHeaders()['Location'][0];
@@ -191,6 +197,7 @@ class Api
                 "phones" => [
                     "cell" => $user->getPhone()
                 ],
+                "custom_fields" => $customFields
             ]
         ]);
         return $candidate->getHeaders();
@@ -241,6 +248,7 @@ class Api
                 "phones" => [
                     "cell" => $user->getPhone()
                 ],
+                "custom_fields" => $customFields
             ]
         ]);
         return $update;

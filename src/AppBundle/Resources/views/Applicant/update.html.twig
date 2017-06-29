@@ -4,7 +4,70 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-
+        <form id="resumeForm">
+            <div class="file-field input-field">
+                <div class="btn blue">
+                    <span>CV</span>
+                    <input type="file" id="resume">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+                <button class="btn-large red right" id="send">Envoyer</button>
+            </div>
+        </form>
+        <div class="preloader-wrapper big active" id="loading">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
         {{ form(form) }}
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        $(document).ready(function(){
+            $('#loading').hide();
+        });
+        $('#send').on('click',function(e){
+            $('#loading').show();
+            event.preventDefault();
+            var resume = $('#resume').val();
+            var formData = new FormData();
+            formData.append('resume', $('input[type=file]')[0].files[0]);
+            $.ajax({
+                url: '/ajax/resume/parse',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    var resume = JSON.parse(response.data);
+                    $('#fos_user_registration_form_firstname').val(resume.first_name);
+                    $('#fos_user_registration_form_lastname').val(resume.last_name);
+                    $('#fos_user_registration_form_email').val(resume.emails.primary);
+                    $('#fos_user_registration_form_title').val(resume.title);
+                    $('#fos_user_registration_form_experience').val(resume.experience);
+                    $('#fos_user_registration_form_salary').val(resume.salary);
+                    $('#fos_user_registration_form_salary').val(resume.current_pay);
+                    $('#fos_user_registration_form_wantedSalary').val(resume.desired_pay);
+                    $('#fos_user_registration_form_phone').val(resume.phone);
+                },
+                error: function() {
+                }
+            });
+            $('#loading').hide();
+        });
+    </script>
 {% endblock %}
