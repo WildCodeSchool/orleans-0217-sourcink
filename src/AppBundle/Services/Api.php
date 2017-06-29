@@ -259,7 +259,7 @@ class Api
         ]);
         return $update;
     }
-
+  
     public function apply($user, $id)
     {
 
@@ -278,5 +278,7 @@ class Api
 
         return $apply;
     }
+
+
 }
 
