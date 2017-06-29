@@ -18,6 +18,10 @@ use UserBundle\Entity\User;
  */
 class Api
 {
+    const mobility = 'mobilité géo';
+    const current_job = 'Poste Actuel';
+    const wanted_job = 'Poste voulu';
+    const experience = 'Expérience';
     private $apiUrl;
     private $apiKey;
     private $client;
@@ -171,12 +175,14 @@ class Api
         $fields = $this->candidateCustomFields();
         $customFields = [];
         foreach ($fields as $field) {
-            if ($field->name == 'mobilité géo') {
+            if ($field->name == self::mobility) {
                 $value = $user->getMobility();
-            } else if ($field->name == 'Poste Actuel') {
+            } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
-            } else {
+            } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
+            } else if ($field->name == self::experience) {
+                $value = $user->getExperience();
             }
             $customFields[] = ['id' => $field->id, 'value' => $value];
         }
@@ -220,13 +226,13 @@ class Api
         $fields = $this->candidateCustomFields();
         $customFields = [];
         foreach ($fields as $field) {
-            if ($field->name == 'mobilité géo') {
+            if ($field->name == self::mobility) {
                 $value = $user->getMobility();
-            } else if ($field->name == 'Poste Actuel') {
+            } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
-            } else if ($field->name == 'Poste voulu') {
+            } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
-            } else if ($field->name == 'Expérience') {
+            } else if ($field->name == self::experience) {
                 $value = $user->getExperience();
             }
             $customFields[] = ["id" => $field->id, "value" => $value];
