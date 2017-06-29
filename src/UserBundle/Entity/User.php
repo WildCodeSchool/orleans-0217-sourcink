@@ -36,6 +36,11 @@ class User extends BaseUser
      */
     private $lastname;
 
+
+    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true)
+     */
+    protected $linkedinId;
+
     /**
      * @var string
      *
@@ -154,7 +159,30 @@ class User extends BaseUser
     }
 
     /**
-     * Set currentJob
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     *
+     * @return User
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedin_id = $linkedinId;
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedin_id;
+
+    }
+
+    /** Set currentJob
      *
      * @param string $currentJob
      *
@@ -319,5 +347,6 @@ class User extends BaseUser
     public function getWantedSalary()
     {
         return $this->wantedSalary;
+
     }
 }
