@@ -9,6 +9,7 @@
 namespace AppBundle\Services;
 
 use GuzzleHttp\Client;
+use UserBundle\Entity\User;
 
 
 /**
@@ -129,7 +130,7 @@ class Api
         return $parsing->getBody()->getContents();
     }
 
-    public function createCandidate($resumeJson)
+    public function createCandidateResume($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
         $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
@@ -147,6 +148,49 @@ class Api
         ]);
         return $candidate->getHeaders()['Location'][0];
     }
+    public function candidateCustomFields()
+    {
+        $customFields = $this->getClient()->request('GET', 'candidates/custom_fields', [
+            'headers' => [
+                'Authorization' => 'Token '.$this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+        ]);
+        return json_decode($customFields->getBody()->getContents())->_embedded->custom_fields;
+    }
+    public function createCandidateUser(User $user)
+    {
+        $fields = $this->candidateCustomFields();
+        $customFields=[];
+        foreach($fields as $field){
+            if($field->name=='mobilité géo'){
+                $value = $user->getMobility();
+            }else if($field->name=='Poste Actuel'){
+                $value = $user->getCurrentJob();
+            }else {
+                $value = $user->getWantedJob();
+            }
+            $customFields[] = ['id' => $field->id, 'value' => $value];
+        }
+        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
+            'headers' => [
+                'Authorization' => 'Token ' . $this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+            'json' => [
+                "first_name" => $user->getFirstname(),
+                "last_name" => $user->getLastname(),
+                "emails" => [
+                    "primary" => $user->getEmail()
+                ],
+                "title" => $user->getTitle(),
+                "current_pay" => $user->getSalary(),
+                "desired_pay" => $user->getWantedSalary(),
+                $customFields
+            ]
+        ]);
+        return $candidate->getHeaders();
+    }
 
     public function sendResume($request, $id)
     {
@@ -160,34 +204,60 @@ class Api
         return $resume;
     }
 
-    public function updateCandidate($user)
+    public function updateCandidate(User $user, $catsUser)
     {
-        $update = $this->getClient()->request('PUT', 'candidates/' . $user->id, [
+        $fields = $this->candidateCustomFields();
+        $customFields=[];
+        foreach($fields as $field){
+            if($field->name=='mobilité géo'){
+                $value = $user->getMobility();
+            }else if($field->name=='Poste Actuel'){
+                $value = $user->getCurrentJob();
+            }else if($field->name=='Poste voulu'){
+                $value = $user->getWantedJob();
+            }else if($field->name=='Expérience'){
+                $value = $user->getExperience();
+            }
+            $customFields[] = ["id" => $field->id, "value" => $value];
+        }
+        $update = $this->getClient()->request('PUT', 'candidates/' . $catsUser->id, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/octet-stream'
             ],
             'json' => [
-                "title" => $user->title,
+                "first_name" => $user->getFirstname(),
+                "last_name" => $user->getLastname(),
+                "emails" => [
+                    "primary" => $user->getEmail()
+                ],
+                "title" => $user->getTitle(),
+                "current_pay" => $user->getSalary(),
+                "desired_pay" => $user->getWantedSalary(),
+                "custom_fields" => $customFields
             ]
         ]);
         return $update;
     }
 
-
-
-    public function searchFilter($query, $params)
+//
+    public function apply($user, $id)
     {
-        $filters = json_encode(['and' => $params]);
-        $data = $this->getClient()->request('POST', $query . '?query=', [
-            'headers' => [
-                'Authorization' => 'Token ' . $this->getApiKey(),
-                'content-type' => 'application/json'
-            ],
-            'body' => $filters
 
-        ]);
+        $candidate = $user->id;
+        $job = $id;
 
-        return json_decode($data->getBody()->getContents());
+
+        $apply = $this->getClient()->request('POST', 'pipelines',
+            [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey(),
+                    'content-type' => 'application/json'
+                ],
+                'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
+            ]);
+
+            return $apply;
     }
 }
+
