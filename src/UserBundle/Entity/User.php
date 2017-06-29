@@ -36,6 +36,10 @@ class User extends BaseUser
      */
     private $lastname;
 
+    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true)
+     */
+    protected $linkedinId;
+
 
     /**
      * Get id
@@ -102,5 +106,27 @@ class User extends BaseUser
         $this->setUsername($email);
 
         return $this;
+    }
+
+    /**
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     *
+     * @return User
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedin_id = $linkedinId;
+        return $this;
+    }
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedin_id;
     }
 }
