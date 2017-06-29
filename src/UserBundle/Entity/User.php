@@ -91,7 +91,6 @@ class User extends BaseUser
     private $title;
 
 
-
     /**
      * Get id
      *
@@ -160,7 +159,6 @@ class User extends BaseUser
     }
 
     /**
-<
      * Set linkedinId
      *
      * @param string $linkedinId
@@ -172,6 +170,7 @@ class User extends BaseUser
         $this->linkedin_id = $linkedinId;
         return $this;
     }
+
     /**
      * Get linkedinId
      *
@@ -181,7 +180,9 @@ class User extends BaseUser
     {
         return $this->linkedin_id;
 
-     * Set currentJob
+    }
+
+    /** Set currentJob
      *
      * @param string $currentJob
      *
