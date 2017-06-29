@@ -23,7 +23,7 @@ class AjaxController extends Controller
     {
         if ($request->isXmlHttpRequest()) {
             $resumeJson = $api->parsing($request);
-            $url = $api->createCandidate($resumeJson);
+            $url = $api->createCandidateResume($resumeJson);
             $urlExplode = explode('/',$url);
             $id = $urlExplode[5];
             $api->sendResume($request, $id);
