@@ -26,6 +26,9 @@
             </div>
         </div>
     </div>
+    <div id="status">
+
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -50,8 +53,10 @@
                 processData: false,
                 contentType: false,
                 success: function(response){
+                    $('#status').html('Votre CV a bien été envoyé');
                 },
                 error: function() {
+                    $('#status').html('Une erreur a eu lieu');
                 }
             });
             $('#loading').hide();
