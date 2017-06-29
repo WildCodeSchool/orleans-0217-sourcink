@@ -45,6 +45,7 @@ class ProfileType extends AbstractType
             ->add('experience')
             ->add('salary')
             ->add('wantedSalary')
+            ->add('phone')
             ->add('submit', SubmitType::class, array('label' => 'Modifier'));
     }
 
