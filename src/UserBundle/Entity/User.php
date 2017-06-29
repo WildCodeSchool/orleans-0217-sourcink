@@ -36,6 +36,11 @@ class User extends BaseUser
      */
     private $lastname;
 
+
+    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true)
+     */
+    protected $linkedinId;
+
     /**
      * @var string
      *
@@ -60,21 +65,21 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="experience", type="string", length=255, nullable=true)
+     * @ORM\Column(name="experience", type="string", nullable=true)
      */
     private $experience;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="salary", type="string", length=255, nullable=true)
+     * @ORM\Column(name="salary", type="string", nullable=true)
      */
     private $salary;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="wantedSalary", type="string", length=255, nullable=true)
+     * @ORM\Column(name="wantedSalary", type="string", nullable=true)
      */
     private $wantedSalary;
 
@@ -84,6 +89,13 @@ class User extends BaseUser
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", nullable=true)
+     */
+    private $phone;
 
 
     /**
@@ -154,7 +166,30 @@ class User extends BaseUser
     }
 
     /**
-     * Set currentJob
+     * Set linkedinId
+     *
+     * @param string $linkedinId
+     *
+     * @return User
+     */
+    public function setLinkedinId($linkedinId)
+    {
+        $this->linkedin_id = $linkedinId;
+        return $this;
+    }
+
+    /**
+     * Get linkedinId
+     *
+     * @return string
+     */
+    public function getLinkedinId()
+    {
+        return $this->linkedin_id;
+
+    }
+
+    /** Set currentJob
      *
      * @param string $currentJob
      *
@@ -319,5 +354,30 @@ class User extends BaseUser
     public function getWantedSalary()
     {
         return $this->wantedSalary;
+
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

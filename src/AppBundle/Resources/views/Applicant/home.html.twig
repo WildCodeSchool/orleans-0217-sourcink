@@ -26,6 +26,9 @@
             </div>
         </div>
     </div>
+    <div id="status">
+
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -43,19 +46,17 @@
             var formData = new FormData();
             formData.append('resume', $('input[type=file]')[0].files[0]);
             $.ajax({
-                url: '/ajax/resume/parse',
+                url: '/ajax/resume/send',
                 type: 'POST',
                 dataType: 'json',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function(response){
-                    var resume = JSON.parse(response.data);
-                    $('#fos_user_registration_form_firstname').val(resume.first_name);
-                    $('#fos_user_registration_form_lastname').val(resume.last_name);
-                    $('#fos_user_registration_form_email').val(resume.emails.primary);
+                    $('#status').html('Votre CV a bien été envoyé');
                 },
                 error: function() {
+                    $('#status').html('Une erreur a eu lieu');
                 }
             });
             $('#loading').hide();

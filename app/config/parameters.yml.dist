@@ -21,4 +21,9 @@ parameters:
     api_key: ~
     api_url: 'https://api.catsone.com/v3/'
 
+    oauth.linkedin.id: ~
+    oauth.linkedin.secret: ~
+    
+    link_site: ~
+
 
