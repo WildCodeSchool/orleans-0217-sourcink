@@ -28,67 +28,21 @@ class JobController extends Controller
 
 
         foreach ($data->_embedded->jobs as $job) {
-            $offers[$job->id] = [
-                'title' => $job->title,
-                'duration' => $job->duration,
-                'description' => $job->description,
-                'city' => trim(ucfirst(strtolower($job->location->city))),
-                'statut' => $job->_embedded->status->title,
-                'maj' => $job->date_modified,
-                'debut' => $job->start_date,
-                'id' => $job->id,
-            ];
-        }
-        $towns = array_column($offers, 'city', 'city');
-        $cities = array_unique($towns);
-        $types = array_column($offers, 'duration', 'duration');
-        $durations = array_unique($types);
-
-
-        $form = $this->createFormBuilder($offers)
-            ->setMethod('GET')
-            ->add('city', ChoiceType::class,
+            $offers[$job->id] =
                 [
-                    'choices' => ($cities),
-                ])
-            ->add('duration', ChoiceType::class,
-                [
-                    'choices' => ($durations)
-                ])
-            ->getForm();
+                    'title' => $job->title,
+                    'duration' => $job->duration,
+                    'description' => $job->description,
+                    'city' => trim(ucfirst(strtolower($job->location->city))),
+                    'statut' => $job->_embedded->status->title,
+                    'maj' => $job->date_modified,
+                    'debut' => $job->start_date,
+                    'id' => $job->id,
+                    'attachment_id' => (property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '')
+                ];
 
-        $form->handleRequest($request);
-
-
-        if ($form->isValid() && $form->isSubmitted()) {
-
-            $offers = array();
-            $data = $form->getData();
-
-            $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
-            $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
-
-            $filters = [$contract, $location];
-            $search = $api->searchFilter('jobs/search', $filters);
-
-            if ($search->count > 0) {
-                foreach ($search->_embedded->jobs as $job) {
-                    $offers[$job->id] = [
-                        'title' => $job->title,
-                        'duration' => $job->duration,
-                        'description' => $job->description,
-                        'city' => trim(ucfirst(strtolower($job->location->city))),
-                        'statut' => $job->_embedded->status->title,
-                        'maj' => $job->date_modified,
-                        'debut' => $job->start_date,
-                        'id' => $job->id,
-
-                    ];
-                }
-
-            }
         }
-
+        $link_site = $this->getParameter('link_site');
 
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
@@ -104,9 +58,8 @@ class JobController extends Controller
         return $this->render('AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'form' => $form->createView()
-            ]
-        );
+                'link_site'=>$link_site,
+            ]);
     }
 
     /**
@@ -128,11 +81,9 @@ class JobController extends Controller
         if ($form->isValid() && $form->isSubmitted()) {
 
 
-
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
-
 
 
             return $this->render('AppBundle:Job:response.html.twig');
@@ -148,15 +99,17 @@ class JobController extends Controller
             'statut' => $data->_embedded->status->title,
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
+            'attachments' => $data->_embedded->attachments[0]->id,
+
 
         ];
-
 
         return $this->render('AppBundle:Job:page.html.twig',
             [
                 'offer' => $offer,
                 'form' => $form->createView()
             ]);
+
     }
 }
 

@@ -23,6 +23,7 @@ parameters:
 
     oauth.linkedin.id: ~
     oauth.linkedin.secret: ~
-
+    
+    link_site: ~
 
 
