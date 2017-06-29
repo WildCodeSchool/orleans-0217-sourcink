@@ -22,7 +22,7 @@
                 <td>{{ product.price }}</td>
                 <td>
                     {% if product.picture is not null %}
-                    <img src="{{ asset('img/' ~ product.picture.pictureName) }}" />
+                    <img src="{{ asset('img/' ~ product.picture.pictureName) }}" class="admimage"/>
                 {% endif %}</td>
                 <td>
                     <ul>

@@ -21,7 +21,7 @@
                 <td>{{ category.text }}</td>
                 <td>
                 {% if category.picture is not null %}
-                    <img src="{{ asset('img/' ~ category.picture.pictureName) }}" />
+                    <img src="{{ asset('img/' ~ category.picture.pictureName) }}" class="admimage"/>
                          {% endif %}
                     </td>
                 <td>

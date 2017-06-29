@@ -158,8 +158,15 @@ a h5 {
 .postuler {
     margin-top: 50px;
     margin-bottom: 50px;
+}
 
 .applicant-button {
     margin-top: 15%;
+}
 
+/*CSS admin */
+
+.admimage {
+    width : 80px;
+    height: 80px;
 }
