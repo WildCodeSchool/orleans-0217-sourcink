@@ -15,6 +15,7 @@
 /vendor/
 /web/bundles/
 /web/img/
-Entity/*~
+/src/AppBundle/Entity/*~
+/src/UserBundle/Entity/*~
 .idea/
 .DS_Store
