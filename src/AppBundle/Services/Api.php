@@ -18,6 +18,10 @@ use UserBundle\Entity\User;
  */
 class Api
 {
+    const mobility = 'mobilité géo';
+    const current_job = 'Poste Actuel';
+    const wanted_job = 'Poste voulu';
+    const experience = 'Expérience';
     private $apiUrl;
     private $apiKey;
     private $client;
@@ -130,7 +134,7 @@ class Api
         return $parsing->getBody()->getContents();
     }
 
-    public function createCandidateResume($resumeJson)
+    public function updateCandidatResume($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
         $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
@@ -143,32 +147,42 @@ class Api
                 "last_name" => $resumeData->last_name,
                 "emails" => [
                     "primary" => $resumeData->emails->primary
-                ]
+                ],
+                "title" => $resumeData->title,
+                "current_pay" => $resumeData->current_pay,
+                "desired_pay" => $resumeData->desired_pay,
+                "phones" => [
+                    "cell" => $resumeData->phones
+                ],
             ]
         ]);
         return $candidate->getHeaders()['Location'][0];
     }
+
     public function candidateCustomFields()
     {
         $customFields = $this->getClient()->request('GET', 'candidates/custom_fields', [
             'headers' => [
-                'Authorization' => 'Token '.$this->getApiKey(),
+                'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/json'
             ],
         ]);
         return json_decode($customFields->getBody()->getContents())->_embedded->custom_fields;
     }
+
     public function createCandidateUser(User $user)
     {
         $fields = $this->candidateCustomFields();
-        $customFields=[];
-        foreach($fields as $field){
-            if($field->name=='mobilité géo'){
+        $customFields = [];
+        foreach ($fields as $field) {
+            if ($field->name == self::mobility) {
                 $value = $user->getMobility();
-            }else if($field->name=='Poste Actuel'){
+            } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
-            }else {
+            } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
+            } else if ($field->name == self::experience) {
+                $value = $user->getExperience();
             }
             $customFields[] = ['id' => $field->id, 'value' => $value];
         }
@@ -186,7 +200,10 @@ class Api
                 "title" => $user->getTitle(),
                 "current_pay" => $user->getSalary(),
                 "desired_pay" => $user->getWantedSalary(),
-                $customFields
+                "phones" => [
+                    "cell" => $user->getPhone()
+                ],
+                "custom_fields" => $customFields
             ]
         ]);
         return $candidate->getHeaders();
@@ -207,15 +224,15 @@ class Api
     public function updateCandidate(User $user, $catsUser)
     {
         $fields = $this->candidateCustomFields();
-        $customFields=[];
-        foreach($fields as $field){
-            if($field->name=='mobilité géo'){
+        $customFields = [];
+        foreach ($fields as $field) {
+            if ($field->name == self::mobility) {
                 $value = $user->getMobility();
-            }else if($field->name=='Poste Actuel'){
+            } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
-            }else if($field->name=='Poste voulu'){
+            } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
-            }else if($field->name=='Expérience'){
+            } else if ($field->name == self::experience) {
                 $value = $user->getExperience();
             }
             $customFields[] = ["id" => $field->id, "value" => $value];
@@ -234,13 +251,15 @@ class Api
                 "title" => $user->getTitle(),
                 "current_pay" => $user->getSalary(),
                 "desired_pay" => $user->getWantedSalary(),
+                "phones" => [
+                    "cell" => $user->getPhone()
+                ],
                 "custom_fields" => $customFields
             ]
         ]);
         return $update;
     }
-
-
+  
     public function apply($user, $id)
     {
 
