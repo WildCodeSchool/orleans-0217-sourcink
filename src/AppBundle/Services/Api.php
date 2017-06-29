@@ -174,7 +174,7 @@ class Api
         return $update;
     }
 
-//
+
     public function apply($user, $id)
     {
 
@@ -191,7 +191,9 @@ class Api
                 'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
             ]);
 
-            return $apply;
+        return $apply;
     }
+
+
 }
 
