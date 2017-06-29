@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-content"
                     {% if offer.attachment_id is not empty %}
-                        style="background-image :url(https://sourceinktest.catsone.com/index.php?m=attachments&a=get&siteId=61444&attachmentId={{ offer.attachment_id }});"
+                        style="background-image :url(https://sourceinktest.catsone.com/index.php?m=attachments&a=get&siteId={{ id_site }}&attachmentId={{ offer.attachment_id }});"
                     {% endif %}
             >
                 <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}

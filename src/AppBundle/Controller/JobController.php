@@ -42,7 +42,7 @@ class JobController extends Controller
                 ];
 
         }
-
+        $id_site = $this->getParameter('id_site');
 
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
@@ -58,6 +58,7 @@ class JobController extends Controller
         return $this->render('AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
+                'id_site'=>$id_site,
             ]);
     }
 
