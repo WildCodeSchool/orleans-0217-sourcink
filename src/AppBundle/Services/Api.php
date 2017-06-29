@@ -240,20 +240,24 @@ class Api
         return $update;
     }
 
-
-
-    public function searchFilter($query, $params)
+//
+    public function apply($user, $id)
     {
-        $filters = json_encode(['and' => $params]);
-        $data = $this->getClient()->request('POST', $query . '?query=', [
-            'headers' => [
-                'Authorization' => 'Token ' . $this->getApiKey(),
-                'content-type' => 'application/json'
-            ],
-            'body' => $filters
 
-        ]);
+        $candidate = $user->id;
+        $job = $id;
 
-        return json_decode($data->getBody()->getContents());
+
+        $apply = $this->getClient()->request('POST', 'pipelines',
+            [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey(),
+                    'content-type' => 'application/json'
+                ],
+                'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
+            ]);
+
+            return $apply;
     }
 }
+
