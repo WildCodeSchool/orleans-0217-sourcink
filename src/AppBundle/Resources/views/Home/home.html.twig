@@ -1,9 +1,14 @@
 {% extends "AppBundle:Base:layout.html.twig" %}
+{% block header %}
+    {% include('AppBundle:Home:header.html.twig') %}
+{% endblock %}
 {% block content %}
     {% include('AppBundle:Home:video.html.twig') %}
-    {% include('AppBundle:Home:expertise.html.twig') %}
-    {% include ('AppBundle:Home:expertise_mobile.html.twig') %}
-    {% include('AppBundle:Home:category.html.twig') %}
-    {% include('AppBundle:Home:job.html.twig') %}
-    {% include('AppBundle:Home:team.html.twig') %}
+    <div class="container">
+        {% include('AppBundle:Home:expertise.html.twig') %}
+        {% include ('AppBundle:Home:expertise&category_mobile.html.twig') %}
+        {% include('AppBundle:Home:category.html.twig') %}
+        {% include('AppBundle:Home:job.html.twig') %}
+        {% include('AppBundle:Home:team.html.twig') %}
+    </div>
 {% endblock %}

@@ -1,13 +1,12 @@
 <h2 class="center" id="team">Notre Equipe</h2>
 <div class="row">
     {% for person in team %}
-
-        <div class="col s3">
+        <div class="col s12 m6">
             <div class="card">
                 <div class="card-image">
-                    <img src="{{ asset('img/' ~ person.picture.pictureName) }}">
+                    <img src="http://placehold.it/500x500">
                     <span class="card-title">{{ person.name }}</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light blue" href="{{ person.linkedin }}"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn-floating halfway-fab waves-effect waves-light blue"><i class="fa fa-linkedin"></i></a>
                 </div>
                 <div class="card-content">
                     <p>{{ person.text }}</p>

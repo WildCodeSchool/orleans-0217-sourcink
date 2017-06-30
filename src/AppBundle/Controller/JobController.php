@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -22,9 +23,7 @@ class JobController extends Controller
 
     public function jobAction(Api $api, Request $request)
     {
-
         $data = $api->get('jobs');
-
 
         foreach ($data->_embedded->jobs as $job) {
             $offers[$job->id] = [
@@ -32,106 +31,35 @@ class JobController extends Controller
                 'duration' => $job->duration,
                 'description' => $job->description,
                 'city' => trim(ucfirst(strtolower($job->location->city))),
-                'statut' => $job->_embedded->status->title,
+                'statut'=>$job->_embedded->status->title,
                 'maj' => $job->date_modified,
-                'debut' => $job->start_date,
-                'id' => $job->id,
+                'debut' => $job ->start_date,
             ];
         }
-        $towns = array_column($offers, 'city', 'city');
-        $cities = array_unique($towns);
-        $types = array_column($offers, 'duration', 'duration');
-        $durations = array_unique($types);
+        $town = array_column($offers, 'city');
+        $city = array_unique($town);
+        $type = array_column($offers, 'duration');
+        $duration = array_unique($type);
 
 
         $form = $this->createFormBuilder($offers)
-            ->setMethod('GET')
-            ->add('city', ChoiceType::class, ['choices' => ($cities),
-            ])
-            ->add('duration', ChoiceType::class, ['choices' => ($durations)
-            ])
-            ->getForm();
+                    ->setMethod('GET')
+                    ->add ('title', SearchType::class)
+                    ->add ('city', ChoiceType::class)
+                    ->add ('duration', ChoiceType::class)
+                    ->getForm();
 
-        $form->handleRequest($request);
+        $form -> handleRequest($request);
 
-
+        $duration = $title = $city = '';
 
         if ($form->isValid() && $form->isSubmitted()) {
-
-            $offers = array();
-            $data = $form->getData();
-
-            $contract = ['field' => 'duration', 'filter' => 'contains', 'value' => $data['duration']];
-            $location = ['field' => 'location.city', 'filter' => 'contains', 'value' => $data['city']];
-
-            $filters = [$contract, $location];
-            $search = $api->searchFilter('jobs/search', $filters);
-
-            if ($search->count > 0) {
-                foreach ($search->_embedded->jobs as $job) {
-                    $offers[$job->id] = [
-                        'title' => $job->title,
-                        'duration' => $job->duration,
-                        'description' => $job->description,
-                        'city' => trim(ucfirst(strtolower($job->location->city))),
-                        'statut' => $job->_embedded->status->title,
-                        'maj' => $job->date_modified,
-                        'debut' => $job->start_date,
-                        'id' => $job->id,
-                    ];
-                }
-
-            }
+            $title = $offers[$job->id] = [
+                'title' => $job->title];
         }
 
+        return $this->render('AppBundle:Job:home.html.twig', ['offers' => $offers, 'citys' => $city, 'durations' => $duration, 'titles' => $title, 'form' => $form->createView()]);
 
+        }
 
-        /**
-         * @var $pagination "Knp\Component\Pager\Paginator"
-         * */
-        $pagination = $this->get('knp_paginator');
-        $results = $pagination->paginate(
-            $offers,
-            $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 9)
-        );
-
-
-        return $this->render('AppBundle:Job:home.html.twig',
-            [
-                'offers' => $results,
-                'form' => $form->createView()
-            ]
-        );
-    }
-
-    /**
-     * @Route("/{id}", name="job_page")
-     */
-    public
-    function jobPage(Api $service, $id)
-    {
-        $data = $service->getId('jobs', $id);
-
-        $offer = [
-            'id' => $data->id,
-            'title' => $data->title,
-            'duration' => $data->duration,
-            'description' => $data->description,
-            'city' => trim(ucfirst(strtolower($data->location->city))),
-            'statut' => $data->_embedded->status->title,
-            'maj' => $data->date_modified,
-            'debut' => $data->start_date,
-
-        ];
-
-
-        return $this->render('AppBundle:Job:page.html.twig', ['offer' => $offer]);
-    }
 }
-
- 
-
-
-
-

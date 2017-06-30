@@ -49,20 +49,6 @@ class Header
      */
     private $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nameUrl", type="string", length=255)
-     */
-    private $nameUrl;
-
 
     /**
      * Get id
@@ -162,53 +148,5 @@ class Header
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Header
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set nameUrl
-     *
-     * @param string $nameUrl
-     *
-     * @return Header
-     */
-    public function setNameUrl($nameUrl)
-    {
-        $this->nameUrl = $nameUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get nameUrl
-     *
-     * @return string
-     */
-    public function getNameUrl()
-    {
-        return $this->nameUrl;
     }
 }

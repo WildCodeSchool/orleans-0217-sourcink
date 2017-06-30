@@ -6,7 +6,7 @@
                 <div class="col s12 m6 center">
                     <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
                     <h3 class="red-text">{{ category.title }}</h3>
-                    <p class="center">{{ category.text | raw }} </p>
+                    <p class="center">Cette solution propose les profils suivants : </p>
                     {% for work in category.works %}
                         <p class="center">{{ work.name }}</p>
                     {% endfor %}
