@@ -18,30 +18,11 @@ class ProfileType extends AbstractType
             ->add('title')
             ->add('currentJob')
             ->add('wantedJob')
-            ->add('mobility', ChoiceType::class, array(
-                'choices' => array(
-                    'Auvergne-Rhône-Alpes' => 'Auvergne-Rhône-Alpes',
-                    'Bourgogne-Franche-Comté' => 'Bourgogne-Franche-Comté',
-                    'Bretagne' => 'Bretagne',
-                    'Centre-Val de Loire' => 'Centre-Val de Loire',
-                    'Corse' => 'Corse',
-                    'Grand Est' => 'Grand Est',
-                    'Hauts-de-France' => 'Hauts-de-France',
-                    'Île-de-France' => 'Île-de-France',
-                    'Normandie' => 'Normandie',
-                    'Nouvelle-Aquitaine' => 'Nouvelle-Aquitaine',
-                    'Occitanie' => 'Occitanie',
-                    'Pays de la Loire' => 'Pays de la Loire',
-                    'Provence-Alpes-Côte d\'Azur' => 'Provence-Alpes-Côte d\'Azur',
-                    'Guadeloupe' => 'Guadeloupe',
-                    'Guyane' => 'Guyane',
-                    'Martinique' => 'Martinique',
-                    'Réunion' => 'Réunion',
-                    'Mayotte' => 'Mayotte',
-                    'Etranger - Union Européenne' => 'Etranger - Union Européenne',
-                    'Etranger - Hors Union Européenne' => 'Etranger - Hors Union Européenne',
+            ->add(
+                'mobility', ChoiceType::class, array(
+                    'choices' => $options['mobility']
                 )
-            ))
+            )
             ->add('experience')
             ->add('salary')
             ->add('wantedSalary')
@@ -51,8 +32,13 @@ class ProfileType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults(
+            array(
+                'mobility' => ''
+            )
+        );
     }
+
     public function getBlockPrefix()
     {
         return 'app_bundle_profile_type';

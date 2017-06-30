@@ -21,9 +21,11 @@ class TeamType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'AppBundle\Entity\Team'
-        ));
+            )
+        );
     }
 
     /**

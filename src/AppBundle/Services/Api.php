@@ -14,6 +14,7 @@ use UserBundle\Entity\User;
 
 /**
  * Class Api
+ *
  * @package AppBundle\Services
  */
 class Api
@@ -56,12 +57,14 @@ class Api
     public function get($query)
     {
 
-        $data = $this->getClient()->request('GET', $query, [
+        $data = $this->getClient()->request(
+            'GET', $query, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'Content-Type' => 'application/json'
             ]
-        ]);
+            ]
+        );
         return json_decode($data->getBody()->getContents());
     }
 
@@ -104,41 +107,48 @@ class Api
 
     public function getId($query, $id)
     {
-        $data = $this->getClient()->request('GET', $query . '/' . $id, [
+        $data = $this->getClient()->request(
+            'GET', $query . '/' . $id, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'Content-Type' => 'application/json'
             ]
-        ]);
+            ]
+        );
         return json_decode($data->getBody()->getContents());
     }
 
     public function getSearch($query, $search)
     {
-        $data = $this->getClient()->request('GET', $query . '/search?query=' . $search, [
+        $data = $this->getClient()->request(
+            'GET', $query . '/search?query=' . $search, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey()
             ]
-        ]);
+            ]
+        );
         return json_decode($data->getBody()->getContents());
     }
 
     public function parsing($request)
     {
-        $parsing = $this->getClient()->request('POST', 'attachments/parse', [
+        $parsing = $this->getClient()->request(
+            'POST', 'attachments/parse', [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/octet-stream'
             ],
             'body' => fopen(realpath($request->files->get('resume')), 'r')
-        ]);
+            ]
+        );
         return $parsing->getBody()->getContents();
     }
 
     public function updateCandidatResume($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
-        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
+        $candidate = $this->getClient()->request(
+            'POST', 'candidates?check_duplicate=true', [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/json'
@@ -156,18 +166,21 @@ class Api
                     "cell" => $resumeData->phones
                 ],
             ]
-        ]);
+            ]
+        );
         return $candidate->getHeaders()['Location'][0];
     }
 
     public function candidateCustomFields()
     {
-        $customFields = $this->getClient()->request('GET', 'candidates/custom_fields', [
+        $customFields = $this->getClient()->request(
+            'GET', 'candidates/custom_fields', [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/json'
             ],
-        ]);
+            ]
+        );
         return json_decode($customFields->getBody()->getContents())->_embedded->custom_fields;
     }
 
@@ -187,7 +200,8 @@ class Api
             }
             $customFields[] = ['id' => $field->id, 'value' => $value];
         }
-        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
+        $candidate = $this->getClient()->request(
+            'POST', 'candidates?check_duplicate=true', [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/json'
@@ -206,19 +220,22 @@ class Api
                 ],
                 "custom_fields" => $customFields
             ]
-        ]);
+            ]
+        );
         return $candidate->getHeaders();
     }
 
     public function sendResume($request, $id)
     {
-        $resume = $this->getClient()->request('POST', 'candidates/' . $id . '/resumes?filename=cv.pdf', [
+        $resume = $this->getClient()->request(
+            'POST', 'candidates/' . $id . '/resumes?filename=cv.pdf', [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/octet-stream'
             ],
             'body' => fopen(realpath($request->files->get('resume')), 'r')
-        ]);
+            ]
+        );
         return $resume;
     }
 
@@ -238,7 +255,8 @@ class Api
             }
             $customFields[] = ["id" => $field->id, "value" => $value];
         }
-        $update = $this->getClient()->request('PUT', 'candidates/' . $catsUser->id, [
+        $update = $this->getClient()->request(
+            'PUT', 'candidates/' . $catsUser->id, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/octet-stream'
@@ -257,29 +275,26 @@ class Api
                 ],
                 "custom_fields" => $customFields
             ]
-        ]);
+            ]
+        );
         return $update;
     }
   
     public function apply($user, $id)
     {
-
         $candidate = $user->id;
         $job = $id;
-
-
-        $apply = $this->getClient()->request('POST', 'pipelines',
+        $apply = $this->getClient()->request(
+            'POST', 'pipelines',
             [
                 'headers' => [
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/json'
                 ],
                 'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
-            ]);
-
+            ]
+        );
         return $apply;
     }
-
-
 }
 

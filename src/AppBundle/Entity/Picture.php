@@ -21,7 +21,6 @@ class Picture
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     *
      */
     private $id;
 
@@ -70,8 +69,9 @@ class Picture
     {
         $this->pictureFile = $picture;
 
-        if ($picture)
+        if ($picture) {
             $this->updatedAt = new \DateTimeImmutable();
+        }
 
         return $this;
     }

@@ -169,7 +169,6 @@ class Category
      * @return Category
      */
     public function setPicture(Picture $picture = null)
-
     {
         $this->picture = $picture;
 

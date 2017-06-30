@@ -17,7 +17,6 @@ class AjaxController extends Controller
      *     "/ajax/resume/parse",
      *     name="ajax_resume_parse",
      * )
-     *
      */
     public function resumeParsing(Request $request, Api $api)
     {

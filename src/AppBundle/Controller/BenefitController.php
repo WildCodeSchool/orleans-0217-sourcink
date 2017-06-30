@@ -21,7 +21,7 @@ class BenefitController extends Controller
     /**
      * Lists all benefit entities.
      *
-     * @Route("/", name="benefit_index")
+     * @Route("/",    name="benefit_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -29,15 +29,17 @@ class BenefitController extends Controller
         $em = $this->getDoctrine()->getManager();
         $benefits = $em->getRepository('AppBundle:Benefit')->findAll();
         $products = $em->getRepository('AppBundle:Product')->findAll();
-        return $this->render('Admin/benefit/index.html.twig', array(
+        return $this->render(
+            'Admin/benefit/index.html.twig', array(
             'benefits' => $benefits, 'products' => $products,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new benefit entity.
      *
-     * @Route("/new", name="benefit_new")
+     * @Route("/new",  name="benefit_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -58,10 +60,12 @@ class BenefitController extends Controller
             $em->flush();
             return $this->redirectToRoute('benefit_show', array('id' => $benefit->getId()));
         }
-        return $this->render('Admin/benefit/new.html.twig', array(
+        return $this->render(
+            'Admin/benefit/new.html.twig', array(
             'benefit' => $benefit,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -73,10 +77,12 @@ class BenefitController extends Controller
     public function showAction(Benefit $benefit)
     {
         $deleteForm = $this->createDeleteForm($benefit);
-        return $this->render('Admin/benefit/show.html.twig', array(
+        return $this->render(
+            'Admin/benefit/show.html.twig', array(
             'benefit' => $benefit,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -98,7 +104,7 @@ class BenefitController extends Controller
      * Displays a form to edit an existing benefit entity.
      *
      * @Route("/{id}/edit", name="benefit_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Benefit $benefit)
     {
@@ -109,17 +115,19 @@ class BenefitController extends Controller
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('benefit_edit', array('id' => $benefit->getId()));
         }
-        return $this->render('Admin/benefit/edit.html.twig', array(
+        return $this->render(
+            'Admin/benefit/edit.html.twig', array(
             'benefit' => $benefit,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a benefit entity.
      *
-     * @Route("/{id}", name="benefit_delete")
+     * @Route("/{id}",   name="benefit_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Benefit $benefit)
