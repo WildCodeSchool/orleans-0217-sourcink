@@ -10,13 +10,13 @@
 
     {% if category.products|length == 3 %}
     <div class="col s12 m4 center">
-        <img class="circle responsive-img img" src="{{ asset('img/'~product.picture.pictureName) }}">
+        <img class="circle responsive-img img" id="{{ product.id }}" src="{{ asset('img/'~product.picture.pictureName) }}">
         <h3 class="grey-text">{{ product.title }}</h3>
         <p>{{ product.text }}</p>
     </div>
         {% elseif category.products|length == 1  %}
         <div class="center">
-            <img class="circle responsive-img img" src="{{ asset('img/'~product.picture.pictureName) }}">
+            <img class="circle responsive-img img" id="{{ product.id }}"  src="{{ asset('img/'~product.picture.pictureName) }}">
             <h3 class="grey-text">{{ product.title }}</h3>
             <p>{{ product.text }}</p>
         </div>

@@ -173,3 +173,7 @@ a h5 {
 .black-text {
     border-left: 10px solid #00A1C0 ;
 }
+
+#resumeForm {
+    padding-top: 90px;
+}

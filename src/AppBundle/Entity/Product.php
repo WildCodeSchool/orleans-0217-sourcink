@@ -38,6 +38,8 @@ class Product
      */
     private $text;
 
+
+
     /**
      * @var string
      *
@@ -118,6 +120,9 @@ class Product
     {
         return $this->text;
     }
+
+
+
 
     /**
      * Set price
