@@ -9,6 +9,7 @@
 namespace AppBundle\Services;
 
 use GuzzleHttp\Client;
+use UserBundle\Entity\User;
 
 
 /**
@@ -17,6 +18,10 @@ use GuzzleHttp\Client;
  */
 class Api
 {
+    const mobility = 'mobilité géo';
+    const current_job = 'Poste Actuel';
+    const wanted_job = 'Poste voulu';
+    const experience = 'Expérience';
     private $apiUrl;
     private $apiKey;
     private $client;
@@ -130,7 +135,7 @@ class Api
         return $parsing->getBody()->getContents();
     }
 
-    public function createCandidate($resumeJson)
+    public function updateCandidatResume($resumeJson)
     {
         $resumeData = json_decode($resumeJson);
         $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
@@ -143,10 +148,66 @@ class Api
                 "last_name" => $resumeData->last_name,
                 "emails" => [
                     "primary" => $resumeData->emails->primary
-                ]
+                ],
+                "title" => $resumeData->title,
+                "current_pay" => $resumeData->current_pay,
+                "desired_pay" => $resumeData->desired_pay,
+                "phones" => [
+                    "cell" => $resumeData->phones
+                ],
             ]
         ]);
         return $candidate->getHeaders()['Location'][0];
+    }
+
+    public function candidateCustomFields()
+    {
+        $customFields = $this->getClient()->request('GET', 'candidates/custom_fields', [
+            'headers' => [
+                'Authorization' => 'Token ' . $this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+        ]);
+        return json_decode($customFields->getBody()->getContents())->_embedded->custom_fields;
+    }
+
+    public function createCandidateUser(User $user)
+    {
+        $fields = $this->candidateCustomFields();
+        $customFields = [];
+        foreach ($fields as $field) {
+            if ($field->name == self::mobility) {
+                $value = $user->getMobility();
+            } else if ($field->name == self::current_job) {
+                $value = $user->getCurrentJob();
+            } else if ($field->name == self::wanted_job) {
+                $value = $user->getWantedJob();
+            } else if ($field->name == self::experience) {
+                $value = $user->getExperience();
+            }
+            $customFields[] = ['id' => $field->id, 'value' => $value];
+        }
+        $candidate = $this->getClient()->request('POST', 'candidates?check_duplicate=true', [
+            'headers' => [
+                'Authorization' => 'Token ' . $this->getApiKey(),
+                'content-type' => 'application/json'
+            ],
+            'json' => [
+                "first_name" => $user->getFirstname(),
+                "last_name" => $user->getLastname(),
+                "emails" => [
+                    "primary" => $user->getEmail()
+                ],
+                "title" => $user->getTitle(),
+                "current_pay" => $user->getSalary(),
+                "desired_pay" => $user->getWantedSalary(),
+                "phones" => [
+                    "cell" => $user->getPhone()
+                ],
+                "custom_fields" => $customFields
+            ]
+        ]);
+        return $candidate->getHeaders();
     }
 
     public function sendResume($request, $id)
@@ -161,34 +222,64 @@ class Api
         return $resume;
     }
 
-    public function updateCandidate($user)
+    public function updateCandidate(User $user, $catsUser)
     {
-        $update = $this->getClient()->request('PUT', 'candidates/' . $user->id, [
+        $fields = $this->candidateCustomFields();
+        $customFields = [];
+        foreach ($fields as $field) {
+            if ($field->name == self::mobility) {
+                $value = $user->getMobility();
+            } else if ($field->name == self::current_job) {
+                $value = $user->getCurrentJob();
+            } else if ($field->name == self::wanted_job) {
+                $value = $user->getWantedJob();
+            } else if ($field->name == self::experience) {
+                $value = $user->getExperience();
+            }
+            $customFields[] = ["id" => $field->id, "value" => $value];
+        }
+        $update = $this->getClient()->request('PUT', 'candidates/' . $catsUser->id, [
             'headers' => [
                 'Authorization' => 'Token ' . $this->getApiKey(),
                 'content-type' => 'application/octet-stream'
             ],
             'json' => [
-                "title" => $user->title,
+                "first_name" => $user->getFirstname(),
+                "last_name" => $user->getLastname(),
+                "emails" => [
+                    "primary" => $user->getEmail()
+                ],
+                "title" => $user->getTitle(),
+                "current_pay" => $user->getSalary(),
+                "desired_pay" => $user->getWantedSalary(),
+                "phones" => [
+                    "cell" => $user->getPhone()
+                ],
+                "custom_fields" => $customFields
             ]
         ]);
         return $update;
     }
-
-
-
-    public function searchFilter($query, $params)
+  
+    public function apply($user, $id)
     {
-        $filters = json_encode(['and' => $params]);
-        $data = $this->getClient()->request('POST', $query . '?query=', [
-            'headers' => [
-                'Authorization' => 'Token ' . $this->getApiKey(),
-                'content-type' => 'application/json'
-            ],
-            'body' => $filters
 
-        ]);
+        $candidate = $user->id;
+        $job = $id;
 
-        return json_decode($data->getBody()->getContents());
+
+        $apply = $this->getClient()->request('POST', 'pipelines',
+            [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey(),
+                    'content-type' => 'application/json'
+                ],
+                'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
+            ]);
+
+        return $apply;
     }
+
+
 }
+

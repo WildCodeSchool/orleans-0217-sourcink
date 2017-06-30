@@ -23,11 +23,23 @@ class AjaxController extends Controller
     {
         if ($request->isXmlHttpRequest()) {
             $resumeJson = $api->parsing($request);
-            $url = $api->createCandidate($resumeJson);
-            $urlExplode = explode('/',$url);
-            $id = $urlExplode[5];
-            $api->sendResume($request, $id);
-            return new JsonResponse(array('data'=>$resumeJson));
+            return new JsonResponse(array('data' => $resumeJson));
+        }
+        return $this->redirectToRoute('app_homepage');
+    }
+
+    /**
+     * @Route(
+     *     "/ajax/resume/send",
+     *     name="ajax_resume_send",
+     * )
+     */
+    public function resumeSend(Request $request, Api $api)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $candidat = $api->getSearch('candidates', $this->getUser()->getEmail());
+            $api->sendResume($request, $candidat->_embedded->candidates[0]->id);
+            return new Response(1);
         }
         return $this->redirectToRoute('app_homepage');
     }

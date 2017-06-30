@@ -1,36 +1,34 @@
-
 <h2 class="center" id="jobs">Nos Jobs</h2>
 
 {% for offer in offers %}
 
 
-<div class="col s12 m4">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}<i class="material-icons right">add</i></span>
 
-                    <p class="grey-text">{{ offer.city | raw }}</p>
-                    <p>{{ offer.debut| date('d/m/y') }}</p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{ offer.title | raw }}<i class="material-icons right">close</i></span>
-                    <p>{{ offer.duration | raw }}</p>
-                    <p>{{ offer.debut| date('d/m/y') }}</p>
-
-
-                    <a class="waves-effect waves-light btn" href="{{ path('job_page', {'id': offer.id})}}">Voir plus</a>
-                </div>
-
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-content"
+                    {% if offer.attachment_id is not empty %}
+                        style="background-image :url({{ link_site }}{{ offer.attachment_id }});"
+                    {% endif %}
+            >
+                <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}
+                    <i class="material-icons right">add</i></span>
+                <p class="grey-text">{{ offer.city | raw }}</p>
+                <p>{{ offer.debut| date('d/m/y') }}</p>
             </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{ offer.title | raw }}
+                    <i class="material-icons right">close</i></span>
+                <p>{{ offer.duration | raw }}</p>
+                <p>{{ offer.debut| date('d/m/y') }}</p>
 
-    {% endfor %}
 
+                <a class="waves-effect waves-light btn" href="{{ path('job_page', {'id': offer.id}) }}">Voir plus</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 
-
-
-</div>
-
-<div class="row"></div>
 
 <div class="row"></div>
 

@@ -3,4 +3,63 @@
     {% include('AppBundle:Applicant:header.html.twig') %}
 {% endblock %}
 {% block content %}
+    <form id="resumeForm">
+        <div class="file-field input-field">
+            <div class="btn blue">
+                <span>CV</span>
+                <input type="file" id="resume">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+            <button class="btn-large red right" id="send">Envoyer</button>
+        </div>
+    </form>
+    <div class="preloader-wrapper big active" id="loading">
+        <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <div id="status">
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        $(document).ready(function(){
+            $('#loading').hide();
+        });
+        $('#send').on('click',function(e){
+            $('#loading').show();
+            event.preventDefault();
+            var resume = $('#resume').val();
+            var formData = new FormData();
+            formData.append('resume', $('input[type=file]')[0].files[0]);
+            $.ajax({
+                url: '/ajax/resume/send',
+                type: 'POST',
+                dataType: 'json',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    $('#status').html('Votre CV a bien été envoyé');
+                },
+                error: function() {
+                    $('#status').html('Une erreur a eu lieu');
+                }
+            });
+            $('#loading').hide();
+        });
+    </script>
 {% endblock %}

@@ -1,27 +1,4 @@
 {% trans_default_domain 'FOSUserBundle' %}
-<form id="resumeForm" enctype="multipart/formdata" method="POST" action="/ajax/resume/parse">
-    <div class="file-field input-field">
-        <div class="btn blue">
-            <span>CV</span>
-            <input type="file" id="resume">
-        </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-        </div>
-        <button class="btn-large red right" id="send">Envoyer</button>
-    </div>
-</form>
-<div class="preloader-wrapper big active" id="loading">
-    <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-            <div class="circle"></div>
-        </div><div class="gap-patch">
-            <div class="circle"></div>
-        </div><div class="circle-clipper right">
-            <div class="circle"></div>
-        </div>
-    </div>
-</div>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id': 'registration_form'}}) }}
 <div class="form-group" id="fos_user_registration_form">
     <div class="row">
@@ -52,6 +29,7 @@
         <label for="password" class="active">{{ 'security.register.passwordConfirm'|trans }}</label>
         {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control input-group', 'placeholder': 'security.register.passwordConfirmPlaceholder'|trans } }) }}
         {{ form_errors(form.plainPassword.second) }}
+    </div>
     </div>
     <div class="center">
         <input type="submit" value="{{ 'security.register.submit'|trans }}" class="btn-large">

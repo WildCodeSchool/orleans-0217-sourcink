@@ -23,6 +23,17 @@ security:
         firstnamePlaceholder: 'Entrez votre prénom'
         lastname: 'Nom'
         lastnamePlaceholder: 'Entrez votre nom'
+        currentJob: 'Votre emploi actuel'
+        currentJobPlaceHolder: 'Entrez votre emploi actuel'
+        wantedJob: 'Votre emploi souhaité'
+        wantedJobPlaceHolder: 'Votre emploi souhaité'
+        wantedJobPlaceHolder: 'Entrez votre emploi souhaité'
+        mobility: 'Mobilité géographique'
+        mobilityPlaceHolder: 'Entrez votre mobilité géoprahique'
+        experience: "Années d'expérience"
+        experiencePlaceHolder: "Entrez votre nombre d'années d'expérience"
+        salary: "Salaire souhaité"
+        salaryPlaceHolder: "Entrez votre salaire souhaité"
     confirmed:
         text: 'Vous êtes maintenant inscrit. Félicitations !'
         button: 'Continuer'
