@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
@@ -58,15 +59,14 @@ class JobController extends Controller
         return $this->render('AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'link_site'=>$link_site,
+                'link_site' => $link_site,
             ]);
     }
 
     /**
      * @Route("/{id}", name="job_page")
      */
-    public
-    function jobPage(Api $service, $id, Request $request)
+    public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);
 
@@ -84,7 +84,7 @@ class JobController extends Controller
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
-
+            $email->applyJob($mailer, $this->getUser());
 
             return $this->render('AppBundle:Job:response.html.twig');
         }

@@ -262,11 +262,8 @@ class Api
   
     public function apply($user, $id)
     {
-
         $candidate = $user->id;
         $job = $id;
-
-
         $apply = $this->getClient()->request('POST', 'pipelines',
             [
                 'headers' => [
@@ -275,10 +272,7 @@ class Api
                 ],
                 'body' => '{"candidate_id": ' . $candidate . ',"job_id": ' . $job . '}'
             ]);
-
         return $apply;
     }
-
-
 }
 
