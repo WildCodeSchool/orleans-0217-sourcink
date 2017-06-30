@@ -1,8 +1,30 @@
-<h2 class="center" id="expertise">Nos Produits</h2>
+   <div class="title">
+        <h3 class="black-text">Solution <span class="blue-text">{{ category.title }}</h3></span>
+    </div>
+    <div class="left-align">
+        <p>{{ category.text }}</p>
+    </div>
+
+<div class="row">
 {% for product in category.products %}
+
+    {% if category.products|length == 3 %}
     <div class="col s12 m4 center">
         <img class="circle responsive-img img" src="{{ asset('img/'~product.picture.pictureName) }}">
-        <h3 class="red-text">{{ product.title }}</h3>
+        <h3 class="grey-text">{{ product.title }}</h3>
         <p>{{ product.text }}</p>
     </div>
+        {% elseif category.products|length == 1  %}
+        <div class="center">
+            <img class="circle responsive-img img" src="{{ asset('img/'~product.picture.pictureName) }}">
+            <h3 class="grey-text">{{ product.title }}</h3>
+            <p>{{ product.text }}</p>
+        </div>
+            {% endif %}
+
+
 {% endfor %}
+</div>
+
+
+

@@ -57,6 +57,10 @@ li {
     display: inline-block;
 }
 
+#expertise, #category, #jobs, #team {
+    padding-top: 100px;
+}
+
 /* slider videos */
 
 .slider .indicators .indicator-item {
@@ -161,7 +165,11 @@ a h5 {
     margin-top: 15%;
 }
 
-#expertise, #category, #jobs, #team {
-    padding-top: 100px;
+/*Page produit*/
+.title {
+    padding-top: 90px;
 }
 
+.black-text {
+    border-left: 10px solid #00A1C0 ;
+}
