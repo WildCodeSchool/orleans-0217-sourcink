@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\Api;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -16,52 +17,18 @@ class AjaxController extends Controller
      *     "/ajax/resume/parse",
      *     name="ajax_resume_parse",
      * )
+     *
      */
-    public function resumeParsing(Request $request)
+    public function resumeParsing(Request $request, Api $api)
     {
         if ($request->isXmlHttpRequest()) {
-            $client = new Client([
-                'base_uri' => $this->getParameter('app.api.url'),
-            ]);
-            $resume = $_FILES['resume'];
-            $filename = realpath($resume['tmp_name']);
-            //Parsing
-            $resource = fopen($filename, 'r');
-            $parsing = $client->request('POST', 'attachments/parse', [
-                'headers' => [
-                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
-                    'content-type' => 'application/octet-stream'
-                ],
-                'body' => $resource
-            ]);
-            $resumeJson = $parsing->getBody()->getContents();
-            $resumeData = json_decode($resumeJson);
-            $candidate = $client->request('POST', 'candidates?check_duplicate=false', [
-                'headers' => [
-                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
-                    'content-type' => 'application/json'
-                ],
-                'json' => [
-                    "first_name" => $resumeData->first_name,
-                    "last_name" => $resumeData->last_name,
-                    "emails" =>[
-                        "primary"=>$resumeData->emails->primary
-                    ]
-                ]
-            ]);
-            $url = $candidate->getHeaders()['Location'][0];
+            $resumeJson = $api->parsing($request);
+            $url = $api->createCandidate($resumeJson);
             $urlExplode = explode('/',$url);
             $id = $urlExplode[5];
-            //Resume
-            $resume = $client->request('POST', 'candidates/'.$id.'/resumes?filename=cv.pdf', [
-                'headers' => [
-                    'Authorization' => 'Token '.$this->getParameter('app.api.key'),
-                    'content-type' => 'application/octet-stream'
-                ],
-                'body' => fopen($filename, 'r')
-            ]);
+            $api->sendResume($request, $id);
             return new JsonResponse(array('data'=>$resumeJson));
         }
-        return $this->redirectToRoute('main');
+        return $this->redirectToRoute('app_homepage');
     }
 }

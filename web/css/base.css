@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
 }
 
 main {
@@ -89,6 +90,13 @@ video {
     width: 100%;
 }
 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
 @-moz-document url-prefix() {
     .video-container {
         padding-top: 720px;
@@ -101,6 +109,7 @@ video {
     margin: 0;
     height: 232px;
     width: 100%;
+    filter: grayscale(1);
 }
 
 .slider .indicators .indicator-item.active {
@@ -123,7 +132,41 @@ a h5 {
     border-right: black solid;
 }
 
+/*Overlay offres*/
+
+
 .img {
     max-width: 250px;
     max-height: 250px;
+}
+
+
+/*Expertise*/
+
+/*Job Page*/
+.job_title {
+    text-align: center;
+}
+
+.job_detail {
+    font-size: 20px;
+    /*display: flex;
+    justify-content: flex-start;*/
+}
+
+/*Page Job*/
+.postuler {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.applicant-button {
+    margin-top: 15%;
+}
+
+/*CSS admin */
+
+.admimage {
+    width : 80px;
+    height: 80px;
 }
