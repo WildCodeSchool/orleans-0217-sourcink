@@ -6,10 +6,10 @@
                     <img src="{{ asset('media/logoSourcInk.svg') }}"></a>
                 <p class="slogan center hide-on-med-and-down">L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH</p>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#expertise">Notre Expertise</a></li>
-                    <li><a href="#category">Nos Solutions</a></li>
-                    <li><a href="#job">Nos Offres</a></li>
-                    <li><a href="#team">Notre Equipe</a></li>
+                    <li><a href="/#expertise">Notre Expertise</a></li>
+                    <li><a href="/#category">Nos Solutions</a></li>
+                    <li><a href="/#job">Nos Offres</a></li>
+                    <li><a href="/#team">Notre Equipe</a></li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li><a href="{{ path('applicant_update') }}" class="btn red right applicant-button">{{ app.user.username }}</a></li>
                     {% else %}
