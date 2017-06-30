@@ -21,3 +21,6 @@ services:
         arguments:
             $apiUrl: '%api_url%'
             $apiKey: '%api_key%'
+    AppBundle\Services\Email:
+        arguments:
+            $emailAdress: '%mailer_user%'
