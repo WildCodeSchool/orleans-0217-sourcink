@@ -54,7 +54,7 @@ class ApplicantController extends Controller
     public function deleteAction(Api $api)
     {
         $user = $api->getSearch('candidates', $this->getUser()->getEmail());
-        if($user->count>0){
+        if($user->count>0) {
             $api->deleteCandidate($user->_embedded->candidates[0]->id);
         }
         $em = $this->getDoctrine()->getManager();
