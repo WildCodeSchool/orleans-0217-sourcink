@@ -132,6 +132,9 @@ a h5 {
     border-right: black solid;
 }
 
+/*Overlay offres*/
+
+
 .img {
     max-width: 250px;
     max-height: 250px;
@@ -159,4 +162,13 @@ a h5 {
 
 .applicant-button {
     margin-top: 15%;
+
+}
+
+/*CSS admin */
+
+.admimage {
+    width : 80px;
+    height: 80px;
+
 }
