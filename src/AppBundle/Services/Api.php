@@ -225,6 +225,17 @@ class Api
         return $candidate->getHeaders();
     }
 
+    public function deleteCandidate($id)
+    {
+        $data = $this->getClient()->request(
+            'DELETE',  'candidates/'.$id, [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey()
+                ]
+            ]
+        );
+        return json_decode($data->getBody()->getContents());
+    }
     public function sendResume($request, $id)
     {
         $resume = $this->getClient()->request(
