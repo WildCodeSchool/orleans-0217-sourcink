@@ -26,10 +26,15 @@ class ApplicantController extends Controller
      */
     public function updateAction(Request $request, Api $api)
     {
-        $form = $this->createForm(ProfileType::class, $this->getUser());
+        $em = $this->getDoctrine()->getManager();
+        $regions = $em->getRepository('AppBundle:Mobility')->findAll();
+        $mobility = [];
+        foreach ($regions as $region){
+            $mobility[$region->getName()] = $region->getName();
+        }
+        $form = $this->createForm(ProfileType::class, $this->getUser(), array('mobility' => $mobility));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $data = $form->getData();
             $em->persist($data);
             $em->flush();
