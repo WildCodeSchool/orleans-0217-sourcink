@@ -60,13 +60,12 @@ class JobController extends Controller
             [
                 'offers' => $results,
                 'link_site' => $link_site,
-            ]
-        );
+            ]);
     }
 
     /**
      * @Route("/{id}", name="job_page")
-     */
+     */ 
     public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);

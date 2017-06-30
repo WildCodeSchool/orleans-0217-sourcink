@@ -12,6 +12,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+/**
+ * Lists all
+ *
+ * @Route("/admin", name="admin")
+ * @Method("GET")
+ */
 
 class AdminController extends Controller
 {
@@ -19,7 +25,7 @@ class AdminController extends Controller
     /**
      * Lists all
      *
-     * @Route("/indexadmin", name="admin_index")
+     * @Route("/", name="admin_index")
      * @Method("GET")
      */
     public function listAction()
