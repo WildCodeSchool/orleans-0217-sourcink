@@ -22,11 +22,13 @@
                 <p>{{ offer.duration | raw }}</p>
                 <p>{{ offer.debut| date('d/m/y') }}</p>
 
+
                 <a class="waves-effect waves-light btn" href="{{ path('job_page', {'id': offer.id}) }}">Voir plus</a>
             </div>
         </div>
     </div>
 {% endfor %}
+
 
 <div class="row"></div>
 
