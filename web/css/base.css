@@ -160,3 +160,8 @@ a h5 {
 .applicant-button {
     margin-top: 15%;
 }
+
+#expertise, #category, #jobs, #team {
+    padding-top: 100px;
+}
+
