@@ -19,7 +19,6 @@ class JobController extends Controller
 {
     /**
      * @Route("/", name="job_list")
-     *
      */
 
     public function jobAction(Api $api, Request $request)
@@ -56,11 +55,13 @@ class JobController extends Controller
         );
 
 
-        return $this->render('AppBundle:Job:home.html.twig',
+        return $this->render(
+            'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
                 'link_site' => $link_site,
-            ]);
+            ]
+        );
     }
 
     /**
@@ -104,11 +105,13 @@ class JobController extends Controller
 
         ];
 
-        return $this->render('AppBundle:Job:page.html.twig',
+        return $this->render(
+            'AppBundle:Job:page.html.twig',
             [
                 'offer' => $offer,
                 'form' => $form->createView()
-            ]);
+            ]
+        );
 
     }
 }

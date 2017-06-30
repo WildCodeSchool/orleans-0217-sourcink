@@ -102,7 +102,7 @@ class Expertise
     /**
      * Set picture
      *
-     * @param Pictures$picture
+     * @param Pictures $picture
      *
      * @return Expertise
      */

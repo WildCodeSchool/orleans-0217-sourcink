@@ -31,8 +31,10 @@ class HomeController extends Controller
 
         }
 
-        return $this->render('AppBundle:Home:home.html.twig',
-            ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team, ]);
+        return $this->render(
+            'AppBundle:Home:home.html.twig',
+            ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team, ]
+        );
     }
 
 }

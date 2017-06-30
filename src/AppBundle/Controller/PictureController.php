@@ -17,7 +17,7 @@ class PictureController extends Controller
     /**
      * Lists all picture entities.
      *
-     * @Route("/", name="picture_index")
+     * @Route("/",    name="picture_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class PictureController extends Controller
 
         $pictures = $em->getRepository('AppBundle:Picture')->findAll();
 
-        return $this->render('Admin/picture/index.html.twig', array(
+        return $this->render(
+            'Admin/picture/index.html.twig', array(
             'pictures' => $pictures,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new picture entity.
      *
-     * @Route("/new", name="picture_new")
+     * @Route("/new",  name="picture_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class PictureController extends Controller
             return $this->redirectToRoute('picture_show', array('id' => $picture->getId()));
         }
 
-        return $this->render('Admin/picture/new.html.twig', array(
+        return $this->render(
+            'Admin/picture/new.html.twig', array(
             'picture' => $picture,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class PictureController extends Controller
     {
         $deleteForm = $this->createDeleteForm($picture);
 
-        return $this->render('Admin/picture/show.html.twig', array(
+        return $this->render(
+            'Admin/picture/show.html.twig', array(
             'picture' => $picture,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing picture entity.
      *
      * @Route("/{id}/edit", name="picture_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Picture $picture)
     {
@@ -91,17 +97,19 @@ class PictureController extends Controller
             return $this->redirectToRoute('picture_edit', array('id' => $picture->getId()));
         }
 
-        return $this->render('Admin/picture/edit.html.twig', array(
+        return $this->render(
+            'Admin/picture/edit.html.twig', array(
             'picture' => $picture,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a picture entity.
      *
-     * @Route("/{id}", name="picture_delete")
+     * @Route("/{id}",   name="picture_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Picture $picture)
@@ -130,7 +138,6 @@ class PictureController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('picture_delete', array('id' => $picture->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

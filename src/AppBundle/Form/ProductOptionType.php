@@ -17,13 +17,14 @@ class ProductOptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('status', EntityType::class, array(
+            ->add(
+                'status', EntityType::class, array(
                 'class'=> Status::class,
                 'choice_label' => 'label',
                 'multiple' => false,
                 'expanded' => true,
-            ))
-            ;
+                )
+            );
     }
     
     /**
@@ -31,9 +32,11 @@ class ProductOptionType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'AppBundle\Entity\ProductOption'
-        ));
+            )
+        );
     }
 
     /**

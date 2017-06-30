@@ -37,7 +37,8 @@ class User extends BaseUser
     private $lastname;
 
 
-    /** @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true)
+    /**
+     * @ORM\Column(name="linkedin_id", type="string", length=255, nullable=true)
      */
     protected $linkedinId;
 
@@ -189,7 +190,8 @@ class User extends BaseUser
 
     }
 
-    /** Set currentJob
+    /**
+     * Set currentJob
      *
      * @param string $currentJob
      *

@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
-
  */
 class Product
 {
@@ -216,7 +215,6 @@ class Product
      * @return Product
      */
     public function setPicture(Picture $picture = null)
-
     {
         $this->picture = $picture;
 
@@ -227,7 +225,6 @@ class Product
      * Get picture
      *
      * @return AppBundle\Entity\Picture
-
      */
     public function getPicture()
     {

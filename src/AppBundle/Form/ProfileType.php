@@ -18,7 +18,8 @@ class ProfileType extends AbstractType
             ->add('title')
             ->add('currentJob')
             ->add('wantedJob')
-            ->add('mobility', ChoiceType::class, array(
+            ->add(
+                'mobility', ChoiceType::class, array(
                 'choices' => array(
                     'Auvergne-Rhône-Alpes' => 'Auvergne-Rhône-Alpes',
                     'Bourgogne-Franche-Comté' => 'Bourgogne-Franche-Comté',
@@ -41,7 +42,8 @@ class ProfileType extends AbstractType
                     'Etranger - Union Européenne' => 'Etranger - Union Européenne',
                     'Etranger - Hors Union Européenne' => 'Etranger - Hors Union Européenne',
                 )
-            ))
+                )
+            )
             ->add('experience')
             ->add('salary')
             ->add('wantedSalary')
