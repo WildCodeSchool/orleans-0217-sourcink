@@ -58,15 +58,14 @@ class JobController extends Controller
         return $this->render('AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'link_site'=>$link_site,
+                'link_site' => $link_site,
             ]);
     }
 
     /**
      * @Route("/{id}", name="job_page")
      */
-    public
-    function jobPage(Api $service, $id, Request $request)
+    public function jobPage(Api $service, $id, Request $request)
     {
         $data = $service->getId('jobs', $id);
 
