@@ -65,6 +65,7 @@ class Api
         return json_decode($data->getBody()->getContents());
     }
 
+
     /**
      * @return mixed
      */
