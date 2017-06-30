@@ -48,4 +48,18 @@ class ApplicantController extends Controller
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
     }
+    /**
+     * @Route("/delete", name="applicant_delete")
+     */
+    public function deleteAction(Api $api)
+    {
+        $user = $api->getSearch('candidates', $this->getUser()->getEmail());
+        if($user->count>0){
+            $api->deleteCandidate($user->_embedded->candidates[0]->id);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($this->getUser());
+        $em->flush();
+        return $this->redirectToRoute('app_homepage');
+    }
 }
