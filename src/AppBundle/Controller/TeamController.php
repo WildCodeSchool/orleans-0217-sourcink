@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Team controller.
  *
- * @Route("team")
+ * @Route("admin/team")
  */
 class TeamController extends Controller
 {

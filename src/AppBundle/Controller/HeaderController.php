@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Header controller.
  *
- * @Route("header")
+ * @Route("admin/header")
  */
 class HeaderController extends Controller
 {
