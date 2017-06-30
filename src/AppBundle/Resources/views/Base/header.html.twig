@@ -10,7 +10,11 @@
                     <li><a href="#category">Nos Solutions</a></li>
                     <li><a href="#job">Nos Offres</a></li>
                     <li><a href="#team">Notre Equipe</a></li>
-                    <li><a href="{{ path('fos_user_security_login') }}" class="btn red right applicant-button">Espace Candidat</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('applicant_update') }}" class="btn red right applicant-button">{{ app.user.username }}</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}" class="btn red right applicant-button">Espace Candidat</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
