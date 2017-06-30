@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Expertise controller.
  *
- * @Route("expertise")
+ * @Route("admin/expertise")
  */
 class ExpertiseController extends Controller
 {
