@@ -15,6 +15,15 @@
 <body>
 {% block header %}
 {% endblock %}
+<div class="container">
+    {% for label, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="card-panel">
+                <span class="blue-text text-darken-2">{{ message }}</span>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
 {% block content %}
 {% endblock %}
 {% block footer %}

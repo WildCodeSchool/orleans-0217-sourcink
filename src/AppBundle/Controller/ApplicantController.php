@@ -7,6 +7,7 @@ use AppBundle\Services\Api;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/candidat")
@@ -44,6 +45,7 @@ class ApplicantController extends Controller
             } else {
                 $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
             }
+            $this->addFlash('success', 'Votre profil a été mise à jour');
             return $this->redirectToRoute('applicant_update');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
