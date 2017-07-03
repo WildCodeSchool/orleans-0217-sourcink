@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Work controller.
  *
- * @Route("work")
+ * @Route("admin/work")
  */
 class WorkController extends Controller
 {
     /**
      * Lists all work entities.
      *
-     * @Route("/", name="work_index")
+     * @Route("/",    name="work_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class WorkController extends Controller
 
         $works = $em->getRepository('AppBundle:Work')->findAll();
 
-        return $this->render('Admin/work/index.html.twig', array(
+        return $this->render(
+            'Admin/work/index.html.twig', array(
             'works' => $works,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new work entity.
      *
-     * @Route("/new", name="work_new")
+     * @Route("/new",  name="work_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class WorkController extends Controller
             return $this->redirectToRoute('work_show', array('id' => $work->getId()));
         }
 
-        return $this->render('Admin/work/new.html.twig', array(
+        return $this->render(
+            'Admin/work/new.html.twig', array(
             'work' => $work,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class WorkController extends Controller
     {
         $deleteForm = $this->createDeleteForm($work);
 
-        return $this->render('Admin/work/show.html.twig', array(
+        return $this->render(
+            'Admin/work/show.html.twig', array(
             'work' => $work,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing work entity.
      *
      * @Route("/{id}/edit", name="work_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Work $work)
     {
@@ -91,17 +97,19 @@ class WorkController extends Controller
             return $this->redirectToRoute('work_edit', array('id' => $work->getId()));
         }
 
-        return $this->render('Admin/work/edit.html.twig', array(
+        return $this->render(
+            'Admin/work/edit.html.twig', array(
             'work' => $work,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a work entity.
      *
-     * @Route("/{id}", name="work_delete")
+     * @Route("/{id}",   name="work_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Work $work)
@@ -130,7 +138,6 @@ class WorkController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('work_delete', array('id' => $work->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

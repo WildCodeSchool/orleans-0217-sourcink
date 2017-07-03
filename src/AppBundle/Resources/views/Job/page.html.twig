@@ -27,9 +27,22 @@
 
       {#Affichage de l'annonce sans image de fond#}
     <div class="container">
+
             <div><h2 class="job_title2">{{ offer.title | raw }}</h2></div>
             <div class="job_detail2"><p class="offredetail2">{{ offer.city | raw }} | {{ offer.duration | raw }}</p></div>
             <div class="job_descrition2">{{ offer.description | raw }}</div>
+
+        <div class="job_title"><h2>{{ offer.title | raw }}</h2></div>
+        <div class="job_detail"><p class="detail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p></div>
+        <div class="job_descrition">{{ offer.description | raw }}</div>
+        <div class="center">
+            <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+            <script type="in/share"></script>
+            <br>
+            {{ form (form) }}
+        </div>
+    </div>
+
 
             <div class="center">
                <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>

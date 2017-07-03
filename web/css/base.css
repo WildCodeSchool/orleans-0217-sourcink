@@ -289,4 +289,13 @@ a h5 {
 
 .applicant-button {
     margin-top: 15%;
+
+}
+
+/*CSS admin */
+
+.admimage {
+    width : 80px;
+    height: 80px;
+
 }

@@ -138,7 +138,6 @@ class Team
      * @return Team
      */
     public function setPicture(Picture $picture = null)
-
     {
         $this->picture = $picture;
 

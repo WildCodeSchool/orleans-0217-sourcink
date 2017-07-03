@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Expertise controller.
  *
- * @Route("expertise")
+ * @Route("admin/expertise")
  */
 class ExpertiseController extends Controller
 {
     /**
      * Lists all expertise entities.
      *
-     * @Route("/", name="expertise_index")
+     * @Route("/",    name="expertise_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,15 +27,17 @@ class ExpertiseController extends Controller
 
         $expertises = $em->getRepository('SIAppBundle:Expertise')->findAll();
 
-        return $this->render('Admin/expertise/index.html.twig', array(
+        return $this->render(
+            'Admin/expertise/index.html.twig', array(
             'expertises' => $expertises,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new expertise entity.
      *
-     * @Route("/new", name="expertise_new")
+     * @Route("/new",  name="expertise_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,10 +54,12 @@ class ExpertiseController extends Controller
             return $this->redirectToRoute('expertise_show', array('id' => $expertise->getId()));
         }
 
-        return $this->render('Admin/expertise/new.html.twig', array(
+        return $this->render(
+            'Admin/expertise/new.html.twig', array(
             'expertise' => $expertise,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -68,17 +72,19 @@ class ExpertiseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($expertise);
 
-        return $this->render('Admin/expertise/show.html.twig', array(
+        return $this->render(
+            'Admin/expertise/show.html.twig', array(
             'expertise' => $expertise,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing expertise entity.
      *
      * @Route("/{id}/edit", name="expertise_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Expertise $expertise)
     {
@@ -92,17 +98,19 @@ class ExpertiseController extends Controller
             return $this->redirectToRoute('expertise_edit', array('id' => $expertise->getId()));
         }
 
-        return $this->render('Admin/expertise/edit.html.twig', array(
+        return $this->render(
+            'Admin/expertise/edit.html.twig', array(
             'expertise' => $expertise,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a expertise entity.
      *
-     * @Route("/{id}", name="expertise_delete")
+     * @Route("/{id}",   name="expertise_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Expertise $expertise)
@@ -131,7 +139,6 @@ class ExpertiseController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('expertise_delete', array('id' => $expertise->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -33,16 +33,16 @@ class HomeController extends Controller
                 'debut' => $job ->start_date,
                 'id' => $job-> id,
                 'attachment_id' => (property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '')
+
             ];
 
         }
-        //dump($offers);
-        //die();
-
+       
         return $this->render('AppBundle:Home:home.html.twig',
             ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team,
                 'link_site' =>$link_site = $this->getParameter('link_site')
         ]);
+
 
     }
 

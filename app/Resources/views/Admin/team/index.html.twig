@@ -22,7 +22,7 @@
                 <td>{{ team.text }}</td>
                 <td>{{ team.linkedin }}</td>
                 <td> {% if team.picture is not null %}
-                        <img src="{{ asset('img/' ~ team.picture.pictureName) }}" />
+                        <img src="{{ asset('img/' ~ team.picture.pictureName) }}" class="admimage"/>
                     {% endif %}</td>
                 <td>
                     <ul>

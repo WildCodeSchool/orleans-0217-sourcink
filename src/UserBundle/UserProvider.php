@@ -77,7 +77,7 @@ class UserProvider extends FOSUBUserProvider
     /**
      * Attach OAuth sign-in provider account to existing user
      *
-     * @param FOSUserInterface $user
+     * @param FOSUserInterface      $user
      * @param UserResponseInterface $response
      *
      * @return FOSUserInterface

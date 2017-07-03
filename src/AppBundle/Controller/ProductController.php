@@ -11,14 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Product controller.
  *
- * @Route("product")
+ * @Route("admin/product")
  */
 class ProductController extends Controller
 {
     /**
      * Lists all product entities.
      *
-     * @Route("/", name="product_index")
+     * @Route("/",    name="product_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -27,15 +27,17 @@ class ProductController extends Controller
 
         $products = $em->getRepository('AppBundle:Product')->findAll();
 
-        return $this->render('Admin/product/index.html.twig', array(
+        return $this->render(
+            'Admin/product/index.html.twig', array(
             'products' => $products,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new product entity.
      *
-     * @Route("/new", name="product_new")
+     * @Route("/new",  name="product_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -52,10 +54,12 @@ class ProductController extends Controller
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
 
-        return $this->render('Admin/product/new.html.twig', array(
+        return $this->render(
+            'Admin/product/new.html.twig', array(
             'product' => $product,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -68,17 +72,19 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product);
 
-        return $this->render('Admin/product/show.html.twig', array(
+        return $this->render(
+            'Admin/product/show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing product entity.
      *
      * @Route("/{id}/edit", name="product_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Product $product)
     {
@@ -92,17 +98,19 @@ class ProductController extends Controller
             return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
         }
 
-        return $this->render('Admin/product/edit.html.twig', array(
+        return $this->render(
+            'Admin/product/edit.html.twig', array(
             'product' => $product,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a product entity.
      *
-     * @Route("/{id}", name="product_delete")
+     * @Route("/{id}",   name="product_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Product $product)
@@ -131,7 +139,6 @@ class ProductController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('product_delete', array('id' => $product->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

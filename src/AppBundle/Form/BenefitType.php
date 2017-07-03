@@ -18,10 +18,11 @@ class BenefitType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('productOptions', CollectionType::class, [
+            ->add(
+                'productOptions', CollectionType::class, [
                 'entry_type'=> ProductOptionType::class,
-            ])
-        ;
+                ]
+            );
     }
     
     /**
@@ -29,9 +30,11 @@ class BenefitType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'AppBundle\Entity\Benefit'
-        ));
+            )
+        );
     }
 
     /**

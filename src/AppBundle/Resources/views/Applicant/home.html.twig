@@ -3,6 +3,7 @@
     {% include('AppBundle:Applicant:header.html.twig') %}
 {% endblock %}
 {% block content %}
+    <a href="{{ path('applicant_delete') }}" class="btn btn-large red">Supprimer mon compte</a>
     <form id="resumeForm">
         <div class="file-field input-field">
             <div class="btn blue">
