@@ -60,7 +60,8 @@ class JobController extends Controller
             [
                 'offers' => $results,
                 'link_site' => $link_site,
-            ]);
+            ]
+        );
     }
 
     /**
@@ -81,7 +82,7 @@ class JobController extends Controller
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
             $email->applyJob($mailer, $this->getUser(), $data->title);
-
+            $this->addFlash('success', 'Nous avons reçu votre candidature. Nous allons vous envoyer un mail dans les plus brefs délais');
             return $this->render('AppBundle:Job:response.html.twig');
         }
 

@@ -7,6 +7,7 @@ use AppBundle\Services\Api;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/candidat")
@@ -16,7 +17,7 @@ class ApplicantController extends Controller
     /**
      * @Route("/", name="app_applicant")
      */
-    public function homeAction()
+    public function homeAction(Api $api)
     {
         return $this->render('AppBundle:Applicant:home.html.twig');
     }
@@ -40,10 +41,19 @@ class ApplicantController extends Controller
             $em->flush();
             $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
             if ($catsUser->count == 0) {
+                $tag = $api->getTag($this->getParameter('tag_candidate'));
                 $api->createCandidateUser($this->getUser());
+                $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+                $i=0;
+                while($newUser->count === 0 && $i<3){
+                    $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+                    $i++;
+                }
+                $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
             } else {
                 $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
             }
+            $this->addFlash('success', 'Votre profil a été mise à jour');
             return $this->redirectToRoute('applicant_update');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
