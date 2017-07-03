@@ -42,7 +42,10 @@ class JobController extends Controller
                 ];
 
         }
-        $link_site = $this->getParameter('link_site');
+
+
+        $img = $api->downloadImg($offers);
+
 
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
@@ -59,13 +62,13 @@ class JobController extends Controller
             'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'link_site' => $link_site,
+                'img' => $img,
             ]);
     }
 
     /**
      * @Route("/{id}", name="job_page")
-     */ 
+     */
     public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);
