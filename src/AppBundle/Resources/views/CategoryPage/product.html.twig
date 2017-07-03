@@ -1,29 +1,34 @@
-   <div class="title">
-        <h3 class="black-text">Solution <span class="blue-text">{{ category.title }}</h3></span>
-    </div>
-    <div class="left-align">
-        <p>{{ category.text }}</p>
-    </div>
+<div class="title">
+    <h3 class="black-text">Solution <span>{{ category.title }}</h3></span>
+</div>
+<div class="left-align">
+    <p>{{ category.text }}</p>
+</div>
 
 <div class="row">
-{% for product in category.products %}
-
-    {% if category.products|length == 3 %}
-    <div class="col s12 m4 center">
-        <img class="circle responsive-img img" id="{{ product.id }}" src="{{ asset('img/'~product.picture.pictureName) }}">
-        <h3 class="grey-text">{{ product.title }}</h3>
-        <p>{{ product.text }}</p>
-    </div>
-        {% elseif category.products|length == 1  %}
-        <div class="center">
-            <img class="circle responsive-img img" id="{{ product.id }}"  src="{{ asset('img/'~product.picture.pictureName) }}">
-            <h3 class="grey-text">{{ product.title }}</h3>
-            <p>{{ product.text }}</p>
-        </div>
-            {% endif %}
-
-
-{% endfor %}
+    {% for product in category.products %}
+        {% if category.products|length == 3 %}
+            <div class="col s12 m4 center">
+                <img class="circle responsive-img img" id="{{ product.id }}"
+                     src="{{ asset('img/'~product.picture.pictureName) }}">
+                {% if product.title == 'Small' %}
+                    <a class="btn-floating btn show-small red lighten-1"><i class="material-icons">add</i></a>
+                    <p class="product-small red lighten-1">{{ product.text }}</p>
+                {% elseif product.title == 'Medium' %}
+                    <a class="btn-floating btn show-medium deep-purple lighten-2"><i class="material-icons">add</i></a>
+                    <p class="product-medium deep-purple lighten-2">{{ product.text }}</p>
+                {% elseif product.title == 'Large' %}
+                    <a class="btn-floating btn show-large blue lighten-1"><i class="material-icons">add</i></a>
+                    <p class="product-large blue lighten-1">{{ product.text }}</p>
+                {% endif %}
+            </div>
+        {% elseif category.products|length == 1 %}
+            <div class="center">
+                <img class="circle responsive-img img" id="{{ product.id }}"
+                     src="{{ asset('img/'~product.picture.pictureName) }}">
+            </div>
+        {% endif %}
+    {% endfor %}
 </div>
 
 

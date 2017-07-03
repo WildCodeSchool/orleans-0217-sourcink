@@ -129,6 +129,9 @@ a h5 {
     font-size: 40px;
 }
 
+#resumeForm {
+    padding-top: 90px;
+}
 /*Slider Vidéos*/
 
 /*Expertise*/
@@ -174,6 +177,29 @@ a h5 {
     border-left: 10px solid #00A1C0 ;
 }
 
-#resumeForm {
-    padding-top: 90px;
+.product-small {
+    background-color: #E73148;
+    color: white;
+    border-radius: 5px;
 }
+.product-medium {
+    background-color: #786681;
+    color: white;
+    border-radius: 5px;
+
+}
+.product-large {
+    background-color: #00A1C0;
+    color: white;
+    border-radius: 5px;
+}
+.show-small {
+    background-color: #E73148;
+    color: white;
+}
+
+
+span {
+    color: #00A1C0;
+}
+
