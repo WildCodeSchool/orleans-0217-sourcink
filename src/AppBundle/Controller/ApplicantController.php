@@ -40,7 +40,7 @@ class ApplicantController extends Controller
             $em->flush();
             $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
             if ($catsUser->count == 0) {
-                $tag = $api->getTag('Web');
+                $tag = $api->getTag($this->getParameter('tag_candidate'));
                 $api->createCandidateUser($this->getUser());
                 //Problème de temps de latence : la requête finit de s'exécuter avant que la candidat soit crée dans CATS
                 sleep(2);

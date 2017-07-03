@@ -60,7 +60,8 @@ class JobController extends Controller
             [
                 'offers' => $results,
                 'link_site' => $link_site,
-            ]);
+            ]
+        );
     }
 
     /**

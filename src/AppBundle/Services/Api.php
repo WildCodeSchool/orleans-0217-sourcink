@@ -26,14 +26,33 @@ class Api
     private $apiUrl;
     private $apiKey;
     private $client;
+    private $tagCandidate;
 
     /**
      * Api constructor.
      */
-    public function __construct($apiUrl, $apiKey)
+    public function __construct($apiUrl, $apiKey, $tagCandidate)
     {
-        $this->setApiKey($apiKey)->setApiUrl($apiUrl);
+        $this->setApiKey($apiKey)->setApiUrl($apiUrl)->setTagCandidate($tagCandidate);
         $this->setClient(new Client(['base_uri' => $this->getApiUrl()]));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTagCandidate()
+    {
+        return $this->tagCandidate;
+    }
+
+    /**
+     * @param mixed $tagCandidate
+     * @return Api
+     */
+    public function setTagCandidate($tagCandidate)
+    {
+        $this->tagCandidate = $tagCandidate;
+        return $this;
     }
 
     /**
@@ -338,8 +357,9 @@ class Api
             ]
         );
         $tags = json_decode($tags->getBody()->getContents());
+        $id = 0;
         foreach ($tags->_embedded->tags as $tag) {
-            if ($tag->title == 'Web') {
+            if ($tag->title == $this->getTagCandidate()) {
                 $id = $tag->id;
             }
         }
