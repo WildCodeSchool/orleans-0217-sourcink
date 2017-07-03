@@ -25,7 +25,7 @@ class AdminController extends Controller
     /**
      * Lists all
      *
-     * @Route("/", name="admin_index")
+     * @Route("/",    name="admin_index")
      * @Method("GET")
      */
     public function listAction()
