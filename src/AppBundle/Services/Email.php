@@ -21,16 +21,26 @@ class Email
     {
         $this->setTemplating($container->get('templating'))->setEmailAdress($emailAdress);
     }
-    public function applyJob(\Swift_Mailer $mailer, User $user)
+    public function applyJob(\Swift_Mailer $mailer, User $user, $title)
     {
-        $message = new \Swift_Message('Hello Email');
+        $message = new \Swift_Message('Candidature Sourcink');
         $message->setFrom($this->getEmailAdress())
             ->setTo($user->getEmail())
-            ->setBody($this->getTemplating()->render('AppBundle:Email:job.html.twig'), 'text/html');
+            ->attach(\Swift_Attachment::fromPath('media/logoSourcInk.svg'))
+            ->setBody($this->getTemplating()->render('AppBundle:Email:offre.html.twig', ['title'=>$title]), 'text/html');
         $mailer->send($message);
         return $message;
     }
-
+    public function candidatureSpontane(\Swift_Mailer $mailer, User $user)
+    {
+        $message = new \Swift_Message('Candidature Sourcink');
+        $message->setFrom($this->getEmailAdress())
+            ->setTo($user->getEmail())
+            ->attach(\Swift_Attachment::fromPath('media/logoSourcInk.svg'))
+            ->setBody($this->getTemplating()->render('AppBundle:Email:spontanee.html.twig'), 'text/html');
+        $mailer->send($message);
+        return $message;
+    }
     /**
      * @return mixed
      */
