@@ -64,27 +64,23 @@ class JobController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="job_page")
+     * @Route("/view/{id}", name="job_page")
      */ 
     public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);
-
         $form = $this->createFormBuilder()
-            ->setMethod('GET')
+            ->setMethod('POST')
             ->add('Postuler', SubmitType::class)
             ->getForm();
-
         $form->handleRequest($request);
 
 
         if ($form->isValid() && $form->isSubmitted()) {
-
-
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
-            $email->applyJob($mailer, $this->getUser());
+            $email->applyJob($mailer, $this->getUser(), $data->title);
 
             return $this->render('AppBundle:Job:response.html.twig');
         }
@@ -113,10 +109,13 @@ class JobController extends Controller
         );
 
     }
+    /**
+     * @Route("/spontane", name="job_spontane")
+     */
+    public function spontaneAction(\Swift_Mailer $mailer, Email $email)
+    {
+        $this->addFlash('success', 'Nous avons bien reçu votre candidature. Nous allons vous contacter par mail.');
+        $email->candidatureSpontane($mailer, $this->getUser());
+        return $this->redirectToRoute('job_list');
+    }
 }
-
- 
-
-
-
-
