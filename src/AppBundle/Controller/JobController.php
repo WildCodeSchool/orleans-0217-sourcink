@@ -91,6 +91,7 @@ class JobController extends Controller
 
 
         $offer = [
+            'job'=>$data->id,
             'id' => $data->id,
             'title' => $data->title,
             'duration' => $data->duration,
@@ -99,15 +100,15 @@ class JobController extends Controller
             'statut' => $data->_embedded->status->title,
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
-            'attachments' => $data->_embedded->attachments[0]->id,
-
+            'attachment_id' => (property_exists($data->_embedded, 'attachments') ? $data->_embedded->attachments[0]->id : '')
 
         ];
 
         return $this->render('AppBundle:Job:page.html.twig',
             [
                 'offer' => $offer,
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'link_site' =>$link_site = $this->getParameter('link_site')
             ]);
 
     }

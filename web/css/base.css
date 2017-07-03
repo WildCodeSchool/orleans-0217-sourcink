@@ -1,7 +1,66 @@
+.job_title{
+    text-align: center;
+    position: relative;
+    top: -400px;
+    font-size:80px;
+}
+.job-detail{
+    font-size: 20px;
+    position: relative;
+    top: -300px;
+    color: red;
+
+}
+.offredetail {
+    position: relative;
+    top: -400px;
+    color: red;
+    text-align: center;
+    font-size: 40px;
+}
+
+.detail{
+    box-shadow: 0 0 0 0;
+    position: relative;
+    width: auto;
+    height: 600px;
+    top : 25px;
+}
+
+/* Offres sans images */
+.job_title2{
+    text-align: center;
+    position: relative;
+    font-size:80px;
+}
+.job-detail2{
+    font-size: 20px;
+    color: red;
+
+}
+.offredetail2 {
+    position: relative;
+
+    color: red;
+    text-align: center;
+    font-size: 40px;
+}
+/* Offres sans images */
+
+#card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+
 .offres {
+    position : absolute;
+    top : 135px;
+    left : 125px;
     visibility : hidden;
 }
 .card-offres{
+    position : relative;
     height:180px;
     border-radius: 15px 0 15px 0;
 }
@@ -11,6 +70,7 @@
 }
 
 .color, .btn.offres  {
+
     background-color: rgba(127, 126, 139, 0.37);
     border-radius: 15px 0 15px 0;
 }
