@@ -16,7 +16,7 @@ class ApplicantController extends Controller
     /**
      * @Route("/", name="app_applicant")
      */
-    public function homeAction()
+    public function homeAction(Api $api)
     {
         return $this->render('AppBundle:Applicant:home.html.twig');
     }
@@ -40,7 +40,12 @@ class ApplicantController extends Controller
             $em->flush();
             $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
             if ($catsUser->count == 0) {
+                $tag = $api->getTag('Web');
                 $api->createCandidateUser($this->getUser());
+                //Problème de temps de latence : la requête finit de s'exécuter avant que la candidat soit crée dans CATS
+                sleep(2);
+                $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+                $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
             } else {
                 $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
             }
