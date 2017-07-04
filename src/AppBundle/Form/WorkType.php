@@ -3,7 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,12 +24,18 @@ class WorkType extends AbstractType
                             'placeholder' => 'Entrez le nom du métier',
                         )
                 ))
-            ->add('category', ChoiceType::class,
+            ->add('category')
+            ->add('submit', SubmitType::class,
                 array(
-                    'label' => 'Catégorie'
-                ));
+                    'label' => 'Enregistrer',
+                    'attr' =>
+                        array(
+                            'class' => 'btn blue'
+                        )
+                )
+            );
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -37,7 +43,7 @@ class WorkType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Work'
+                'data_class' => 'AppBundle\Entity\Work'
             )
         );
     }

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,6 +31,7 @@ class TeamType extends AbstractType
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez la description de la personne',
+                            'class' => 'materialize-textarea'
                         )
                 ))
             ->add('linkedin', TextType::class,
@@ -40,7 +42,16 @@ class TeamType extends AbstractType
                             'placeholder' => 'Entrez le lien vers la page Linkedin de la personne',
                         )
                 ))
-            ->add('picture', PictureType::class);
+            ->add('picture', PictureType::class)
+            ->add('submit', SubmitType::class,
+                array(
+                    'label' => 'Enregistrer',
+                    'attr' =>
+                        array(
+                            'class' => 'btn blue'
+                        )
+                )
+            );
     }
     
     /**

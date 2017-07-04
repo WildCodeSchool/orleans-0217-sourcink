@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modification d'un métier</h1>
+    <h1>
+        Modification d'un métier
+        <a href="{{ path('work_index') }}" class="btn btn-flat orange-text right">Revenir à la liste</a>
+    </h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <button class="btn-floating btn-small waves-effect wave-light green" name="action" type="submit"><i class="material-icons">edit</i></button>
-    {{ form_end(edit_form) }}
+    {{ form_start(form) }}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('work_index') }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <button class="btn-floating btn-small waves-effect wave-light red" name="action" type="submit"><i class="material-icons">delete</i></button>
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <label for="appbundle_work_category">Catégorie</label>
+    {{ form_widget(form.category, {'placeholder': 'Choisissez une catégorie'}) }}
+    {{ form_errors(form.category) }}
+
+
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+
+    {{ form_start(delete_form) }}
+    <button class="btn red right" name="action" type="submit">Supprimer</button>
+    {{ form_end(delete_form) }}
 {% endblock %}

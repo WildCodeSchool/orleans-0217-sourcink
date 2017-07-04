@@ -82,7 +82,7 @@ class WorkController extends Controller
         return $this->render(
             'Admin/work/edit.html.twig', array(
             'work' => $work,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );
