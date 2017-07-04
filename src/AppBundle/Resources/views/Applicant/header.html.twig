@@ -1,7 +1,15 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Espace Candidat</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        </ul>
+{% block header %}
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ path('app_homepage') }}" class="brand-logo">
+                    <img src="{{ asset('media/logoSourcInk.svg') }}"></a>
+                <p class="slogan center hide-on-med-and-down">L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH</p>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/job">Nos Offres</a></li>
+                    <li><a href="{{ path('logout') }}" class="btn red right applicant-button"><i class="material-icons">power_settings_new</i></a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
-</nav>
+{% endblock %}

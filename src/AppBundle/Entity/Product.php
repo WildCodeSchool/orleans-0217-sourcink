@@ -118,6 +118,7 @@ class Product
         return $this->text;
     }
 
+
     /**
      * Set price
      *
@@ -165,6 +166,7 @@ class Product
     {
         return $this->category;
     }
+
     /**
      * Constructor
      */
