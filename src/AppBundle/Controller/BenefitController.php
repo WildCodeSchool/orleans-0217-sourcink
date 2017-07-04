@@ -58,29 +58,12 @@ class BenefitController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($benefit);
             $em->flush();
-            return $this->redirectToRoute('benefit_show', array('id' => $benefit->getId()));
+            return $this->redirectToRoute('benefit_index');
         }
         return $this->render(
             'Admin/benefit/new.html.twig', array(
             'benefit' => $benefit,
             'form' => $form->createView(),
-            )
-        );
-    }
-
-    /**
-     * Finds and displays a benefit entity.
-     *
-     * @Route("/{id}", name="benefit_show")
-     * @Method("GET")
-     */
-    public function showAction(Benefit $benefit)
-    {
-        $deleteForm = $this->createDeleteForm($benefit);
-        return $this->render(
-            'Admin/benefit/show.html.twig', array(
-            'benefit' => $benefit,
-            'delete_form' => $deleteForm->createView(),
             )
         );
     }
@@ -118,7 +101,7 @@ class BenefitController extends Controller
         return $this->render(
             'Admin/benefit/edit.html.twig', array(
             'benefit' => $benefit,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );
