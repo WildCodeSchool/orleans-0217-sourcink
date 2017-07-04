@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
-
  */
 class Product
 {
@@ -37,8 +36,6 @@ class Product
      * @ORM\Column(name="text", type="text")
      */
     private $text;
-
-
 
     /**
      * @var string
@@ -122,8 +119,6 @@ class Product
     }
 
 
-
-
     /**
      * Set price
      *
@@ -171,6 +166,7 @@ class Product
     {
         return $this->category;
     }
+
     /**
      * Constructor
      */
@@ -232,7 +228,6 @@ class Product
      * Get picture
      *
      * @return AppBundle\Entity\Picture
-
      */
     public function getPicture()
     {
