@@ -78,7 +78,7 @@ class ProductController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_index');
         }
 
         return $this->render(

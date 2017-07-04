@@ -96,7 +96,7 @@ class BenefitController extends Controller
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('benefit_edit', array('id' => $benefit->getId()));
+            return $this->redirectToRoute('benefit_index');
         }
         return $this->render(
             'Admin/benefit/edit.html.twig', array(

@@ -77,7 +77,7 @@ class TeamController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render(

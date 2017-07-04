@@ -76,7 +76,7 @@ class WorkController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('work_edit', array('id' => $work->getId()));
+            return $this->redirectToRoute('work_index');
         }
 
         return $this->render(

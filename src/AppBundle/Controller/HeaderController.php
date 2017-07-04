@@ -76,7 +76,7 @@ class HeaderController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('header_edit', array('id' => $header->getId()));
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render(
