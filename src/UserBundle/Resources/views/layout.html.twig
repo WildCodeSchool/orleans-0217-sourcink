@@ -1,11 +1,18 @@
 {% extends '::layout.html.twig' %}
 {% block header %}
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">Espace Candidat</a>
-        </div>
-    </nav>
-    <br />
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ path('app_homepage') }}" class="brand-logo">
+                    <img src="{{ asset('media/logoSourcInk.svg') }}">
+                </a>
+                <p class="slogan center hide-on-med-and-down">
+                    L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH
+                </p>
+                <a href="{{ path('app_homepage') }}" class="btn red right">Retour à l'accueil</a>
+            </div>
+        </nav>
+    </div>
 {% endblock %}
 {% block content %}
     <div class="container">

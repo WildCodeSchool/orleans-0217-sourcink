@@ -37,6 +37,7 @@ nav p {
 }
 
 .page-footer {
+    margin-top: 5%;
     background-color: rgba(0, 161, 192, 1);
 }
 
@@ -179,4 +180,12 @@ a h5 {
 .form-title {
     font-size: 42px;
     color: slategrey;
+}
+
+.navbar-fixed {
+    margin-bottom: 50px;
+}
+
+.profil-name {
+    font-size: 38px;
 }

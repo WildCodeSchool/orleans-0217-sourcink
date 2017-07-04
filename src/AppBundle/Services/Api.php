@@ -75,7 +75,6 @@ class Api
 
     public function get($query)
     {
-
         $data = $this->getClient()->request(
             'GET', $query, [
                 'headers' => [
@@ -364,6 +363,28 @@ class Api
             }
         }
         return $id;
+    }
+
+    public function hasResume($id)
+    {
+        $data = $this->getClient()->request(
+            'GET', 'candidates/'.$id.'/attachments', [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey(),
+                    'Content-Type' => 'application/json'
+                ]
+            ]
+        );
+        $hasResume = false;
+        $attachments = json_decode($data->getBody()->getContents());
+        if($attachments->count>0){
+            foreach($attachments->_embedded->attachments as $attachment){
+                if($attachment->is_resume===true){
+                    $hasResume = true;
+                }
+            }
+        }
+        return $hasResume;
     }
 }
 

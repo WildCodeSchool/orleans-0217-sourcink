@@ -19,7 +19,12 @@ class ApplicantController extends Controller
      */
     public function homeAction(Api $api)
     {
-        return $this->render('AppBundle:Applicant:home.html.twig');
+        $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+        $hasResume = false;
+        if($catsUser->count>0){
+            $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
+        }
+        return $this->render('AppBundle:Applicant:home.html.twig', ['status' => $catsUser->count, 'hasResume' => $hasResume]);
     }
 
     /**
