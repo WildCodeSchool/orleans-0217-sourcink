@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,6 +34,7 @@ class ProductType extends AbstractType
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez la description du produit',
+                            'class' => 'materialize-textarea'
                         )
                 ))
             ->add('price', IntegerType::class,
@@ -43,15 +45,17 @@ class ProductType extends AbstractType
                             'placeholder' => 'Entrez le prix du produit',
                         )
                 ))
-            ->add('category', ChoiceType::class,
+            ->add('category')
+            ->add('picture', PictureType::class)
+            ->add('submit', SubmitType::class,
                 array(
-                    'label' => 'Catégorie',
+                    'label' => 'Enregistrer',
                     'attr' =>
                         array(
-                            'placeholder' => 'Entrez la catégorie du produit',
+                            'class' => 'btn blue'
                         )
-                ))
-            ->add('picture', PictureType::class);
+                )
+            );
     }
     
     /**
