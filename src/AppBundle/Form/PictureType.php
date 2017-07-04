@@ -23,8 +23,8 @@ class PictureType extends AbstractType
             )
             ->add('alt', TextType::class,
                 array(
-                    'label' => 'Légende de la vidéo',
-                    'attr' => array('placeholder' => 'Entrez la légende de la vidéo')
+                    'label' => 'Légende',
+                    'attr' => array('placeholder' => 'Entrez la légende')
                 )
             );
     }

@@ -50,7 +50,7 @@ class HeaderController extends Controller
             $em->persist($header);
             $em->flush();
 
-            return $this->redirectToRoute('header_show', array('id' => $header->getId()));
+            return $this->redirectToRoute('header_index');
         }
 
         return $this->render(

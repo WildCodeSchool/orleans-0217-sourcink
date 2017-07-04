@@ -38,11 +38,10 @@
     {{ form_widget(form.nameUrl) }}
     {{ form_errors(form.nameUrl) }}
 
-    <div>
-        {{ form_widget(form.submit) }}
-        {{ form_start(delete_form) }}
-        <button class="btn red right" name="action" type="submit">Supprimer</button>
-        {{ form_end(delete_form) }}
-    </div>
+    {{ form_widget(form.submit) }}
     {{ form_end(form) }}
+
+    {{ form_start(delete_form) }}
+    <button class="btn red right" name="action" type="submit">Supprimer</button>
+    {{ form_end(delete_form) }}
 {% endblock %}

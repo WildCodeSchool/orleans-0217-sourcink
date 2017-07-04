@@ -55,7 +55,7 @@ class HeaderType extends AbstractType
             )
             ->add('submit', SubmitType::class,
                 array(
-                    'label'=>'Ajouter',
+                    'label'=>'Enregistrer',
                     'attr' =>
                         array(
                             'class' => 'btn blue'
