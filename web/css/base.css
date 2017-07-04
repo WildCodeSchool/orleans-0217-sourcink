@@ -1,8 +1,23 @@
+.cadre{
+    border-style : solid;
+    border-width: 1px;
+    border-color : #757575;
+    border-radius: 15px 0 15px 0;
+    width : 200px;
+    height:auto;
+    margin : 30px;
+    padding : 20px;
+}
+
 .job_title{
     text-align: center;
     position: relative;
-    top: -400px;
+    top: -500px;
     font-size:80px;
+}
+.job_descrition{
+    position : relative;
+    top : -350px;
 }
 .job-detail{
     font-size: 20px;
@@ -13,7 +28,7 @@
 }
 .offredetail {
     position: relative;
-    top: -400px;
+    top: -500px;
     color: red;
     text-align: center;
     font-size: 40px;
@@ -28,19 +43,37 @@
 }
 
 /* Offres sans images */
+.cadre1{
+    border-style : solid;
+    border-width: 1px;
+    border-color : #757575;
+    border-radius: 15px 0 15px 0;
+    width : 200px;
+    height:auto;
+    margin : 50px;
+    padding : 30px;
+    position : relative;
+    top:400px;
+}
+
 .job_title2{
     text-align: center;
     position: relative;
     font-size:80px;
+    top: -200px;
 }
 .job-detail2{
     font-size: 20px;
     color: red;
 
 }
+.job_descrition2{
+    position : relative;
+    top : -200px;
+}
 .offredetail2 {
     position: relative;
-
+    top: -250px;
     color: red;
     text-align: center;
     font-size: 40px;
