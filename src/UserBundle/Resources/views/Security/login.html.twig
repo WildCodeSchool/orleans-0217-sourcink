@@ -4,13 +4,6 @@
     <div class="container">
         {{ include('@FOSUser/Security/login_content.html.twig') }}
     </div>
-
-    <img src="{{ asset('img/Sign-In-Small---Default.png') }}">
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        Hello {{ app.user.username }}
-    {% else %}
-        {{ render(url('hwi_oauth_connect')) }}
-    {% endif %}
 {% endblock fos_user_content %}
 
 

@@ -172,3 +172,11 @@ a h5 {
     height: 80px;
 
 }
+.divider {
+    margin: 5%;
+}
+
+.form-title {
+    font-size: 42px;
+    color: slategrey;
+}
