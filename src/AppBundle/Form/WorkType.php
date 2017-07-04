@@ -16,16 +16,19 @@ class WorkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,
+            ->add(
+                'name', TextType::class,
                 array(
                     'label' => 'Nom',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le nom du métier',
                         )
-                ))
+                )
+            )
             ->add('category')
-            ->add('submit', SubmitType::class,
+            ->add(
+                'submit', SubmitType::class,
                 array(
                     'label' => 'Enregistrer',
                     'attr' =>

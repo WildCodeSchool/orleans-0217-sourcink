@@ -16,12 +16,14 @@ class PictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pictureFile', FileType::class,
+            ->add(
+                'pictureFile', FileType::class,
                 array(
                     'label' => false
                 )
             )
-            ->add('alt', TextType::class,
+            ->add(
+                'alt', TextType::class,
                 array(
                     'label' => 'Légende',
                     'attr' => array('placeholder' => 'Entrez la légende')

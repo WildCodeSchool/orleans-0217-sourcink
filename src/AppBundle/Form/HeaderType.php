@@ -16,7 +16,8 @@ class HeaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class,
+            ->add(
+                'title', TextType::class,
                 array(
                     'label' => 'Titre',
                     'attr' =>
@@ -25,7 +26,8 @@ class HeaderType extends AbstractType
                         )
                 )
             )
-            ->add('text', TextType::class,
+            ->add(
+                'text', TextType::class,
                 array(
                     'label' => 'Sous-titre',
                     'attr' =>
@@ -35,7 +37,8 @@ class HeaderType extends AbstractType
                 )
             )
             ->add('picture', PictureType::class)
-            ->add('url', TextType::class,
+            ->add(
+                'url', TextType::class,
                 array(
                     'label' => 'Lien',
                     'attr' =>
@@ -44,7 +47,8 @@ class HeaderType extends AbstractType
                         )
                 )
             )
-            ->add('nameUrl', TextType::class,
+            ->add(
+                'nameUrl', TextType::class,
                 array(
                     'label' => 'Nom du lien',
                     'attr' =>
@@ -53,7 +57,8 @@ class HeaderType extends AbstractType
                         )
                 )
             )
-            ->add('submit', SubmitType::class,
+            ->add(
+                'submit', SubmitType::class,
                 array(
                     'label'=>'Enregistrer',
                     'attr' =>

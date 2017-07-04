@@ -17,15 +17,18 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,
+            ->add(
+                'name', TextType::class,
                 array(
                     'label' => 'Nom',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le nom de la personne',
                         )
-                ))
-            ->add('text', TextareaType::class,
+                )
+            )
+            ->add(
+                'text', TextareaType::class,
                 array(
                     'label' => 'Description',
                     'attr' =>
@@ -33,17 +36,21 @@ class TeamType extends AbstractType
                             'placeholder' => 'Entrez la description de la personne',
                             'class' => 'materialize-textarea'
                         )
-                ))
-            ->add('linkedin', TextType::class,
+                )
+            )
+            ->add(
+                'linkedin', TextType::class,
                 array(
                     'label' => 'Linkedin',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le lien vers la page Linkedin de la personne',
                         )
-                ))
+                )
+            )
             ->add('picture', PictureType::class)
-            ->add('submit', SubmitType::class,
+            ->add(
+                'submit', SubmitType::class,
                 array(
                     'label' => 'Enregistrer',
                     'attr' =>

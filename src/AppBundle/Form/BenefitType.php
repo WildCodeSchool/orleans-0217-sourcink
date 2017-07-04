@@ -19,7 +19,8 @@ class BenefitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', TextareaType::class,
+            ->add(
+                'description', TextareaType::class,
                 array(
                     'label' => 'Description',
                     'attr' =>
@@ -27,13 +28,15 @@ class BenefitType extends AbstractType
                             'placeholder' => 'Entrez une description de l\'option',
                             'class' => 'materialize-textarea'
                         )
-                ))
+                )
+            )
             ->add(
                 'productOptions', CollectionType::class, [
                 'entry_type'=> ProductOptionType::class,
                 ]
             )
-            ->add('submit', SubmitType::class,
+            ->add(
+                'submit', SubmitType::class,
                 array(
                     'label'=>'Enregistrer',
                     'attr' =>
