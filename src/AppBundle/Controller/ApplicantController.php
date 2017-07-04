@@ -50,16 +50,23 @@ class ApplicantController extends Controller
                 $api->createCandidateUser($this->getUser());
                 $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                 $i=0;
-                while($newUser->count === 0 && $i<3){
+                while($newUser->count === 0 && $i<5){
                     $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                     $i++;
                 }
-                $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
+                if($newUser->count > 0){
+                    $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
+                    if($this->getUser()->getResumeName()!=NULL){
+                        $directory = $this->getParameter('kernel.project_dir') . '/web/cv/';
+                        $api->sendResume($directory.$this->getUser()->getResumeName(), $newUser->_embedded->candidates[0]->id);
+                        unlink($directory.$this->getUser()->getResumeName());
+                    }
+                }
             } else {
                 $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
             }
             $this->addFlash('success', 'Votre profil a été mise à jour');
-            return $this->redirectToRoute('applicant_update');
+            return $this->redirectToRoute('app_applicant');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
     }
