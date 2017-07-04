@@ -1,3 +1,24 @@
+
+@font-face {
+    font-family: "Prater";
+    src: local(Prater Light), url("../fonts/prater/PraterSansTwo-Regular.ttf") format("truetype");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Caviar";
+    src: local(Caviar Dream), url("../fonts/caviardreams/CaviarDreams.ttf") format("truetype");
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:Prater;
+}
+
+p {
+    font-family: Caviar;
+    font-size: 20px;
+
+}
+
 .job_title{
     text-align: center;
     position: relative;
@@ -122,6 +143,7 @@
 }
 /* Bounce To Right */
 
+
 body {
     display: flex;
     min-height: 100vh;
@@ -183,6 +205,11 @@ h2 {
 
 li {
     display: inline-block;
+}
+
+#expertise, #category, #job, #team {
+    padding-top: 100px;
+    margin-top: -90px;
 }
 
 /* slider videos */
@@ -253,6 +280,9 @@ a h5 {
     font-size: 40px;
 }
 
+#resumeForm {
+    padding-top: 90px;
+}
 /*Slider Vidéos*/
 
 /*Expertise*/
@@ -290,7 +320,63 @@ a h5 {
 
 .applicant-button {
     margin-top: 15%;
+}
 
+/*Page produit*/
+.title {
+    padding-top: 90px;
+}
+
+h3 {
+    padding-left: 10px;
+}
+
+.black-text {
+    border-left: 10px solid #00A1C0 ;
+}
+
+.product-small {
+    background-color: #E73148;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+}
+.product-medium {
+    background-color: #786681;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+
+}
+.product-large {
+    background-color: #00A1C0;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+}
+.show-small {
+    background-color: #E73148;
+    color: white;
+}
+
+span {
+    font-family: Prater;
+    color: #00A1C0;
+}
+.padding-small {
+    margin-top: 80px;
+}
+.padding-medium {
+    margin-top: 40px;
+}
+
+
+
+/*Home*/
+
+.work {
+    position: relative;
+    top: 50px;
 }
 
 /*CSS admin */
@@ -312,7 +398,6 @@ a h5 {
 .navbar-fixed {
     margin-bottom: 50px;
 }
-
 .profil-name {
     font-size: 38px;
 }
@@ -322,3 +407,4 @@ a h5 {
 footer {
     min-height: 100px;
 }
+
