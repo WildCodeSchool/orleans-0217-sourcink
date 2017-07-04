@@ -62,24 +62,6 @@ class HeaderController extends Controller
     }
 
     /**
-     * Finds and displays a header entity.
-     *
-     * @Route("/{id}", name="header_show")
-     * @Method("GET")
-     */
-    public function showAction(Header $header)
-    {
-        $deleteForm = $this->createDeleteForm($header);
-
-        return $this->render(
-            'Admin/header/show.html.twig', array(
-            'header' => $header,
-            'delete_form' => $deleteForm->createView(),
-            )
-        );
-    }
-
-    /**
      * Displays a form to edit an existing header entity.
      *
      * @Route("/{id}/edit", name="header_edit")
@@ -100,7 +82,7 @@ class HeaderController extends Controller
         return $this->render(
             'Admin/header/edit.html.twig', array(
             'header' => $header,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );

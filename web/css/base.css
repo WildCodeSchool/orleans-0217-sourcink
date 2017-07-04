@@ -172,3 +172,7 @@ a h5 {
     height: 80px;
 
 }
+
+footer {
+    min-height: 100px;
+}
