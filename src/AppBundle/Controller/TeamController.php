@@ -51,31 +51,13 @@ class TeamController extends Controller
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_show', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render(
             'Admin/team/new.html.twig', array(
             'team' => $team,
             'form' => $form->createView(),
-            )
-        );
-    }
-
-    /**
-     * Finds and displays a team entity.
-     *
-     * @Route("/{id}", name="team_show")
-     * @Method("GET")
-     */
-    public function showAction(Team $team)
-    {
-        $deleteForm = $this->createDeleteForm($team);
-
-        return $this->render(
-            'Admin/team/show.html.twig', array(
-            'team' => $team,
-            'delete_form' => $deleteForm->createView(),
             )
         );
     }
@@ -95,13 +77,13 @@ class TeamController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
         return $this->render(
             'Admin/team/edit.html.twig', array(
             'team' => $team,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );

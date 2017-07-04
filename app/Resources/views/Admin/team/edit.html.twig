@@ -2,22 +2,43 @@
 
 {% block body %}
 
-    <h1>Modification d'un collaborateur</h1>
+    <h1>
+        Modifier un collaborateur
+        <a href="{{ path('team_index') }}" class="btn btn-flat orange-text right">Revenir à la liste</a>
+    </h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <button class="btn-floating btn-small waves-effect wave-light green" name="action" type="submit"><i class="material-icons">edit</i></button>
-    {{ form_end(edit_form) }}
+    {{ form_start(form) }}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('team_index') }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a>
+    {{ form_label(form.text) }}
+    {{ form_widget(form.text) }}
+    {{ form_errors(form.text) }}
 
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <button class="btn-floating btn-small waves-effect wave-light red" name="action" type="submit"><i class="material-icons">delete</i></button>
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_label(form.linkedin) }}
+    {{ form_widget(form.linkedin) }}
+    {{ form_errors(form.linkedin) }}
+
+    <div class="file-field input-field">
+
+        <div class="btn orange">
+            <span>Choisissez une image</span>
+            {{ form_widget(form.picture.pictureFile) }}
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+        {{ form_errors(form.picture.pictureFile) }}
+    </div>
+    {{ form_label(form.picture.alt) }}
+    {{ form_widget(form.picture.alt) }}
+    {{ form_errors(form.picture.alt) }}
+
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+
+    {{ form_start(delete_form) }}
+    <button class="btn red right" name="action" type="submit">Supprimer</button>
+    {{ form_end(delete_form) }}
 {% endblock %}
