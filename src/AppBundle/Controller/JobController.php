@@ -6,8 +6,6 @@ use AppBundle\Services\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,7 +24,6 @@ class JobController extends Controller
 
         $data = $api->get('jobs');
 
-        $img='';
         foreach ($data->_embedded->jobs as $job) {
 
 
@@ -44,11 +41,11 @@ class JobController extends Controller
                 ];
             if ($offers[$job->id]['attachment_id'] != '') {
 
-                $api->downloadImg(property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '');
+                $offers[$job->id]['image'] = $api->downloadImg(property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '');
 
             }
         }
-
+        dump($offers);
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
@@ -59,12 +56,10 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
 
-
         return $this->render(
             'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'img' => $img,
             ]);
     }
 
@@ -82,7 +77,6 @@ class JobController extends Controller
 
         $form->handleRequest($request);
 
-
         if ($form->isValid() && $form->isSubmitted()) {
 
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
@@ -92,7 +86,6 @@ class JobController extends Controller
 
             return $this->render('AppBundle:Job:response.html.twig');
         }
-
 
         $offer = [
             'id' => $data->id,

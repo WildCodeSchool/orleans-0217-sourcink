@@ -299,7 +299,8 @@ class Api
 
     public function downloadImg($job)
     {
-        if (!file_exists('img/jobPicture/'.$job.'.png')) {
+        $list = glob("img/jobPicture/$job.*");
+        if (!isset($list[0])) {
             $download = $this->getClient()->request(
                 'GET', 'attachments/' . $job . '/download',
                 [
@@ -307,8 +308,31 @@ class Api
                         'Authorization' => 'Token ' . $this->getApiKey(),
                     ],
                 ]);
+            $img = file_put_contents('img/jobPicture/' . $job, $download->getBody()->getContents());
+            $mime = mime_content_type('img/jobPicture/' . $job);
 
-            file_put_contents('img/jobPicture/' . $job . '.png', $download->getBody()->getContents());
+
+            $val = [
+                'image/jpeg',
+                'image/gif',
+                'image/png',
+                'image/jpg',
+            ];
+
+            if (in_array($mime, $val)) {
+
+                $ext = str_replace('image/', '.', $mime);
+                $fileName = $job . $ext;
+                rename('img/jobPicture/' . $job, 'img/jobPicture/' . $fileName);
+                return $fileName;
+
+            } else {
+                unlink('img/jobPicture/' . $job);
+            }
+
+        } else {
+            dump(basename($list[0]));
+            return basename($list[0]);
         }
     }
 
