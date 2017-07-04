@@ -186,6 +186,7 @@ nav p {
 }
 
 .page-footer {
+    margin-top: 5%;
     background-color: rgba(0, 161, 192, 1);
 }
 
@@ -385,8 +386,24 @@ span {
     height: 80px;
 
 }
+.divider {
+    margin: 5%;
+}
 
+.form-title {
+    font-size: 42px;
+    color: slategrey;
+}
 
+.navbar-fixed {
+    margin-bottom: 50px;
+}
+.profil-name {
+    font-size: 38px;
+}
+.title-small {
+    font-size: 24px;
+}
 footer {
     min-height: 100px;
 }
