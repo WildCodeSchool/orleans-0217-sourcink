@@ -377,9 +377,9 @@ class Api
         );
         $hasResume = false;
         $attachments = json_decode($data->getBody()->getContents());
-        if($attachments->count>0){
+        if($attachments->count>0) {
             foreach($attachments->_embedded->attachments as $attachment){
-                if($attachment->is_resume===true){
+                if($attachment->is_resume===true) {
                     $hasResume = true;
                 }
             }

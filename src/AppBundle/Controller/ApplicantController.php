@@ -21,7 +21,7 @@ class ApplicantController extends Controller
     {
         $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
         $hasResume = false;
-        if($catsUser->count>0){
+        if($catsUser->count>0) {
             $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
         }
         return $this->render('AppBundle:Applicant:home.html.twig', ['status' => $catsUser->count, 'hasResume' => $hasResume]);
@@ -54,9 +54,9 @@ class ApplicantController extends Controller
                     $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                     $i++;
                 }
-                if($newUser->count > 0){
+                if($newUser->count > 0) {
                     $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
-                    if($this->getUser()->getResumeName()!=NULL){
+                    if($this->getUser()->getResumeName()!=null) {
                         $directory = $this->getParameter('kernel.project_dir') . '/web/cv/';
                         $api->sendResume($directory.$this->getUser()->getResumeName(), $newUser->_embedded->candidates[0]->id);
                         unlink($directory.$this->getUser()->getResumeName());

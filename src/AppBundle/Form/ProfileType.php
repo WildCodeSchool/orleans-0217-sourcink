@@ -14,7 +14,8 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class,
+            ->add(
+                'firstname', TextType::class,
                 array(
                     'label' => 'Prénom',
                     'attr' => array(
@@ -22,7 +23,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('lastname', TextType::class,
+            ->add(
+                'lastname', TextType::class,
                 array(
                     'label' => 'Nom de famille',
                     'attr' => array(
@@ -30,7 +32,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('title', TextType::class,
+            ->add(
+                'title', TextType::class,
                 array(
                     'label' => 'Titre',
                     'attr' => array(
@@ -38,7 +41,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('currentJob', TextType::class,
+            ->add(
+                'currentJob', TextType::class,
                 array(
                     'label' => 'Poste actuel',
                     'attr' => array(
@@ -46,7 +50,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('wantedJob', TextType::class,
+            ->add(
+                'wantedJob', TextType::class,
                 array(
                     'label' => 'Poste désiré',
                     'attr' => array(
@@ -60,7 +65,8 @@ class ProfileType extends AbstractType
                     'label' => 'Mobilité'
                 )
             )
-            ->add('experience', TextType::class,
+            ->add(
+                'experience', TextType::class,
                 array(
                     'label' => 'Expérience',
                     'attr' => array(
@@ -68,7 +74,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('salary', TextType::class,
+            ->add(
+                'salary', TextType::class,
                 array(
                     'label' => 'Salaire actuel',
                     'attr' => array(
@@ -76,7 +83,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('wantedSalary', TextType::class,
+            ->add(
+                'wantedSalary', TextType::class,
                 array(
                     'label' => 'Salaire désiré',
                     'attr' => array(
@@ -84,7 +92,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('phone', TextType::class,
+            ->add(
+                'phone', TextType::class,
                 array(
                     'label' => 'Numéro de téléphone',
                     'attr' => array(
@@ -92,7 +101,8 @@ class ProfileType extends AbstractType
                     )
                 )
             )
-            ->add('submit', SubmitType::class,
+            ->add(
+                'submit', SubmitType::class,
                 array(
                     'label' => 'Modifier',
                     'attr' => array(
