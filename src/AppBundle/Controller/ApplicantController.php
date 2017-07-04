@@ -50,7 +50,7 @@ class ApplicantController extends Controller
                 $api->createCandidateUser($this->getUser());
                 $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                 $i=0;
-                while($newUser->count === 0 && $i<5){
+                while($newUser->count === 0 && $i<$this->getParameter('try_create_candidate')){
                     $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                     $i++;
                 }
