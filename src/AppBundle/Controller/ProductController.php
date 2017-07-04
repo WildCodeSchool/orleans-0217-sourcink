@@ -51,7 +51,7 @@ class ProductController extends Controller
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_index');
         }
 
         return $this->render(
@@ -62,23 +62,6 @@ class ProductController extends Controller
         );
     }
 
-    /**
-     * Finds and displays a product entity.
-     *
-     * @Route("/{id}", name="product_show")
-     * @Method("GET")
-     */
-    public function showAction(Product $product)
-    {
-        $deleteForm = $this->createDeleteForm($product);
-
-        return $this->render(
-            'Admin/product/show.html.twig', array(
-            'product' => $product,
-            'delete_form' => $deleteForm->createView(),
-            )
-        );
-    }
 
     /**
      * Displays a form to edit an existing product entity.
@@ -95,13 +78,13 @@ class ProductController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_index');
         }
 
         return $this->render(
             'Admin/product/edit.html.twig', array(
             'product' => $product,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );

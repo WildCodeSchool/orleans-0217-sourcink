@@ -26,7 +26,7 @@ class ProductOptionType extends AbstractType
                 )
             );
     }
-    
+
     /**
      * {@inheritdoc}
      */

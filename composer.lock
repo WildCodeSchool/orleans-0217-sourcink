@@ -4,7 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "content-hash": "30af5915b9b6e30b73cae15541876362",
+
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3184,6 +3186,7 @@
             ],
             "time": "2015-11-04T21:23:23+00:00"
         },
+
         {
             "name": "sensio/generator-bundle",
             "version": "v3.1.4",
