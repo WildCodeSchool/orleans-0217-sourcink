@@ -2,25 +2,27 @@
     <h2 class="center" id="expertise">NOTRE EXPERTISE METIERS</h2>
     <div class="row">
         <p class="center">
-            Sourcink est une agence spécialisée dans la recherche, l’identification et l’approche de collaborateurs et fonctions supports pour les cabinets d’avocats et les directions juridiques, fiscales et RH des entreprises et organismes professionnels, sur tout le territoire national.
-        </p>
-        <br>
-        <p class="center">
-            Nos équipes interviennent principalement dans le recrutement des profils suivants :
+            Sourcink est une agence spécialisée dans la recherche, l’identification et l’approche de collaborateurs et
+            fonctions supports pour les cabinets d’avocats et les directions juridiques, fiscales et RH des entreprises
+            et organismes professionnels, sur tout le territoire national.
         </p>
         <br>
         {% for category in categories %}
+            <div class="col s12 m6 center">
             <a href="{{ path('category_page_view', {'id':category.id}) }}">
-                <div class="col s12 m6 center">
-                    <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
-                    <h3 class="red-text">{{ category.title }}</h3>
-                </div>
-                {% for work in category.works %}
-                    <div class="col s12 center">
-                        <p>{{ work.name }}</p>
-                    </div>
-                {% endfor %}
+                <h3 class="red-text">{{ category.title }}</h3>
+                <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
             </a>
+            <p>
+                Pour la soution {{ category.title }} nos équipes interviennent principalement dans le recrutement des
+                profils suivants :
+            </p>
+            {% for work in category.works %}
+                <div class="col s12 center">
+                    <p>{{ work.name }}</p>
+                </div>
+            {% endfor %}</div>
+
         {% endfor %}
     </div>
 </div>
