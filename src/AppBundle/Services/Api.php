@@ -297,32 +297,20 @@ class Api
         return $apply;
     }
 
-    public function downloadImg($offers)
+    public function downloadImg($job)
     {
-
-        foreach ($offers as $key) {
-
-            $img = $key['attachment_id'] . '/download';
-        }
-//        dump($img);
-//        die();
-        if ($img = '') {
-            return $img;
-
-        } else {
+        if (!file_exists('img/jobPicture/'.$job.'.png')) {
             $download = $this->getClient()->request(
-                'GET', 'attachment',
+                'GET', 'attachments/' . $job . '/download',
                 [
-                    'header' => [
-                        'Authorization' => 'Token' . $this->getApiKey(),
-                        'content-type' => 'application/json'
+                    'headers' => [
+                        'Authorization' => 'Token ' . $this->getApiKey(),
                     ],
-                    'body' => $img
                 ]);
 
-            return base64_decode($download);
+            file_put_contents('img/jobPicture/' . $job . '.png', $download->getBody()->getContents());
         }
-
     }
+
 }
 

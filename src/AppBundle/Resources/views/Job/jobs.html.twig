@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-content"
                     {% if offer.attachment_id is not empty %}
-                        style="background-image: {{ img }};"
+                        style="background-image: url('/img/jobPicture/{{ offer.attachment_id }}.png');"
                     {% endif %}
             >
                 <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}

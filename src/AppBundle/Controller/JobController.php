@@ -26,8 +26,10 @@ class JobController extends Controller
 
         $data = $api->get('jobs');
 
-
+        $img='';
         foreach ($data->_embedded->jobs as $job) {
+
+
             $offers[$job->id] =
                 [
                     'title' => $job->title,
@@ -40,12 +42,12 @@ class JobController extends Controller
                     'id' => $job->id,
                     'attachment_id' => (property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '')
                 ];
+            if ($offers[$job->id]['attachment_id'] != '') {
 
+                $api->downloadImg(property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '');
+
+            }
         }
-
-
-        $img = $api->downloadImg($offers);
-
 
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
@@ -83,7 +85,6 @@ class JobController extends Controller
 
         if ($form->isValid() && $form->isSubmitted()) {
 
-
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
@@ -103,7 +104,6 @@ class JobController extends Controller
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
             'attachments' => $data->_embedded->attachments[0]->id,
-
 
         ];
 
