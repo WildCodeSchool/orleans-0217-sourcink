@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Ajout d'un métier</h1>
+    <h1>
+        Ajouter un métier
+        <a href="{{ path('work_index') }}" class="btn btn-flat orange-text right">Revenir à la liste</a>
+    </h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-    <button class="btn-floating btn-small waves-effect wave-light green" name="action" value="Create"><i class="material-icons">edit</i></button>
-    {{ form_end(form) }}
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('work_index') }}" class="btn-floating btn-small waves-effect waves-light blue"><i class="material-icons">list</i></a>
-        </li>
-    </ul>
+    <label for="appbundle_work_category">Catégorie</label>
+    {{ form_widget(form.category, {'placeholder': 'Choisissez une catégorie'}) }}
+    {{ form_errors(form.category) }}
+
+
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
 {% endblock %}
