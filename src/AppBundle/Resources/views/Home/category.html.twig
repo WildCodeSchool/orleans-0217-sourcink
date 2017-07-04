@@ -5,15 +5,9 @@
             <div class="col s12 m6 center">
             <a href="{{ path('category_page_view', {'id':category.id}) }}">
                 <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
-                <h3 class="red-text">{{ category.title }}</h3>
+                <h3> <span>{{ category.title }}</span></h3>
             </a>
-            <p>
-                Pour la soution {{ category.title }} nos équipes interviennent principalement dans le recrutement des
-                profils suivants :
-            </p>
-            {% for work in category.works %}
-                <p class="center">{{ work.name }}</p>
-            {% endfor %}
+
             </div>
 
         {% endfor %}

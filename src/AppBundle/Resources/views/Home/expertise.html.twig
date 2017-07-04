@@ -2,8 +2,34 @@
     <h2 class="center" id="expertise">NOTRE EXPERTISE METIERS</h2>
     <div class="row center">
         <p>
-            Sourcink est une agence spécialisée dans la recherche, l’identification et l’approche de collaborateurs et fonctions supports pour les cabinets d’avocats et les directions juridiques, fiscales et RH des entreprises et organismes professionnels, sur tout le territoire national.
+            Sourcink est une agence spécialisée dans la recherche, l’identification et l’approche de collaborateurs et
+            fonctions supports pour les cabinets d’avocats et les directions juridiques, fiscales et RH des entreprises
+            et organismes professionnels, sur tout le territoire national.
         </p>
         <br>
+        <p>Nos équipes interviennent principalement dans le recrutement des profils suivants :</p>
+    </div>
+    <div class="row">
+        {% for category in categories %}
+
+            <div class="col s6 center">
+        {% if category =='Sourcink' %}
+
+            {% for work in category.works %}
+                <p class="center">{{ work.name }}</p>
+            {% endfor %}
+            <img class="work" src="{{ asset('img/fleche.png') }}">
+            {% endif %}
+            </div>
+        <div class="col s6 center">
+        {% if category =='Premium' %}
+
+            {% for work in category.works %}
+                <p class="center">{{ work.name }}</p>
+            {% endfor %}
+            <img class="work" src="{{ asset('img/fleche.png') }}">
+            {% endif %}
+        </div>
+            {% endfor %}
     </div>
 </div>
