@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Productoption controller.
  *
- * @Route("productoption")
+ * @Route("admin/productoption")
  */
 class ProductOptionController extends Controller
 {
     /**
      * Lists all productOption entities.
      *
-     * @Route("/", name="productoption_index")
+     * @Route("/",    name="productoption_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class ProductOptionController extends Controller
 
         $productOptions = $em->getRepository('AppBundle:ProductOption')->findAll();
 
-        return $this->render('Admin/productoption/index.html.twig', array(
+        return $this->render(
+            'Admin/productoption/index.html.twig', array(
             'productOptions' => $productOptions,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new productOption entity.
      *
-     * @Route("/new", name="productoption_new")
+     * @Route("/new",  name="productoption_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class ProductOptionController extends Controller
             return $this->redirectToRoute('productoption_show', array('id' => $productOption->getId()));
         }
 
-        return $this->render('Admin/productoption/new.html.twig', array(
+        return $this->render(
+            'Admin/productoption/new.html.twig', array(
             'productOption' => $productOption,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class ProductOptionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($productOption);
 
-        return $this->render('Admin/productoption/show.html.twig', array(
+        return $this->render(
+            'Admin/productoption/show.html.twig', array(
             'productOption' => $productOption,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing productOption entity.
      *
      * @Route("/{id}/edit", name="productoption_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, ProductOption $productOption)
     {
@@ -91,17 +97,19 @@ class ProductOptionController extends Controller
             return $this->redirectToRoute('productoption_edit', array('id' => $productOption->getId()));
         }
 
-        return $this->render('Admin/productoption/edit.html.twig', array(
+        return $this->render(
+            'Admin/productoption/edit.html.twig', array(
             'productOption' => $productOption,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a productOption entity.
      *
-     * @Route("/{id}", name="productoption_delete")
+     * @Route("/{id}",   name="productoption_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, ProductOption $productOption)
@@ -130,7 +138,6 @@ class ProductOptionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('productoption_delete', array('id' => $productOption->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

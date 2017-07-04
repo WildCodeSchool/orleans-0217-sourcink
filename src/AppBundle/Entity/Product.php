@@ -217,7 +217,6 @@ class Product
      * @return Product
      */
     public function setPicture(Picture $picture = null)
-
     {
         $this->picture = $picture;
 

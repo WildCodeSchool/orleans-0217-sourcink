@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Header controller.
  *
- * @Route("header")
+ * @Route("admin/header")
  */
 class HeaderController extends Controller
 {
     /**
      * Lists all header entities.
      *
-     * @Route("/", name="header_index")
+     * @Route("/",    name="header_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class HeaderController extends Controller
 
         $headers = $em->getRepository('AppBundle:Header')->findAll();
 
-        return $this->render('Admin/header/index.html.twig', array(
+        return $this->render(
+            'Admin/header/index.html.twig', array(
             'headers' => $headers,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new header entity.
      *
-     * @Route("/new", name="header_new")
+     * @Route("/new",  name="header_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class HeaderController extends Controller
             return $this->redirectToRoute('header_show', array('id' => $header->getId()));
         }
 
-        return $this->render('Admin/header/new.html.twig', array(
+        return $this->render(
+            'Admin/header/new.html.twig', array(
             'header' => $header,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class HeaderController extends Controller
     {
         $deleteForm = $this->createDeleteForm($header);
 
-        return $this->render('Admin/header/show.html.twig', array(
+        return $this->render(
+            'Admin/header/show.html.twig', array(
             'header' => $header,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing header entity.
      *
      * @Route("/{id}/edit", name="header_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Header $header)
     {
@@ -91,17 +97,19 @@ class HeaderController extends Controller
             return $this->redirectToRoute('header_edit', array('id' => $header->getId()));
         }
 
-        return $this->render('Admin/header/edit.html.twig', array(
+        return $this->render(
+            'Admin/header/edit.html.twig', array(
             'header' => $header,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a header entity.
      *
-     * @Route("/{id}", name="header_delete")
+     * @Route("/{id}",   name="header_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Header $header)
@@ -130,7 +138,6 @@ class HeaderController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('header_delete', array('id' => $header->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

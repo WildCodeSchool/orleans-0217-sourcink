@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Services\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
@@ -18,7 +19,6 @@ class JobController extends Controller
 {
     /**
      * @Route("/", name="job_list")
-     *
      */
 
     public function jobAction(Api $api, Request $request)
@@ -55,42 +55,40 @@ class JobController extends Controller
         );
 
 
-        return $this->render('AppBundle:Job:home.html.twig',
+        return $this->render(
+            'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'link_site'=>$link_site,
-            ]);
+                'link_site' => $link_site,
+            ]
+        );
     }
 
     /**
-     * @Route("/{id}", name="job_page")
-     */
-    public
-    function jobPage(Api $service, $id, Request $request)
+     * @Route("/view/{id}", name="job_page")
+     */ 
+    public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);
-
         $form = $this->createFormBuilder()
-            ->setMethod('GET')
+            ->setMethod('POST')
             ->add('Postuler', SubmitType::class)
             ->getForm();
-
         $form->handleRequest($request);
 
 
         if ($form->isValid() && $form->isSubmitted()) {
-
-
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
-
-
+            $email->applyJob($mailer, $this->getUser(), $data->title);
+            $this->addFlash('success', 'Nous avons reçu votre candidature. Nous allons vous envoyer un mail dans les plus brefs délais');
             return $this->render('AppBundle:Job:response.html.twig');
         }
 
 
         $offer = [
+            'job'=>$data->id,
             'id' => $data->id,
             'title' => $data->title,
             'duration' => $data->duration,
@@ -99,22 +97,28 @@ class JobController extends Controller
             'statut' => $data->_embedded->status->title,
             'maj' => $data->date_modified,
             'debut' => $data->start_date,
-            'attachments' => $data->_embedded->attachments[0]->id,
-
+            'attachment_id' => (property_exists($data->_embedded, 'attachments') ? $data->_embedded->attachments[0]->id : '')
 
         ];
 
-        return $this->render('AppBundle:Job:page.html.twig',
+        return $this->render(
+            'AppBundle:Job:page.html.twig',
             [
                 'offer' => $offer,
-                'form' => $form->createView()
+
+                'form' => $form->createView(),
+                'link_site' =>$link_site = $this->getParameter('link_site')
             ]);
 
+
+    }
+    /**
+     * @Route("/spontane", name="job_spontane")
+     */
+    public function spontaneAction(\Swift_Mailer $mailer, Email $email)
+    {
+        $this->addFlash('success', 'Nous avons bien reçu votre candidature. Nous allons vous contacter par mail.');
+        $email->candidatureSpontane($mailer, $this->getUser());
+        return $this->redirectToRoute('job_list');
     }
 }
-
- 
-
-
-
-

@@ -30,15 +30,12 @@ class Header
 
     /**
      * @var string
-     *
-     *
      */
     private $video;
 
     /**
      * @var
      * @ORM\OneToOne(targetEntity="Picture", cascade={"persist"})
-
      */
     private $picture;
 
