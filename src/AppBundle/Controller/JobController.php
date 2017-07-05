@@ -45,7 +45,6 @@ class JobController extends Controller
 
             }
         }
-        dump($offers);
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */

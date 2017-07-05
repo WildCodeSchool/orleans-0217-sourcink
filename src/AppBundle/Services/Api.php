@@ -331,7 +331,6 @@ class Api
             }
 
         } else {
-            dump(basename($list[0]));
             return basename($list[0]);
         }
     }
