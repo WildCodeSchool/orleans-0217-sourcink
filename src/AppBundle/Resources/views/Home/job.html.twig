@@ -1,39 +1,27 @@
 <h2 class="center" id="job">Nos Offres</h2>
-
 <div class="row">
-
     {% for offer in offers %}
         {% if offer.statut in ['HomeSite'] %}
-
-
-
-
             <div class="col s12 m4">
                 <div class="card card-offres color">
                     <div class="card-content white-text hvr-bounce-to-right"
                             {% if offer.attachment_id is not empty %}
                          style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}'); border-radius: inherit; background-repeat:no-repeat;background-size:cover;">
                         {% endif %}
-
                         <span class="card-title" id="card-title"><h5>{{ offer.title | raw }}</h5></span>
-
                         <div class="card-content">{{ offer.city | raw }}
                             {{ offer.debut| date('d/m/y') }}
                         </div>
-
                         <a class="waves-effect waves-light btn red offres"
                            href="{{ path('job_page', {'id': offer.id}) }}">Voir
                             plus</a>
-
                     </div>
                 </div>
             </div>
         {% endif %}
 
     {% endfor %}
-
 </div>
-
 <div class="col s12">
     <div class="center">
         <a class="waves-effect waves-light btn red" href="{{ path('job_list') }}">Plus d'offres...</a>
