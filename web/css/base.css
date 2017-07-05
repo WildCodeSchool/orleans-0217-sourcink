@@ -169,6 +169,19 @@ nav ul a {
     padding-top: 20px;
 
 }
+.applicant-button{
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 32px;
+    margin-right: 10px;
+}
 
 nav a {
     height: 100px;
@@ -316,10 +329,6 @@ a h5 {
 .postuler {
     margin-top: 50px;
     margin-bottom: 50px;
-}
-
-.applicant-button {
-    margin-top: 15%;
 }
 
 /*Page produit*/
