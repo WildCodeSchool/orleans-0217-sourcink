@@ -71,7 +71,10 @@ class JobController extends Controller
         $data = $service->getId('jobs', $id);
         $form = $this->createFormBuilder()
             ->setMethod('POST')
-            ->add('Postuler', SubmitType::class)
+            ->add('Postuler', SubmitType::class,array(
+                'label'=> "Postuler",
+                'attr'=>array ('class'=> 'waves-effect waves-light btn red')))
+
             ->getForm();
         $form->handleRequest($request);
 
