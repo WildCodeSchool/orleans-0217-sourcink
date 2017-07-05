@@ -75,7 +75,6 @@ class Api
 
     public function get($query)
     {
-
         $data = $this->getClient()->request(
             'GET', $query, [
                 'headers' => [
@@ -149,7 +148,7 @@ class Api
         return json_decode($data->getBody()->getContents());
     }
 
-    public function parsing($request)
+    public function parsing($file)
     {
         $parsing = $this->getClient()->request(
             'POST', 'attachments/parse', [
@@ -157,7 +156,8 @@ class Api
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/octet-stream'
                 ],
-                'body' => fopen(realpath($request->files->get('resume')), 'r')
+
+                'body' => fopen(realpath($file), 'r')
             ]
         );
         return $parsing->getBody()->getContents();
@@ -189,6 +189,7 @@ class Api
         );
         return $candidate->getHeaders()['Location'][0];
     }
+
 
     public function candidateCustomFields()
     {
@@ -239,6 +240,7 @@ class Api
                     ],
                     "custom_fields" => $customFields
                 ]
+
             ]
         );
         return $candidate;
@@ -256,7 +258,8 @@ class Api
         return json_decode($data->getBody()->getContents());
     }
 
-    public function sendResume($request, $id)
+
+    public function sendResume($file, $id)
     {
         $resume = $this->getClient()->request(
             'POST', 'candidates/' . $id . '/resumes?filename=cv.pdf', [
@@ -264,7 +267,8 @@ class Api
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/octet-stream'
                 ],
-                'body' => fopen(realpath($request->files->get('resume')), 'r')
+
+                'body' => fopen(realpath($file), 'r')
             ]
         );
         return $resume;
@@ -328,6 +332,45 @@ class Api
         return $apply;
     }
 
+    public function downloadImg($job)
+    {
+        $list = glob("img/jobPicture/$job.*");
+        if (!isset($list[0])) {
+            $download = $this->getClient()->request(
+                'GET', 'attachments/' . $job . '/download',
+                [
+                    'headers' => [
+                        'Authorization' => 'Token ' . $this->getApiKey(),
+                    ],
+                ]);
+            $img = file_put_contents('img/jobPicture/' . $job, $download->getBody()->getContents());
+            $mime = mime_content_type('img/jobPicture/' . $job);
+
+
+            $val = [
+                'image/jpeg',
+                'image/gif',
+                'image/png',
+                'image/jpg',
+            ];
+
+            if (in_array($mime, $val)) {
+
+                $ext = str_replace('image/', '.', $mime);
+                $fileName = $job . $ext;
+                rename('img/jobPicture/' . $job, 'img/jobPicture/' . $fileName);
+                return $fileName;
+
+            } else {
+                unlink('img/jobPicture/' . $job);
+            }
+
+        } else {
+            return basename($list[0]);
+        }
+    }
+
+
     public function tagCandidate($candidate, $tag)
     {
         $tag = $this->getClient()->request(
@@ -364,6 +407,28 @@ class Api
             }
         }
         return $id;
+    }
+
+    public function hasResume($id)
+    {
+        $data = $this->getClient()->request(
+            'GET', 'candidates/'.$id.'/attachments', [
+                'headers' => [
+                    'Authorization' => 'Token ' . $this->getApiKey(),
+                    'Content-Type' => 'application/json'
+                ]
+            ]
+        );
+        $hasResume = false;
+        $attachments = json_decode($data->getBody()->getContents());
+        if($attachments->count>0) {
+            foreach($attachments->_embedded->attachments as $attachment){
+                if($attachment->is_resume===true) {
+                    $hasResume = true;
+                }
+            }
+        }
+        return $hasResume;
     }
 }
 

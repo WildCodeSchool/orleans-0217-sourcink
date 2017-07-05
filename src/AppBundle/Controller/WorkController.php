@@ -50,31 +50,13 @@ class WorkController extends Controller
             $em->persist($work);
             $em->flush();
 
-            return $this->redirectToRoute('work_show', array('id' => $work->getId()));
+            return $this->redirectToRoute('work_index');
         }
 
         return $this->render(
             'Admin/work/new.html.twig', array(
-            'work' => $work,
-            'form' => $form->createView(),
-            )
-        );
-    }
-
-    /**
-     * Finds and displays a work entity.
-     *
-     * @Route("/{id}", name="work_show")
-     * @Method("GET")
-     */
-    public function showAction(Work $work)
-    {
-        $deleteForm = $this->createDeleteForm($work);
-
-        return $this->render(
-            'Admin/work/show.html.twig', array(
-            'work' => $work,
-            'delete_form' => $deleteForm->createView(),
+                'work' => $work,
+                'form' => $form->createView(),
             )
         );
     }
@@ -94,13 +76,13 @@ class WorkController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('work_edit', array('id' => $work->getId()));
+            return $this->redirectToRoute('work_index');
         }
 
         return $this->render(
             'Admin/work/edit.html.twig', array(
             'work' => $work,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );

@@ -48,31 +48,13 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('category_show', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render(
             'Admin/category/new.html.twig', array(
             'category' => $category,
             'form' => $form->createView(),
-            )
-        );
-    }
-
-    /**
-     * Finds and displays a category entity.
-     *
-     * @Route("/{id}", name="category_show")
-     * @Method("GET")
-     */
-    public function showAction(Category $category)
-    {
-        $deleteForm = $this->createDeleteForm($category);
-
-        return $this->render(
-            'Admin/category/show.html.twig', array(
-            'category' => $category,
-            'delete_form' => $deleteForm->createView(),
             )
         );
     }
@@ -92,13 +74,13 @@ class CategoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render(
             'Admin/category/edit.html.twig', array(
             'category' => $category,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             )
         );

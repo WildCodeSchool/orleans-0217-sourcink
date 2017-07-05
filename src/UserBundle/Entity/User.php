@@ -98,6 +98,13 @@ class User extends BaseUser
      */
     private $phone;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumeName", length=255, type="string", nullable=true)
+     */
+    private $resumeName;
+
 
     /**
      * Get id
@@ -381,5 +388,29 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set resumeName
+     *
+     * @param string $resumeName
+     *
+     * @return User
+     */
+    public function setResumeName($resumeName)
+    {
+        $this->resumeName = $resumeName;
+
+        return $this;
+    }
+
+    /**
+     * Get resumeName
+     *
+     * @return string
+     */
+    public function getResumeName()
+    {
+        return $this->resumeName;
     }
 }
