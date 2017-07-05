@@ -31,15 +31,19 @@ class HomeController extends Controller
                 'statut'=>$job->_embedded->status->title,
                 'maj' => $job->date_modified,
                 'debut' => $job ->start_date,
-                'idoffre' => $job-> id,
+                'id' => $job-> id,
+                'attachment_id' => (property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '')
+
             ];
 
         }
+       
+        return $this->render('AppBundle:Home:home.html.twig',
+            ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team,
+                'link_site' =>$link_site = $this->getParameter('link_site')
+        ]);
 
-        return $this->render(
-            'AppBundle:Home:home.html.twig',
-            ['offers' => $offers, 'videos' => $videos, 'categories' => $categories, 'team' => $team, ]
-        );
+
     }
 
 }

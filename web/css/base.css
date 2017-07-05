@@ -1,3 +1,152 @@
+.cadre{
+    border-style : solid;
+    border-width: 1px;
+    border-color : #757575;
+    border-radius: 15px 0 15px 0;
+    width : 200px;
+    height:auto;
+    margin : 50px;
+    padding : 30px 0 30px 0;
+}
+
+.job_title{
+    text-align: center;
+    position: relative;
+    top: -650px;
+    font-size:80px;
+}
+.job_descrition{
+    position : relative;
+    top : -350px;
+    z-index: 1;
+}
+.job-detail{
+    font-size: 20px;
+    position: relative;
+    top: -300px;
+    color: red;
+
+}
+.offredetail {
+    position: relative;
+    top: -650px;
+    color: red;
+    text-align: center;
+    font-size: 40px;
+
+}
+
+.detail{
+    box-shadow: 0 0 0 0;
+    position: relative;
+    width: auto;
+    height: 600px;
+    top : 25px;
+}
+
+/* Offres sans images */
+.cadre1{
+    border-style : solid;
+    border-width: 1px;
+    border-color : #757575;
+    border-radius: 15px 0 15px 0;
+    width : 200px;
+    height:auto;
+    margin : 50px;
+    padding : 30px;
+}
+
+.job_title2{
+    font-size:80px;
+}
+
+.job-detail2{
+    font-size: 20px;
+    color: red;
+
+}
+
+.offredetail2 {
+    color: red;
+    font-size: 40px;
+}
+/* Offres sans images */
+
+#card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+
+.offres {
+    position : absolute;
+    top : 135px;
+    left : 125px;
+    visibility : hidden;
+}
+.card-offres{
+    position : relative;
+    height:180px;
+    border-radius: 15px 0 15px 0;
+}
+.card-offres:hover .offres {
+    visibility:visible;
+
+}
+
+.color, .btn.offres  {
+
+    background-color: rgba(127, 126, 139, 0.37);
+    border-radius: 15px 0 15px 0;
+}
+
+
+/* Bounce To Right */
+.hvr-bounce-to-right {
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    /*box-shadow: 0 0 1px white;*/
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    height:180px;
+}
+
+.hvr-bounce-to-right:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(231, 49, 72, 0.5);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.7s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    border-radius: 15px 0 15px 0;
+
+}
+
+.hvr-bounce-to-right:hover:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    color: white;
+}
+/* Bounce To Right */
+
 body {
     display: flex;
     min-height: 100vh;
@@ -15,6 +164,9 @@ nav {
     height: 100px;
 }
 
+a {
+    color : white;
+}
 nav ul a {
     color: black;
     padding-top: 20px;
