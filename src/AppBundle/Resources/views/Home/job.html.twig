@@ -2,9 +2,8 @@
 {% for offer in offers %}
 {% if offer.statut in ['HomeSite']  %}
 
-<div class="row">
-
-    <div class="col s6 m4">
+<div class="row center">
+    <div class="col s12 m3">
         <div class="card card-offres color">
             <div class="card-content white-text hvr-bounce-to-right"
                     {% if offer.attachment_id is not empty %}
@@ -25,23 +24,6 @@
         </div>
     </div>
 
-        <div class="col s12 m4">
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{ offer.title }}<i class="material-icons right">add</i></span>
-                    <p class="grey-text">{{ offer.city | raw }}</p>
-                    <p class="grey-text">{{ offer.duration | raw }}
-                        {{ offer.debut | date("d/m/y") }}</p>
-
-                </div>
-                <div class="card-reveal">
-
-                    <span class="card-title grey-text text-darken-4">{{ offer.title }}<i class="material-icons right">close</i></span>
-                    <p class="grey-text">{{ offer.city | raw }} {{ offer.duration | raw }} {{ offer.debut | date("d/m/y") }}</p>
-                    <p>{{ offer.description | raw }} </p>
-                </div>
-            </div>
-        </div>
 
     {% endif %}
     {% endfor %}
