@@ -1,10 +1,6 @@
 <h2 class="center" id="jobs">Nos Jobs</h2>
-
-
 <div class="row"></div>
-
 {% for offer in offers %}
-
     <div class="col s12 m4">
         <div class="card card-offres color">
             <div class="card-content white-text hvr-bounce-to-right"
@@ -12,7 +8,6 @@
                  style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');
                  border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
                 {% endif %}
-
                 <span class="card-title" id="card-title">{{ offer.title | raw }}</span>
                 <div class="card-content">{{ offer.city | raw }} {{ offer.debut| date('d/m/y') }}</div>
                 <a class="waves-effect waves-light btn red offres" href="{{ path('job_page', {'id': offer.id}) }}">
@@ -21,7 +16,6 @@
             </div>
         </div>
     </div>
-
 {% endfor %}
 
 <a href="{{ path('job_spontane') }}" class="btn btn-large">Candidature Spontanée</a>
