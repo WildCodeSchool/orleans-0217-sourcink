@@ -106,7 +106,8 @@ class JobController extends Controller
 
                 'form' => $form->createView(),
                 'link_site' =>$link_site = $this->getParameter('link_site')
-            ]);
+            ]
+        );
 
 
     }
