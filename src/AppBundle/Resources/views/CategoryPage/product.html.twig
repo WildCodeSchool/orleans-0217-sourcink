@@ -4,39 +4,37 @@
 <div class="left-align">
     <p>{{ category.text }}</p>
 </div>
-
 <div class="row">
     {% for product in category.products %}
         {% if category.products|length == 3 %}
             {% if product.title == 'Small' %}
-            <div class="col s12 m4 center padding-small">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
+                <div class="col s12 m4 center padding-small">
+                    <img class="circle responsive-img img" id="{{ product.id }}"
+                         src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-small red lighten-1"><i class="material-icons">add</i></a>
                     <p class="product-small red lighten-1">{{ product.text }}</p>
-            </div>
-                {% elseif product.title == 'Medium' %}
+                </div>
+            {% elseif product.title == 'Medium' %}
                 <div class="col s12 m4 center padding-medium">
                     <img class="circle responsive-img img" id="{{ product.id }}"
                          src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-medium deep-purple lighten-2"><i class="material-icons">add</i></a>
                     <p class="product-medium deep-purple lighten-2">{{ product.text }}</p>
                 </div>
-                {% elseif product.title == 'Large' %}
-                    <div class="col s12 m4 center padding-large">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
+            {% elseif product.title == 'Large' %}
+                <div class="col s12 m4 center padding-large">
+                    <img class="circle responsive-img img" id="{{ product.id }}"
+                         src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-large blue lighten-1"><i class="material-icons">add</i></a>
                     <p class="product-large blue lighten-1">{{ product.text }}</p>
-                    </div>{% endif %}
-
-        {% elseif category.products|length == 1 %}
-            <div class="center">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
-            </div>
+                </div>{% endif %}
         {% endif %}
     {% endfor %}
+    {% if category.title == 'Premium' %}
+        <div class="center">
+            <img class="circle responsive-img img" id="{{ category.id }}" src="{{ asset('img/'~category.picture.pictureName) }}">
+        </div>
+    {% endif %}
 </div>
 
 

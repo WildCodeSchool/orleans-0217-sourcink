@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family:Prater;
 }
 
-p {
+p, li {
     font-family: Caviar;
     font-size: 20px;
 
@@ -50,13 +50,8 @@ p {
 .job_title{
     text-align: center;
     position: relative;
-    top: -650px;
+    top: -600px;
     font-size:80px;
-}
-.job_descrition{
-    position : relative;
-    top : -350px;
-    z-index: 1;
 }
 .job-detail{
     font-size: 20px;
@@ -71,7 +66,6 @@ p {
     color: red;
     text-align: center;
     font-size: 40px;
-
 }
 
 .detail{
@@ -419,7 +413,6 @@ span {
 }
 
 
-
 /*Home*/
 
 .work {
@@ -445,7 +438,7 @@ span {
 }
 
 .navbar-fixed {
-    margin-bottom: 50px;
+
 }
 .profil-name {
     font-size: 38px;
@@ -458,3 +451,33 @@ footer {
 }
 
 
+.expertise-texte {
+    font-size: 24px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.work-name {
+    font-size: 24px;
+}
+.category-title {
+    position: relative;
+    top: -100px;
+}
+
+.img-fleche {
+    height: 125px;
+}
+
+.offers-div {
+    border-top: thin solid lightgrey;
+    border-bottom: thin solid lightgrey;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+.team-img {
+
+}
+
+.img-offre {
+    width: 100%;
+}

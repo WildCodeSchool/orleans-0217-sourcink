@@ -1,66 +1,29 @@
-    {% extends "AppBundle:Base:layout.html.twig" %}
+{% extends "AppBundle:Base:layout.html.twig" %}
     {% block header %}
         {% include('AppBundle:Job:header.html.twig') %}
     {% endblock %}
     {% block content %}
-
-<div class="container-fluid">
-        <div class="row">
-  {% if offer.attachment_id is not empty %}
-        <div class="card detail"
-             style="background-image :url({{ link_site }}{{ offer.attachment_id }});
-                    background-repeat:no-repeat;background-size:cover;">
-        </div>
-      </div>
-</div>
-
-
-    <div class="container">
-          <div class="row">
-              <div class="col m3 s12 offset-m9">
-                  <div class="center cadre">
-                      <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-                      <script type="in/share"></script>
-                      {{ form (form) }}
-                  </div>
-              </div>
-          </div>
-
-
-
-          <div><h2 class="job_title">{{ offer.title | raw }}</h2></div>
-          <div class="job_detail"><p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}{{ offer.debut| date('d/m/y') }}</p></div>
-          <div class="job_descrition">{{ offer.description | raw }}</div>
-
-    </div>
-
-                {% else %}
-
-      {#Affichage de l'annonce sans image de fond#}
-
-    <div class="container">
-        <div class="row">
-
-            <div class="col s12">
-                <div class="center"><h2 class="job_title2">{{ offer.title | raw }}</h2></div>
-                <div class="job_detail2 center"><p class="offredetail2">{{ offer.city | raw }} | {{ offer.duration | raw }}{{ offer.debut| date('d/m/y') }}</p></div>
-                <div class="job_descrition2">{{ offer.description | raw }}</div>
-            </div>
-
-
-            <div class="col s12 m3 offset-m9">
-                <div class="center cadre1">
-                    <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-                    <script type="in/share"></script>
-                    <br>
-                    {{ form (form) }}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="infos-offre">
+                    {% if offer.attachment_id is not empty %}
+                        <img src="{{ link_site }}{{ offer.attachment_id }}" class="img-offre">
+                    {% endif %}
+                    <h2 class="job_title">{{ offer.title | raw }}</h2>
+                    <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>
+                    <div class="container">
+                        <div class="col s12">
+                            <p>{{ offer.description | raw }}</p>
+                        </div>
+                    </div>
+                    <div class="col m3 s12 offset-m9">
+                        <div class="center cadre1">
+                            <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+                            <script type="in/share"></script>
+                            {{ form (form) }}
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
         </div>
-    </div>
-        {% endif %}
-
     {% endblock %}
-
