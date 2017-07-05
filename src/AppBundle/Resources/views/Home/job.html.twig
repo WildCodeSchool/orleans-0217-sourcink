@@ -4,7 +4,7 @@
 
 <div class="row">
 
-    <div class="col s6 m4">
+    <div class="col s12 m4">
         <div class="card card-offres color">
             <div class="card-content white-text hvr-bounce-to-right"
                     {% if offer.attachment_id is not empty %}
@@ -20,8 +20,6 @@
                 <a class="waves-effect waves-light btn red offres" href="{{ path('job_page', {'id': offer.id}) }}">Voir plus</a>
 
             </div>
-
-
         </div>
     </div>
 

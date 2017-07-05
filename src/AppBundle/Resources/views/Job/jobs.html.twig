@@ -10,9 +10,12 @@
             <div class="card-content white-text hvr-bounce-to-right"
                     {% if offer.attachment_id is not empty %}
 
-                        style="background-image :url({{ link_site }}{{ offer.attachment_id }}); border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
+                 style="background-image :url({{ link_site }}{{ offer.attachment_id }});
+                 border-radius: inherit;
+                 background-repeat:no-repeat;
+                 background-size:cover;">
 
-            {% endif %}
+                {% endif %}
                 <span class="card-title" id="card-title">{{ offer.title | raw }}</span>
 
                 <div class="card-content">{{ offer.city | raw }} {{ offer.debut| date('d/m/y') }}

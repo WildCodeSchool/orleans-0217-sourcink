@@ -5,19 +5,20 @@
     border-radius: 15px 0 15px 0;
     width : 200px;
     height:auto;
-    margin : 30px;
-    padding : 20px;
+    margin : 50px;
+    padding : 30px 0 30px 0;
 }
 
 .job_title{
     text-align: center;
     position: relative;
-    top: -500px;
+    top: -650px;
     font-size:80px;
 }
 .job_descrition{
     position : relative;
     top : -350px;
+    z-index: 1;
 }
 .job-detail{
     font-size: 20px;
@@ -28,10 +29,11 @@
 }
 .offredetail {
     position: relative;
-    top: -500px;
+    top: -650px;
     color: red;
     text-align: center;
     font-size: 40px;
+
 }
 
 .detail{
@@ -52,30 +54,20 @@
     height:auto;
     margin : 50px;
     padding : 30px;
-    position : relative;
-    top:400px;
 }
 
 .job_title2{
-    text-align: center;
-    position: relative;
     font-size:80px;
-    top: -200px;
 }
+
 .job-detail2{
     font-size: 20px;
     color: red;
 
 }
-.job_descrition2{
-    position : relative;
-    top : -200px;
-}
+
 .offredetail2 {
-    position: relative;
-    top: -250px;
     color: red;
-    text-align: center;
     font-size: 40px;
 }
 /* Offres sans images */
