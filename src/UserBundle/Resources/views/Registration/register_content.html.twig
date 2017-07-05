@@ -1,5 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'id': 'registration_form'}}) }}
+<h1 class="form-title center">Inscription</h1>
 <div class="form-group" id="fos_user_registration_form">
     <div class="row">
         {% if form.firstname is defined %}
@@ -32,8 +33,8 @@
     </div>
     </div>
     <div class="center">
-        <input type="submit" value="{{ 'security.register.submit'|trans }}" class="btn-large">
+        <input type="submit" value="{{ 'security.register.submit'|trans }}" class="btn blue">
     </div>
-    <p class="center"><a href="{{ path('fos_user_security_login') }}">{{ 'security.register.login'|trans }}</a></p>
+    <p class="center"><a href="{{ path('fos_user_security_login') }}" class="btn btn-flat orange-text">{{ 'security.register.login'|trans }}</a></p>
 </div>
 {{ form_end(form) }}

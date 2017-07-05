@@ -1,3 +1,149 @@
+
+@font-face {
+    font-family: "Prater";
+    src: local(Prater Light), url("../fonts/prater/PraterSansTwo-Regular.ttf") format("truetype");
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Caviar";
+    src: local(Caviar Dream), url("../fonts/caviardreams/CaviarDreams.ttf") format("truetype");
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:Prater;
+}
+
+p {
+    font-family: Caviar;
+    font-size: 20px;
+
+}
+
+.job_title{
+    text-align: center;
+    position: relative;
+    top: -400px;
+    font-size:80px;
+}
+.job-detail{
+    font-size: 20px;
+    position: relative;
+    top: -300px;
+    color: red;
+
+}
+.offredetail {
+    position: relative;
+    top: -400px;
+    color: red;
+    text-align: center;
+    font-size: 40px;
+}
+
+.detail{
+    box-shadow: 0 0 0 0;
+    position: relative;
+    width: auto;
+    height: 600px;
+    top : 25px;
+}
+
+/* Offres sans images */
+.job_title2{
+    text-align: center;
+    position: relative;
+    font-size:80px;
+}
+.job-detail2{
+    font-size: 20px;
+    color: red;
+
+}
+.offredetail2 {
+    position: relative;
+
+    color: red;
+    text-align: center;
+    font-size: 40px;
+}
+/* Offres sans images */
+
+#card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+
+.offres {
+    position : absolute;
+    top : 135px;
+    left : 125px;
+    visibility : hidden;
+}
+.card-offres{
+    position : relative;
+    height:180px;
+    border-radius: 15px 0 15px 0;
+}
+.card-offres:hover .offres {
+    visibility:visible;
+
+}
+
+.color, .btn.offres  {
+
+    background-color: rgba(127, 126, 139, 0.37);
+    border-radius: 15px 0 15px 0;
+}
+
+
+/* Bounce To Right */
+.hvr-bounce-to-right {
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    /*box-shadow: 0 0 1px white;*/
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    height:180px;
+}
+
+.hvr-bounce-to-right:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(231, 49, 72, 0.5);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.7s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    border-radius: 15px 0 15px 0;
+
+}
+
+.hvr-bounce-to-right:hover:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    color: white;
+}
+/* Bounce To Right */
+
+
 body {
     display: flex;
     min-height: 100vh;
@@ -15,6 +161,9 @@ nav {
     height: 100px;
 }
 
+a {
+    color : white;
+}
 nav ul a {
     color: black;
     padding-top: 20px;
@@ -37,6 +186,7 @@ nav p {
 }
 
 .page-footer {
+    margin-top: 5%;
     background-color: rgba(0, 161, 192, 1);
 }
 
@@ -55,6 +205,11 @@ h2 {
 
 li {
     display: inline-block;
+}
+
+#expertise, #category, #job, #team {
+    padding-top: 100px;
+    margin-top: -90px;
 }
 
 /* slider videos */
@@ -125,6 +280,9 @@ a h5 {
     font-size: 40px;
 }
 
+#resumeForm {
+    padding-top: 90px;
+}
 /*Slider Vidéos*/
 
 /*Expertise*/
@@ -162,7 +320,63 @@ a h5 {
 
 .applicant-button {
     margin-top: 15%;
+}
 
+/*Page produit*/
+.title {
+    padding-top: 90px;
+}
+
+h3 {
+    padding-left: 10px;
+}
+
+.black-text {
+    border-left: 10px solid #00A1C0 ;
+}
+
+.product-small {
+    background-color: #E73148;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+}
+.product-medium {
+    background-color: #786681;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+
+}
+.product-large {
+    background-color: #00A1C0;
+    color: white;
+    border-radius: 5px;
+    line-height: 2em;
+}
+.show-small {
+    background-color: #E73148;
+    color: white;
+}
+
+span {
+    font-family: Prater;
+    color: #00A1C0;
+}
+.padding-small {
+    margin-top: 80px;
+}
+.padding-medium {
+    margin-top: 40px;
+}
+
+
+
+/*Home*/
+
+.work {
+    position: relative;
+    top: 50px;
 }
 
 /*CSS admin */
@@ -172,3 +386,25 @@ a h5 {
     height: 80px;
 
 }
+.divider {
+    margin: 5%;
+}
+
+.form-title {
+    font-size: 42px;
+    color: slategrey;
+}
+
+.navbar-fixed {
+    margin-bottom: 50px;
+}
+.profil-name {
+    font-size: 38px;
+}
+.title-small {
+    font-size: 24px;
+}
+footer {
+    min-height: 100px;
+}
+

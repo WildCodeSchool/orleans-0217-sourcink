@@ -13,21 +13,103 @@ class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstname')
-            ->add('lastname')
-            ->add('title')
-            ->add('currentJob')
-            ->add('wantedJob')
+        $builder
             ->add(
-                'mobility', ChoiceType::class, array(
-                    'choices' => $options['mobility']
+                'firstname', TextType::class,
+                array(
+                    'label' => 'Prénom',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre prénom'
+                    )
                 )
             )
-            ->add('experience')
-            ->add('salary')
-            ->add('wantedSalary')
-            ->add('phone')
-            ->add('submit', SubmitType::class, array('label' => 'Modifier'));
+            ->add(
+                'lastname', TextType::class,
+                array(
+                    'label' => 'Nom de famille',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre nom de famille'
+                    )
+                )
+            )
+            ->add(
+                'title', TextType::class,
+                array(
+                    'label' => 'Titre',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre titre'
+                    )
+                )
+            )
+            ->add(
+                'currentJob', TextType::class,
+                array(
+                    'label' => 'Poste actuel',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre poste actuel'
+                    )
+                )
+            )
+            ->add(
+                'wantedJob', TextType::class,
+                array(
+                    'label' => 'Poste désiré',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre poste désiré'
+                    )
+                )
+            )
+            ->add(
+                'mobility', ChoiceType::class, array(
+                    'choices' => $options['mobility'],
+                    'label' => 'Mobilité'
+                )
+            )
+            ->add(
+                'experience', TextType::class,
+                array(
+                    'label' => 'Expérience',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre expérience en année'
+                    )
+                )
+            )
+            ->add(
+                'salary', TextType::class,
+                array(
+                    'label' => 'Salaire actuel',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre salaire actuel'
+                    )
+                )
+            )
+            ->add(
+                'wantedSalary', TextType::class,
+                array(
+                    'label' => 'Salaire désiré',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre salaire désiré'
+                    )
+                )
+            )
+            ->add(
+                'phone', TextType::class,
+                array(
+                    'label' => 'Numéro de téléphone',
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre numéro de téléphone'
+                    )
+                )
+            )
+            ->add(
+                'submit', SubmitType::class,
+                array(
+                    'label' => 'Modifier',
+                    'attr' => array(
+                        'class' => 'btn blue'
+                    )
+                )
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -17,11 +17,20 @@ class AjaxController extends Controller
      *     "/ajax/resume/parse",
      *     name="ajax_resume_parse",
      * )
+     *
      */
     public function resumeParsing(Request $request, Api $api)
     {
         if ($request->isXmlHttpRequest()) {
-            $resumeJson = $api->parsing($request);
+            $resume = $request->files->get('resume');
+            $resumeJson = $api->parsing($resume);
+            $fileName = $this->getUser()->getId().'.'.$resume->guessExtension();
+            $directory = $this->getParameter('kernel.project_dir') . '/web/cv';
+            $em = $this->getDoctrine()->getManager();
+            $this->getUser()->setResumeName($fileName);
+            $em->persist($this->getUser());
+            $em->flush();
+            $resume->move($directory, $fileName);
             return new JsonResponse(array('data' => $resumeJson));
         }
         return $this->redirectToRoute('app_homepage');
@@ -37,7 +46,8 @@ class AjaxController extends Controller
     {
         if ($request->isXmlHttpRequest()) {
             $candidat = $api->getSearch('candidates', $this->getUser()->getEmail());
-            $api->sendResume($request, $candidat->_embedded->candidates[0]->id);
+            $resume = $request->files->get('resume');
+            $api->sendResume($resume, $candidat->_embedded->candidates[0]->id);
             return new Response(1);
         }
         return $this->redirectToRoute('app_homepage');
