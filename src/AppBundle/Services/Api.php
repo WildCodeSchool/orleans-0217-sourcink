@@ -156,6 +156,7 @@ class Api
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/octet-stream'
                 ],
+
                 'body' => fopen(realpath($file), 'r')
             ]
         );
@@ -188,6 +189,7 @@ class Api
         );
         return $candidate->getHeaders()['Location'][0];
     }
+
 
     public function candidateCustomFields()
     {
@@ -238,6 +240,7 @@ class Api
                     ],
                     "custom_fields" => $customFields
                 ]
+
             ]
         );
         return $candidate;
@@ -255,6 +258,7 @@ class Api
         return json_decode($data->getBody()->getContents());
     }
 
+
     public function sendResume($file, $id)
     {
         $resume = $this->getClient()->request(
@@ -263,6 +267,7 @@ class Api
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/octet-stream'
                 ],
+
                 'body' => fopen(realpath($file), 'r')
             ]
         );
@@ -326,6 +331,45 @@ class Api
         );
         return $apply;
     }
+
+    public function downloadImg($job)
+    {
+        $list = glob("img/jobPicture/$job.*");
+        if (!isset($list[0])) {
+            $download = $this->getClient()->request(
+                'GET', 'attachments/' . $job . '/download',
+                [
+                    'headers' => [
+                        'Authorization' => 'Token ' . $this->getApiKey(),
+                    ],
+                ]);
+            $img = file_put_contents('img/jobPicture/' . $job, $download->getBody()->getContents());
+            $mime = mime_content_type('img/jobPicture/' . $job);
+
+
+            $val = [
+                'image/jpeg',
+                'image/gif',
+                'image/png',
+                'image/jpg',
+            ];
+
+            if (in_array($mime, $val)) {
+
+                $ext = str_replace('image/', '.', $mime);
+                $fileName = $job . $ext;
+                rename('img/jobPicture/' . $job, 'img/jobPicture/' . $fileName);
+                return $fileName;
+
+            } else {
+                unlink('img/jobPicture/' . $job);
+            }
+
+        } else {
+            return basename($list[0]);
+        }
+    }
+
 
     public function tagCandidate($candidate, $tag)
     {
