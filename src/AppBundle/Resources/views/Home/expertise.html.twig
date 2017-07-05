@@ -13,23 +13,23 @@
         {% for category in categories %}
 
             <div class="col s6 center">
-        {% if category =='Sourcink' %}
+                {% if category =='Sourcink' %}
 
-            {% for work in category.works %}
-                <p class="center">{{ work.name }}</p>
-            {% endfor %}
-            <img class="work" src="{{ asset('img/fleche.png') }}">
-            {% endif %}
+                    {% for work in category.works %}
+                        <p class="center">{{ work.name }}</p>
+                    {% endfor %}
+                    <img class="work" src="{{ asset('img/fleche.png') }}">
+                {% endif %}
             </div>
-        <div class="col s6 center">
-        {% if category =='Premium' %}
+            <div class="col s6 center">
+                {% if category =='Premium' %}
 
-            {% for work in category.works %}
-                <p class="center">{{ work.name }}</p>
-            {% endfor %}
-            <img class="work" src="{{ asset('img/fleche.png') }}">
-            {% endif %}
-        </div>
-            {% endfor %}
+                    {% for work in category.works %}
+                        <p class="center">{{ work.name }}</p>
+                    {% endfor %}
+                    <img class="work" src="{{ asset('img/fleche.png') }}">
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
 </div>

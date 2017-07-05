@@ -6,8 +6,6 @@ use AppBundle\Services\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,8 +24,9 @@ class JobController extends Controller
 
         $data = $api->get('jobs');
 
-
         foreach ($data->_embedded->jobs as $job) {
+
+
             $offers[$job->id] =
                 [
                     'title' => $job->title,
@@ -40,10 +39,12 @@ class JobController extends Controller
                     'id' => $job->id,
                     'attachment_id' => (property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '')
                 ];
+            if ($offers[$job->id]['attachment_id'] != '') {
 
+                $offers[$job->id]['image'] = $api->downloadImg(property_exists($job->_embedded, 'attachments') ? $job->_embedded->attachments[0]->id : '');
+
+            }
         }
-        $link_site = $this->getParameter('link_site');
-
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
@@ -54,30 +55,31 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
 
-
         return $this->render(
             'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
-                'link_site' => $link_site,
-            ]
-        );
+            ]);
     }
 
     /**
-     * @Route("/view/{id}", name="job_page")
-     */ 
+     * @Route("/{id}", name="job_page")
+     */
+
     public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
     {
         $data = $service->getId('jobs', $id);
         $form = $this->createFormBuilder()
             ->setMethod('POST')
-            ->add('Postuler', SubmitType::class)
+            ->add('Postuler', SubmitType::class,array(
+                'label'=> "Postuler",
+                'attr'=>array ('class'=> 'waves-effect waves-light btn red')))
+
             ->getForm();
         $form->handleRequest($request);
 
-
         if ($form->isValid() && $form->isSubmitted()) {
+
             $users = $service->getSearch('candidates', $this->getUser()->getEmail());
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
@@ -85,7 +87,6 @@ class JobController extends Controller
             $this->addFlash('success', 'Nous avons reçu votre candidature. Nous allons vous envoyer un mail dans les plus brefs délais');
             return $this->render('AppBundle:Job:response.html.twig');
         }
-
 
         $offer = [
             'job'=>$data->id,
@@ -101,6 +102,7 @@ class JobController extends Controller
 
         ];
 
+
         return $this->render(
             'AppBundle:Job:page.html.twig',
             [
@@ -108,7 +110,8 @@ class JobController extends Controller
 
                 'form' => $form->createView(),
                 'link_site' =>$link_site = $this->getParameter('link_site')
-            ]);
+            ]
+        );
 
 
     }

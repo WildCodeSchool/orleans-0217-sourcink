@@ -1,4 +1,16 @@
 
+.cadre {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #757575;
+    border-radius: 15px 0 15px 0;
+    width: 200px;
+    height: auto;
+    margin: 50px;
+    padding: 30px 0 30px 0;
+}
+
+
 @font-face {
     font-family: "Prater";
     src: local(Prater Light), url("../fonts/prater/PraterSansTwo-Regular.ttf") format("truetype");
@@ -17,13 +29,19 @@ p {
     font-family: Caviar;
     font-size: 20px;
 
+
 }
 
 .job_title{
     text-align: center;
     position: relative;
-    top: -400px;
+    top: -650px;
     font-size:80px;
+}
+.job_descrition{
+    position : relative;
+    top : -350px;
+    z-index: 1;
 }
 .job-detail{
     font-size: 20px;
@@ -34,10 +52,11 @@ p {
 }
 .offredetail {
     position: relative;
-    top: -400px;
+    top: -650px;
     color: red;
     text-align: center;
     font-size: 40px;
+
 }
 
 .detail{
@@ -49,21 +68,29 @@ p {
 }
 
 /* Offres sans images */
+.cadre1{
+    border-style : solid;
+    border-width: 1px;
+    border-color : #757575;
+    border-radius: 15px 0 15px 0;
+    width : 200px;
+    height:auto;
+    margin : 50px;
+    padding : 30px;
+}
+
 .job_title2{
-    text-align: center;
-    position: relative;
     font-size:80px;
 }
+
 .job-detail2{
     font-size: 20px;
     color: red;
 
 }
-.offredetail2 {
-    position: relative;
 
+.offredetail2 {
     color: red;
-    text-align: center;
     font-size: 40px;
 }
 /* Offres sans images */
@@ -168,6 +195,19 @@ nav ul a {
     color: black;
     padding-top: 20px;
 
+}
+.applicant-button{
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 32px;
+    margin-right: 10px;
 }
 
 nav a {
@@ -318,10 +358,6 @@ a h5 {
     margin-bottom: 50px;
 }
 
-.applicant-button {
-    margin-top: 15%;
-}
-
 /*Page produit*/
 .title {
     padding-top: 90px;
@@ -389,6 +425,7 @@ span {
     height: 80px;
 
 }
+
 .divider {
     margin: 5%;
 }
@@ -410,4 +447,5 @@ span {
 footer {
     min-height: 100px;
 }
+
 
