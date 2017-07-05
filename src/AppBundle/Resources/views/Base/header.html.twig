@@ -14,12 +14,12 @@
                     <li><a href="/#team">Notre Equipe</a></li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li>
-                            <a href="{{ path('app_applicant') }}" class="right red white-text applicant-button waves-effect">
+                            <a href="{{ path('app_applicant') }}" class="right red white-text applicant-button waves-effect z-depth-1">
                             {{ app.user.firstname }} {{ app.user.lastname }}
                             </a>
                         </li>
                     {% else %}
-                        <li><a href="{{ path('fos_user_security_login') }}" class="right red white-text applicant-button waves-effect">Espace Candidat</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}" class="right red white-text applicant-button waves-effect z-depth-1">Espace Candidat</a></li>
                     {% endif %}
                 </ul>
             </div>
