@@ -12,12 +12,11 @@
                     <h2><a href="#job">{{ video.title | raw}}</a></h2>
                     <h4 class="light grey-text">{{ video.text | raw }}</h4>
 
-                </div>
-            </li>
-
+                        <a href="{{ video.url }}" class="btn blue">{{ video.urlName }}</a>
+                    </div>
+                </li>
 
             {% endfor %}
-
         </ul>
     </div>
 </div>
