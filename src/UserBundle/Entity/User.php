@@ -45,13 +45,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="currentJob", type="string", length=255, nullable=true)
-     */
-    private $currentJob;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="wantedJob", type="string", length=255, nullable=true)
      */
     private $wantedJob;
@@ -196,30 +189,6 @@ class User extends BaseUser
     public function getLinkedinId()
     {
         return $this->linkedinId;
-    }
-
-    /**
-     * Set currentJob
-     *
-     * @param string $currentJob
-     *
-     * @return User
-     */
-    public function setCurrentJob($currentJob)
-    {
-        $this->currentJob = $currentJob;
-
-        return $this;
-    }
-
-    /**
-     * Get currentJob
-     *
-     * @return string
-     */
-    public function getCurrentJob()
-    {
-        return $this->currentJob;
     }
 
     /**

@@ -21,7 +21,6 @@ use UserBundle\Entity\User;
 class Api
 {
     const mobility = 'mobilité géo';
-    const current_job = 'Poste Actuel';
     const wanted_job = 'Poste voulu';
     const experience = 'Expérience';
     private $apiUrl;
@@ -256,8 +255,6 @@ class Api
         foreach ($fields as $field) {
             if ($field->name == self::mobility) {
                 $value = $user->getMobility();
-            } else if ($field->name == self::current_job) {
-                $value = $user->getCurrentJob();
             } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
             } else if ($field->name == self::experience) {

@@ -37,7 +37,7 @@ class ApplicantController extends Controller
         $regions = $em->getRepository('AppBundle:Mobility')->findAll();
         $mobility = [];
         foreach ($regions as $region){
-            $mobility[$region->getName()] = $regionx->getName();
+            $mobility[$region->getName()] = $region->getName();
         }
         $form = $this->createForm(ProfileType::class, $this->getUser(), array('mobility' => $mobility));
         $form->handleRequest($request);
