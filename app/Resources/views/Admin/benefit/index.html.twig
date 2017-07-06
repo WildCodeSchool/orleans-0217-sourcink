@@ -13,7 +13,7 @@
         <tr>
             <th>Option</th>
             {% for product in products %}
-            <th>{{ product.title }}</th>
+                <th>{{ product.title }}</th>
             {% endfor %}
             <th>Actions</th>
         </tr>
@@ -31,11 +31,11 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
+                        <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}"
+                           class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                     </li>
                 </ul>
             </td>
-
             {% endfor %}
 
 
@@ -46,7 +46,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('benefit_new') }}"class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a href="{{ path('benefit_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i
+                        class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}

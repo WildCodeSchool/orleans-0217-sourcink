@@ -5,8 +5,8 @@
 {% block content %}
     <div class="container">
         <div class="row center">
-            <h1 class="title-small">Mettre à jour mon profil</h1>
-            <a href="#modalParsing" class="btn btn-flat blue-text center">Utiliser le parsing de CV pour préremplir mon profil</a>
+            <h1 class="title-small">Mise à jour de mon profil</h1>
+            <a href="#modalParsing" class="btn blue center">Utiliser le parsing de CV pour préremplir mon profil</a>
         </div>
         {{ form(form) }}
         <a href="#modalDelete" class="btn btn-flat red-text right">Supprimer mon compte</a>
@@ -18,7 +18,7 @@
                 <form id="parseResumeForm">
                     <div class="file-field input-field">
                         <div class="btn blue">
-                            <span>CV</span>
+                            <span class="btn-ajax">CV</span>
                             <input type="file" id="parseResumeFile">
                         </div>
                         <div class="file-path-wrapper">

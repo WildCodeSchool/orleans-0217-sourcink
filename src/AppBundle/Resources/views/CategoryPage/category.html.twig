@@ -7,8 +7,10 @@
         <div class="row">
             {% include('AppBundle:CategoryPage:product.html.twig') %}
         </div>
-        <div class="row">
-            {% include('AppBundle:CategoryPage:comparator.html.twig') %}
-        </div>
+        {% if category.title == 'Sourcink' %}
+            <div class="row">
+                {% include('AppBundle:CategoryPage:comparator.html.twig') %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

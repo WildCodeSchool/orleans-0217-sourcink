@@ -342,7 +342,8 @@ class Api
                     'headers' => [
                         'Authorization' => 'Token ' . $this->getApiKey(),
                     ],
-                ]);
+                ]
+            );
             $img = file_put_contents('img/jobPicture/' . $job, $download->getBody()->getContents());
             $mime = mime_content_type('img/jobPicture/' . $job);
 

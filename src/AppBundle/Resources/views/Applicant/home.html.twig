@@ -15,35 +15,34 @@
             {% endif %}
             <div class="card">
                 <div class="card-content">
-                    <p class="card-title">
+                    <h1>
                         {{ app.user.firstname }} {{ app.user.lastname }}
                         {% if hasResume == true %}
-                            <a class="btn btn-flat blue-text right" href="{{ path('job_list') }}">Voir nos offres d'emplois</a>
+                            <a class="btn blue right" href="{{ path('job_list') }}">Voir nos offres d'emplois</a>
                         {% endif %}
-                    </p>
-                    <p><i class="fa fa-inbox fa-2x"></i> Adresse e-mail : {{ app.user.email }}</p><br />
-                    <p><i class="fa fa-user fa-2x"></i> Titre : {{ app.user.title }}</p><br />
-                    <p><i class="fa fa-phone fa-2x"></i> Numéro de téléphone : {{ app.user.phone }}</p><br />
-                    <p><i class="fa fa-building fa-2x"></i> Emploi actuel : {{ app.user.currentJob }}</p><br />
-                    <p><i class="fa fa-search fa-2x"></i> Emploi recherché : {{ app.user.wantedJob }}</p><br />
-                    <p><i class="fa fa-map fa-2x"></i> Mobilité Géographique : {{ app.user.mobility }}</p><br />
-                    <p><i class="fa fa-book fa-2x"></i> Expérience : {{ app.user.experience }} années</p><br />
-                    <p><i class="fa fa-money fa-2x"></i> Salaire Actuel : {{ app.user.salary }}€</p><br />
-                    <p><i class="fa fa-search fa-2x"></i> Salaire Souhaité : {{ app.user.wantedSalary }}€</p><br />
+                    </h1>
+                    <p><i class="fa fa-inbox fa-2x"></i> Adresse e-mail : {{ app.user.email }}</p><br/>
+                    <p><i class="fa fa-user fa-2x"></i> Titre : {{ app.user.title }}</p><br/>
+                    <p><i class="fa fa-phone fa-2x"></i> Numéro de téléphone : {{ app.user.phone }}</p><br/>
+                    <p><i class="fa fa-building fa-2x"></i> Emploi actuel : {{ app.user.currentJob }}</p><br/>
+                    <p><i class="fa fa-search fa-2x"></i> Emploi recherché : {{ app.user.wantedJob }}</p><br/>
+                    <p><i class="fa fa-map fa-2x"></i> Mobilité Géographique : {{ app.user.mobility }}</p><br/>
+                    <p><i class="fa fa-book fa-2x"></i> Expérience : {{ app.user.experience }} années</p><br/>
+                    <p><i class="fa fa-money fa-2x"></i> Salaire Actuel : {{ app.user.salary }}€</p><br/>
+                    <p><i class="fa fa-search fa-2x"></i> Salaire Souhaité : {{ app.user.wantedSalary }}€</p><br/>
                 </div>
                 <div class="card-action">
                     {% if hasResume == true %}
                         <a class="blue-text" href="#modalcv">Envoyer mon CV</a>
                     {% endif %}
                     {% if status == true %}
-                        <a href="{{ path('applicant_update') }}" class="orange-text right">Mettre à jour mon
-                            profil</a>
+                        <a href="{{ path('applicant_update') }}" class="orange-text right">Mise à jour de mon profil</a>
                     {% endif %}
                 </div>
             </div>
         {% else %}
             <div class="card-panel">
-                <p>Merci de vous êtes inscrit. Prochaine étape : Compléter votre profil</p>
+                <p>Merci de vous êtres inscrit. Prochaine étape : Complétez votre profil</p>
                 <div class="center">
                     <a href="{{ path('applicant_update') }}" class="btn blue">Compléter mon profil</a>
                 </div>
@@ -58,7 +57,7 @@
                 <form id="sendResumeForm">
                     <div class="file-field input-field">
                         <div class="btn blue">
-                            <span>CV</span>
+                            <span class="btn-ajax">CV</span>
                             <input type="file" id="sendResumeFile">
                         </div>
                         <div class="file-path-wrapper">

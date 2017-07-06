@@ -6,7 +6,10 @@
     <div class="container">
         <div class="row">
             {% include('AppBundle:Job:jobs.html.twig') %}
-            {% include('AppBundle:Job:paginator.html.twig') %}
+        </div>
+        {% include('AppBundle:Job:paginator.html.twig') %}
+        <div class="center">
+            <a href="{{ path('job_spontane') }}" class="btn btn-large blue">Aucune offre ne vous convient ? Envoyez-nous votre candidature spontanée !</a>
         </div>
     </div>
 {% endblock %}
