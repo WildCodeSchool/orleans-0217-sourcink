@@ -4,9 +4,10 @@
         <div class="card card-offres color">
             <div class="card-content white-text hvr-bounce-to-right"
                     {% if offer.attachment_id is not empty %}
-                 style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');
-                 border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
-                {% endif %}
+                        style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');
+                                border-radius: inherit; background-repeat:no-repeat; background-size:cover;"
+                    {% endif %}
+            >
                 <div class="layer">
                     <span class="card-title offers-title" id="card-title">{{ offer.title | raw }}</span>
                     <div class="card-content">
@@ -22,5 +23,3 @@
         </div>
     </div>
 {% endfor %}
-
-<a href="{{ path('job_spontane') }}" class="btn btn-large">Candidature Spontanée</a>
