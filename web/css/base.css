@@ -476,9 +476,13 @@ footer {
     padding-top: 2%;
 }
 .team-img {
-    width: 35%;
-
+    width: 60%;
 }
+
+.btnLinkedin {
+    margin-bottom: 20px;
+}
+
 
 .img-offre {
     width: 100%;
