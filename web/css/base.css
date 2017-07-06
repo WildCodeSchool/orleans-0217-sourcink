@@ -1,11 +1,15 @@
 
 .cadre {
-    border-width: 1px solid #757575;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: #757575;
     border-radius: 15px 0 15px 0;
     width: 200px;
     height: auto;
     margin: 50px;
     padding: 30px 0 30px 0;
+
 }
 .btn-ajax {
     color: white;
@@ -171,7 +175,7 @@ p, li {
     transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
     color: white;
 }
-/* Bounce To Right */
+/* Fin Bounce To Right */
 
 
 body {

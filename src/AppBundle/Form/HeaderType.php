@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,22 +18,24 @@ class HeaderType extends AbstractType
     {
         $builder
             ->add(
-                'title', TextType::class,
+                'title', TextareaType::class,
                 array(
                     'label' => 'Titre',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le titre',
+                            'class' => 'ckeditor',
                         )
                 )
             )
             ->add(
-                'text', TextType::class,
+                'text', TextareaType::class,
                 array(
                     'label' => 'Sous-titre',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le sous-titre',
+                            'class' => 'ckeditor',
                         )
                 )
             )
