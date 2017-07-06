@@ -1,51 +1,18 @@
 <div class="video-container video-responsive hide-on-small-only hide-on-med-only">
     <div class="slider fullscreen">
         <ul class="slides">
-{#            {% for video in videos %}
+            {% for video in videos %}
                 <li>
                     <video autoplay muted loop>
                         <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
                     </video> <!-- random image -->
                     <div class="caption center-align">
                         <h2><a href="#job">{{ video.title }}</a></h2>
-                        <h4 class="light grey-text text-lighten-3">{{ video.text }}</h4>
+                        <h4>{{ video.text }}</h4>
+                        <a href="{{ video.url }}" class="btn blue">{{ video.urlName }}</a>
                     </div>
                 </li>
-            {% endfor %}#}
-            <li>
-                <video autoplay muted loop>
-                    <source src="{{ asset('img/shutterstock_v2340758.mov') }}" type="video/mp4">
-                </video> <!-- random image -->
-                <div class="caption center-align">
-                    <h2><a href="#job">Envie de nouveaux challenges ?</a></h2>
-                    <h4 class="light grey-text text-lighten-3">Découvrez nos dernières offres juridiques, fiscales & RH !</h4>
-                    <a href="#!" class="btn blue">Cliquez ici !</a>
-                </div>
-            </li>
-            <li>
-                <video autoplay muted loop>
-                    <source src="{{ asset('img/shutterstock_v10735898.mov') }}" type="video/mp4">
-                </video> <!-- random image -->
-                <div class="caption center-align">
-                    <h2><a href="#job">Qui sommes-nous ?</a></h2>
-                    <h4 class="light grey-text text-lighten-3">Des recruteurs spécialisés sur les fonctions juridiques, fiscales et RH
-                        Faites appel à Sourcink pour vos recrutements !
-
-                        Découvrez nos solutions et tarifs</h4>
-                    <a href="#!" class="btn blue">Cliquez ici !</a>
-                </div>
-            </li>
-            <li>
-                <video autoplay muted loop>
-                    <source src="{{ asset('img/shutterstock_v13949585.mov') }}" type="video/mp4">
-                </video> <!-- random image -->
-                <div class="caption center-align">
-                    <h2><a href="#job">Gagnez du temps dans la course aux talents !</a></h2>
-                    <h4 class="light grey-text text-lighten-3">Découvrez l’entretien vidéo différé avec Sourcink
-                        et recevez avec les dossiers de candidature un premier aperçu en vidéo des talents que nous avons sélectionnés pour vous.</h4>
-                    <a href="#!" class="btn blue">Cliquez ici !</a>
-                </div>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>

@@ -13,8 +13,6 @@
 <body>
 {% block header %}
 {% endblock %}
-<div class="row"></div>
-<div class="row"></div>
 <div class="container">
     {% for label, messages in app.session.flashBag.all %}
         {% for message in messages %}
