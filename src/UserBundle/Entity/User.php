@@ -173,6 +173,7 @@ class User extends BaseUser
         return $this;
     }
 
+
     /**
      * Set linkedinId
      *
@@ -182,7 +183,8 @@ class User extends BaseUser
      */
     public function setLinkedinId($linkedinId)
     {
-        $this->linkedin_id = $linkedinId;
+        $this->linkedinId = $linkedinId;
+
         return $this;
     }
 
@@ -193,8 +195,7 @@ class User extends BaseUser
      */
     public function getLinkedinId()
     {
-        return $this->linkedin_id;
-
+        return $this->linkedinId;
     }
 
     /**
@@ -246,6 +247,30 @@ class User extends BaseUser
     }
 
     /**
+     * Set mobility
+     *
+     * @param string $mobility
+     *
+     * @return User
+     */
+    public function setMobility($mobility)
+    {
+        $this->mobility = $mobility;
+
+        return $this;
+    }
+
+    /**
+     * Get mobility
+     *
+     * @return string
+     */
+    public function getMobility()
+    {
+        return $this->mobility;
+    }
+
+    /**
      * Set experience
      *
      * @param string $experience
@@ -294,27 +319,27 @@ class User extends BaseUser
     }
 
     /**
-     * Set mobility
+     * Set wantedSalary
      *
-     * @param array $mobility
+     * @param string $wantedSalary
      *
      * @return User
      */
-    public function setMobility($mobility)
+    public function setWantedSalary($wantedSalary)
     {
-        $this->mobility = $mobility;
+        $this->wantedSalary = $wantedSalary;
 
         return $this;
     }
 
     /**
-     * Get mobility
+     * Get wantedSalary
      *
-     * @return array
+     * @return string
      */
-    public function getMobility()
+    public function getWantedSalary()
     {
-        return $this->mobility;
+        return $this->wantedSalary;
     }
 
     /**
@@ -342,34 +367,9 @@ class User extends BaseUser
     }
 
     /**
-     * Set wantedSalary
-     *
-     * @param string $wantedSalary
-     *
-     * @return User
-     */
-    public function setWantedSalary($wantedSalary)
-    {
-        $this->wantedSalary = $wantedSalary;
-
-        return $this;
-    }
-
-    /**
-     * Get wantedSalary
-     *
-     * @return string
-     */
-    public function getWantedSalary()
-    {
-        return $this->wantedSalary;
-
-    }
-
-    /**
      * Set phone
      *
-     * @param integer $phone
+     * @param string $phone
      *
      * @return User
      */
@@ -383,7 +383,7 @@ class User extends BaseUser
     /**
      * Get phone
      *
-     * @return integer
+     * @return string
      */
     public function getPhone()
     {

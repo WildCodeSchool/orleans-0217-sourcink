@@ -8,6 +8,7 @@
 
 namespace AppBundle\Services;
 
+use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
 use UserBundle\Entity\User;
 
@@ -27,15 +28,35 @@ class Api
     private $apiKey;
     private $client;
     private $tagCandidate;
+    private $em;
 
     /**
      * Api constructor.
      */
-    public function __construct($apiUrl, $apiKey, $tagCandidate)
+    public function __construct($apiUrl, $apiKey, $tagCandidate, EntityManager $entityManager)
     {
-        $this->setApiKey($apiKey)->setApiUrl($apiUrl)->setTagCandidate($tagCandidate);
-        $this->setClient(new Client(['base_uri' => $this->getApiUrl()]));
+        $this->setApiKey($apiKey)->setApiUrl($apiUrl)->setTagCandidate($tagCandidate)->setEm($entityManager)
+            ->setClient(new Client(['base_uri' => $this->getApiUrl()]));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEm()
+    {
+        return $this->em;
+    }
+
+    /**
+     * @param mixed $em
+     * @return Api
+     */
+    public function setEm($em)
+    {
+        $this->em = $em;
+        return $this;
+    }
+
 
     /**
      * @return mixed
@@ -121,6 +142,30 @@ class Api
     {
         $this->apiKey = $apiKey;
         return $this;
+    }
+
+
+    public function updateCandidateFromCats(User $user, $userData)
+    {
+        $user->setFirstName($userData->first_name);
+        $user->setLastName($userData->last_name);
+        $user->setTitle($userData->title);
+        $user->setEmail($userData->emails->primary);
+        $user->setPhone($userData->phones->cell);
+        $user->setSalary($userData->current_pay);
+        $user->setWantedSalary($userData->desired_pay);
+        foreach ($userData->_embedded->custom_fields as $field) {
+            if ($field->_embedded->definition->name == self::mobility) {
+                $user->setMobility($field->value);
+            } else if ($field->_embedded->definition->name == self::wanted_job) {
+                $user->setWantedJob($field->value);
+            } else if ($field->_embedded->definition->name == self::experience) {
+                $user->setExperience($field->value);
+            }
+        }
+        $this->getEm()->persist($user);
+        $this->getEm()->flush();
+        return $user;
     }
 
     public function getId($query, $id)
@@ -413,7 +458,7 @@ class Api
     public function hasResume($id)
     {
         $data = $this->getClient()->request(
-            'GET', 'candidates/'.$id.'/attachments', [
+            'GET', 'candidates/' . $id . '/attachments', [
                 'headers' => [
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'Content-Type' => 'application/json'
@@ -422,9 +467,9 @@ class Api
         );
         $hasResume = false;
         $attachments = json_decode($data->getBody()->getContents());
-        if($attachments->count>0) {
-            foreach($attachments->_embedded->attachments as $attachment){
-                if($attachment->is_resume===true) {
+        if ($attachments->count > 0) {
+            foreach ($attachments->_embedded->attachments as $attachment) {
+                if ($attachment->is_resume === true) {
                     $hasResume = true;
                 }
             }

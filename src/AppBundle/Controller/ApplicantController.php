@@ -20,6 +20,7 @@ class ApplicantController extends Controller
     public function homeAction(Api $api)
     {
         $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+        $api->updateCandidateFromCats($this->getUser(), $catsUser->_embedded->candidates[0]);
         $hasResume = false;
         if($catsUser->count>0) {
             $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
@@ -36,7 +37,7 @@ class ApplicantController extends Controller
         $regions = $em->getRepository('AppBundle:Mobility')->findAll();
         $mobility = [];
         foreach ($regions as $region){
-            $mobility[$region->getName()] = $region->getName();
+            $mobility[$region->getName()] = $regionx->getName();
         }
         $form = $this->createForm(ProfileType::class, $this->getUser(), array('mobility' => $mobility));
         $form->handleRequest($request);
