@@ -210,7 +210,7 @@ class Api
         $customFields = [];
         foreach ($fields as $field) {
             if ($field->name == self::mobility) {
-                $value = $user->getMobility();
+                $value = implode($user->getMobility(), ',');
             } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
             } else if ($field->name == self::wanted_job) {
@@ -280,7 +280,7 @@ class Api
         $customFields = [];
         foreach ($fields as $field) {
             if ($field->name == self::mobility) {
-                $value = $user->getMobility();
+                $value = implode($user->getMobility(), ',');
             } else if ($field->name == self::current_job) {
                 $value = $user->getCurrentJob();
             } else if ($field->name == self::wanted_job) {

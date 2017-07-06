@@ -17,6 +17,7 @@ class LoadMobilityData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $regions = array(
+            'France Entière',
             'Auvergne-Rhône-Alpes',
             'Bourgogne-Franche-Comté',
             'Bretagne',

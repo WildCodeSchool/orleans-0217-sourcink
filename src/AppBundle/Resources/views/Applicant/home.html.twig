@@ -26,7 +26,7 @@
                     <p><i class="fa fa-phone fa-2x"></i> Numéro de téléphone : {{ app.user.phone }}</p><br />
                     <p><i class="fa fa-building fa-2x"></i> Emploi actuel : {{ app.user.currentJob }}</p><br />
                     <p><i class="fa fa-search fa-2x"></i> Emploi recherché : {{ app.user.wantedJob }}</p><br />
-                    <p><i class="fa fa-map fa-2x"></i> Mobilité Géographique : {{ app.user.mobility }}</p><br />
+                    <p><i class="fa fa-map fa-2x"></i> Mobilité Géographique : {% for mobility in app.user.mobility %}{{ mobility }}, {% endfor %}</p><br />
                     <p><i class="fa fa-book fa-2x"></i> Expérience : {{ app.user.experience }} années</p><br />
                     <p><i class="fa fa-money fa-2x"></i> Salaire Actuel : {{ app.user.salary }}€</p><br />
                     <p><i class="fa fa-search fa-2x"></i> Salaire Souhaité : {{ app.user.wantedSalary }}€</p><br />

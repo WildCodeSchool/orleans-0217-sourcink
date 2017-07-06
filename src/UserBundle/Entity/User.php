@@ -57,9 +57,9 @@ class User extends BaseUser
     private $wantedJob;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="mobility", type="string", length=255, nullable=true)
+     * @ORM\Column(name="mobility", type="array", nullable=true)
      */
     private $mobility;
 

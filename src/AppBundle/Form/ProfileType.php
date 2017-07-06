@@ -62,7 +62,8 @@ class ProfileType extends AbstractType
             ->add(
                 'mobility', ChoiceType::class, array(
                     'choices' => $options['mobility'],
-                    'label' => 'Mobilité'
+                    'label' => 'Mobilité',
+                    'multiple' => true
                 )
             )
             ->add(
