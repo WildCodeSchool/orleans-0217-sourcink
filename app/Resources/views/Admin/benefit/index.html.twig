@@ -13,7 +13,7 @@
         <tr>
             <th>Option</th>
             {% for product in products %}
-            <th>{{ product.title }}</th>
+            <th>{{ product.title | raw }}</th>
             {% endfor %}
             <th>Actions</th>
         </tr>
@@ -22,7 +22,7 @@
         {% for benefit in benefits %}
 
         <tr>
-            <td>{{ benefit.description }}</td>
+            <td>{{ benefit.description | raw }}</td>
             {% if benefit.productOptions is defined %}
                 {% for productOption in benefit.productOptions %}
                     <td>{{ productOption.status }}</td>

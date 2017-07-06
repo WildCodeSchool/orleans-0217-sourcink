@@ -4,7 +4,7 @@
     <tr>
         <th>Options</th>
         {% for product in category.products %}
-            <th>{{ product.title }}</th>
+            <th>{{ product.title | raw }}</th>
         {% endfor %}
     </tr>
     </thead>
