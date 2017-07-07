@@ -6,29 +6,33 @@
 
 {% block content %}
     {% if category.title == 'Premium' %}
-<div class="bg">
-    <div class="container">
-        <div class="row">
-            {% include('AppBundle:CategoryPage:product.html.twig') %}
+        <div class="bg">
+            <div class="container">
+                <div class="row">
+                    {% include('AppBundle:CategoryPage:product.html.twig') %}
+                </div>
+            </div>
         </div>
-    </div>
+
     {% elseif category.title == 'Sourcink' %}
-    <div class="container">
-        <div class="row">
-            {% include('AppBundle:CategoryPage:product.html.twig') %}
-        </div>
-        {% endif %}
-        {% if category.title == 'Sourcink' %}
+        <div class="container">
+            <div class="row">
+                {% include('AppBundle:CategoryPage:product.html.twig') %}
+            </div>
             <div class="row">
                 {% include('AppBundle:CategoryPage:comparator.html.twig') %}
             </div>
-        {% endif %}
-    </div>
-    {% endblock %}
-    {% block footer %}
-    {% if category.title == 'Premium' %}
-    {% include('AppBundle:Base:footer_premium.html.twig') %}
-    {% else %}
-    {% include('AppBundle:Base:footer.html.twig') %}
+        </div>
     {% endif %}
+
+
 {% endblock %}
+
+    {% block footer %}
+        {% if category.title == 'Premium' %}
+            {% include('AppBundle:Base:footer_premium.html.twig') %}
+        {% else %}
+            {% include('AppBundle:Base:footer.html.twig') %}
+        {% endif %}
+    {% endblock %}
+
