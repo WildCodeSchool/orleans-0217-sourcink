@@ -2,12 +2,8 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Mobility;
-use AppBundle\Entity\UserMobility;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -57,9 +53,6 @@ class ProfileType extends AbstractType
             ->add(
                 'mobility', ChoiceType::class, array(
                     'label' => 'Mobilité',
-                    'attr' => array(
-                        'placeholder' => 'Choisissez les régions ou vous êtes mobile'
-                    ),
                     'choices' => $options['regions'],
                     'multiple' => true
                 )
@@ -115,9 +108,11 @@ class ProfileType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'regions' => null
-        ));
+            )
+        );
     }
 
     public function getBlockPrefix()
