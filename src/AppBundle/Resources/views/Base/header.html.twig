@@ -15,7 +15,7 @@
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li>
                             <a href="{{ path('app_applicant') }}" class="right red white-text applicant-button waves-effect z-depth-1">
-                            {{ app.user.firstname }} {{ app.user.lastname }}
+                            {{ app.user.firstname }} {{ app.user.lastname|first }}.
                             </a>
                         </li>
                     {% else %}

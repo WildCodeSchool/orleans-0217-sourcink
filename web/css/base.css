@@ -55,12 +55,6 @@ p, li {
     margin: 5%;
     color: white;
 }
-.job_title{
-    text-align: center;
-    position: relative;
-    top: -600px;
-    font-size:80px;
-}
 .job-detail{
     font-size: 20px;
     position: relative;
@@ -69,8 +63,6 @@ p, li {
 
 }
 .offredetail {
-    position: relative;
-    top: -650px;
     color: red;
     text-align: center;
     font-size: 40px;
@@ -86,11 +78,8 @@ p, li {
 
 /* Offres sans images */
 .cadre1{
-    border-style : solid;
-    border-width: 1px;
-    border-color : #757575;
+    border : 1px solid #757575;
     border-radius: 15px 0 15px 0;
-    width : 200px;
     height:auto;
     margin : 50px;
     padding : 30px;
@@ -446,7 +435,7 @@ span {
 }
 
 .navbar-fixed {
-
+    margin-bottom: 50px;
 }
 .profil-name {
     font-size: 38px;
@@ -477,8 +466,7 @@ footer {
 }
 
 .offers-div {
-    border-top: thin solid lightgrey;
-    border-bottom: thin solid lightgrey;
+    background-color: #f5f5f5;
     padding-bottom: 2%;
     padding-top: 2%;
 }
@@ -493,4 +481,8 @@ footer {
 
 .img-offre {
     width: 100%;
+}
+
+.puces-site {
+    list-style-type:disc;
 }
