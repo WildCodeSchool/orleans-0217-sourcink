@@ -6,14 +6,16 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Tableau comparateur</h1>
+    <h1>Options</h1>
 
     <table class="highlight">
         <thead>
         <tr>
-            <th>Description</th>
+            <th>Option</th>
             {% for product in products %}
-            <th>{{ product.title }}</th>
+
+            <th>{{ product.title | raw }}</th>
+
             {% endfor %}
             <th>Actions</th>
         </tr>
@@ -22,7 +24,7 @@
         {% for benefit in benefits %}
 
         <tr>
-            <td>{{ benefit.description }}</td>
+            <td>{{ benefit.description | raw }}</td>
             {% if benefit.productOptions is defined %}
                 {% for productOption in benefit.productOptions %}
                     <td>{{ productOption.status }}</td>
@@ -31,11 +33,11 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
+                        <a href="{{ path('benefit_edit', { 'id': benefit.id }) }}"
+                           class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                     </li>
                 </ul>
             </td>
-
             {% endfor %}
 
 
@@ -46,7 +48,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('benefit_new') }}"class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a href="{{ path('benefit_new') }}" class="btn-floating btn-large waves-effect waves-light red"><i
+                        class="material-icons">add</i></a>
         </li>
     </ul>
 {% endblock %}

@@ -1,13 +1,24 @@
 <h2 class="center">COMPAREZ NOS SOLUTIONS</h2>
-<table class="striped responsive-table">
+<table class="striped responsive-table table">
     <thead>
     <tr>
         <th>Options</th>
         {% for product in category.products %}
-            <th>{{ product.title }}</th>
+            <th>{{ product.title | raw }}</th>
         {% endfor %}
     </tr>
     </thead>
     <tbody>
+    {% for benefit in benefits %}
+    <tr>
+        <td>{{ benefit.description }}</td>
+
+        {% for productOption in benefit.productOptions %}
+            <td> {% if productOption.status.label == 'Oui' %} <i class="fa fa-check blue-text" aria-hidden="true"></i>{% endif %}
+                {% if productOption.status.label == 'Non' %}<i class="fa fa-times red-text" aria-hidden="true"></i> {% endif %}
+                {% if productOption.status.label == 'En Option' %}{{ productOption.status }} {% endif %}</td>
+        {% endfor %}
+        {% endfor %}
+    </tr>
     </tbody>
 </table>

@@ -1,21 +1,33 @@
 {% extends "AppBundle:Base:layout.html.twig" %}
-{% block header %}
-    {% include('AppBundle:Job:header.html.twig') %}
-{% endblock %}
-{% block content %}
+    {% block header %}
+        {% include('AppBundle:Job:header.html.twig') %}
+    {% endblock %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="infos-offre">
+                    {% if offer.attachment_id is not empty %}
+                        <img src="{{ link_site }}{{ offer.attachment_id }}" class="img-offre">
+                    {% endif %}
+                    <h2 class="job_title">{{ offer.title | raw }}</h2>
+                    <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>
+                    <div class="container">
+                        <p>{{ offer.description | raw }}</p>
+                    </div>
+                    <div class="col m3 s12 offset-m9">
+                        <div class="center cadre1">
+                            <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
+                            <script type="in/share"></script>
 
-
-    <div class="container">
-        <div class="job_title"><h2>{{ offer.title | raw }}</h2></div>
-        <div class="job_detail"><p class="detail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p></div>
-        <div class="job_descrition">{{ offer.description | raw }}</div>
-        <div class="center">
-            <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-            <script type="in/share"></script>
-            <br>
-
-            {{ form (form) }}    </div>
-    </div>
-
-
-{% endblock %}
+                            {% if app.user %}
+                                {{ form(form) }}
+                            {% else %}
+                                <p>Afin de postuler, vous devez vous inscrire</p>
+                                <a href="{{ path('fos_user_security_login') }}" class="btn red">M'inscrire</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

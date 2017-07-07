@@ -45,23 +45,9 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="currentJob", type="string", length=255, nullable=true)
-     */
-    private $currentJob;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="wantedJob", type="string", length=255, nullable=true)
      */
     private $wantedJob;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mobility", type="string", length=255, nullable=true)
-     */
-    private $mobility;
 
     /**
      * @var string
@@ -97,6 +83,20 @@ class User extends BaseUser
      * @ORM\Column(name="phone", type="string", nullable=true)
      */
     private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumeName", length=255, type="string", nullable=true)
+     */
+    private $resumeName;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="mobility", type="array", nullable=true)
+     */
+    private $mobility;
 
 
     /**
@@ -175,7 +175,8 @@ class User extends BaseUser
      */
     public function setLinkedinId($linkedinId)
     {
-        $this->linkedin_id = $linkedinId;
+        $this->linkedinId = $linkedinId;
+
         return $this;
     }
 
@@ -186,32 +187,7 @@ class User extends BaseUser
      */
     public function getLinkedinId()
     {
-        return $this->linkedin_id;
-
-    }
-
-    /**
-     * Set currentJob
-     *
-     * @param string $currentJob
-     *
-     * @return User
-     */
-    public function setCurrentJob($currentJob)
-    {
-        $this->currentJob = $currentJob;
-
-        return $this;
-    }
-
-    /**
-     * Get currentJob
-     *
-     * @return string
-     */
-    public function getCurrentJob()
-    {
-        return $this->currentJob;
+        return $this->linkedinId;
     }
 
     /**
@@ -287,27 +263,27 @@ class User extends BaseUser
     }
 
     /**
-     * Set mobility
+     * Set wantedSalary
      *
-     * @param array $mobility
+     * @param string $wantedSalary
      *
      * @return User
      */
-    public function setMobility($mobility)
+    public function setWantedSalary($wantedSalary)
     {
-        $this->mobility = $mobility;
+        $this->wantedSalary = $wantedSalary;
 
         return $this;
     }
 
     /**
-     * Get mobility
+     * Get wantedSalary
      *
-     * @return array
+     * @return string
      */
-    public function getMobility()
+    public function getWantedSalary()
     {
-        return $this->mobility;
+        return $this->wantedSalary;
     }
 
     /**
@@ -335,34 +311,9 @@ class User extends BaseUser
     }
 
     /**
-     * Set wantedSalary
-     *
-     * @param string $wantedSalary
-     *
-     * @return User
-     */
-    public function setWantedSalary($wantedSalary)
-    {
-        $this->wantedSalary = $wantedSalary;
-
-        return $this;
-    }
-
-    /**
-     * Get wantedSalary
-     *
-     * @return string
-     */
-    public function getWantedSalary()
-    {
-        return $this->wantedSalary;
-
-    }
-
-    /**
      * Set phone
      *
-     * @param integer $phone
+     * @param string $phone
      *
      * @return User
      */
@@ -376,10 +327,58 @@ class User extends BaseUser
     /**
      * Get phone
      *
-     * @return integer
+     * @return string
      */
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set resumeName
+     *
+     * @param string $resumeName
+     *
+     * @return User
+     */
+    public function setResumeName($resumeName)
+    {
+        $this->resumeName = $resumeName;
+
+        return $this;
+    }
+
+    /**
+     * Get resumeName
+     *
+     * @return string
+     */
+    public function getResumeName()
+    {
+        return $this->resumeName;
+    }
+
+    /**
+     * Set mobility
+     *
+     * @param array $mobility
+     *
+     * @return User
+     */
+    public function setMobility($mobility)
+    {
+        $this->mobility = $mobility;
+
+        return $this;
+    }
+
+    /**
+     * Get mobility
+     *
+     * @return array
+     */
+    public function getMobility()
+    {
+        return $this->mobility;
     }
 }

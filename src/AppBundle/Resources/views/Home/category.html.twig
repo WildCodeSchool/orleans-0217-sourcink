@@ -1,17 +1,13 @@
 <div class="hide-on-med-and-down">
-    <h2 class="center" id="category">Nos Solutions</h2>
+    <h2 class="center category-title" id="category">Nos Solutions</h2>
     <div class="row">
         {% for category in categories %}
-            <a href="{{ path('category_page_view', {'id':category.id}) }}">
-                <div class="col s12 m6 center">
+            <div class="col s12 m6 center">
+                <a href="{{ path('category_page_view', {'id':category.id}) }}">
                     <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
-                    <h3 class="red-text">{{ category.title }}</h3>
-                    <p class="center">{{ category.text | raw }} </p>
-                    {% for work in category.works %}
-                        <p class="center">{{ work.name }}</p>
-                    {% endfor %}
-                </div>
-            </a>
+                    <h3 class="black-text"><span class="black-text">{{ category.title | raw }}</span></h3>
+                </a>
+            </div>
         {% endfor %}
     </div>
 </div>

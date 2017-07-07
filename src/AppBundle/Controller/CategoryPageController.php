@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Benefit;
+use AppBundle\Entity\ProductOption;
 
 class CategoryPageController extends Controller
 {
@@ -20,6 +22,8 @@ class CategoryPageController extends Controller
      */
     public function categoryAction(Category $category)
     {
-        return $this->render('AppBundle:CategoryPage:category.html.twig', ['category' => $category]);
+        $em = $this->getDoctrine()->getManager();
+        $benefits = $em->getRepository('AppBundle:Benefit')->findAll();
+        return $this->render('AppBundle:CategoryPage:category.html.twig', ['category' => $category, 'benefits' => $benefits]);
     }
 }

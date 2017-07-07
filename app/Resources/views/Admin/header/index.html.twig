@@ -2,31 +2,29 @@
 
 {% block body %}
 
-    <h1>Header</h1>
+    <h1>Vidéos</h1>
     <table class="highlight">
         <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Texte</th>
-                <th>Video</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Titre</th>
+            <th>Sous-Titre</th>
+            <th>Lien</th>
+            <th>Nom du Lien</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for header in headers %}
             <tr>
-                <td>{{ header.title }}</td>
-                <td>{{ header.text }}</td>
-                <td>
-                {% if header.picture is not null %}
-                    {{ asset('img/' ~ header.picture.pictureName) }}
-                {% endif %}
-                </td>
+                <td>{{ header.title | raw }}</td>
+                <td>{{ header.text | raw }}</td>
+                <td>{{ header.url }}</td>
+                <td>{{ header.nameUrl }}</td>
                 <td>
                     <ul>
-
                         <li>
-                            <a href="{{ path('header_edit', { 'id': header.id }) }}"class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
+                            <a href="{{ path('header_edit', { 'id': header.id }) }}"
+                               class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">mode_edit</i></a>
                         </li>
                     </ul>
                 </td>

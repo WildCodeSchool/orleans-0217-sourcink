@@ -27,4 +27,7 @@ parameters:
     
     link_site: ~
 
+    tag_candidate: WEB
+    try_create_candidate: 5
+
 

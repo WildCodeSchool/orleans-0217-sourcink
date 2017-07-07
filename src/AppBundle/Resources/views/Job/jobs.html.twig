@@ -1,34 +1,26 @@
 <h2 class="center" id="jobs">Nos Jobs</h2>
 
 {% for offer in offers %}
-
-
-
-    <div class="col s12 m4">
-        <div class="card">
-            <div class="card-content"
+        <div class="col s12 m4">
+        <div class="card card-offres color">
+            <div class="card-content white-text hvr-bounce-to-right"
                     {% if offer.attachment_id is not empty %}
-                        style="background-image: url({{ link_site }}{{ offer.attachment_id }});"
+                        style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');
+                                border-radius: inherit; background-repeat:no-repeat; background-size:cover;"
                     {% endif %}
             >
-                <span class="card-title activator grey-text text-darken-4">{{ offer.title | raw }}
-                    <i class="material-icons right">add</i></span>
-                <p class="grey-text">{{ offer.city | raw }}</p>
-                <p>{{ offer.debut| date('d/m/y') }}</p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{ offer.title | raw }}
-                    <i class="material-icons right">close</i></span>
-                <p>{{ offer.duration | raw }}</p>
-                <p>{{ offer.debut| date('d/m/y') }}</p>
-
-
-                <a class="waves-effect waves-light btn" href="{{ path('job_page', {'id': offer.id}) }}">Voir plus</a>
+                <div class="layer">
+                    <span class="card-title offers-title" id="card-title">{{ offer.title | raw }}</span>
+                    <div class="card-content">
+                        <p>
+                            <i class="fa fa-location-arrow"></i> {{ offer.city | raw }} | {{ offer.duration | upper }}
+                        </p>
+                    </div>
+                    <a class="waves-effect waves-light btn red offres" href="{{ path('job_page', {'id': offer.id}) }}">
+                        Voir plus
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 {% endfor %}
-
-
-<div class="row"></div>
-

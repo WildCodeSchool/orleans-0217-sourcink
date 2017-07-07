@@ -35,5 +35,5 @@ security:
         salary: "Salaire souhaité"
         salaryPlaceHolder: "Entrez votre salaire souhaité"
     confirmed:
-        text: 'Vous êtes maintenant inscrit. Félicitations !'
+        text: 'Vous êtes maintenant inscrit(e). Félicitations !'
         button: 'Continuer'

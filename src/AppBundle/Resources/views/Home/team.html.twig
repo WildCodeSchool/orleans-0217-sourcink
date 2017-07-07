@@ -1,18 +1,20 @@
 <h2 class="center" id="team">Notre Equipe</h2>
 <div class="row">
-    {% for person in team %}
+        {% for person in team %}
 
-        <div class="col s3">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ asset('img/' ~ person.picture.pictureName) }}">
-                    <span class="card-title">{{ person.name }}</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light blue" href="{{ person.linkedin }}"><i class="fa fa-linkedin"></i></a>
-                </div>
-                <div class="card-content">
-                    <p>{{ person.text }}</p>
-                </div>
+            <div class="col l{{ 12/team|length }}  s12 center">
+                <img class="team-img circle" src="{{ asset('img/'~person.picture.pictureName) }}">
+
+                <ul class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header ">{{ person.name }}</div>
+                        <div class="collapsible-body"><span>{{ person.text }}</span></div>
+                    </li>
+                </ul>
+                <a class="btn btn-block halfway-fab waves-effect waves-light blue btnLinkedin"
+                   href="{{ person.linkedin }}"><i class="fa fa-linkedin"></i>
+                </a>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+
 </div>
