@@ -42,10 +42,10 @@ class CategoryType extends AbstractType
                 )
             )
             ->add('picture', PictureType::class)
-            ->add('isPrenium', CheckboxType::class,
+            ->add('isPremium', CheckboxType::class,
                 array(
                     'required' => false,
-                    'label' => 'Appliquer la mise en page prenium',
+                    'label' => 'Appliquer la mise en page premium',
                     'attr' =>
                         array(
                             'checked' => 'checked'

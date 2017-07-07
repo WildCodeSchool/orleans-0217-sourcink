@@ -38,9 +38,9 @@ class Category
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isPrenium", type="boolean")
+     * @ORM\Column(name="isPremium", type="boolean")
      */
-    private $isPrenium;
+    private $isPremium;
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
@@ -223,26 +223,26 @@ class Category
     }
 
     /**
-     * Set isPrenium
+     * Set isPremium
      *
-     * @param boolean $isPrenium
+     * @param boolean $isPremium
      *
      * @return Category
      */
-    public function setIsPrenium($isPrenium)
+    public function setIsPremium($isPremium)
     {
-        $this->isPrenium = $isPrenium;
+        $this->isPremium = $isPremium;
 
         return $this;
     }
 
     /**
-     * Get isPrenium
+     * Get isPremium
      *
      * @return boolean
      */
-    public function getIsPrenium()
+    public function getIsPremium()
     {
-        return $this->isPrenium;
+        return $this->isPremium;
     }
 }
