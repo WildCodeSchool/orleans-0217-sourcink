@@ -52,8 +52,9 @@ class ProfileType extends AbstractType
             )
             ->add(
                 'mobility', ChoiceType::class, array(
-                    'choices' => $options['mobility'],
-                    'label' => 'Mobilité'
+                    'label' => 'Mobilité',
+                    'choices' => $options['regions'],
+                    'multiple' => true
                 )
             )
             ->add(
@@ -71,7 +72,8 @@ class ProfileType extends AbstractType
                     'label' => 'Salaire actuel',
                     'attr' => array(
                         'placeholder' => 'Entrez votre salaire actuel'
-                    )
+                    ),
+                    'required' => false
                 )
             )
             ->add(
@@ -80,7 +82,8 @@ class ProfileType extends AbstractType
                     'label' => 'Salaire désiré',
                     'attr' => array(
                         'placeholder' => 'Entrez votre salaire désiré'
-                    )
+                    ),
+                    'required' => false
                 )
             )
             ->add(
@@ -107,7 +110,7 @@ class ProfileType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'mobility' => ''
+            'regions' => null
             )
         );
     }
