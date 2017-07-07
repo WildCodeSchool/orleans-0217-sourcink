@@ -52,13 +52,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="mobility", type="string", length=255, nullable=true)
-     */
-    private $mobility;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="experience", type="string", nullable=true)
      */
     private $experience;
@@ -97,6 +90,13 @@ class User extends BaseUser
      * @ORM\Column(name="resumeName", length=255, type="string", nullable=true)
      */
     private $resumeName;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="mobility", type="array", nullable=true)
+     */
+    private $mobility;
 
 
     /**
@@ -166,7 +166,6 @@ class User extends BaseUser
         return $this;
     }
 
-
     /**
      * Set linkedinId
      *
@@ -213,30 +212,6 @@ class User extends BaseUser
     public function getWantedJob()
     {
         return $this->wantedJob;
-    }
-
-    /**
-     * Set mobility
-     *
-     * @param string $mobility
-     *
-     * @return User
-     */
-    public function setMobility($mobility)
-    {
-        $this->mobility = $mobility;
-
-        return $this;
-    }
-
-    /**
-     * Get mobility
-     *
-     * @return string
-     */
-    public function getMobility()
-    {
-        return $this->mobility;
     }
 
     /**
@@ -381,5 +356,29 @@ class User extends BaseUser
     public function getResumeName()
     {
         return $this->resumeName;
+    }
+
+    /**
+     * Set mobility
+     *
+     * @param array $mobility
+     *
+     * @return User
+     */
+    public function setMobility($mobility)
+    {
+        $this->mobility = $mobility;
+
+        return $this;
+    }
+
+    /**
+     * Get mobility
+     *
+     * @return array
+     */
+    public function getMobility()
+    {
+        return $this->mobility;
     }
 }

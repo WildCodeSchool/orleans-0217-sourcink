@@ -20,7 +20,7 @@ use UserBundle\Entity\User;
  */
 class Api
 {   const perPage = 100;
-    const mobility = 'mobilité géo';
+    const mobility = 'Mobilité Géographique';
     const wanted_job = 'Poste voulu';
     const experience = 'Expérience';
     private $apiUrl;
@@ -234,7 +234,20 @@ class Api
         return $candidate->getHeaders()['Location'][0];
     }
 
-
+    public function getRegions()
+    {
+        $fields = $this->candidateCustomFields();
+        $regions = array();
+        foreach ($fields as $field) {
+            if ($field->name == self::mobility) {
+                foreach ($field->field->selections as $region){
+                    $regions[$region->label] = $region->id;
+                }
+                break;
+            }
+        }
+        return $regions;
+    }
     public function candidateCustomFields()
     {
         $customFields = $this->getClient()->request(
@@ -252,9 +265,13 @@ class Api
     {
         $fields = $this->candidateCustomFields();
         $customFields = [];
+        $value = '';
         foreach ($fields as $field) {
             if ($field->name == self::mobility) {
-                $value = $user->getMobility();
+                $value = array();
+                foreach ($user->getMobility() as $mobility){
+                    $value[] = $mobility;
+                }
             } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
             } else if ($field->name == self::experience) {
@@ -320,17 +337,19 @@ class Api
     {
         $fields = $this->candidateCustomFields();
         $customFields = [];
+        $value = '';
         foreach ($fields as $field) {
             if ($field->name == self::mobility) {
-                $value = $user->getMobility();
-            } else if ($field->name == self::current_job) {
-                $value = $user->getCurrentJob();
+                $value = array();
+                foreach ($user->getMobility() as $mobility){
+                    $value[] = $mobility;
+                }
             } else if ($field->name == self::wanted_job) {
                 $value = $user->getWantedJob();
             } else if ($field->name == self::experience) {
                 $value = $user->getExperience();
             }
-            $customFields[] = ["id" => $field->id, "value" => $value];
+            $customFields[] = ['id' => $field->id, 'value' => $value];
         }
         $update = $this->getClient()->request(
             'PUT', 'candidates/' . $catsUser->id, [

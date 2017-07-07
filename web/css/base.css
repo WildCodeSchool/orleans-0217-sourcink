@@ -1,4 +1,7 @@
-
+.dropdown-content {
+    /*Pas de scroll dans le select multiple sinon*/
+    overflow-y:auto!important;
+}
 .cadre {
 
     border-style: solid;
@@ -480,8 +483,13 @@ footer {
     padding-top: 2%;
 }
 .team-img {
-
+    width: 60%;
 }
+
+.btnLinkedin {
+    margin-bottom: 20px;
+}
+
 
 .img-offre {
     width: 100%;

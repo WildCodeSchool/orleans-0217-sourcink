@@ -36,6 +36,13 @@ class Category
     private $text;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isPremium", type="boolean")
+     */
+    private $isPremium;
+
+    /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
@@ -213,5 +220,29 @@ class Category
     public function getWorks()
     {
         return $this->works;
+    }
+
+    /**
+     * Set isPremium
+     *
+     * @param boolean $isPremium
+     *
+     * @return Category
+     */
+    public function setIsPremium($isPremium)
+    {
+        $this->isPremium = $isPremium;
+
+        return $this;
+    }
+
+    /**
+     * Get isPremium
+     *
+     * @return boolean
+     */
+    public function getIsPremium()
+    {
+        return $this->isPremium;
     }
 }

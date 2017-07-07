@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,10 +42,20 @@ class CategoryType extends AbstractType
                 )
             )
             ->add('picture', PictureType::class)
+            ->add('isPremium', CheckboxType::class,
+                array(
+                    'required' => false,
+                    'label' => 'Appliquer la mise en page premium',
+                    'attr' =>
+                        array(
+                            'checked' => 'checked'
+                        )
+                )
+            )
             ->add(
                 'submit', SubmitType::class,
                 array(
-                    'label'=>'Enregistrer',
+                    'label' => 'Enregistrer',
                     'attr' =>
                         array(
                             'class' => 'btn blue'
@@ -52,7 +63,7 @@ class CategoryType extends AbstractType
                 )
             );
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -60,7 +71,7 @@ class CategoryType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'AppBundle\Entity\Category'
+                'data_class' => 'AppBundle\Entity\Category'
             )
         );
     }
