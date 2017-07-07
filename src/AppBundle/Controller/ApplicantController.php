@@ -20,12 +20,19 @@ class ApplicantController extends Controller
     public function homeAction(Api $api)
     {
         $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
-        $api->updateCandidateFromCats($this->getUser(), $catsUser->_embedded->candidates[0]);
         $hasResume = false;
-        if($catsUser->count>0) {
+        if ($catsUser->count > 0) {
+            $api->updateCandidateFromCats($this->getUser(), $catsUser->_embedded->candidates[0]);
             $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
         }
-        return $this->render('AppBundle:Applicant:home.html.twig', ['status' => $catsUser->count, 'hasResume' => $hasResume]);
+
+        $regions = $api->getRegions();
+        $regions = array_flip($regions);
+        $mobilities = array();
+        foreach ($this->getUser()->getMobility() as $mobility) {
+            $mobilities[] = $regions[$mobility];
+        }
+        return $this->render('AppBundle:Applicant:home.html.twig', ['status' => $catsUser->count, 'hasResume' => $hasResume, 'mobilities' => $mobilities]);
     }
 
     /**
@@ -34,12 +41,7 @@ class ApplicantController extends Controller
     public function updateAction(Request $request, Api $api)
     {
         $em = $this->getDoctrine()->getManager();
-        $regions = $em->getRepository('AppBundle:Mobility')->findAll();
-        $mobility = [];
-        foreach ($regions as $region){
-            $mobility[$region->getName()] = $region->getName();
-        }
-        $form = $this->createForm(ProfileType::class, $this->getUser(), array('mobility' => $mobility));
+        $form = $this->createForm(ProfileType::class, $this->getUser(), array('regions' => $api->getRegions()));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
@@ -50,17 +52,17 @@ class ApplicantController extends Controller
                 $tag = $api->getTag($this->getParameter('tag_candidate'));
                 $api->createCandidateUser($this->getUser());
                 $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
-                $i=0;
-                while($newUser->count === 0 && $i<$this->getParameter('try_create_candidate')){
+                $i = 0;
+                while ($newUser->count === 0 && $i < $this->getParameter('try_create_candidate')) {
                     $newUser = $api->getSearch('candidates', $this->getUser()->getEmail());
                     $i++;
                 }
-                if($newUser->count > 0) {
+                if ($newUser->count > 0) {
                     $api->tagCandidate($newUser->_embedded->candidates[0]->id, $tag);
-                    if($this->getUser()->getResumeName()!=null) {
+                    if ($this->getUser()->getResumeName() != null) {
                         $directory = $this->getParameter('kernel.project_dir') . '/web/cv/';
-                        $api->sendResume($directory.$this->getUser()->getResumeName(), $newUser->_embedded->candidates[0]->id);
-                        unlink($directory.$this->getUser()->getResumeName());
+                        $api->sendResume($directory . $this->getUser()->getResumeName(), $newUser->_embedded->candidates[0]->id);
+                        unlink($directory . $this->getUser()->getResumeName());
                     }
                 }
             } else {
@@ -71,13 +73,14 @@ class ApplicantController extends Controller
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
     }
+
     /**
      * @Route("/delete", name="applicant_delete")
      */
     public function deleteAction(Api $api)
     {
         $user = $api->getSearch('candidates', $this->getUser()->getEmail());
-        if($user->count>0) {
+        if ($user->count > 0) {
             $api->deleteCandidate($user->_embedded->candidates[0]->id);
         }
         $em = $this->getDoctrine()->getManager();
