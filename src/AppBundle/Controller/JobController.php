@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class JobController extends Controller
 {
+
+    const FILTER_JOBS = 'SiteWeb';
+
     /**
      * @Route("/", name="job_list")
      */
@@ -45,12 +48,23 @@ class JobController extends Controller
 
             }
         }
+
+        $offerShow = array();
+
+        foreach ($offers as $offer){
+            if($offer['statut'] == self::FILTER_JOBS){
+                $offerShow[] = $offer;
+            }
+        }
+
+
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
         $pagination = $this->get('knp_paginator');
         $results = $pagination->paginate(
-            $offers,
+            $offerShow
+             ,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 9)
         );
@@ -112,7 +126,6 @@ class JobController extends Controller
                 'offer' => $offer,
 
                 'form' => $form->createView(),
-                'link_site' =>$link_site = $this->getParameter('link_site')
             ]
         );
 
