@@ -19,7 +19,7 @@ use UserBundle\Entity\User;
  * @package AppBundle\Services
  */
 class Api
-{
+{   const perPage = 100;
     const mobility = 'Mobilité Géographique';
     const wanted_job = 'Poste voulu';
     const experience = 'Expérience';
@@ -96,7 +96,7 @@ class Api
     public function get($query)
     {
         $data = $this->getClient()->request(
-            'GET', $query, [
+            'GET', $query.'?per_page='.self::perPage, [
                 'headers' => [
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'Content-Type' => 'application/json'
