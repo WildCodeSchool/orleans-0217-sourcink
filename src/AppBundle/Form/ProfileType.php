@@ -2,8 +2,12 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Mobility;
+use AppBundle\Entity\UserMobility;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -52,8 +56,12 @@ class ProfileType extends AbstractType
             )
             ->add(
                 'mobility', ChoiceType::class, array(
-                    'choices' => $options['mobility'],
-                    'label' => 'Mobilité'
+                    'label' => 'Mobilité',
+                    'attr' => array(
+                        'placeholder' => 'Choisissez les régions ou vous êtes mobile'
+                    ),
+                    'choices' => $options['regions'],
+                    'multiple' => true
                 )
             )
             ->add(
@@ -71,7 +79,8 @@ class ProfileType extends AbstractType
                     'label' => 'Salaire actuel',
                     'attr' => array(
                         'placeholder' => 'Entrez votre salaire actuel'
-                    )
+                    ),
+                    'required' => false
                 )
             )
             ->add(
@@ -80,7 +89,8 @@ class ProfileType extends AbstractType
                     'label' => 'Salaire désiré',
                     'attr' => array(
                         'placeholder' => 'Entrez votre salaire désiré'
-                    )
+                    ),
+                    'required' => false
                 )
             )
             ->add(
@@ -105,11 +115,9 @@ class ProfileType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(
-            array(
-                'mobility' => ''
-            )
-        );
+        $resolver->setDefaults(array(
+            'regions' => null
+        ));
     }
 
     public function getBlockPrefix()

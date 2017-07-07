@@ -1,4 +1,7 @@
-
+.dropdown-content {
+    /*Pas de scroll dans le select multiple sinon*/
+    overflow-y:auto!important;
+}
 .cadre {
     border-width: 1px solid #757575;
     border-radius: 15px 0 15px 0;
