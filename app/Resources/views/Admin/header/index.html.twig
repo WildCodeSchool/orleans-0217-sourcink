@@ -16,8 +16,8 @@
         <tbody>
         {% for header in headers %}
             <tr>
-                <td>{{ header.title }}</td>
-                <td>{{ header.text }}</td>
+                <td>{{ header.title | raw }}</td>
+                <td>{{ header.text | raw }}</td>
                 <td>{{ header.url }}</td>
                 <td>{{ header.nameUrl }}</td>
                 <td>

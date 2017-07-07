@@ -17,8 +17,8 @@
         <tbody>
         {% for category in categories %}
             <tr>
-                <td>{{ category.title }}</td>
-                <td>{{ category.text }}</td>
+                <td>{{ category.title | raw}}</td>
+                <td>{{ category.text | raw}}</td>
                 <td>
                 {% if category.picture is not null %}
                     <img src="{{ asset('img/' ~ category.picture.pictureName) }}" class="admimage"/>

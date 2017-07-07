@@ -32,6 +32,7 @@ $(document).ready(function(){
         $(".product-small").hide("fast");
         $(".product-large").show("fast");
     });
+
     $(".show-premium").click(function(){
         $(".product-premium").show("fast");
     });
@@ -41,5 +42,6 @@ $(document).ready(function(){
         $(".product-large").hide("fast");
         $(".product-premium").hide("fast");
     });
+
 });
 
