@@ -494,3 +494,26 @@ footer {
 .img-offre {
     width: 100%;
 }
+
+.logoPartner {
+    width: 50%;
+}
+
+.logoP {
+    width: 110%;
+}
+
+.logoMonster {
+    width: 110%;
+    padding-top: 30px;
+}
+
+.logoCarJur {
+    width: 120%;
+    padding-top: 20px;
+}
+
+.logoAPec{
+    width: 70%;
+    padding-left: 20px;
+}
