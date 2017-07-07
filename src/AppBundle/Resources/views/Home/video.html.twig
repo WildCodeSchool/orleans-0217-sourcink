@@ -1,17 +1,21 @@
 <div class="video-container video-responsive hide-on-small-only hide-on-med-only">
     <div class="slider fullscreen">
         <ul class="slides">
-            {% for video in videos %}
-                <li>
-                    <video autoplay muted loop>
-                        <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
-                    </video> <!-- random image -->
-                    <div class="caption center-align">
-                        <h2><a href="#job">{{ video.title }}</a></h2>
-                        <h4>{{ video.text }}</h4>
+
+{% for video in videos %}
+
+            <li>
+                <video autoplay muted loop>
+                    <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
+                </video> <!-- ranimageoldmage -->
+                <div class="caption center-align">
+                    <h2><a href="#job">{{ video.title | raw}}</a></h2>
+                    <h4 class="light grey-text">{{ video.text | raw }}</h4>
+
                         <a href="{{ video.url }}" class="btn blue">{{ video.urlName }}</a>
                     </div>
                 </li>
+
             {% endfor %}
         </ul>
     </div>

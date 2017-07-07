@@ -112,7 +112,6 @@ class JobController extends Controller
                 'offer' => $offer,
 
                 'form' => $form->createView(),
-                'link_site' =>$link_site = $this->getParameter('link_site')
             ]
         );
 

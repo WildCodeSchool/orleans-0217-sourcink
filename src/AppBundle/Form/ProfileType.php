@@ -42,15 +42,6 @@ class ProfileType extends AbstractType
                 )
             )
             ->add(
-                'currentJob', TextType::class,
-                array(
-                    'label' => 'Poste actuel',
-                    'attr' => array(
-                        'placeholder' => 'Entrez votre poste actuel'
-                    )
-                )
-            )
-            ->add(
                 'wantedJob', TextType::class,
                 array(
                     'label' => 'Poste désiré',

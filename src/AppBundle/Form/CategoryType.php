@@ -19,12 +19,13 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add(
-                'title', TextType::class,
+                'title', TextareaType::class,
                 array(
                     'label' => 'Titre',
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez le titre de la catégorie',
+                            'class' => 'ckeditor'
                         )
                 )
             )
@@ -35,7 +36,7 @@ class CategoryType extends AbstractType
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez une description de la catégorie',
-                            'class' => 'materialize-textarea'
+                            'class' => 'materialize ckeditor'
                         )
                 )
             )
