@@ -45,12 +45,23 @@ class JobController extends Controller
 
             }
         }
+
+        $offerShow = array();
+
+        foreach ($offers as $offer){
+            if($offer['statut'] == 'SiteWeb'){
+                $offerShow[] = $offer;
+            }
+        }
+
+
         /**
          * @var $pagination "Knp\Component\Pager\Paginator"
          * */
         $pagination = $this->get('knp_paginator');
         $results = $pagination->paginate(
-            $offers,
+            $offerShow
+             ,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 9)
         );
