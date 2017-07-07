@@ -5,7 +5,7 @@
 
 
 {% block content %}
-    {% if category.title == 'Premium' %}
+    {% if category.isPremium == '1' %}
         <div class="bg">
             <div class="container">
                 <div class="row">
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-    {% elseif category.title == 'Sourcink' %}
+    {% elseif category.isPremium == '0' %}
         <div class="container">
             <div class="row">
                 {% include('AppBundle:CategoryPage:product.html.twig') %}
@@ -29,7 +29,7 @@
 {% endblock %}
 
     {% block footer %}
-        {% if category.title == 'Premium' %}
+        {% if category.isPremium == '1' %}
             {% include('AppBundle:Base:footer_premium.html.twig') %}
         {% else %}
             {% include('AppBundle:Base:footer.html.twig') %}
