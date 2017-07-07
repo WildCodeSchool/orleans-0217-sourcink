@@ -63,4 +63,3 @@ class Mobility
         return $this->name;
     }
 }
-

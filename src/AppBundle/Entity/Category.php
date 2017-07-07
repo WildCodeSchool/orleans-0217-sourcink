@@ -36,6 +36,13 @@ class Category
     private $text;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isPrenium", type="boolean")
+     */
+    private $isPrenium;
+
+    /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"persist"})
      */
     private $products;
@@ -213,5 +220,29 @@ class Category
     public function getWorks()
     {
         return $this->works;
+    }
+
+    /**
+     * Set isPrenium
+     *
+     * @param boolean $isPrenium
+     *
+     * @return Category
+     */
+    public function setIsPrenium($isPrenium)
+    {
+        $this->isPrenium = $isPrenium;
+
+        return $this;
+    }
+
+    /**
+     * Get isPrenium
+     *
+     * @return boolean
+     */
+    public function getIsPrenium()
+    {
+        return $this->isPrenium;
     }
 }
