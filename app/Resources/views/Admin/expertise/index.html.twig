@@ -17,8 +17,8 @@
         {% for expertise in expertises %}
             <tr>
                 <td><a href="{{ path('expertise_show', { 'id': expertise.id }) }}">{{ expertise.id }}</a></td>
-                <td>{{ expertise.text }}</td>
-                <td>{{ expertise.title }}</td>
+                <td>{{ expertise.text | raw}}</td>
+                <td>{{ expertise.title | raw}}</td>
                 <td>
                     <ul>
 
