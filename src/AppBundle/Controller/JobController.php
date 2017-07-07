@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class JobController extends Controller
 {
+
+    const filterJobs = 'SiteWeb';
+
     /**
      * @Route("/", name="job_list")
      */
@@ -49,7 +52,7 @@ class JobController extends Controller
         $offerShow = array();
 
         foreach ($offers as $offer){
-            if($offer['statut'] == 'SiteWeb'){
+            if($offer['statut'] == self::filterJobs){
                 $offerShow[] = $offer;
             }
         }
