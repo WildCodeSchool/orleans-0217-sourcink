@@ -24,21 +24,22 @@
     src: local(Prater Light), url("../fonts/prater/PraterSansTwo-Regular.ttf") format("truetype");
     font-weight: 300;
 }
+
 @font-face {
     font-family: "Caviar";
     src: local(Caviar Dream), url("../fonts/caviardreams/CaviarDreams.ttf") format("truetype");
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family:Prater;
+    font-family: Prater;
 }
 
 p, li {
     font-family: Caviar;
     font-size: 20px;
 
-
 }
+
 .layer {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -48,18 +49,14 @@ p, li {
     height: 100%;
     border-radius: inherit;
 }
+
 .layer:hover {
 
 }
+
 .offers-title {
     margin: 5%;
     color: white;
-}
-.job_title{
-    text-align: center;
-    position: relative;
-    top: -600px;
-    font-size:80px;
 }
 .job-detail{
     font-size: 20px;
@@ -68,39 +65,36 @@ p, li {
     color: red;
 
 }
+
 .offredetail {
-    position: relative;
-    top: -650px;
     color: red;
     text-align: center;
     font-size: 40px;
 }
 
-.detail{
+.detail {
     box-shadow: 0 0 0 0;
     position: relative;
     width: auto;
     height: 600px;
-    top : 25px;
+    top: 25px;
 }
 
 /* Offres sans images */
+
 .cadre1{
-    border-style : solid;
-    border-width: 1px;
-    border-color : #757575;
+    border : 1px solid #757575;
     border-radius: 15px 0 15px 0;
-    width : 200px;
     height:auto;
     margin : 50px;
     padding : 30px;
 }
 
-.job_title2{
-    font-size:80px;
+.job_title2 {
+    font-size: 80px;
 }
 
-.job-detail2{
+.job-detail2 {
     font-size: 20px;
     color: red;
 
@@ -110,30 +104,32 @@ p, li {
     color: red;
     font-size: 40px;
 }
+
 /* Offres sans images */
 
 .offres {
-    position : absolute;
-    top : 135px;
-    left : 150px;
-    visibility : hidden;
+    position: absolute;
+    top: 135px;
+    left: 150px;
+    visibility: hidden;
 }
-.card-offres{
-    position : relative;
-    height:180px;
+
+.card-offres {
+    position: relative;
+    height: 180px;
     border-radius: 15px 0 15px 0;
 }
+
 .card-offres:hover .offres {
-    visibility:visible;
+    visibility: visible;
 
 }
 
-.color, .btn.offres  {
+.color, .btn.offres {
 
     background-color: rgba(127, 126, 139, 0.37);
     border-radius: 15px 0 15px 0;
 }
-
 
 /* Bounce To Right */
 .hvr-bounce-to-right {
@@ -146,7 +142,7 @@ p, li {
     transition-property: color;
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
-    height:180px;
+    height: 180px;
 }
 
 .hvr-bounce-to-right:before {
@@ -179,8 +175,11 @@ p, li {
     transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
     color: white;
 }
+
 /* Fin Bounce To Right */
 
+
+/* Bounce To Right */
 
 body {
     display: flex;
@@ -200,14 +199,16 @@ nav {
 }
 
 a {
-    color : white;
+    color: white;
 }
+
 nav ul a {
     color: black;
     padding-top: 20px;
 
 }
-.applicant-button{
+
+.applicant-button {
     border: none;
     border-radius: 2px;
     display: inline-block;
@@ -237,7 +238,6 @@ nav p {
 }
 
 .page-footer {
-    margin-top: 5%;
     background-color: rgba(0, 161, 192, 1);
 }
 
@@ -334,6 +334,7 @@ a h5 {
 #resumeForm {
     padding-top: 90px;
 }
+
 /*Slider Vidéos*/
 
 /*Expertise*/
@@ -343,14 +344,10 @@ a h5 {
 
 /*Overlay offres*/
 
-
 .img {
     max-width: 250px;
     max-height: 250px;
 }
-
-
-
 
 /*Job Page*/
 .job_title {
@@ -379,7 +376,7 @@ h3 {
 }
 
 .black-text {
-    border-left: 10px solid #00A1C0 ;
+    border-left: 10px solid #00A1C0;
 }
 
 .product-small {
@@ -388,6 +385,7 @@ h3 {
     border-radius: 5px;
     line-height: 2em;
 }
+
 .product-medium {
     background-color: #786681;
     color: white;
@@ -395,12 +393,14 @@ h3 {
     line-height: 2em;
 
 }
+
 .product-large {
     background-color: #00A1C0;
     color: white;
     border-radius: 5px;
     line-height: 2em;
 }
+
 .show-small {
     background-color: #E73148;
     color: white;
@@ -408,18 +408,20 @@ h3 {
 
 span {
     font-family: Prater;
-    color: #00A1C0;
+
 }
+
 .padding-small {
     margin-top: 80px;
 }
+
 .padding-medium {
     margin-top: 40px;
 }
+
 .table {
     font-size: 20px;
 }
-
 
 /*Home*/
 
@@ -431,7 +433,7 @@ span {
 /*CSS admin */
 
 .admimage {
-    width : 80px;
+    width: 80px;
     height: 80px;
 
 }
@@ -446,30 +448,38 @@ span {
 }
 
 .navbar-fixed {
-
+    margin-bottom: 50px;
 }
+
 .profil-name {
     font-size: 38px;
 }
+
 .title-small {
     font-size: 24px;
 }
+
 footer {
     min-height: 100px;
 }
-
 
 .expertise-texte {
     font-size: 24px;
     padding-left: 5%;
     padding-right: 5%;
 }
+
 .work-name {
     font-size: 24px;
 }
+
 .category-title {
     position: relative;
     top: -100px;
+}
+
+.category-title1 {
+    color: #00A1C0;
 }
 
 .img-fleche {
@@ -477,11 +487,11 @@ footer {
 }
 
 .offers-div {
-    border-top: thin solid lightgrey;
-    border-bottom: thin solid lightgrey;
+    background-color: #f5f5f5;
     padding-bottom: 2%;
     padding-top: 2%;
 }
+
 .team-img {
     width: 60%;
 }
@@ -516,4 +526,34 @@ footer {
 .logoAPec{
     width: 70%;
     padding-left: 20px;
+}
+.puces-site {
+    list-style-type:disc;
+}
+
+.no-job {
+    margin-bottom: 20px;
+}
+
+/*Premium Page*/
+.bg {
+    background-image: url('/img/alice-donovan-rouse-171566.jpg');
+    background-size: cover;
+}
+
+.product-premium {
+    color: white;
+}
+
+.page-footer-premium {
+    background-color: black;
+}
+
+.bg span {
+    color: white;
+}
+
+.bg h3 {
+    border-left: 10px solid #ffffff;
+
 }

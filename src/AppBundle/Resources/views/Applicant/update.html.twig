@@ -6,14 +6,14 @@
     <div class="container">
         <div class="row center">
             <h1 class="title-small">Mise à jour de mon profil</h1>
-            <a href="#modalParsing" class="btn blue center">Utiliser le parsing de CV pour préremplir mon profil</a>
+            <a href="#modalParsing" class="btn blue center">Utiliser mon CV pour compléter mon profil</a>
         </div>
         {{ form(form) }}
         <a href="#modalDelete" class="btn btn-flat red-text right">Supprimer mon compte</a>
     </div>
     <div id="modalParsing" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h4>Parser mon CV</h4>
+            <h4>Envoyer mon CV</h4>
             <div class="row">
                 <form id="parseResumeForm">
                     <div class="file-field input-field">
@@ -81,7 +81,7 @@
                     $('#fos_user_registration_form_salary').val(resume.current_pay);
                     $('#fos_user_registration_form_wantedSalary').val(resume.desired_pay);
                     $('#fos_user_registration_form_phone').val(resume.phone);
-                    $('.ajaxStatus').html('<div class="center"><p>Votre CV a été parsé avec succès !</p></div>');
+                    $('.ajaxStatus').html('<div class="center"><p>Votre CV a été envoyé avec succès !</p></div>');
                 },
                 error: function() {
                     $('.ajaxStatus').html('<div class="center"><p>Une erreur s\'est produite. Veuillez réessayer.</p></div>');

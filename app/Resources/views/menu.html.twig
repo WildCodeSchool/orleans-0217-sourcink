@@ -1,6 +1,11 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="{{ path("admin_index") }}" class="brand-logo"> <img src="{{ asset('media/logoSourcInk.svg') }}"></a>
+        <a href="{{ path('app_homepage') }}" class="brand-logo">
+            <img src="{{ asset('media/logoSourcInk.svg') }}">
+        </a>
+        <p class="slogan center hide-on-med-and-down">
+            L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH
+        </p>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
 
             <li><a href="{{ path("header_index") }}">Vidéos</a></li>
@@ -9,7 +14,6 @@
             <li><a href="{{ path("category_index") }}">Catégories</a></li>
             <li><a href="{{ path("product_index") }}">Solutions</a></li>
             <li><a href="{{ path("benefit_index") }}">Options</a></li>
-
         </ul>
     </div>
 </nav>
