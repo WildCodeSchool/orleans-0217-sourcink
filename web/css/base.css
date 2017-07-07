@@ -11,6 +11,7 @@
     padding: 30px 0 30px 0;
 
 }
+
 .btn-ajax {
     color: white;
 }
@@ -479,8 +480,13 @@ footer {
     padding-top: 2%;
 }
 .team-img {
-
+    width: 60%;
 }
+
+.btnLinkedin {
+    margin-bottom: 20px;
+}
+
 
 .img-offre {
     width: 100%;

@@ -30,5 +30,6 @@ $(document).ready(function(){
         $(".product-small").hide("fast");
         $(".product-large").show("fast");
     });
+
 });
 
