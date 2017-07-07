@@ -1,16 +1,34 @@
-{% extends "AppBundle:Base:layout.html.twig" %}
+{% extends "::layout.html.twig" %}
 {% block header %}
     {% include('AppBundle:Base:header.html.twig') %}
 {% endblock %}
+
+
 {% block content %}
+    {% if category == 'Premium' %}
+<div class="bg">
     <div class="container">
         <div class="row">
             {% include('AppBundle:CategoryPage:product.html.twig') %}
         </div>
+    </div>
+    {% elseif category == 'Sourcink' %}
+    <div class="container">
+        <div class="row">
+            {% include('AppBundle:CategoryPage:product.html.twig') %}
+        </div>
+        {% endif %}
         {% if category.title == 'Sourcink' %}
             <div class="row">
                 {% include('AppBundle:CategoryPage:comparator.html.twig') %}
             </div>
         {% endif %}
     </div>
+    {% endblock %}
+    {% block footer %}
+    {% if category == 'Premium' %}
+    {% include('AppBundle:Base:footer_premium.html.twig') %}
+    {% else %}
+    {% include('AppBundle:Base:footer.html.twig') %}
+    {% endif %}
 {% endblock %}

@@ -229,7 +229,7 @@ nav p {
 }
 
 .page-footer {
-    margin-top: 5%;
+    /*margin-top: 5%;*/
     background-color: rgba(0, 161, 192, 1);
 }
 
@@ -400,7 +400,7 @@ h3 {
 
 span {
     font-family: Prater;
-    color: #00A1C0;
+
 }
 .padding-small {
     margin-top: 80px;
@@ -464,6 +464,9 @@ footer {
     top: -100px;
 }
 
+.category-title1{
+    color: #00A1C0;
+}
 .img-fleche {
     height: 125px;
 }
@@ -480,4 +483,27 @@ footer {
 
 .img-offre {
     width: 100%;
+}
+
+.no-job {
+    margin-bottom: 20px;
+}
+
+/*Premium Page*/
+.bg {
+    background-image: url('/img/alice-donovan-rouse-171566.jpg');
+    background-size: cover;
+}
+.product-premium {
+    color: white;
+}
+.page-footer-premium {
+    background-color: black;
+}
+
+.bg span  {
+    color: white;
+}
+.bg h3 {
+    border-left: 10px solid #ffffff ;
 }
