@@ -35,9 +35,9 @@ class ProfileType extends AbstractType
             ->add(
                 'title', TextType::class,
                 array(
-                    'label' => 'Titre',
+                    'label' => 'Poste actuel',
                     'attr' => array(
-                        'placeholder' => 'Entrez votre titre'
+                        'placeholder' => 'Entrez votre poste actuel'
                     )
                 )
             )
@@ -62,7 +62,7 @@ class ProfileType extends AbstractType
                 array(
                     'label' => 'Expérience',
                     'attr' => array(
-                        'placeholder' => 'Entrez votre expérience en année'
+                        'placeholder' => 'Entrez votre expérience en années'
                     )
                 )
             )
@@ -71,7 +71,7 @@ class ProfileType extends AbstractType
                 array(
                     'label' => 'Salaire actuel',
                     'attr' => array(
-                        'placeholder' => 'Entrez votre salaire actuel'
+                        'placeholder' => 'Entrez votre salaire actuel ou votre rétrocession actuelle'
                     ),
                     'required' => false
                 )
@@ -98,7 +98,7 @@ class ProfileType extends AbstractType
             ->add(
                 'submit', SubmitType::class,
                 array(
-                    'label' => 'Modifier',
+                    'label' => 'Enregistrer',
                     'attr' => array(
                         'class' => 'btn blue'
                     )

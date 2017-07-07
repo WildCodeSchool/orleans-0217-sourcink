@@ -68,7 +68,6 @@ class ApplicantController extends Controller
             } else {
                 $api->updateCandidate($this->getUser(), $catsUser->_embedded->candidates[0]);
             }
-            $this->addFlash('success', 'Votre profil a été mise à jour');
             return $this->redirectToRoute('app_applicant');
         }
         return $this->render('AppBundle:Applicant:update.html.twig', ['form' => $form->createView()]);
