@@ -41,7 +41,7 @@
 
         {% endif %}
     {% endfor %}
-    {% if category.isPremium == 'true' %}
+    {% if category.isPremium == true %}
         <div class="center">
             <img class="circle responsive-img img" id="{{ category.id }}"
                  src="{{ asset('img/'~category.picture.pictureName) }}">

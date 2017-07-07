@@ -12,7 +12,7 @@
     <div class="row">
         {% for category in categories %}
             <div class="col s6 center">
-                {% if category.isPremium =='false' %}
+                {% if category.isPremium == false %}
 
                     {% for work in category.works %}
                         <p class="center work-name">{{ work.name }}</p>
@@ -21,7 +21,7 @@
                 {% endif %}
             </div>
             <div class="col s6 center">
-                {% if category.isPremium =='true' %}
+                {% if category.isPremium == true %}
 
                     {% for work in category.works %}
                         <p class="center work-name">{{ work.name }}</p>

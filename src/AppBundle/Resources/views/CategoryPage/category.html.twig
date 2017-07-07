@@ -5,7 +5,7 @@
 
 
 {% block content %}
-    {% if category.isPremium == 'true' %}
+    {% if category.isPremium == true %}
         <div class="bg">
             <div class="container">
                 <div class="row">
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-    {% elseif category.isPremium == 'false' %}
+    {% elseif category.isPremium == false %}
         <div class="container">
             <div class="row">
                 {% include('AppBundle:CategoryPage:product.html.twig') %}
@@ -29,7 +29,7 @@
 {% endblock %}
 
     {% block footer %}
-        {% if category.isPremium == 'true' %}
+        {% if category.isPremium == true %}
             {% include('AppBundle:Base:footer_premium.html.twig') %}
         {% else %}
             {% include('AppBundle:Base:footer.html.twig') %}
