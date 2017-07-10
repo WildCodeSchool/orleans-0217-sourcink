@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class JobController extends Controller
 {
 
-    const FILTER_JOBS = 'SiteWeb';
+    const FILTER_JOBS = 'Site Web';
 
     /**
      * @Route("/", name="job_list")
