@@ -1,0 +1,12 @@
+{% extends '@App/Base/layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Page introuvable</h1>
+        <p>
+            La page demandée n'a pas été trouvée.
+            <br />
+            <a href="{{ path('app_homepage') }}" class="btn blue">Retour à la page d'accueil</a>
+        </p>
+    </div>
+{% endblock %}
