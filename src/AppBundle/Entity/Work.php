@@ -29,7 +29,7 @@ class Work
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="works")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="works", cascade={"persist"})
      */
     private $category;
 
