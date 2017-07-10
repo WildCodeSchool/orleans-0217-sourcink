@@ -26,7 +26,7 @@ class BenefitType extends AbstractType
                     'attr' =>
                         array(
                             'placeholder' => 'Entrez une description de l\'option',
-                            'class' => 'materialize-textarea ckeditor'
+                            'class' => 'materialize-textarea'
                         )
                 )
             )
