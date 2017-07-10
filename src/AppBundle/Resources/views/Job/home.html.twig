@@ -4,12 +4,28 @@
 {% endblock %}
 {% block content %}
     <div class="container">
+        {% for messages in app.flashes %}
+            {% for message in messages %}
+                <div class="card-panel">
+                    <span class="blue-text text-darken-2">{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="container">
         <div class="row">
             {% include('AppBundle:Job:jobs.html.twig') %}
         </div>
         {% include('AppBundle:Job:paginator.html.twig') %}
-        <div class="center no-job">
-            <a href="{{ path('job_spontane') }}" class="btn btn-large blue">Aucune offre ne vous convient ? Envoyez-nous votre candidature spontanée !</a>
-        </div>
+        {% if app.user %}
+            <div class="center no-job">
+                <a href="{{ path('job_spontane') }}" class="btn btn-large blue">Aucune offre ne vous convient ? Envoyez-nous votre candidature spontanée !</a>
+            </div>
+        {% else %}
+            <div class="center no-job">
+                <p>Afin de postuler, vous devez vous inscrire</p>
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-large blue">M'inscrire</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

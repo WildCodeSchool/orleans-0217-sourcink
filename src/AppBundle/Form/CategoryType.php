@@ -42,7 +42,8 @@ class CategoryType extends AbstractType
                 )
             )
             ->add('picture', PictureType::class)
-            ->add('isPremium', CheckboxType::class,
+            ->add(
+                'isPremium', CheckboxType::class,
                 array(
                     'required' => false,
                     'label' => 'Appliquer la mise en page premium',

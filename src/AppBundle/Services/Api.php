@@ -19,7 +19,8 @@ use UserBundle\Entity\User;
  * @package AppBundle\Services
  */
 class Api
-{   const perPage = 100;
+{
+    const perPage = 100;
     const mobility = 'Mobilité Géographique';
     const wanted_job = 'Poste voulu';
     const experience = 'Expérience';
