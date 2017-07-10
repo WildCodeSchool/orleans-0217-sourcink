@@ -3,11 +3,20 @@
         {% include('AppBundle:Job:header.html.twig') %}
     {% endblock %}
     {% block content %}
+        <div class="container">
+            {% for messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="card-panel">
+                        <span class="blue-text text-darken-2">{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="infos-offre">
                     {% if offer.attachment_id is not empty %}
-                        <img src="{{ link_site }}{{ offer.attachment_id }}" class="img-offre">
+                        <img src="../img/jobPicture/{{ offer.image|default('default.png') }}" class="img-offre">
                     {% endif %}
                     <h2 class="job_title">{{ offer.title | raw }}</h2>
                     <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>

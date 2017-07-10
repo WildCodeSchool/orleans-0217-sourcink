@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 /**
@@ -52,7 +53,7 @@ class JobController extends Controller
         $offerShow = array();
 
         foreach ($offers as $offer){
-            if($offer['statut'] == self::FILTER_JOBS){
+            if($offer['statut'] == self::FILTER_JOBS) {
                 $offerShow[] = $offer;
             }
         }
@@ -63,8 +64,7 @@ class JobController extends Controller
          * */
         $pagination = $this->get('knp_paginator');
         $results = $pagination->paginate(
-            $offerShow
-             ,
+            $offerShow,
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 9)
         );
@@ -78,7 +78,7 @@ class JobController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="job_page")
+     * @Route("/{id}", name="job_page", requirements={"id": "\d+"})
      */
 
     public function jobPageAction(Api $service, $id, Request $request, \Swift_Mailer $mailer, Email $email)
@@ -101,7 +101,7 @@ class JobController extends Controller
             $user = $users->_embedded->candidates[0];
             $candidat = $service->apply($user, $id);
             $email->applyJob($mailer, $this->getUser(), $data->title);
-            return $this->render('AppBundle:Job:response.html.twig');
+            $this->addFlash('success', 'Nous avons reçus votre candidature. Nous allons vous contacter par e-mail.');
         }
 
         $offer = [
@@ -117,6 +117,12 @@ class JobController extends Controller
             'attachment_id' => (property_exists($data->_embedded, 'attachments') ? $data->_embedded->attachments[0]->id : '')
 
         ];
+
+        if ($offer['attachment_id'] != '') {
+
+            $offer['image'] = $service->downloadImg(property_exists($data->_embedded, 'attachments') ? $data->_embedded->attachments[0]->id : '');
+
+        }
 
 
         return $this->render(
@@ -135,8 +141,8 @@ class JobController extends Controller
      */
     public function spontaneAction(\Swift_Mailer $mailer, Email $email)
     {
-        $this->addFlash('success', 'Nous avons bien reçu votre candidature. Nous allons vous contacter par mail.');
         $email->candidatureSpontane($mailer, $this->getUser());
+        $this->addFlash('success', 'Nous avons reçus votre candidature. Nous allons vous contacter par e-mail.');
         return $this->redirectToRoute('job_list');
     }
 }
