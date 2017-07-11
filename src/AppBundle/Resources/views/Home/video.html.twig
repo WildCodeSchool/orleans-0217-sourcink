@@ -7,8 +7,10 @@
                         <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
                     </video> <!-- random image -->
                     <div class="caption center-align">
-                        <h2><a href="#job">{{ video.title|raw }}</a></h2>
-                        <h4>{{ video.text|raw }}</h4>
+
+                        <h2><a href="#job">{{ video.title |raw }}</a></h2>
+                        <h4>{{ video.text | raw}}</h4>
+
                         <a href="{{ video.url }}" class="btn blue">{{ video.nameUrl }}</a>
                     </div>
                 </li>
