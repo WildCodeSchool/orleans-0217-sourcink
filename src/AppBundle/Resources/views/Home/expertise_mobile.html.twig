@@ -9,19 +9,21 @@
         <br>
         {% for category in categories %}
             <div class="col s12 m6 center">
-            <a href="{{ path('category_page_view', {'id':category.id}) }}">
-                <h3 class="red-text">{{ category.title }}</h3>
-                <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
-            </a>
-            <p>
-                Pour la soution {{ category.title }} nos équipes interviennent principalement dans le recrutement des
-                profils suivants :
-            </p>
-            {% for work in category.works %}
-                <div class="col s12 center">
-                    <p>{{ work.name }}</p>
-                </div>
-            {% endfor %}</div>
+                <a href="{{ path('category_page_view', {'id':category.id}) }}">
+                    <h3 class="red-text">{{ category.title }}</h3>
+                    <img class="circle responsive-img img" src="{{ asset('img/'~category.picture.pictureName) }}">
+                </a>
+                <p>
+                    Pour la soution {{ category.title }} nos équipes interviennent principalement dans le recrutement
+                    des
+                    profils suivants :
+                </p>
+                {% for work in category.works %}
+                    <div class="col s12 center">
+                        <p>{{ work.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
     </div>
 </div>
