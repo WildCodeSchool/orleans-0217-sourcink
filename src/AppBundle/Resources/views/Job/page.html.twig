@@ -28,11 +28,23 @@
                             <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
                             <script type="in/share"></script>
 
-                            {% if app.user %}
+                            {% if status == true and hasResume == true %}
                                 {{ form(form) }}
+                            {% elseif status == true and hasResume == false %}
+                                <div class="center no-job">
+                                    <p>Afin de postuler, vous devez nous envoyer votre CV</p>
+                                    <a href="{{ path('app_applicant') }}" class="btn btn-large blue">Envoyer mon CV</a>
+                                </div>
+                            {% elseif status == false and app.user %}
+                                <div class="center no-job">
+                                    <p>Afin de postuler, vous devez compléter votre profil</p>
+                                    <a href="{{ path('applicant_update') }}" class="btn btn-large blue">Compléter mon profil</a>
+                                </div>
                             {% else %}
-                                <p>Afin de postuler, vous devez vous inscrire</p>
-                                <a href="{{ path('fos_user_security_login') }}" class="btn red">M'inscrire</a>
+                                <div class="center no-job">
+                                    <p>Afin de postuler, vous devez vous inscrire</p>
+                                    <a href="{{ path('fos_user_security_login') }}" class="btn btn-large blue">M'inscrire</a>
+                                </div>
                             {% endif %}
                         </div>
                     </div>
