@@ -26,7 +26,7 @@ class ApplicantController extends Controller
             $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
         }
         $mobilities = array();
-        if($this->getUser()->getMobility()!=NULL){
+        if($this->getUser()->getMobility()!=null){
             $regions = $api->getRegions();
             $regions = array_flip($regions);
             foreach ($this->getUser()->getMobility() as $mobility) {
