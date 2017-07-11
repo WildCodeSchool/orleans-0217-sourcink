@@ -25,13 +25,15 @@ class ApplicantController extends Controller
             $api->updateCandidateFromCats($this->getUser(), $catsUser->_embedded->candidates[0]);
             $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
         }
-
-        $regions = $api->getRegions();
-        $regions = array_flip($regions);
         $mobilities = array();
-        foreach ($this->getUser()->getMobility() as $mobility) {
-            $mobilities[] = $regions[$mobility];
+        if($this->getUser()->getMobility()!=null){
+            $regions = $api->getRegions();
+            $regions = array_flip($regions);
+            foreach ($this->getUser()->getMobility() as $mobility) {
+                $mobilities[] = $regions[$mobility];
+            }
         }
+
         return $this->render('AppBundle:Applicant:home.html.twig', ['status' => $catsUser->count, 'hasResume' => $hasResume, 'mobilities' => $mobilities]);
     }
 
