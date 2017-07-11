@@ -68,11 +68,22 @@ class JobController extends Controller
             $request->query->getInt('page', 1),
             $request->query->getInt('limit', 9)
         );
+        $countUser = 0;
+        if($this->getUser()!=null){
+            $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+            $countUser = $catsUser->count;
+        }
+        $hasResume = false;
+        if ($countUser > 0) {
+            $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
+        }
 
         return $this->render(
             'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
+                'status' => $countUser,
+                'hasResume' => $hasResume,
             ]
         );
     }
@@ -123,7 +134,15 @@ class JobController extends Controller
             $offer['image'] = $service->downloadImg(property_exists($data->_embedded, 'attachments') ? $data->_embedded->attachments[0]->id : '');
 
         }
-
+        $countUser = 0;
+        if($this->getUser()!=null){
+            $catsUser = $service->getSearch('candidates', $this->getUser()->getEmail());
+            $countUser = $catsUser->count;
+        }
+        $hasResume = false;
+        if ($countUser > 0) {
+            $hasResume = $service->hasResume($catsUser->_embedded->candidates[0]->id);
+        }
 
         return $this->render(
             'AppBundle:Job:page.html.twig',
@@ -131,6 +150,8 @@ class JobController extends Controller
                 'offer' => $offer,
 
                 'form' => $form->createView(),
+                'status' => $countUser,
+                'hasResume' => $hasResume,
             ]
         );
 

@@ -14,8 +14,8 @@
         <tbody>
         {% for work in works %}
             <tr>
-                <td>{{ work.name | raw}}</td>
-                <td>{{ work.category | raw}}</td>
+                <td>{{ work.name |striptags }}</td>
+                <td>{{ work.category |striptags }}</td>
                 <td>
                     <ul>
                         <li>

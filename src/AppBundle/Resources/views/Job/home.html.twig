@@ -17,9 +17,19 @@
             {% include('AppBundle:Job:jobs.html.twig') %}
         </div>
         {% include('AppBundle:Job:paginator.html.twig') %}
-        {% if app.user %}
+        {% if status == true and hasResume == true %}
             <div class="center no-job">
                 <a href="{{ path('job_spontane') }}" class="btn btn-large blue">Aucune offre ne vous convient ? Envoyez-nous votre candidature spontanée !</a>
+            </div>
+        {% elseif status == true and hasResume == false %}
+            <div class="center no-job">
+                <p>Afin de postuler, vous devez nous envoyer votre CV</p>
+                <a href="{{ path('app_applicant') }}" class="btn btn-large blue">Envoyer mon CV</a>
+            </div>
+        {% elseif status == false and app.user %}
+            <div class="center no-job">
+                <p>Afin de postuler, vous devez compléter votre profil</p>
+                <a href="{{ path('applicant_update') }}" class="btn btn-large blue">Compléter mon profil</a>
             </div>
         {% else %}
             <div class="center no-job">

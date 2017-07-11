@@ -28,4 +28,7 @@ parameters:
     tag_candidate: WEB
     try_create_candidate: 5
 
+    email: ~
+    telephone: ~
+
 
