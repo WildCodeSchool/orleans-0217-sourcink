@@ -69,10 +69,19 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
 
+        $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
+        $hasResume = false;
+        if ($catsUser->count > 0) {
+            $api->updateCandidateFromCats($this->getUser(), $catsUser->_embedded->candidates[0]);
+            $hasResume = $api->hasResume($catsUser->_embedded->candidates[0]->id);
+        }
+
         return $this->render(
             'AppBundle:Job:home.html.twig',
             [
                 'offers' => $results,
+                'status' => $catsUser->count,
+                'hasResume' => $hasResume,
             ]
         );
     }
