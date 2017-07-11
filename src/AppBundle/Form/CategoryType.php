@@ -46,10 +46,6 @@ class CategoryType extends AbstractType
                 array(
                     'required' => false,
                     'label' => 'Appliquer la mise en page premium',
-                    'attr' =>
-                        array(
-                            'checked' => 'checked'
-                        )
                 )
             )
             ->add(

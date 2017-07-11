@@ -196,6 +196,7 @@ nav {
     padding-left: 1%;
     background-color: white;
     height: 100px;
+    margin-bottom: 0;
 }
 
 a {
@@ -492,7 +493,7 @@ footer {
 }
 
 .team-img {
-    width: 60%;
+    width: 35%;
 }
 
 .btnLinkedin {
