@@ -17,7 +17,7 @@
             {% include('AppBundle:Job:jobs.html.twig') %}
         </div>
         {% include('AppBundle:Job:paginator.html.twig') %}
-        {% if app.user %}
+        {% if status == true and hasResume == false %}
             <div class="center no-job">
                 <a href="{{ path('job_spontane') }}" class="btn btn-large blue">Aucune offre ne vous convient ? Envoyez-nous votre candidature spontanée !</a>
             </div>
