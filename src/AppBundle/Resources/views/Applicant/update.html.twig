@@ -58,7 +58,7 @@
             $('select').material_select();
         });
         $('#parseResumeButton').on('click',function(e){
-            event.preventDefault();
+            e.preventDefault();
             var resume = $('#parseResumeFile').val();
             $('.progress').removeClass('hiddendiv');
             var formData = new FormData();
