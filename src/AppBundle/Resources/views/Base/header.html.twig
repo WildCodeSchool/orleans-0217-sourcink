@@ -7,6 +7,33 @@
                 <p class="slogan center hide-on-med-and-down">
                     L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH
                 </p>
+                <a href="#" data-activates="side-nav" class="button-collapse red-text"><i
+                            class="material-icons">menu</i></a>
+                <ul id="side-nav" class="side-nav">
+                    <div class="center">
+                        <li><a href="/#expertise">Notre Expertise</a></li>
+                        <br/>
+                        <li><a href="/#category">Nos Solutions</a></li>
+                        <br/>
+                        <li><a href="{{ path('job_list') }}">Nos Offres</a></li>
+                        <br/>
+                        <li><a href="/#team">Notre Equipe</a></li>
+                        <br/>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li>
+                                <a href="{{ path('app_applicant') }}"
+                                   class="right red white-text applicant-button waves-effect z-depth-1">
+                                    {{ app.user.firstname }} {{ app.user.lastname|first }}.
+                                </a>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ path('fos_user_security_login') }}"
+                                   class="right red white-text applicant-button waves-effect z-depth-1">Espace
+                                    Candidat</a>
+                            </li>
+                        {% endif %}
+                    </div>
+                </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/#expertise">Notre Expertise</a></li>
                     <li><a href="/#category">Nos Solutions</a></li>

@@ -196,6 +196,7 @@ nav {
     padding-left: 1%;
     background-color: white;
     height: 100px;
+    margin-bottom: 0;
 }
 
 a {
@@ -490,9 +491,13 @@ footer {
     padding-bottom: 2%;
     padding-top: 2%;
 }
-
+.partners {
+    background-color: #f5f5f5;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
 .team-img {
-    width: 60%;
+    width: 35%;
 }
 
 .btnLinkedin {
@@ -558,5 +563,5 @@ footer {
 }
 
 .bg-category {
-    background-color: #f5f5f5;
+
 }
