@@ -304,12 +304,8 @@ video {
     overflow: hidden;
 }
 
-@-moz-document url-prefix() {
-    .video-container {
-        padding-top: 720px;
-        width: 100%;
-    }
-}
+
+
 
 .slider .slides {
     background-color: #ffffff;
@@ -335,6 +331,7 @@ a h5 {
 #resumeForm {
     padding-top: 90px;
 }
+
 
 /*Slider Vidéos*/
 
@@ -564,4 +561,27 @@ footer {
 
 .bg-category {
 
+}
+
+@-moz-document url-prefix() {
+    video {
+        position: relative;
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: auto;
+        z-index: -100;
+        background-size: cover;
+        overflow: visible;
+        right: 0;
+        bottom: 71px;
+
+    }
+    .video-container {
+        padding-top: 720px;
+        width: 100%;
+    }
+    #expertise {
+        margin-top : 100px;
+    }
 }

@@ -1,10 +1,10 @@
 <div class="video-container video-responsive hide-on-small-only hide-on-med-only">
-    <div class="slider fullscreen">
+    <div class="slider fullscreen video-responsive">
         <ul class="slides">
             {% for video in videos %}
                 <li>
                     <video autoplay muted loop>
-                        <source src="{{ asset('img/'~video.picture.pictureName) }}" type="video/mp4">
+                        <source src="{{ asset('img/'~video.picture.pictureName) }}" id="video" type="video/mp4">
                     </video> <!-- random image -->
                     <div class="caption center-align">
 
@@ -18,5 +18,7 @@
         </ul>
     </div>
 </div>
+
+
 
 
