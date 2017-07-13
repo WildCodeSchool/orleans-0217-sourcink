@@ -69,7 +69,7 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
         $countUser = 0;
-        if($this->getUser()!=null){
+        if($this->getUser()!=null) {
             $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
             $countUser = $catsUser->count;
         }
@@ -135,7 +135,7 @@ class JobController extends Controller
 
         }
         $countUser = 0;
-        if($this->getUser()!=null){
+        if($this->getUser()!=null) {
             $catsUser = $service->getSearch('candidates', $this->getUser()->getEmail());
             $countUser = $catsUser->count;
         }
