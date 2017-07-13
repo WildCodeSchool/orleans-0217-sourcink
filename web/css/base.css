@@ -45,6 +45,13 @@ p, li {
     font-size: 24px;
 }
 
+.offers-div h2 {
+    padding-bottom: 100px;
+}
+.partner {
+    padding-bottom: 100px;
+}
+
 .layer {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -260,7 +267,7 @@ li {
     display: inline-block;
 }
 
-#expertise, #category, #job, #team {
+#expertise, #category, #team {
     padding-top: 100px;
     margin-top: -90px;
 }
