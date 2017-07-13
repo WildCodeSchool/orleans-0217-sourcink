@@ -8,7 +8,58 @@
             <h1 class="title-small">Mise à jour de mon profil</h1>
             <a href="#modalParsing" class="btn blue center">Utiliser mon CV pour compléter mon profil</a>
         </div>
-        {{ form(form) }}
+        <div class="center">
+            Les champs précédés d'un <span class="red-text">*</span> doivent être remplis
+        </div>
+        {{ form_start(form) }}
+
+        {{ form_label(form.firstname) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.firstname) }}
+        {{ form_errors(form.firstname) }}
+
+        {{ form_label(form.lastname) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.lastname) }}
+        {{ form_errors(form.lastname) }}
+
+        {{ form_label(form.title) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+
+        {{ form_label(form.wantedJob) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.wantedJob) }}
+        {{ form_errors(form.wantedJob) }}
+
+        {{ form_label(form.experience) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.experience) }}
+        {{ form_errors(form.experience) }}
+
+        {{ form_label(form.salary) }}
+        {{ form_widget(form.salary) }}
+        {{ form_errors(form.salary) }}
+
+        {{ form_label(form.wantedSalary) }}
+        {{ form_widget(form.wantedSalary) }}
+        {{ form_errors(form.wantedSalary) }}
+
+        {{ form_label(form.phone) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.phone) }}
+        {{ form_errors(form.phone) }}
+
+        <span class="red-text" id="mobility_error"></span>
+        {{ form_label(form.mobility) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.mobility) }}
+        {{ form_errors(form.mobility) }}
+
+
+        {{ form_widget(form.submit) }}
+        {{ form_end(form) }}
         <a href="#modalDelete" class="btn btn-flat red-text right">Supprimer mon compte</a>
     </div>
     <div id="modalParsing" class="modal modal-fixed-footer">
@@ -91,6 +142,9 @@
         $(document).ready(function(){
             // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
             $('.modal').modal();
+        });
+        $('#app_bundle_profile_type_submit').on('click', function (e) {
+           $('#mobility_error').html('Ce champ doit être rempli<br />');
         });
     </script>
 {% endblock %}
