@@ -14,19 +14,19 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="infos-offre">
+                <div class="infos-offre"href="#linkded">
                     {% if offer.attachment_id is not empty %}
                         <img src="../img/jobPicture/{{ offer.image|default('default.png') }}" class="img-offre">
                     {% endif %}
-                    <h2 class="job_title">{{ offer.title | raw }}</h2>
+                    <h2 class="job_title" >{{ offer.title | raw }}</h2>
                     <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>
                     <div class="container">
-                        <p>{{ offer.description | raw }}</p>
+                        <p >{{ offer.description | raw }}</p>
                     </div>
                     <div class="col m3 s12 offset-m9">
                         <div class="center cadre1">
-                            <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-                            <script type="in/share"></script>
+                            <script src="//platform.linkedin.com/in.js" type="text/javascript" id="linkded"> lang: fr_FR</script>
+                            <script type="IN/Share"></script>
 
                             {% if status == true and hasResume == true %}
                                 {{ form(form) }}

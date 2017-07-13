@@ -163,7 +163,7 @@ class JobController extends Controller
     public function spontaneAction(\Swift_Mailer $mailer, Email $email)
     {
         $email->candidatureSpontane($mailer, $this->getUser());
-        $this->addFlash('success', 'Nous avons reçus votre candidature. Nous allons vous contacter par e-mail.');
+        $this->addFlash('success', 'Nous avons reçu votre candidature. Nous allons vous contacter par e-mail.');
         return $this->redirectToRoute('job_list');
     }
 }
