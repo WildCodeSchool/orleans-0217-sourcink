@@ -425,6 +425,12 @@ span {
     font-size: 20px;
 }
 
+.price {
+    font-style: oblique;
+    font-size: xx-large;
+    font-family: "Arial Black", arial-black;
+}
+
 /*Home*/
 
 .work {
