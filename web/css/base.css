@@ -1,6 +1,7 @@
 .red {
     background-color: #EF2844!important;
 }
+#sidenav-overlay { z-index: 1; }
 .red-text {
     color: #EF2844!important;
 }
