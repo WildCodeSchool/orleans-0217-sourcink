@@ -1,22 +1,7 @@
-.red {
-    background-color: #EF2844!important;
-}
-#sidenav-overlay { z-index: 1; }
-.red-text {
-    color: #EF2844!important;
-}
-.blue {
-    background-color: #00A1C0!important;
-}
-.blue-text {
-    color: #00A1C0!important;
-}
-
 .dropdown-content {
     /*Pas de scroll dans le select multiple sinon*/
-    overflow-y: auto !important;
+    overflow-y:auto!important;
 }
-
 .cadre {
 
     border-style: solid;
@@ -55,17 +40,6 @@ p, li {
 
 }
 
-.work-name-title {
-    font-size: 24px;
-}
-
-.offers-div h2 {
-    padding-bottom: 100px;
-}
-.partner {
-    padding-bottom: 100px;
-}
-
 .layer {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -84,8 +58,7 @@ p, li {
     margin: 5%;
     color: white;
 }
-
-.job-detail {
+.job-detail{
     font-size: 20px;
     position: relative;
     top: -300px;
@@ -109,12 +82,12 @@ p, li {
 
 /* Offres sans images */
 
-.cadre1 {
-    border: 1px solid #757575;
+.cadre1{
+    border : 1px solid #757575;
     border-radius: 15px 0 15px 0;
-    height: auto;
-    margin: 50px;
-    padding: 30px;
+    height:auto;
+    margin : 50px;
+    padding : 30px;
 }
 
 .job_title2 {
@@ -205,6 +178,7 @@ p, li {
 
 /* Fin Bounce To Right */
 
+
 /* Bounce To Right */
 
 body {
@@ -254,7 +228,7 @@ nav a {
 }
 
 nav p {
-    font-size: 15px;
+    font-size: 10px;
     color: black;
 }
 
@@ -265,11 +239,15 @@ nav p {
 }
 
 .page-footer {
-    background-color: rgba(0, 161, 192, 1);
+    background-color: black;
 }
 
 .brand-logo {
     margin: 10px;
+}
+
+h2 {
+    margin: 50px 0 50px 0;
 }
 
 .team-about {
@@ -278,7 +256,7 @@ nav p {
 }
 
 
-#expertise, #category, #team {
+#expertise, #category, #job, #team {
     padding-top: 100px;
     margin-top: -90px;
 }
@@ -444,29 +422,11 @@ span {
     font-size: 20px;
 }
 
-.price {
-    font-style: oblique;
-    font-size: xx-large;
-    font-family: "Arial Black", arial-black;
-}
-
 /*Home*/
 
 .work {
     position: relative;
     top: 50px;
-}
-
-.offerjob {
-    background-image: url("../media/Avocat.jpg");
-    border-radius: inherit;
-    background-repeat:no-repeat;
-    background-size:cover;
-}
-
-.imgpagejob{
-    height: 100%;
-    margin-top: -590px;
 }
 
 /*CSS admin */
@@ -501,26 +461,23 @@ span {
 footer {
     min-height: 100px;
 }
-.fond {
-    background-color: #f5f5f5;
-}
 
 .expertise-texte {
     font-size: 24px;
     padding-left: 5%;
     padding-right: 5%;
-    margin: 0px;
 }
 
 .work-name {
     font-size: 24px;
-    margin: 0px;
 }
 
 .category-title {
     position: relative;
     top: -100px;
 }
+
+
 
 .img-fleche {
     height: 125px;
@@ -530,18 +487,15 @@ footer {
     padding-bottom: 2%;
     padding-top: 2%;
 }
-.partners {
-    background-color: #f5f5f5;
-    padding-bottom: 2%;
-    padding-top: 2%;
-}
+
 .team-img {
-    width: 30%;
+    width: 35%;
 }
 
 .btnLinkedin {
     margin-bottom: 20px;
 }
+
 
 .img-offre {
     width: 100%;
@@ -565,13 +519,12 @@ footer {
     padding-top: 20px;
 }
 
-.logoAPec {
+.logoAPec{
     width: 70%;
     padding-left: 20px;
 }
-
 .puces-site {
-    list-style-type: disc;
+    list-style-type:disc;
 }
 
 .no-job {
@@ -600,5 +553,4 @@ footer {
     border-left: 10px solid #ffffff;
 
 }
-
 

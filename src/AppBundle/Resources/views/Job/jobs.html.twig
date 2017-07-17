@@ -9,7 +9,10 @@
              style="background-image: url('/img/jobPicture/{{ offer.image }}');
                      border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
             {% else %}
-            <div class="card-content white-text hvr-bounce-to-right offerjob">
+            <div class="card-content white-text hvr-bounce-to-right offerjob" style="background-image: url('../media/Avocat.jpg');
+                        border-radius: inherit;
+                        background-repeat:no-repeat;
+                        background-size:cover;">
                 {% endif %}
                 <div class="layer">
                     <span class="card-title offers-title" id="card-title">{{ offer.title | raw }}</span>

@@ -86,33 +86,3 @@
         </div>
     </div>
 {% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('select').material_select();
-        });
-        $('#sendResumeButton').on('click', function (e) {
-            e.preventDefault();
-            $('.progress').removeClass('hiddendiv');
-            var resume = $('#sendResumeFile').val();
-            var formData = new FormData();
-            formData.append('resume', $('input[type=file]')[0].files[0]);
-            $.ajax({
-                url: '/ajax/resume/send',
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    $('.ajaxStatus').html('<div class="center"><p>Votre CV a été envoyé avec succès ! <br /> Votre insription est maintenant terminée. Vous pouvez postuler à nos offres.</p></div>');
-                    $('#done-cv').attr("href", '{{ path('job_list') }}');
-                },
-                error: function () {
-                    $('.ajaxStatus').html('<div class="center"><p>Une erreur s\'est produite. Veuillez réessayer.</p></div>');
-                }
-            });
-        });
-    </script>
-{% endblock %}

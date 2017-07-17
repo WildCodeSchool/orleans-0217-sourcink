@@ -51,19 +51,18 @@ class ProfileType extends AbstractType
                 )
             )
             ->add(
+                'experience', TextType::class,
+                array(
+                    'attr' => array(
+                        'placeholder' => 'Entrez votre expérience en années'
+                    )
+                )
+            )
+            ->add(
                 'mobility', ChoiceType::class, array(
                     'label' => 'Mobilité',
                     'choices' => $options['regions'],
                     'multiple' => true
-                )
-            )
-            ->add(
-                'experience', TextType::class,
-                array(
-                    'label' => 'Expérience',
-                    'attr' => array(
-                        'placeholder' => 'Entrez votre expérience en années'
-                    )
                 )
             )
             ->add(
