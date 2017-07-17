@@ -19,3 +19,4 @@
 /src/UserBundle/Entity/*~
 .idea/
 .DS_Store
+/web/cv/
