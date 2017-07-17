@@ -18,6 +18,7 @@ class JobController extends Controller
 {
 
     const FILTER_JOBS = 'Site Web';
+    const HOMESITE_JOBS = 'Homesite';
 
     /**
      * @Route("/", name="job_list")
@@ -53,7 +54,7 @@ class JobController extends Controller
         $offerShow = array();
 
         foreach ($offers as $offer){
-            if($offer['statut'] == self::FILTER_JOBS) {
+            if($offer['statut'] == self::FILTER_JOBS or $offer['statut'] == self::HOMESITE_JOBS) {
                 $offerShow[] = $offer;
             }
         }
@@ -69,7 +70,7 @@ class JobController extends Controller
             $request->query->getInt('limit', 9)
         );
         $countUser = 0;
-        if($this->getUser()!=null){
+        if($this->getUser()!=null) {
             $catsUser = $api->getSearch('candidates', $this->getUser()->getEmail());
             $countUser = $catsUser->count;
         }
@@ -135,7 +136,7 @@ class JobController extends Controller
 
         }
         $countUser = 0;
-        if($this->getUser()!=null){
+        if($this->getUser()!=null) {
             $catsUser = $service->getSearch('candidates', $this->getUser()->getEmail());
             $countUser = $catsUser->count;
         }
@@ -163,7 +164,7 @@ class JobController extends Controller
     public function spontaneAction(\Swift_Mailer $mailer, Email $email)
     {
         $email->candidatureSpontane($mailer, $this->getUser());
-        $this->addFlash('success', 'Nous avons reçus votre candidature. Nous allons vous contacter par e-mail.');
+        $this->addFlash('success', 'Nous avons reçu votre candidature. Nous allons vous contacter par e-mail.');
         return $this->redirectToRoute('job_list');
     }
 }

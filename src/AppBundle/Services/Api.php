@@ -212,7 +212,7 @@ class Api
     {
         $resumeData = json_decode($resumeJson);
         $candidate = $this->getClient()->request(
-            'POST', 'candidates?check_duplicate=true', [
+            'POST', 'candidates?check_duplicate=false', [
                 'headers' => [
                     'Authorization' => 'Token ' . $this->getApiKey(),
                     'content-type' => 'application/json'
