@@ -18,6 +18,7 @@ class JobController extends Controller
 {
 
     const FILTER_JOBS = 'Site Web';
+    const HOMESITE_JOBS = 'Homesite';
 
     /**
      * @Route("/", name="job_list")
@@ -53,7 +54,7 @@ class JobController extends Controller
         $offerShow = array();
 
         foreach ($offers as $offer){
-            if($offer['statut'] == self::FILTER_JOBS) {
+            if($offer['statut'] == self::FILTER_JOBS or $offer['statut'] == self::HOMESITE_JOBS) {
                 $offerShow[] = $offer;
             }
         }

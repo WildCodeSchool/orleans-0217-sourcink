@@ -1,3 +1,17 @@
+.red {
+    background-color: #EF2844!important;
+}
+#sidenav-overlay { z-index: 1; }
+.red-text {
+    color: #EF2844!important;
+}
+.blue {
+    background-color: #00A1C0!important;
+}
+.blue-text {
+    color: #00A1C0!important;
+}
+
 .dropdown-content {
     /*Pas de scroll dans le select multiple sinon*/
     overflow-y: auto !important;

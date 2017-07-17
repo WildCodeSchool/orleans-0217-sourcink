@@ -2,12 +2,24 @@
     <nav>
         <div class="nav-wrapper">
             <a href="{{ path('app_homepage') }}" class="brand-logo">
-                <img src="{{ asset('media/logoSourcInk.svg') }}">
-            </a>
+                <img src="{{ asset('media/logoSourcInk.svg') }}"></a>
             <p class="slogan center hide-on-med-and-down">
                 L'agence de sourcing spécialisée en recrutement juridique, fiscal et RH
             </p>
-            <a href="{{ path('app_homepage') }}" class="right red white-text applicant-button waves-effect z-depth-1">Retour à l'accueil</a>
+            <a href="#" data-activates="side-nav-applicant" class="button-collapse red-text"><i
+                        class="material-icons">menu</i></a>
+            <ul id="side-nav-applicant" class="side-nav">
+                <div class="center">
+                    <li>
+                        <a href="{{ path('app_homepage') }}" class="right red white-text applicant-button waves-effect z-depth-1">Retour à l'accueil</a>
+                    </li>
+                </div>
+            </ul>
+            <ul id="nav-mobile-applicant" class="right hide-on-med-and-down">
+                <div class="center">
+                    <a href="{{ path('app_homepage') }}" class="right red white-text applicant-button waves-effect z-depth-1">Retour à l'accueil</a>
+                </div>
+            </ul>
         </div>
     </nav>
 </div>
