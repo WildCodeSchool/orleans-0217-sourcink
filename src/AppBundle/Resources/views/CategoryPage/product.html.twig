@@ -9,34 +9,15 @@
 
 {% for product in category.products %}
     {% if category.isPremium == false %}
-        {% if loop.index == 1 %}
-            <div class="col s12 m4 center padding-small">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
-                <a class="btn-floating btn show-small red lighten-1"><i class="material-icons">add</i></a>
-                <p class="red-text lighten-1 price">{{ product.price }} € HT</p>
-                <p class="product-small red lighten-1">{{ product.text }}</p>
-            </div>
-
-        {% elseif loop.index == 2 %}
-
-            <div class="col s12 m4 center padding-medium">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
-                <a class="btn-floating btn show-medium deep-purple lighten-2"><i class="material-icons">add</i></a>
-                <p class="deep-purple-text lighten-2 price">{{ product.price }} € HT</p>
-                <p class="product-medium deep-purple lighten-2">{{ product.text | raw }}</p>
-            </div>
-        {% elseif loop.index == 3 %}
-            <div class="col s12 m4 center padding-large">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
-                <a class="btn-floating btn show-large blue lighten-1"><i class="material-icons">add</i></a>
-                <p class="blue-text lighten-1 price">{{ product.price }} € HT</p>
-                <p class="product-large blue lighten-1">{{ product.text | raw }}</p>
-            </div>
-        {% endif %}
-
+        <div class="col s12 m4 center padding-{{ loop.index }}">
+            <img class="circle responsive-img img" id="{{ product.id }}"
+                 src="{{ asset('img/'~product.picture.pictureName) }}">
+            <a class="btn-floating btn lighten-1 {% if loop.index == 1 %} show-small red  {% elseif loop.index == 2 %} show-medium deep-purple  {% elseif loop.index == 3 %} show-large blue {% endif %}"><i
+                        class="material-icons">add</i></a>
+            <p class="lighten-1{% if loop.index == 1 %} red-text  price {% elseif loop.index == 2 %} deep-purple-text price {% elseif loop.index == 3 %} blue-text  price {% endif %}">{{ product.price }}
+                € HT</p>
+            <p class="lighten-1 {% if loop.index == 1 %} product-small red  {% elseif loop.index == 2 %} product-medium deep-purple {% elseif loop.index == 3 %} product-large blue {% endif %}">{{ product.text }}</p>
+        </div>
     {% elseif category.isPremium == true %}
         <div class="center">
             <img class="circle responsive-img img" id="{{ product.id }}"
