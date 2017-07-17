@@ -562,7 +562,7 @@ footer {
 .bg-category {
 
 }
-
+/* video plein ecran firefox*/
 @-moz-document url-prefix() {
     video {
         position: relative;
@@ -579,9 +579,10 @@ footer {
     }
     .video-container {
         padding-top: 720px;
-        width: 100%;
+        width: auto;
+
     }
     #expertise {
-        margin-top : 100px;
+        margin-top : 30px;
     }
 }
