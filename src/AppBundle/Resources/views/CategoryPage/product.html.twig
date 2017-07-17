@@ -8,12 +8,13 @@
 </div>
 
     {% for product in category.products %}
-        {% if category.products|length == 3 %}
+        {% if category.isPremium == false %}
             {% if loop.index == 1 %}
                 <div class="col s12 m4 center padding-small">
                     <img class="circle responsive-img img" id="{{ product.id }}"
                          src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-small red lighten-1"><i class="material-icons">add</i></a>
+                    <p class="red-text lighten-1 price">{{ product.price }} € HT</p>
                     <p class="product-small red lighten-1">{{ product.text }}</p>
                 </div>
 
@@ -23,6 +24,7 @@
                     <img class="circle responsive-img img" id="{{ product.id }}"
                          src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-medium deep-purple lighten-2"><i class="material-icons">add</i></a>
+                    <p class="deep-purple-text lighten-2 price">{{ product.price }} € HT</p>
                     <p class="product-medium deep-purple lighten-2">{{ product.text | raw }}</p>
                 </div>
             {% elseif loop.index == 3 %}
@@ -30,28 +32,21 @@
                     <img class="circle responsive-img img" id="{{ product.id }}"
                          src="{{ asset('img/'~product.picture.pictureName) }}">
                     <a class="btn-floating btn show-large blue lighten-1"><i class="material-icons">add</i></a>
+                    <p class="blue-text lighten-1 price">{{ product.price }} € HT</p>
                     <p class="product-large blue lighten-1">{{ product.text | raw }}</p>
                 </div>{% endif %}
 
-        {% elseif category.products|length == 1 %}
-            <div class="center">
-                <img class="circle responsive-img img" id="{{ product.id }}"
-                     src="{{ asset('img/'~product.picture.pictureName) }}">
-            </div>
-
-        {% endif %}
-    {% endfor %}
-    {% if category.isPremium == true %}
+    {% elseif category.isPremium == true %}
         <div class="center">
-            <img class="circle responsive-img img" id="{{ category.id }}"
-                 src="{{ asset('img/'~category.picture.pictureName) }}">
+            <img class="circle responsive-img img" id="{{ product.id }}"
+                 src="{{ asset('img/'~product.picture.pictureName) }}">
             <a class="btn-floating btn show-premium black lighten-1"><i class="material-icons">add</i></a>
 
             <p class="product-premium black lighten-1"><a href="mailto:{{ email }}">Contactez-nous</a> pour plus d'informations.</p>
 
         </div>
     {% endif %}
-
+    {% endfor %}
 
 
 

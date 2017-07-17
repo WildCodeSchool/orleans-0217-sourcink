@@ -2,38 +2,38 @@
 <div class="container">
     <div class="row">
         {% for offer in offers %}
-            {% if offer.statut in ['Homesite'] %}
-                <div class="col s12 m4">
-                    <div class="card card-offres color">
-                        {% if offer.attachment_id is not empty %}
-                        <div class="card-content white-text hvr-bounce-to-right"
-                             style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
-                            {% else %}
-                                <div class="card-content white-text hvr-bounce-to-right">
-                            {% endif %}
-                            <div class="layer">
-                                <span class="card-title offers-title" id="card-title">{{ offer.title | raw }}</span>
-                                <div class="card-content">
-                                    <p>
-                                        <i class="fa fa-location-arrow"></i> {{ offer.city | raw }}
-                                        | {{ offer.duration | upper }}
-                                    </p>
-                                </div>
-                                <a class="waves-effect waves-light btn red offres"
-                                   href="{{ path('job_page', {'id': offer.id}) }}">
-                                    Voir plus
-                                </a>
+        {% if offer.statut in ['Homesite'] %}
+        <div class="col s12 m4">
+            <div class="card card-offres color">
+                {% if offer.attachment_id is not empty %}
+                <div class="card-content white-text hvr-bounce-to-right"
+                     style="background-image: url('/img/jobPicture/{{ offer.image|default('default.png') }}');border-radius: inherit; background-repeat:no-repeat; background-size:cover;">
+                    {% else %}
+                    <div class="card-content white-text hvr-bounce-to-right">
+                        {% endif %}
+                        <div class="layer">
+                            <span class="card-title offers-title" id="card-title">{{ offer.title | raw }}</span>
+                            <div class="card-content">
+                                <p>
+                                    <i class="fa fa-location-arrow"></i> {{ offer.city | raw }}
+                                    | {{ offer.duration | upper }}
+                                </p>
                             </div>
+                            <a class="waves-effect waves-light btn red offres"
+                               href="{{ path('job_page', {'id': offer.id}) }}">
+                                Voir plus
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="col s12">
-    <div class="center">
-        <a class="waves-effect waves-light btn red" href="{{ path('job_list') }}">Plus d'offres...</a>
+    <div class="col s12">
+        <div class="center">
+            <a class="waves-effect waves-light btn red" href="{{ path('job_list') }}">Plus d'offres...</a>
+        </div>
     </div>
-</div>
 
