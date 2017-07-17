@@ -432,6 +432,18 @@ span {
     top: 50px;
 }
 
+.offerjob {
+    background-image: url("../media/Avocat.jpg");
+    border-radius: inherit;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.imgpagejob{
+    height: 100%;
+    margin-top: -590px;
+}
+
 /*CSS admin */
 
 .admimage {

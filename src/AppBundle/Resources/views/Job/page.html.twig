@@ -17,6 +17,9 @@
                 <div class="infos-offre"href="#linkded">
                     {% if offer.attachment_id is not empty %}
                         <img src="../img/jobPicture/{{ offer.image|default('default.png') }}" class="img-offre">
+                        {% else %}
+                            <img src="../media/Avocat.jpg" class="img-offre imgpagejob">
+
                     {% endif %}
                     <h2 class="job_title" >{{ offer.title | raw }}</h2>
                     <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>
