@@ -23,5 +23,9 @@
     <div class="center">
         <input type="submit" value="{{ 'security.login.submit'|trans }}" class="btn blue">
     </div>
-    <p class="center"><a href="{{ path('fos_user_registration_register') }}" class="btn btn-flat orange-text">{{ 'security.login.register'|trans }}</a></p>
+    <p class="center">
+        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-flat orange-text">{{ 'security.login.register'|trans }}</a>
+        <br />
+        <a href="{{ path('fos_user_resetting_request') }}" class="btn btn-flat red-text">J'ai oublié mon mot de passe</a>
+    </p>
 </form>

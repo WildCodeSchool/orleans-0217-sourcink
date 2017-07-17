@@ -93,7 +93,7 @@
             $('select').material_select();
         });
         $('#sendResumeButton').on('click', function (e) {
-            event.preventDefault();
+            e.preventDefault();
             $('.progress').removeClass('hiddendiv');
             var resume = $('#sendResumeFile').val();
             var formData = new FormData();
