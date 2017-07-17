@@ -1,7 +1,22 @@
+.red {
+    background-color: #EF2844!important;
+}
+#sidenav-overlay { z-index: 1; }
+.red-text {
+    color: #EF2844!important;
+}
+.blue {
+    background-color: #00A1C0!important;
+}
+.blue-text {
+    color: #00A1C0!important;
+}
+
 .dropdown-content {
     /*Pas de scroll dans le select multiple sinon*/
-    overflow-y:auto!important;
+    overflow-y: auto !important;
 }
+
 .cadre {
 
     border-style: solid;
@@ -40,6 +55,17 @@ p, li {
 
 }
 
+.work-name-title {
+    font-size: 24px;
+}
+
+.offers-div h2 {
+    padding-bottom: 100px;
+}
+.partner {
+    padding-bottom: 100px;
+}
+
 .layer {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
@@ -58,7 +84,8 @@ p, li {
     margin: 5%;
     color: white;
 }
-.job-detail{
+
+.job-detail {
     font-size: 20px;
     position: relative;
     top: -300px;
@@ -82,12 +109,12 @@ p, li {
 
 /* Offres sans images */
 
-.cadre1{
-    border : 1px solid #757575;
+.cadre1 {
+    border: 1px solid #757575;
     border-radius: 15px 0 15px 0;
-    height:auto;
-    margin : 50px;
-    padding : 30px;
+    height: auto;
+    margin: 50px;
+    padding: 30px;
 }
 
 .job_title2 {
@@ -178,7 +205,6 @@ p, li {
 
 /* Fin Bounce To Right */
 
-
 /* Bounce To Right */
 
 body {
@@ -246,20 +272,13 @@ nav p {
     margin: 10px;
 }
 
-h2 {
-    margin: 50px 0 50px 0;
-}
-
 .team-about {
     border-left: 1px solid #e0e0e0;
     margin-top: 10%;
 }
 
-li {
-    display: inline-block;
-}
 
-#expertise, #category, #job, #team {
+#expertise, #category, #team {
     padding-top: 100px;
     margin-top: -90px;
 }
@@ -304,12 +323,8 @@ video {
     overflow: hidden;
 }
 
-@-moz-document url-prefix() {
-    .video-container {
-        padding-top: 720px;
-        width: 100%;
-    }
-}
+
+
 
 .slider .slides {
     background-color: #ffffff;
@@ -335,6 +350,7 @@ a h5 {
 #resumeForm {
     padding-top: 90px;
 }
+
 
 /*Slider Vidéos*/
 
@@ -413,11 +429,11 @@ span {
 
 }
 
-.padding-small {
+.padding-1 {
     margin-top: 80px;
 }
 
-.padding-medium {
+.padding-2 {
     margin-top: 40px;
 }
 
@@ -425,11 +441,29 @@ span {
     font-size: 20px;
 }
 
+.price {
+    font-style: oblique;
+    font-size: xx-large;
+    font-family: "Arial Black", arial-black;
+}
+
 /*Home*/
 
 .work {
     position: relative;
     top: 50px;
+}
+
+.offerjob {
+    background-image: url("../media/Avocat.jpg");
+    border-radius: inherit;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.imgpagejob{
+    height: 100%;
+    margin-top: -590px;
 }
 
 /*CSS admin */
@@ -464,15 +498,20 @@ span {
 footer {
     min-height: 100px;
 }
+.fond {
+    background-color: #f5f5f5;
+}
 
 .expertise-texte {
     font-size: 24px;
     padding-left: 5%;
     padding-right: 5%;
+    margin: 0px;
 }
 
 .work-name {
     font-size: 24px;
+    margin: 0px;
 }
 
 .category-title {
@@ -480,14 +519,11 @@ footer {
     top: -100px;
 }
 
-
-
 .img-fleche {
     height: 125px;
 }
 
 .offers-div {
-    background-color: #f5f5f5;
     padding-bottom: 2%;
     padding-top: 2%;
 }
@@ -497,42 +533,19 @@ footer {
     padding-top: 2%;
 }
 .team-img {
-    width: 35%;
+    width: 30%;
 }
 
 .btnLinkedin {
     margin-bottom: 20px;
 }
 
-
 .img-offre {
     width: 100%;
 }
 
-.logoPartner {
-    width: 50%;
-}
-
-.logoP {
-    width: 110%;
-}
-
-.logoMonster {
-    width: 110%;
-    padding-top: 30px;
-}
-
-.logoCarJur {
-    width: 120%;
-    padding-top: 20px;
-}
-
-.logoAPec{
-    width: 70%;
-    padding-left: 20px;
-}
 .puces-site {
-    list-style-type:disc;
+    list-style-type: disc;
 }
 
 .no-job {
@@ -562,6 +575,44 @@ footer {
 
 }
 
-.bg-category {
+/* video plein ecran firefox*/
+@-moz-document url-prefix() {
+    video {
+        position: relative;
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: auto;
+        z-index: -100;
+        background-size: cover;
+        overflow: visible;
+        right: 0;
+        bottom: 71px;
 
+    }
+    .video-container {
+        padding-top: 720px;
+        width: auto;
+    }
+    #expertise {
+        margin-top : 30px;
+    }
+}
+.logoPartner {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 50%
+}
+.logoPartnerSquare {
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 35%;
+}
+.logomin {
+    max-width: 60%;
+    margin-top: 40%;
+}
+.logomax {
+    margin-top: 50%;
+    max-width: 100%;
 }

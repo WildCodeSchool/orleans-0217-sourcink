@@ -8,7 +8,58 @@
             <h1 class="title-small">Mise à jour de mon profil</h1>
             <a href="#modalParsing" class="btn blue center">Utiliser mon CV pour compléter mon profil</a>
         </div>
-        {{ form(form) }}
+        <div class="center">
+            Les champs précédés d'un <span class="red-text">*</span> doivent être remplis
+        </div>
+        {{ form_start(form) }}
+
+        {{ form_label(form.firstname) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.firstname) }}
+        {{ form_errors(form.firstname) }}
+
+        {{ form_label(form.lastname) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.lastname) }}
+        {{ form_errors(form.lastname) }}
+
+        {{ form_label(form.title) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+
+        {{ form_label(form.wantedJob) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.wantedJob) }}
+        {{ form_errors(form.wantedJob) }}
+
+        {{ form_label(form.experience) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.experience) }}
+        {{ form_errors(form.experience) }}
+
+        {{ form_label(form.salary) }}
+        {{ form_widget(form.salary) }}
+        {{ form_errors(form.salary) }}
+
+        {{ form_label(form.wantedSalary) }}
+        {{ form_widget(form.wantedSalary) }}
+        {{ form_errors(form.wantedSalary) }}
+
+        {{ form_label(form.phone) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.phone) }}
+        {{ form_errors(form.phone) }}
+
+        <span class="red-text" id="mobility_error"></span>
+        {{ form_label(form.mobility) }}
+        <span class="red-text">*</span>
+        {{ form_widget(form.mobility) }}
+        {{ form_errors(form.mobility) }}
+
+
+        {{ form_widget(form.submit) }}
+        {{ form_end(form) }}
         <a href="#modalDelete" class="btn btn-flat red-text right">Supprimer mon compte</a>
     </div>
     <div id="modalParsing" class="modal modal-fixed-footer">
@@ -50,47 +101,4 @@
             <a href="#!" class="modal-action modal-close btn-flat blue-text">Non</a>
         </div>
     </div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-        $('#parseResumeButton').on('click',function(e){
-            e.preventDefault();
-            var resume = $('#parseResumeFile').val();
-            $('.progress').removeClass('hiddendiv');
-            var formData = new FormData();
-            formData.append('resume', $('input[type=file]')[0].files[0]);
-            $.ajax({
-                url: '/ajax/resume/parse',
-                type: 'POST',
-                dataType: 'json',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response){
-                    var resume = JSON.parse(response.data);
-                    $('#fos_user_registration_form_firstname').val(resume.first_name);
-                    $('#fos_user_registration_form_lastname').val(resume.last_name);
-                    $('#fos_user_registration_form_email').val(resume.emails.primary);
-                    $('#fos_user_registration_form_title').val(resume.title);
-                    $('#fos_user_registration_form_experience').val(resume.experience);
-                    $('#fos_user_registration_form_salary').val(resume.salary);
-                    $('#fos_user_registration_form_salary').val(resume.current_pay);
-                    $('#fos_user_registration_form_wantedSalary').val(resume.desired_pay);
-                    $('#fos_user_registration_form_phone').val(resume.phone);
-                    $('.ajaxStatus').html('<div class="center"><p>Votre CV a été envoyé avec succès !</p></div>');
-                },
-                error: function() {
-                    $('.ajaxStatus').html('<div class="center"><p>Une erreur s\'est produite. Veuillez réessayer.</p></div>');
-                }
-            });
-        });
-        $(document).ready(function(){
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
-        });
-    </script>
 {% endblock %}
