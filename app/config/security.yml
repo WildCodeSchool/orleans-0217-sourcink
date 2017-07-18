@@ -37,6 +37,7 @@ security:
                     linkedin: "/login/check-linkedin"
                   login_path: /login
                   failure_path: /login
+                  default_target_path : /candidat/
                   oauth_user_provider:
                     service: si_oauth_provider
     #            logout: true
