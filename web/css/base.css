@@ -442,9 +442,8 @@ span {
 }
 
 .price {
-    font-style: oblique;
     font-size: xx-large;
-    font-family: "Arial Black", arial-black;
+    font-family: Caviar;
 }
 
 /*Home*/
