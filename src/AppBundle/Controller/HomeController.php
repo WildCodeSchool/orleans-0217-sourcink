@@ -5,13 +5,14 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Services\Api;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends Controller
 {
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homeAction(Api $api)
+    public function homeAction(Api $api, Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -42,6 +43,11 @@ class HomeController extends Controller
             }
         }
 
+        $browser = $request->server->get('HTTP_USER_AGENT');
+        if (preg_match('/Edge/', $browser)) {
+            $browser = 'Edge';
+        }
+
         return $this->render(
             'AppBundle:Home:home.html.twig',
             [
@@ -49,6 +55,7 @@ class HomeController extends Controller
                 'videos' => $videos,
                 'categories' => $categories,
                 'team' => $team,
+                'browser'=>$browser,
             ]
         );
 
