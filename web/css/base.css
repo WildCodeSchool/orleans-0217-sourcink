@@ -498,6 +498,8 @@ footer {
     min-height: 100px;
 }
 .fond {
+    padding-bottom: 2%;
+    padding-top: 2%;
     background-color: #f5f5f5;
 }
 
