@@ -2,6 +2,10 @@
     {% block header %}
         {% include('AppBundle:Job:header.html.twig') %}
     {% endblock %}
+    {% block meta %}
+        <meta property="og:title" content="{{ offer.title  }}" />
+        <meta property="og:description" content="Une offre Sourcink" />
+    {% endblock %}
     {% block content %}
         <div class="container">
             {% for messages in app.flashes %}
@@ -14,21 +18,22 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="infos-offre"href="#linkded">
+                <div class="infos-offre" href="#linkded">
                     {% if offer.attachment_id is not empty %}
                         <img src="../img/jobPicture/{{ offer.image|default('default.png') }}" class="img-offre">
-                        {% else %}
-                            <img src="../media/Avocat.jpg" class="img-offre imgpagejob">
+                    {% else %}
+                        <img src="../media/Avocat.jpg" class="img-offre imgpagejob">
 
                     {% endif %}
-                    <h2 class="job_title" >{{ offer.title | raw }}</h2>
+                    <h2 class="job_title">{{ offer.title | raw }}</h2>
                     <p class="offredetail">{{ offer.city | raw }} | {{ offer.duration | raw }}</p>
                     <div class="container">
-                        <p >{{ offer.description | raw }}</p>
+                        <p>{{ offer.description | raw }}</p>
                     </div>
                     <div class="col m3 s12 offset-m9">
                         <div class="center cadre1">
-                            <script src="//platform.linkedin.com/in.js" type="text/javascript" id="linkded"> lang: fr_FR</script>
+                            <script src="//platform.linkedin.com/in.js" type="text/javascript"
+                                    id="linkded"> lang: fr_FR</script>
                             <script type="IN/Share"></script>
 
                             {% if status == true and hasResume == true %}
@@ -41,7 +46,8 @@
                             {% elseif status == false and app.user %}
                                 <div class="center no-job">
                                     <p>Afin de postuler, vous devez compléter votre profil</p>
-                                    <a href="{{ path('applicant_update') }}" class="btn btn-large blue">Compléter mon profil</a>
+                                    <a href="{{ path('applicant_update') }}" class="btn btn-large blue">Compléter mon
+                                        profil</a>
                                 </div>
                             {% else %}
                                 <div class="center no-job">
